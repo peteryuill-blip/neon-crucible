@@ -23,3 +23,9 @@
 - [x] Share authentication state between sites if possible
 - [x] Test admin CRUD operations
 - [x] Write vitest tests for admin functionality
+
+## SEO Fixes
+
+- [x] Add meta description to homepage (50-160 characters)
+- [x] Add meta keywords to homepage
+- [x] Add H2 heading to homepage

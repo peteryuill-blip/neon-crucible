@@ -45,6 +45,7 @@ export default function Home() {
 
       {/* Three Systems Grid */}
       <section className="grid md:grid-cols-3 gap-px bg-border border border-border">
+        <h2 className="sr-only">Three Core Systems of the Neon Crucible</h2>
         {/* Card 1 */}
         <div className="bg-card p-8 space-y-4 hover:bg-muted/5 transition-colors group relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
@@ -102,6 +103,7 @@ export default function Home() {
 
       {/* Manifesto Section */}
       <section className="max-w-3xl mx-auto text-center space-y-8">
+        <h2 className="sr-only">Artist Statement and Manifesto</h2>
         <div className="w-px h-16 bg-gradient-to-b from-transparent via-primary to-transparent mx-auto"></div>
         <blockquote className="font-serif text-2xl md:text-3xl italic text-muted-foreground">
           "The site is the first permanent address for the work. You're not just displaying; you're hosting living infrastructure."
