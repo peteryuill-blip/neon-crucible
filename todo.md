@@ -104,3 +104,9 @@
 
 - [x] Update bio page contact info (email: peteryuill@gmail.com, WhatsApp: +85259326869)
 - [x] Make entire directory boxes clickable on homepage (not just text links)
+
+## PH1 Absurdity of Meaning Upload
+
+- [x] Upload 27 PH1 works to S3
+- [x] Create database entries with full metadata
+- [x] Provide ingestion manifest
