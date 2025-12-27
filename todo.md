@@ -174,3 +174,8 @@
 
 - [x] Upload 12 PH4 Oculus works to S3
 - [x] Create database entries with full metadata
+
+## Works Page View Mode Updates
+
+- [x] Make list format the default view (pair/grid as secondary)
+- [x] Increase list view image size by ~10% (w-20 h-20 → w-24 h-24)

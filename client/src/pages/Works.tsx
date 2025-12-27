@@ -15,7 +15,7 @@ export default function Works() {
   const [techniqueFilter, setTechniqueFilter] = useState<string>("all");
   const [seriesFilter, setSeriesFilter] = useState<string>("all");
   const [page, setPage] = useState(0);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [selectedWork, setSelectedWork] = useState<number | null>(null);
 
   // Fetch phases for filter dropdown
@@ -83,20 +83,20 @@ export default function Works() {
         </div>
         <div className="flex gap-2">
           <Button 
-            variant={viewMode === "grid" ? "outline" : "ghost"} 
-            size="icon" 
-            className="rounded-none border-muted-foreground/30"
-            onClick={() => setViewMode("grid")}
-          >
-            <GridIcon className="w-4 h-4" />
-          </Button>
-          <Button 
             variant={viewMode === "list" ? "outline" : "ghost"} 
             size="icon" 
-            className="rounded-none text-muted-foreground"
+            className="rounded-none border-muted-foreground/30"
             onClick={() => setViewMode("list")}
           >
             <List className="w-4 h-4" />
+          </Button>
+          <Button 
+            variant={viewMode === "grid" ? "outline" : "ghost"} 
+            size="icon" 
+            className="rounded-none text-muted-foreground"
+            onClick={() => setViewMode("grid")}
+          >
+            <GridIcon className="w-4 h-4" />
           </Button>
         </div>
       </header>
@@ -240,7 +240,7 @@ export default function Works() {
               onClick={() => setSelectedWork(work.id)}
             >
               {/* Thumbnail */}
-              <div className="w-20 h-20 bg-muted/10 flex-shrink-0 overflow-hidden">
+              <div className="w-24 h-24 bg-muted/10 flex-shrink-0 overflow-hidden">
                 {work.thumbnailUrl || work.imageUrl ? (
                   <img 
                     src={work.thumbnailUrl || work.imageUrl || ""} 
