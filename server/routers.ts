@@ -46,6 +46,12 @@ export const appRouter = router({
         return db.getPhaseByCode(input.code);
       }),
     
+    getWorkThumbnails: publicProcedure
+      .input(z.object({ phaseId: z.number(), limit: z.number().optional().default(3) }))
+      .query(async ({ input }) => {
+        return db.getWorksByPhaseId(input.phaseId, input.limit);
+      }),
+    
     create: adminProcedure
       .input(z.object({
         code: z.string().min(1).max(16),

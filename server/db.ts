@@ -361,3 +361,14 @@ export async function deleteArchiveFile(id: number): Promise<void> {
   if (!db) throw new Error("Database not available");
   await db.delete(archiveFiles).where(eq(archiveFiles.id, id));
 }
+
+// ============ PHASE THUMBNAILS ============
+
+export async function getWorksByPhaseId(phaseId: number, limit: number = 3): Promise<Work[]> {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(works)
+    .where(and(eq(works.phaseId, phaseId), eq(works.isPublished, true)))
+    .orderBy(asc(works.sortOrder), desc(works.createdAt))
+    .limit(limit);
+}

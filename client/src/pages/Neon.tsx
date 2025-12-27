@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Loader2, Lock, Eye } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Streamdown } from "streamdown";
 
 // Phase color mapping based on actual phase codes
@@ -18,6 +18,39 @@ const phaseColors: Record<string, string> = {
   "PH4A": "#00FFFF",
   "NE": "#00FF00",
 };
+
+// Component for phase thumbnails
+function PhaseThumbnails({ phaseId }: { phaseId: number }) {
+  const { data: works } = trpc.phases.getWorkThumbnails.useQuery(
+    { phaseId, limit: 3 },
+    { staleTime: 60000 }
+  );
+
+  if (!works || works.length === 0) return null;
+
+  return (
+    <div className="flex gap-1.5 mt-3">
+      {works.map((work) => (
+        <div 
+          key={work.id} 
+          className="w-10 h-10 bg-muted/20 overflow-hidden opacity-60 group-hover:opacity-100 transition-opacity"
+          title={work.title}
+        >
+          {work.thumbnailUrl ? (
+            <img 
+              src={work.thumbnailUrl} 
+              alt={work.title}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-full h-full bg-muted/30" />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function Neon() {
   const [selectedEssay, setSelectedEssay] = useState<string | null>(null);
@@ -156,6 +189,10 @@ export default function Neon() {
                       ◈ {phase.emotionalTemperature}
                     </p>
                   )}
+                  
+                  {/* Phase thumbnails - subtle preview of works */}
+                  <PhaseThumbnails phaseId={phase.id} />
+                  
                   <div className="pt-2 text-xs font-mono text-muted-foreground group-hover:text-primary transition-colors">
                     VIEW PHASE DETAILS →
                   </div>

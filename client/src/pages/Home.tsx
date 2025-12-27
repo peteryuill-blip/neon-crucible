@@ -46,25 +46,26 @@ export default function Home() {
       {/* Three Systems Grid */}
       <section className="grid md:grid-cols-3 gap-px bg-border border border-border">
         <h2 className="sr-only">Three Core Systems of the Neon Crucible</h2>
-        {/* Card 1 */}
+        
+        {/* Card 1 - WORK ARCHIVE (moved from position 3) */}
         <div className="bg-card p-8 space-y-4 hover:bg-muted/5 transition-colors group relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
             <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.01</span>
           </div>
-          <h3 className="font-mono text-xl text-primary">WEEKLY PROTOCOL</h3>
+          <h3 className="font-mono text-xl text-primary">WORK ARCHIVE</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            The beating heart. Structured check-ins, studio hours, and somatic data tracking.
+            The complete visual record. 500+ paintings, drawings, and mixed-media works from 2018–2025. Browse by phase, technique, or emotional register.
           </p>
           <div className="pt-4">
-            <Link href="/dashboard">
+            <Link href="/works">
               <span className="text-xs font-mono underline decoration-muted-foreground/50 hover:decoration-primary hover:text-primary cursor-pointer">
-                LOGIN REQUIRED →
+                VIEW ALL ARTWORK →
               </span>
             </Link>
           </div>
         </div>
 
-        {/* Card 2 */}
+        {/* Card 2 - NEON WITNESS (unchanged position) */}
         <div className="bg-card p-8 space-y-4 hover:bg-muted/5 transition-colors group relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
             <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.02</span>
@@ -82,19 +83,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Card 3 */}
+        {/* Card 3 - WEEKLY PROTOCOL (moved from position 1) */}
         <div className="bg-card p-8 space-y-4 hover:bg-muted/5 transition-colors group relative overflow-hidden">
           <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
             <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.03</span>
           </div>
-          <h3 className="font-mono text-xl text-primary">WORK ARCHIVE</h3>
+          <h3 className="font-mono text-xl text-primary">WEEKLY PROTOCOL</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            500+ works from 2018–2025. Organized by phase, technique, and emotional register.
+            The beating heart. Structured check-ins, studio hours, and somatic data tracking.
           </p>
           <div className="pt-4">
-            <Link href="/works">
+            <Link href="/dashboard">
               <span className="text-xs font-mono underline decoration-muted-foreground/50 hover:decoration-primary hover:text-primary cursor-pointer">
-                BROWSE COLLECTION →
+                LOGIN REQUIRED →
               </span>
             </Link>
           </div>

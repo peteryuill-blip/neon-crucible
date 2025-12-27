@@ -297,6 +297,7 @@ describe("metaquestions router", () => {
     expect(result).toEqual({ success: true });
     expect(db.createMetaquestion).toHaveBeenCalledWith({
       question: "New question?",
+      isAnswerPrivate: true,
     });
   });
 });

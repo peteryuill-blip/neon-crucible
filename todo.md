@@ -62,3 +62,9 @@
 - [x] Upload 3 Covenant panels to S3
 - [x] Create database entries with full metadata
 - [x] Provide ingestion manifest
+
+## Homepage & Neon Page UI Improvements
+
+- [x] Swap Weekly Protocol and Work Archive positions on homepage
+- [x] Clarify Work Archive description to emphasize it contains all artwork
+- [x] Add phase thumbnails to Neon Witness page phase blocks
