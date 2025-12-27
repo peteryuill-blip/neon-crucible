@@ -2,12 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle, Maximize2 } from "lucide-react";
+import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
-import { createPortal } from "react-dom";
 import { Streamdown } from "streamdown";
-import { Lightbox } from "@/components/Lightbox";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -23,7 +21,7 @@ export default function Works() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [selectedWork, setSelectedWork] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   // Track random seed to allow reshuffling
   const [randomSeed, setRandomSeed] = useState(0);
 
@@ -58,22 +56,6 @@ export default function Works() {
   const works = worksData?.items ?? [];
   const totalWorks = worksData?.total ?? 0;
   const totalPages = Math.ceil(totalWorks / ITEMS_PER_PAGE);
-
-  // Find current work index in the list for lightbox navigation
-  const currentWorkIndex = useMemo(() => {
-    if (selectedWork === null) return -1;
-    return works.findIndex(w => w.id === selectedWork);
-  }, [selectedWork, works]);
-
-  // Navigation functions for lightbox
-  const navigateLightbox = (direction: 'prev' | 'next') => {
-    if (currentWorkIndex === -1) return;
-    
-    const newIndex = direction === 'prev' ? currentWorkIndex - 1 : currentWorkIndex + 1;
-    if (newIndex >= 0 && newIndex < works.length) {
-      setSelectedWork(works[newIndex].id);
-    }
-  };
 
   // Get unique techniques from works for filter
   const techniques = useMemo(() => {
@@ -459,18 +441,8 @@ export default function Works() {
                     <img 
                       src={selectedWorkData.imageUrl} 
                       alt={selectedWorkData.title}
-                      className="w-full h-full object-contain cursor-pointer"
-                      onClick={() => setLightboxOpen(true)}
+                      className="w-full h-full object-contain"
                     />
-                    {/* Fullscreen button overlay */}
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="absolute bottom-3 right-3 bg-black/50 hover:bg-black/70 text-white/70 hover:text-white w-10 h-10 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity"
-                      onClick={() => setLightboxOpen(true)}
-                    >
-                      <Maximize2 className="w-5 h-5" />
-                    </Button>
                   </>
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 font-mono text-4xl sm:text-6xl font-bold">
@@ -549,23 +521,7 @@ export default function Works() {
         </DialogContent>
       </Dialog>
 
-      {/* Neon Lightbox - rendered via portal to ensure it's above everything */}
-      {selectedWorkData && lightboxOpen && createPortal(
-        <Lightbox
-          isOpen={lightboxOpen}
-          onClose={() => setLightboxOpen(false)}
-          imageUrl={selectedWorkData.imageUrl}
-          title={selectedWorkData.title}
-          subtitle={`${selectedWorkData.technique || ''} ${selectedWorkData.dimensions ? '• ' + selectedWorkData.dimensions : ''}`}
-          hasPrev={currentWorkIndex > 0}
-          hasNext={currentWorkIndex < works.length - 1}
-          onPrev={() => navigateLightbox('prev')}
-          onNext={() => navigateLightbox('next')}
-          currentIndex={currentWorkIndex}
-          totalCount={works.length}
-        />,
-        document.body
-      )}
+
     </div>
   );
 }
