@@ -557,11 +557,12 @@ export default function Works() {
           imageUrl={selectedWorkData.imageUrl}
           title={selectedWorkData.title}
           subtitle={`${selectedWorkData.technique || ''} ${selectedWorkData.dimensions ? '• ' + selectedWorkData.dimensions : ''}`}
-          onShowDetails={() => setLightboxOpen(false)}
           hasPrev={currentWorkIndex > 0}
           hasNext={currentWorkIndex < works.length - 1}
           onPrev={() => navigateLightbox('prev')}
           onNext={() => navigateLightbox('next')}
+          currentIndex={currentWorkIndex}
+          totalCount={works.length}
         />,
         document.body
       )}

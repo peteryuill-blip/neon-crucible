@@ -284,3 +284,12 @@
 - [x] Add keyboard navigation (left/right arrow keys)
 - [x] Pass works list and current index to lightbox
 - [x] Update lightbox to support navigation between works
+
+## Mobile Lightbox Optimization
+
+- [x] Add touch swipe gestures for mobile navigation
+- [x] Fix mobile lightbox bugs and improve responsiveness (z-index 9999, iOS scroll fix)
+- [x] Optimize touch targets for navigation buttons (larger on mobile)
+- [x] Ensure smooth transitions between artworks
+- [x] Add position indicator (X / Y format)
+- [x] Simplify color indicator for mobile
