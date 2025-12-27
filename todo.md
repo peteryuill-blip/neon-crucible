@@ -43,3 +43,10 @@
 - [x] Run seed script to populate database
 - [x] Update Neon section UI with real essay content
 - [x] Test database content displays correctly
+
+## Big Bang Series Upload
+
+- [x] Read description file for Big Bang series metadata
+- [x] Upload 10 BB images to S3
+- [x] Create database entries for each work
+- [x] Provide ingestion manifest with upload order

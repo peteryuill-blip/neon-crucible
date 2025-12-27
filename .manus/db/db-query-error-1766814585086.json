@@ -1,0 +1,8 @@
+{
+  "query": "\n-- First, get or create the NE phase\nINSERT IGNORE INTO phases (code, name, date_range, description, emotional_temperature, is_published)\nVALUES ('NE', 'New Era', '2025-present', 'The New Era phase marks the culmination of the 7-year practice into large-scale sumi ink works.', 'transcendent', true);\n\n-- Get the phase ID\nSELECT id FROM phases WHERE code = 'NE' LIMIT 1;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute \n-- First, get or create the NE phase\nINSERT IGNORE INTO phases (code, name, date_range, description, emotional_temperature, is_published)\nVALUES ('NE', 'New Era', '2025-present', 'The New Era phase marks the culmination of the 7-year practice into large-scale sumi ink works.', 'transcendent', true);\n\n-- Get the phase ID\nSELECT id FROM phases WHERE code = 'NE' LIMIT 1;\n",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 3: Unknown column 'name' in 'field list'"
+  ]
+}

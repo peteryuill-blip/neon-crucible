@@ -1,0 +1,122 @@
+[
+  {
+    "ingestionOrder": 1,
+    "filename": "BB1.jpg",
+    "title": "Big Bang: Breath Aureole",
+    "databaseId": 30001,
+    "s3Key": "works/bigbang/BB1.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB1.jpg",
+    "createdAt": "2025-12-27T05:54:11.370Z",
+    "fileSize": "2781.13 KB",
+    "emotionalRegister": "gentle",
+    "sortOrder": 1
+  },
+  {
+    "ingestionOrder": 2,
+    "filename": "BB2.jpg",
+    "title": "Big Bang: Diagonal Thrust",
+    "databaseId": 30002,
+    "s3Key": "works/bigbang/BB2.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB2.jpg",
+    "createdAt": "2025-12-27T05:54:13.285Z",
+    "fileSize": "835.29 KB",
+    "emotionalRegister": "brutal",
+    "sortOrder": 2
+  },
+  {
+    "ingestionOrder": 3,
+    "filename": "BB3.jpg",
+    "title": "Big Bang: Vertical Descent",
+    "databaseId": 30003,
+    "s3Key": "works/bigbang/BB3.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB3.jpg",
+    "createdAt": "2025-12-27T05:54:16.613Z",
+    "fileSize": "1886.44 KB",
+    "emotionalRegister": "brutal",
+    "sortOrder": 3
+  },
+  {
+    "ingestionOrder": 4,
+    "filename": "BB4.jpg",
+    "title": "Big Bang: Smoke Field",
+    "databaseId": 30004,
+    "s3Key": "works/bigbang/BB4.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB4.jpg",
+    "createdAt": "2025-12-27T05:54:21.853Z",
+    "fileSize": "3223.20 KB",
+    "emotionalRegister": "meditative",
+    "sortOrder": 4
+  },
+  {
+    "ingestionOrder": 5,
+    "filename": "BB5.jpg",
+    "title": "Big Bang: Diagonal Thrust II",
+    "databaseId": 30005,
+    "s3Key": "works/bigbang/BB5.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB5.jpg",
+    "createdAt": "2025-12-27T05:54:26.611Z",
+    "fileSize": "2904.96 KB",
+    "emotionalRegister": "brutal",
+    "sortOrder": 5
+  },
+  {
+    "ingestionOrder": 6,
+    "filename": "BB6.jpg",
+    "title": "Big Bang: Geological Core",
+    "databaseId": 30006,
+    "s3Key": "works/bigbang/BB6.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB6.jpg",
+    "createdAt": "2025-12-27T05:54:30.535Z",
+    "fileSize": "2296.43 KB",
+    "emotionalRegister": "brutal",
+    "sortOrder": 6
+  },
+  {
+    "ingestionOrder": 7,
+    "filename": "BB7.jpg",
+    "title": "Big Bang: Breath & Bone",
+    "databaseId": 30007,
+    "s3Key": "works/bigbang/BB7.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB7.jpg",
+    "createdAt": "2025-12-27T05:54:34.396Z",
+    "fileSize": "2286.90 KB",
+    "emotionalRegister": "meditative",
+    "sortOrder": 7
+  },
+  {
+    "ingestionOrder": 8,
+    "filename": "BB8.jpg",
+    "title": "Big Bang: Geological Core II",
+    "databaseId": 30008,
+    "s3Key": "works/bigbang/BB8.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB8.jpg",
+    "createdAt": "2025-12-27T05:54:38.408Z",
+    "fileSize": "2286.59 KB",
+    "emotionalRegister": "brutal",
+    "sortOrder": 8
+  },
+  {
+    "ingestionOrder": 9,
+    "filename": "BB9.jpg",
+    "title": "Big Bang: Cloud Mass",
+    "databaseId": 30009,
+    "s3Key": "works/bigbang/BB9.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB9.jpg",
+    "createdAt": "2025-12-27T05:54:42.614Z",
+    "fileSize": "2498.30 KB",
+    "emotionalRegister": "meditative",
+    "sortOrder": 9
+  },
+  {
+    "ingestionOrder": 10,
+    "filename": "BB10.jpg",
+    "title": "Big Bang: Shadow Self",
+    "databaseId": 30010,
+    "s3Key": "works/bigbang/BB10.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB10.jpg",
+    "createdAt": "2025-12-27T05:54:46.460Z",
+    "fileSize": "2326.20 KB",
+    "emotionalRegister": "mysterious",
+    "sortOrder": 10
+  }
+]
