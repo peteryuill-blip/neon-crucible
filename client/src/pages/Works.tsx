@@ -2,22 +2,27 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Search, Filter, Grid as GridIcon, List, Loader2, X } from "lucide-react";
+import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
 import { Streamdown } from "streamdown";
 
 const ITEMS_PER_PAGE = 12;
 
+type SortOption = 'phase' | 'date_newest' | 'date_oldest' | 'title' | 'random';
+
 export default function Works() {
   const [search, setSearch] = useState("");
   const [phaseFilter, setPhaseFilter] = useState<string>("all");
   const [techniqueFilter, setTechniqueFilter] = useState<string>("all");
   const [seriesFilter, setSeriesFilter] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<SortOption>("phase");
   const [page, setPage] = useState(0);
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [selectedWork, setSelectedWork] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
+  // Track random seed to allow reshuffling
+  const [randomSeed, setRandomSeed] = useState(0);
 
   // Fetch phases for filter dropdown
   const { data: phases } = trpc.phases.list.useQuery();
@@ -31,12 +36,15 @@ export default function Works() {
     phaseId: phaseFilter !== "all" ? parseInt(phaseFilter) : undefined,
     technique: techniqueFilter !== "all" ? techniqueFilter : undefined,
     seriesName: seriesFilter !== "all" ? seriesFilter : undefined,
+    sortBy: sortBy,
     limit: ITEMS_PER_PAGE,
     offset: page * ITEMS_PER_PAGE,
-  }), [search, phaseFilter, techniqueFilter, seriesFilter, page]);
+    // Include randomSeed in dependency to trigger refetch on shuffle
+    _seed: sortBy === 'random' ? randomSeed : undefined,
+  }), [search, phaseFilter, techniqueFilter, seriesFilter, sortBy, page, randomSeed]);
 
   // Fetch works with filters
-  const { data: worksData, isLoading } = trpc.works.list.useQuery(filter);
+  const { data: worksData, isLoading, refetch } = trpc.works.list.useQuery(filter);
 
   // Fetch selected work details
   const { data: selectedWorkData } = trpc.works.getById.useQuery(
@@ -70,8 +78,22 @@ export default function Works() {
     setPage(0);
   };
 
+  const handleShuffle = () => {
+    setRandomSeed(prev => prev + 1);
+    setPage(0);
+    refetch();
+  };
+
   const hasActiveFilters = search || phaseFilter !== "all" || techniqueFilter !== "all" || seriesFilter !== "all";
   const activeFilterCount = [search, phaseFilter !== "all", techniqueFilter !== "all", seriesFilter !== "all"].filter(Boolean).length;
+
+  const sortOptions = [
+    { value: 'phase', label: 'BY PHASE (NE→PH1)' },
+    { value: 'date_newest', label: 'DATE (NEWEST)' },
+    { value: 'date_oldest', label: 'DATE (OLDEST)' },
+    { value: 'title', label: 'TITLE (A-Z)' },
+    { value: 'random', label: 'RANDOM' },
+  ];
 
   return (
     <div className="space-y-6 sm:space-y-8 pb-16 sm:pb-24">
@@ -107,8 +129,8 @@ export default function Works() {
 
       {/* Controls - Mobile Optimized */}
       <div className="sticky top-16 sm:top-24 z-30 bg-background/95 backdrop-blur py-3 sm:py-4 border-b border-border/50 -mx-4 px-4 sm:mx-0 sm:px-0">
-        {/* Search and Filter Toggle Row */}
-        <div className="flex gap-2 sm:gap-4">
+        {/* Search Row */}
+        <div className="flex gap-2 sm:gap-4 mb-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input 
@@ -124,18 +146,48 @@ export default function Works() {
           
           {/* Mobile Filter Toggle */}
           <Button
-            variant="outline"
+            variant={showFilters ? "default" : "outline"}
             className="sm:hidden rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9 px-3"
             onClick={() => setShowFilters(!showFilters)}
           >
             <Filter className="w-3 h-3" />
-            {activeFilterCount > 0 && <span className="text-primary">({activeFilterCount})</span>}
+            {activeFilterCount > 0 && <span className={showFilters ? "" : "text-primary"}>({activeFilterCount})</span>}
           </Button>
+        </div>
 
-          {/* Desktop Filters */}
-          <div className="hidden sm:flex gap-2">
+        {/* Sort Row - Always Visible */}
+        <div className="flex gap-2 items-center">
+          <ArrowUpDown className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground shrink-0" />
+          <Select value={sortBy} onValueChange={(v) => { setSortBy(v as SortOption); setPage(0); }}>
+            <SelectTrigger className="flex-1 sm:w-[180px] sm:flex-none rounded-none border-muted-foreground/30 font-mono text-[10px] sm:text-xs h-8 sm:h-9">
+              <SelectValue placeholder="SORT BY" />
+            </SelectTrigger>
+            <SelectContent className="rounded-none border-border bg-card">
+              {sortOptions.map(opt => (
+                <SelectItem key={opt.value} value={opt.value} className="font-mono text-xs">
+                  {opt.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          
+          {/* Shuffle button for random mode */}
+          {sortBy === 'random' && (
+            <Button
+              variant="outline"
+              size="sm"
+              className="rounded-none border-muted-foreground/30 font-mono text-[10px] sm:text-xs gap-1 h-8 sm:h-9 px-2 sm:px-3"
+              onClick={handleShuffle}
+            >
+              <Shuffle className="w-3 h-3" />
+              <span className="hidden sm:inline">SHUFFLE</span>
+            </Button>
+          )}
+
+          {/* Desktop Filters Inline */}
+          <div className="hidden sm:flex gap-2 ml-auto">
             <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
-              <SelectTrigger className="w-[130px] rounded-none border-muted-foreground/30 font-mono text-xs h-10">
+              <SelectTrigger className="w-[120px] rounded-none border-muted-foreground/30 font-mono text-xs h-9">
                 <SelectValue placeholder="PHASE" />
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card">
@@ -148,7 +200,7 @@ export default function Works() {
               </SelectContent>
             </Select>
             <Select value={seriesFilter} onValueChange={(v) => { setSeriesFilter(v); setPage(0); }}>
-              <SelectTrigger className="w-[150px] rounded-none border-muted-foreground/30 font-mono text-xs h-10">
+              <SelectTrigger className="w-[140px] rounded-none border-muted-foreground/30 font-mono text-xs h-9">
                 <SelectValue placeholder="SERIES" />
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card max-h-60">
@@ -159,7 +211,7 @@ export default function Works() {
               </SelectContent>
             </Select>
             <Select value={techniqueFilter} onValueChange={(v) => { setTechniqueFilter(v); setPage(0); }}>
-              <SelectTrigger className="w-[150px] rounded-none border-muted-foreground/30 font-mono text-xs h-10">
+              <SelectTrigger className="w-[140px] rounded-none border-muted-foreground/30 font-mono text-xs h-9">
                 <SelectValue placeholder="TECHNIQUE" />
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card">
@@ -172,7 +224,7 @@ export default function Works() {
             {hasActiveFilters && (
               <Button 
                 variant="outline" 
-                className="rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-10"
+                className="rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9"
                 onClick={clearFilters}
               >
                 <X className="w-3 h-3" /> CLEAR
@@ -452,9 +504,9 @@ export default function Works() {
                   )}
                   
                   {selectedWorkData.neonReading && (
-                    <div className="bg-muted/10 p-3 sm:p-4 border border-border">
-                      <span className="font-mono text-[10px] sm:text-xs text-primary block mb-1 sm:mb-2">NEON'S READING</span>
-                      <div className="text-xs sm:text-sm text-muted-foreground">
+                    <div className="border-l-2 border-cyan-500/50 pl-3 sm:pl-4">
+                      <span className="font-mono text-[10px] sm:text-xs text-cyan-500 block mb-1 sm:mb-2">NEON'S READING</span>
+                      <div className="font-serif text-xs sm:text-sm text-muted-foreground">
                         <Streamdown>{selectedWorkData.neonReading}</Streamdown>
                       </div>
                     </div>

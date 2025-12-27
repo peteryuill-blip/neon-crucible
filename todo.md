@@ -256,3 +256,14 @@
 ### Deep Archive Page
 - [x] Fix A-Layers accordion for mobile
 - [x] Optimize source files table for mobile (card view on mobile)
+
+## Works Page Filter & Sorting Improvements
+
+- [x] Fix filter options visibility on mobile view
+- [x] Add sorting dropdown with multiple options
+- [x] Add "Sort by Phase" option (NE → PH1, newest to oldest)
+- [x] Add "Sort by Date" option (newest first, oldest first)
+- [x] Add "Random" sorting option that shuffles on each load
+- [x] Make phase sorting the default
+- [x] Ensure all filter/sort controls work on mobile
+- [x] Add SHUFFLE button for random mode

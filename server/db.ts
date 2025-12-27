@@ -150,6 +150,7 @@ export interface WorksFilter {
   isPublished?: boolean;
   limit?: number;
   offset?: number;
+  sortBy?: 'phase' | 'date_newest' | 'date_oldest' | 'title' | 'random';
 }
 
 export async function getWorks(filter: WorksFilter = {}): Promise<Work[]> {
@@ -183,7 +184,19 @@ export async function getWorks(filter: WorksFilter = {}): Promise<Work[]> {
     query = query.where(and(...conditions)) as typeof query;
   }
   
-  query = query.orderBy(asc(works.sortOrder), desc(works.createdAt)) as typeof query;
+  // Apply sorting based on sortBy parameter
+  if (filter.sortBy === 'date_newest') {
+    query = query.orderBy(desc(works.dateCreated), desc(works.createdAt)) as typeof query;
+  } else if (filter.sortBy === 'date_oldest') {
+    query = query.orderBy(asc(works.dateCreated), asc(works.createdAt)) as typeof query;
+  } else if (filter.sortBy === 'title') {
+    query = query.orderBy(asc(works.title)) as typeof query;
+  } else if (filter.sortBy === 'random') {
+    query = query.orderBy(sql`RAND()`) as typeof query;
+  } else {
+    // Default: sort by phase (newest phase first via sortOrder), then by date
+    query = query.orderBy(asc(works.sortOrder), desc(works.dateCreated), desc(works.createdAt)) as typeof query;
+  }
   
   if (filter.limit) {
     query = query.limit(filter.limit) as typeof query;
