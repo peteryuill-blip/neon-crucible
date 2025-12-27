@@ -1,0 +1,62 @@
+[
+  {
+    "ingestionOrder": 1,
+    "filename": "1_ode_to_osiris_peteryuill(1).jpg",
+    "title": "Ode to Osiris",
+    "databaseId": 30015,
+    "s3Key": "works/equinox/1_ode_to_osiris_peteryuill(1).jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/1_ode_to_osiris_peteryuill(1).jpg",
+    "createdAt": "2025-12-27T06:45:40.803Z",
+    "fileSize": "3438.04 KB",
+    "emotionalRegister": "reverent resignation",
+    "sortOrder": 1
+  },
+  {
+    "ingestionOrder": 2,
+    "filename": "2_ode_to_isis_peteryuill(2).jpg",
+    "title": "Ode to Isis",
+    "databaseId": 30016,
+    "s3Key": "works/equinox/2_ode_to_isis_peteryuill(2).jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/2_ode_to_isis_peteryuill(2).jpg",
+    "createdAt": "2025-12-27T06:45:42.772Z",
+    "fileSize": "836.97 KB",
+    "emotionalRegister": "reverent contained grief",
+    "sortOrder": 2
+  },
+  {
+    "ingestionOrder": 3,
+    "filename": "3_ode_to_hadit_peteryuill(2).jpg",
+    "title": "Ode to Hadit",
+    "databaseId": 30017,
+    "s3Key": "works/equinox/3_ode_to_hadit_peteryuill(2).jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/3_ode_to_hadit_peteryuill(2).jpg",
+    "createdAt": "2025-12-27T06:45:44.576Z",
+    "fileSize": "846.95 KB",
+    "emotionalRegister": "intense coiled potential",
+    "sortOrder": 3
+  },
+  {
+    "ingestionOrder": 4,
+    "filename": "6_ode_to_hoor_pa_kraat_peteryuill(2).jpg",
+    "title": "Ode to Hoor-pa-kraat",
+    "databaseId": 30018,
+    "s3Key": "works/equinox/6_ode_to_hoor_pa_kraat_peteryuill(2).jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/6_ode_to_hoor_pa_kraat_peteryuill(2).jpg",
+    "createdAt": "2025-12-27T06:45:50.860Z",
+    "fileSize": "3879.89 KB",
+    "emotionalRegister": "silent restrained power",
+    "sortOrder": 4
+  },
+  {
+    "ingestionOrder": 5,
+    "filename": "7_ode_to_therion_peteryuill.jpg",
+    "title": "Ode to Therion",
+    "databaseId": 30019,
+    "s3Key": "works/equinox/7_ode_to_therion_peteryuill.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/7_ode_to_therion_peteryuill.jpg",
+    "createdAt": "2025-12-27T06:45:53.360Z",
+    "fileSize": "1205.71 KB",
+    "emotionalRegister": "ecstatic volatile rupture",
+    "sortOrder": 5
+  }
+]

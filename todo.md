@@ -68,3 +68,9 @@
 - [x] Swap Weekly Protocol and Work Archive positions on homepage
 - [x] Clarify Work Archive description to emphasize it contains all artwork
 - [x] Add phase thumbnails to Neon Witness page phase blocks
+
+## Equinox of the Gods Series Upload (PH2A)
+
+- [x] Upload 5 Equinox works to S3
+- [x] Create database entries with full metadata
+- [x] Provide ingestion manifest
