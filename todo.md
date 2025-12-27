@@ -159,3 +159,18 @@
 
 - [x] Upload 7 PH4 Ink Storms works to S3
 - [x] Create database entries with full metadata
+
+## PH4 Portals & Chromatic Storms Batch 02 Upload
+
+- [ ] Upload 10 PH4 Portal/Storm works to S3
+- [ ] Create database entries with full metadata
+
+## PH4 Portals & Chromatic Storms Batch 02 Upload
+
+- [x] Upload 11 PH4 Portal/Storm works to S3
+- [x] Create database entries with full metadata
+
+## PH4 Oculus Batch 03 Upload
+
+- [x] Upload 12 PH4 Oculus works to S3
+- [x] Create database entries with full metadata
