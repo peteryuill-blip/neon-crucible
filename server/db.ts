@@ -365,13 +365,19 @@ export async function deleteArchiveFile(id: number): Promise<void> {
 
 // ============ PHASE THUMBNAILS ============
 
-export async function getWorksByPhaseId(phaseId: number, limit: number = 3): Promise<Work[]> {
+export async function getWorksByPhaseId(phaseId: number, limit: number = 3): Promise<{ id: number; title: string; thumbnailUrl: string | null; imageUrl: string | null }[]> {
   const db = await getDb();
   if (!db) return [];
-  return db.select().from(works)
+  const result = await db.select({
+    id: works.id,
+    title: works.title,
+    thumbnailUrl: works.thumbnailUrl,
+    imageUrl: works.imageUrl,
+  }).from(works)
     .where(and(eq(works.phaseId, phaseId), eq(works.isPublished, true)))
     .orderBy(asc(works.sortOrder), desc(works.createdAt))
     .limit(limit);
+  return result;
 }
 
 

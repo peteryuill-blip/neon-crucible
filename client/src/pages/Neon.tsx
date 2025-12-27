@@ -30,24 +30,28 @@ function PhaseThumbnails({ phaseId }: { phaseId: number }) {
 
   return (
     <div className="flex gap-1.5 mt-3">
-      {works.map((work) => (
-        <div 
-          key={work.id} 
-          className="w-10 h-10 bg-muted/20 overflow-hidden opacity-60 group-hover:opacity-100 transition-opacity"
-          title={work.title}
-        >
-          {work.thumbnailUrl ? (
-            <img 
-              src={work.thumbnailUrl} 
-              alt={work.title}
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          ) : (
-            <div className="w-full h-full bg-muted/30" />
-          )}
-        </div>
-      ))}
+      {works.map((work) => {
+        // Use thumbnailUrl if available, otherwise fall back to imageUrl
+        const imgSrc = work.thumbnailUrl || work.imageUrl;
+        return (
+          <div 
+            key={work.id} 
+            className="w-10 h-10 bg-muted/20 overflow-hidden opacity-60 group-hover:opacity-100 transition-opacity"
+            title={work.title}
+          >
+            {imgSrc ? (
+              <img 
+                src={imgSrc} 
+                alt={work.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <div className="w-full h-full bg-muted/30" />
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
