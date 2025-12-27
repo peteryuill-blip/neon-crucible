@@ -277,3 +277,10 @@
 - [x] Add title/subtitle overlay at bottom of lightbox
 - [x] Fix lightbox z-index using React portal to render above modal
 - [x] Make maximize button always visible on mobile
+
+## Lightbox Navigation
+
+- [x] Add prev/next arrow buttons to lightbox
+- [x] Add keyboard navigation (left/right arrow keys)
+- [x] Pass works list and current index to lightbox
+- [x] Update lightbox to support navigation between works

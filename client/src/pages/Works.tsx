@@ -59,6 +59,22 @@ export default function Works() {
   const totalWorks = worksData?.total ?? 0;
   const totalPages = Math.ceil(totalWorks / ITEMS_PER_PAGE);
 
+  // Find current work index in the list for lightbox navigation
+  const currentWorkIndex = useMemo(() => {
+    if (selectedWork === null) return -1;
+    return works.findIndex(w => w.id === selectedWork);
+  }, [selectedWork, works]);
+
+  // Navigation functions for lightbox
+  const navigateLightbox = (direction: 'prev' | 'next') => {
+    if (currentWorkIndex === -1) return;
+    
+    const newIndex = direction === 'prev' ? currentWorkIndex - 1 : currentWorkIndex + 1;
+    if (newIndex >= 0 && newIndex < works.length) {
+      setSelectedWork(works[newIndex].id);
+    }
+  };
+
   // Get unique techniques from works for filter
   const techniques = useMemo(() => {
     const uniqueTechniques = new Set<string>();
@@ -542,6 +558,10 @@ export default function Works() {
           title={selectedWorkData.title}
           subtitle={`${selectedWorkData.technique || ''} ${selectedWorkData.dimensions ? '• ' + selectedWorkData.dimensions : ''}`}
           onShowDetails={() => setLightboxOpen(false)}
+          hasPrev={currentWorkIndex > 0}
+          hasNext={currentWorkIndex < works.length - 1}
+          onPrev={() => navigateLightbox('prev')}
+          onNext={() => navigateLightbox('next')}
         />,
         document.body
       )}
