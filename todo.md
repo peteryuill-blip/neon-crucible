@@ -87,3 +87,20 @@
 - [x] Upload 18 Echoes works to S3
 - [x] Create database entries with full metadata
 - [x] Provide ingestion manifest
+
+## PH3A Celestial Secrets Upload
+
+- [x] Upload 10 Celestial Secrets works to S3
+- [x] Create database entries with full metadata
+- [x] Provide ingestion manifest
+
+## Press/Externa## Press Section
+
+- [x] Create press clippings database schema
+- [x] Build tasteful "External Voices" page (not braggadocio)
+- [x] Add navigation link
+
+## UI Updates
+
+- [x] Update bio page contact info (email: peteryuill@gmail.com, WhatsApp: +85259326869)
+- [x] Make entire directory boxes clickable on homepage (not just text links)

@@ -6,7 +6,8 @@ import {
   works, InsertWork, Work,
   essays, InsertEssay, Essay,
   metaquestions, InsertMetaquestion, Metaquestion,
-  archiveFiles, InsertArchiveFile, ArchiveFile
+  archiveFiles, InsertArchiveFile, ArchiveFile,
+  pressClippings, InsertPressClipping, PressClipping
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -371,4 +372,43 @@ export async function getWorksByPhaseId(phaseId: number, limit: number = 3): Pro
     .where(and(eq(works.phaseId, phaseId), eq(works.isPublished, true)))
     .orderBy(asc(works.sortOrder), desc(works.createdAt))
     .limit(limit);
+}
+
+
+// ============ PRESS CLIPPINGS QUERIES ============
+
+export async function getAllPressClippings(publishedOnly = true): Promise<PressClipping[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  let query = db.select().from(pressClippings);
+  if (publishedOnly) {
+    query = query.where(eq(pressClippings.isPublished, true)) as typeof query;
+  }
+  return query.orderBy(asc(pressClippings.sortOrder), desc(pressClippings.createdAt));
+}
+
+export async function getPressClippingById(id: number): Promise<PressClipping | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(pressClippings).where(eq(pressClippings.id, id)).limit(1);
+  return result[0];
+}
+
+export async function createPressClipping(clipping: InsertPressClipping): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.insert(pressClippings).values(clipping);
+}
+
+export async function updatePressClipping(id: number, data: Partial<InsertPressClipping>): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.update(pressClippings).set(data).where(eq(pressClippings.id, id));
+}
+
+export async function deletePressClipping(id: number): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  await db.delete(pressClippings).where(eq(pressClippings.id, id));
 }

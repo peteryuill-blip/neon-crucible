@@ -142,7 +142,8 @@ export default function About() {
         <div className="space-y-4">
           <h3 className="font-mono text-sm tracking-widest text-primary">CONTACT</h3>
           <div className="space-y-2 font-mono text-sm text-muted-foreground">
-            <p>STUDIO@PETERYUILL.COM</p>
+            <p>PETERYUILL@GMAIL.COM</p>
+            <p>WHATSAPP: +852 5932 6869</p>
             <p>BANGKOK, THAILAND</p>
           </div>
         </div>

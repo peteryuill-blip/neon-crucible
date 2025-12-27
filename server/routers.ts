@@ -350,6 +350,68 @@ export const appRouter = router({
       }),
   }),
 
+  // ============ PRESS CLIPPINGS ============
+  pressClippings: router({
+    getAll: publicProcedure.query(async () => {
+      return db.getAllPressClippings(true);
+    }),
+    
+    getById: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(async ({ input }) => {
+        return db.getPressClippingById(input.id);
+      }),
+    
+    create: adminProcedure
+      .input(z.object({
+        title: z.string().min(1).max(255),
+        source: z.string().min(1).max(128),
+        author: z.string().optional(),
+        date: z.string().optional(),
+        excerpt: z.string().optional(),
+        fullText: z.string().optional(),
+        url: z.string().optional(),
+        imageUrl: z.string().optional(),
+        phaseId: z.number().optional(),
+        category: z.string().optional(),
+        isPublished: z.boolean().optional(),
+        sortOrder: z.number().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await db.createPressClipping(input);
+        return { success: true };
+      }),
+    
+    update: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        title: z.string().min(1).max(255).optional(),
+        source: z.string().min(1).max(128).optional(),
+        author: z.string().optional(),
+        date: z.string().optional(),
+        excerpt: z.string().optional(),
+        fullText: z.string().optional(),
+        url: z.string().optional(),
+        imageUrl: z.string().optional(),
+        phaseId: z.number().nullable().optional(),
+        category: z.string().optional(),
+        isPublished: z.boolean().optional(),
+        sortOrder: z.number().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        await db.updatePressClipping(id, data);
+        return { success: true };
+      }),
+    
+    delete: adminProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        await db.deletePressClipping(input.id);
+        return { success: true };
+      }),
+  }),
+
   // ============ FILE UPLOAD ============
   upload: router({
     // Upload work image

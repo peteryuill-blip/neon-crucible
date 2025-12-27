@@ -11,6 +11,7 @@ import Works from "./pages/Works";
 import Dashboard from "./pages/Dashboard";
 import Archive from "./pages/Archive";
 import About from "./pages/About";
+import Voices from "./pages/Voices";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminWorks from "./pages/admin/AdminWorks";
 import AdminPhases from "./pages/admin/AdminPhases";
@@ -67,6 +68,7 @@ function PublicRouter() {
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/archive" component={Archive} />
         <Route path="/about" component={About} />
+        <Route path="/voices" component={Voices} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

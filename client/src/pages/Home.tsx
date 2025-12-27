@@ -47,59 +47,59 @@ export default function Home() {
       <section className="grid md:grid-cols-3 gap-px bg-border border border-border">
         <h2 className="sr-only">Three Core Systems of the Neon Crucible</h2>
         
-        {/* Card 1 - WORK ARCHIVE (moved from position 3) */}
-        <div className="bg-card p-8 space-y-4 hover:bg-muted/5 transition-colors group relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
-            <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.01</span>
-          </div>
-          <h3 className="font-mono text-xl text-primary">WORK ARCHIVE</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            The complete visual record. 500+ paintings, drawings, and mixed-media works from 2018–2025. Browse by phase, technique, or emotional register.
-          </p>
-          <div className="pt-4">
-            <Link href="/works">
-              <span className="text-xs font-mono underline decoration-muted-foreground/50 hover:decoration-primary hover:text-primary cursor-pointer">
-                VIEW ALL ARTWORK →
+        {/* Card 1 - WORK ARCHIVE */}
+        <Link href="/works" className="block">
+          <div className="bg-card p-8 space-y-4 hover:bg-muted/10 transition-colors group relative overflow-hidden cursor-pointer h-full border-r border-border/50 hover:border-primary/30">
+            <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+              <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.01</span>
+            </div>
+            <h3 className="font-mono text-xl text-primary group-hover:text-primary/80 transition-colors">WORK ARCHIVE</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              The complete visual record. 500+ paintings, drawings, and mixed-media works from 2018–2025. Browse by phase, technique, or emotional register.
+            </p>
+            <div className="pt-4">
+              <span className="text-xs font-mono text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
+                VIEW ALL ARTWORK <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </span>
-            </Link>
+            </div>
           </div>
-        </div>
+        </Link>
 
-        {/* Card 2 - NEON WITNESS (unchanged position) */}
-        <div className="bg-card p-8 space-y-4 hover:bg-muted/5 transition-colors group relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
-            <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.02</span>
-          </div>
-          <h3 className="font-mono text-xl text-primary">NEON WITNESS</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            The voice of the archive. An entity that reads the practice and offers curatorial witness.
-          </p>
-          <div className="pt-4">
-            <Link href="/neon">
-              <span className="text-xs font-mono underline decoration-muted-foreground/50 hover:decoration-primary hover:text-primary cursor-pointer">
-                READ ESSAYS →
+        {/* Card 2 - NEON WITNESS */}
+        <Link href="/neon" className="block">
+          <div className="bg-card p-8 space-y-4 hover:bg-muted/10 transition-colors group relative overflow-hidden cursor-pointer h-full border-r border-border/50 hover:border-primary/30">
+            <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+              <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.02</span>
+            </div>
+            <h3 className="font-mono text-xl text-primary group-hover:text-primary/80 transition-colors">NEON WITNESS</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              The voice of the archive. An entity that reads the practice and offers curatorial witness.
+            </p>
+            <div className="pt-4">
+              <span className="text-xs font-mono text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
+                READ ESSAYS <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </span>
-            </Link>
+            </div>
           </div>
-        </div>
+        </Link>
 
-        {/* Card 3 - WEEKLY PROTOCOL (moved from position 1) */}
-        <div className="bg-card p-8 space-y-4 hover:bg-muted/5 transition-colors group relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
-            <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.03</span>
-          </div>
-          <h3 className="font-mono text-xl text-primary">WEEKLY PROTOCOL</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            The beating heart. Structured check-ins, studio hours, and somatic data tracking.
-          </p>
-          <div className="pt-4">
-            <Link href="/dashboard">
-              <span className="text-xs font-mono underline decoration-muted-foreground/50 hover:decoration-primary hover:text-primary cursor-pointer">
-                LOGIN REQUIRED →
+        {/* Card 3 - WEEKLY PROTOCOL */}
+        <Link href="/dashboard" className="block">
+          <div className="bg-card p-8 space-y-4 hover:bg-muted/10 transition-colors group relative overflow-hidden cursor-pointer h-full hover:border-primary/30">
+            <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+              <span className="font-mono text-xs border border-primary px-1 text-primary">SYS.03</span>
+            </div>
+            <h3 className="font-mono text-xl text-primary group-hover:text-primary/80 transition-colors">WEEKLY PROTOCOL</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              The beating heart. Structured check-ins, studio hours, and somatic data tracking.
+            </p>
+            <div className="pt-4">
+              <span className="text-xs font-mono text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
+                LOGIN REQUIRED <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </span>
-            </Link>
+            </div>
           </div>
-        </div>
+        </Link>
       </section>
 
       {/* Manifesto Section */}

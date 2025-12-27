@@ -121,3 +121,29 @@ export const archiveFiles = mysqlTable("archive_files", {
 
 export type ArchiveFile = typeof archiveFiles.$inferSelect;
 export type InsertArchiveFile = typeof archiveFiles.$inferInsert;
+
+
+/**
+ * Press clippings and external voices - collected writings about the work
+ * Presented tastefully without braggadocio
+ */
+export const pressClippings = mysqlTable("press_clippings", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(), // Article/review title
+  source: varchar("source", { length: 128 }).notNull(), // Publication name
+  author: varchar("author", { length: 128 }), // Writer's name
+  date: varchar("date", { length: 32 }), // Publication date
+  excerpt: text("excerpt"), // Key quote or excerpt
+  fullText: text("fullText"), // Full article if available
+  url: text("url"), // Link to original
+  imageUrl: text("imageUrl"), // Screenshot or publication logo
+  phaseId: int("phaseId").references(() => phases.id), // Related phase if applicable
+  category: varchar("category", { length: 64 }), // e.g., "review", "interview", "feature", "mention"
+  isPublished: boolean("isPublished").default(true).notNull(),
+  sortOrder: int("sortOrder").notNull().default(0),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type PressClipping = typeof pressClippings.$inferSelect;
+export type InsertPressClipping = typeof pressClippings.$inferInsert;

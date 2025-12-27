@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Activity, Archive, Eye, Grid, Home, User } from "lucide-react";
+import { Activity, Archive, Eye, Grid, Home, User, Quote } from "lucide-react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -11,6 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { href: "/works", label: "WORKS", icon: Grid },
     { href: "/dashboard", label: "DASHBOARD", icon: Activity },
     { href: "/archive", label: "ARCHIVE", icon: Archive },
+    { href: "/voices", label: "VOICES", icon: Quote },
     { href: "/about", label: "ABOUT", icon: User },
   ];
 
