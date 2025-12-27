@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE phases SET title = 'Celestial Secrets', description = 'Phase 3A documents the conduit consciousness period. The artist has moved from \"creating\" to \"channeling.\" The work becomes a receiver for cosmic signals. Gnosticism (VALIS), Sci-Fi (Philip K. Dick), Pink Floyd references, Physics-as-Spirituality. The moiré interference patterns create \"shimmer\" or \"signal noise.\" Most works are vertical \"stacks\" or \"towers\" (receivers/antennae).\\n\\nKey Exhibition: \"Celestial Secrets\" - Bangkok, 2023' WHERE code = 'PH3A';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute UPDATE phases SET title = 'Celestial Secrets', description = 'Phase 3A documents the conduit consciousness period. The artist has moved from \"creating\" to \"channeling.\" The work becomes a receiver for cosmic signals. Gnosticism (VALIS), Sci-Fi (Philip K. Dick), Pink Floyd references, Physics-as-Spirituality. The moiré interference patterns create \"shimmer\" or \"signal noise.\" Most works are vertical \"stacks\" or \"towers\" (receivers/antennae).\\n\\nKey Exhibition: \"Celestial Secrets\" - Bangkok, 2023' WHERE code = 'PH3A';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1565
+}

@@ -80,3 +80,10 @@
 - [x] Upload 14 Alignment works to S3
 - [x] Create database entries with full metadata
 - [x] Provide ingestion manifest
+
+## PH3 Echoes Series Upload
+
+- [x] Fix phase labeling: PH3 = Echoes only, PH3A = Celestial Secrets
+- [x] Upload 18 Echoes works to S3
+- [x] Create database entries with full metadata
+- [x] Provide ingestion manifest
