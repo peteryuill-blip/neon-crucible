@@ -1,0 +1,90 @@
+{
+  "query": "SELECT title, COUNT(*) as count FROM works WHERE phaseId = 30001 GROUP BY title HAVING COUNT(*) > 1 LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT title, COUNT(*) as count FROM works WHERE phaseId = 30001 GROUP BY title HAVING COUNT(*) > 1 LIMIT 20;",
+  "rows": [
+    {
+      "title": "Absurdity of Meaning No. 5",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 6",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 12",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 7",
+      "count": "2"
+    },
+    {
+      "title": "Geometric Abstraction No. 5",
+      "count": "2"
+    },
+    {
+      "title": "Geometric Abstraction No. 8",
+      "count": "2"
+    },
+    {
+      "title": "Geometric Abstraction No. 4",
+      "count": "2"
+    },
+    {
+      "title": "Theatre of Memory",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 2",
+      "count": "2"
+    },
+    {
+      "title": "There Lay an Invincible Summer",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 4",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 10",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 13",
+      "count": "2"
+    },
+    {
+      "title": "Geometric Abstraction No. 11",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 9",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 1",
+      "count": "2"
+    },
+    {
+      "title": "Geometric Abstraction No. 12",
+      "count": "2"
+    },
+    {
+      "title": "Geometric Abstraction No. 7",
+      "count": "2"
+    },
+    {
+      "title": "Geometric Abstraction No. 10",
+      "count": "2"
+    },
+    {
+      "title": "Absurdity of Meaning No. 3",
+      "count": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "title\tcount\nAbsurdity of Meaning No. 5\t2\nAbsurdity of Meaning No. 6\t2\nAbsurdity of Meaning No. 12\t2\nAbsurdity of Meaning No. 7\t2\nGeometric Abstraction No. 5\t2\nGeometric Abstraction No. 8\t2\nGeometric Abstraction No. 4\t2\nTheatre of Memory\t2\nAbsurdity of Meaning No. 2\t2\nThere Lay an Invincible Summer\t2\nAbsurdity of Meaning No. 4\t2\nAbsurdity of Meaning No. 10\t2\nAbsurdity of Meaning No. 13\t2\nGeometric Abstraction No. 11\t2\nAbsurdity of Meaning No. 9\t2\nAbsurdity of Meaning No. 1\t2\nGeometric Abstraction No. 12\t2\nGeometric Abstraction No. 7\t2\nGeometric Abstraction No. 10\t2\nAbsurdity of Meaning No. 3\t2\n",
+  "stderr": "",
+  "execution_time_ms": 1624
+}

@@ -116,3 +116,7 @@
 - [x] Upload GQ Thailand image to S3
 - [x] Upload Tatler Asia image to S3
 - [x] Add 3 press clippings to database with URLs
+
+## Fix Duplicate PH1 Works
+
+- [x] Remove 27 duplicate PH1 entries from database
