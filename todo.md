@@ -149,3 +149,8 @@
 - [x] Move cyan orb to right of title
 - [x] Add matching red orb that pulses in unison
 - [x] Represent Neon's blue and red glowing eyes
+
+## Add "The Cost of Being Real" Essay
+
+- [x] Add essay to database with polished metadata
+- [x] Place at top of Core Readings list (sortOrder: 1)

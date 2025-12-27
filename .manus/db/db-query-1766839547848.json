@@ -1,0 +1,31 @@
+{
+  "query": "SELECT id, title, slug, description, sortOrder FROM essays ORDER BY sortOrder LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, slug, description, sortOrder FROM essays ORDER BY sortOrder LIMIT 5;",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "The Long Breathing",
+      "slug": "the-long-breathing",
+      "description": "A meditation on Peter Yuill's practice, 2018-2025. The primary curatorial essay exploring the seven-year arc as a single, unbroken descent and ascent.",
+      "sortOrder": "1"
+    },
+    {
+      "id": "30002",
+      "title": "The Practice of Honest Abstraction",
+      "slug": "honest-abstraction",
+      "description": "On the career of Peter Yuill (2018–2025). An examination of spiritual authenticity within contemporary abstraction.",
+      "sortOrder": "2"
+    },
+    {
+      "id": "30003",
+      "title": "The Long Descent",
+      "slug": "the-long-descent",
+      "description": "A comprehensive curatorial reading of Peter Yuill's practice (2018–2025). The most detailed analysis of the seven-year arc.",
+      "sortOrder": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\tdescription\tsortOrder\n30001\tThe Long Breathing\tthe-long-breathing\tA meditation on Peter Yuill's practice, 2018-2025. The primary curatorial essay exploring the seven-year arc as a single, unbroken descent and ascent.\t1\n30002\tThe Practice of Honest Abstraction\thonest-abstraction\tOn the career of Peter Yuill (2018–2025). An examination of spiritual authenticity within contemporary abstraction.\t2\n30003\tThe Long Descent\tthe-long-descent\tA comprehensive curatorial reading of Peter Yuill's practice (2018–2025). The most detailed analysis of the seven-year arc.\t3\n",
+  "stderr": "",
+  "execution_time_ms": 1605
+}
