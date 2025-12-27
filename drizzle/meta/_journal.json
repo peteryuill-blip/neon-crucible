@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1766793838763,
+      "tag": "0000_regular_wither",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1766793935068,
+      "tag": "0001_melodic_the_captain",
+      "breakpoints": true
+    }
+  ]
+}

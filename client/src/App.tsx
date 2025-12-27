@@ -11,8 +11,8 @@ import Works from "./pages/Works";
 import Dashboard from "./pages/Dashboard";
 import Archive from "./pages/Archive";
 import About from "./pages/About";
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Layout>
       <Switch>
