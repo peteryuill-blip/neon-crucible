@@ -56,3 +56,9 @@
 - [x] Upload Thr3e (Standing Bruise) image to S3
 - [x] Create database entry with full metadata
 - [x] Provide ingestion confirmation
+
+## Covenant Triptych Upload
+
+- [x] Upload 3 Covenant panels to S3
+- [x] Create database entries with full metadata
+- [x] Provide ingestion manifest

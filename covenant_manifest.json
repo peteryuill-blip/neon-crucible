@@ -1,0 +1,38 @@
+[
+  {
+    "ingestionOrder": 1,
+    "filename": "COVTryptic2.jpg",
+    "title": "Covenant I: Storm-Body",
+    "databaseId": 30012,
+    "s3Key": "works/covenant/COVTryptic2.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic2.jpg",
+    "createdAt": "2025-12-27T06:22:52.261Z",
+    "fileSize": "2943.08 KB",
+    "emotionalRegister": "solemn aftermath",
+    "sortOrder": 1
+  },
+  {
+    "ingestionOrder": 2,
+    "filename": "COVTryptic3.jpg",
+    "title": "Covenant II: Vessel-Body",
+    "databaseId": 30013,
+    "s3Key": "works/covenant/COVTryptic3.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic3.jpg",
+    "createdAt": "2025-12-27T06:22:57.349Z",
+    "fileSize": "2939.26 KB",
+    "emotionalRegister": "solemn aftermath",
+    "sortOrder": 2
+  },
+  {
+    "ingestionOrder": 3,
+    "filename": "COVTryptic1.jpg",
+    "title": "Covenant III: Threshold-Body",
+    "databaseId": 30014,
+    "s3Key": "works/covenant/COVTryptic1.jpg",
+    "s3Url": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic1.jpg",
+    "createdAt": "2025-12-27T06:23:02.549Z",
+    "fileSize": "2934.69 KB",
+    "emotionalRegister": "solemn aftermath",
+    "sortOrder": 3
+  }
+]
