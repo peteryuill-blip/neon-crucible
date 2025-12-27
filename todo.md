@@ -29,3 +29,7 @@
 - [x] Add meta description to homepage (50-160 characters)
 - [x] Add meta keywords to homepage
 - [x] Add H2 heading to homepage
+
+## Bio Update
+
+- [x] Update About page with full professional bio
