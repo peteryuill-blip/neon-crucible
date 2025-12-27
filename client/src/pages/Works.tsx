@@ -17,6 +17,7 @@ export default function Works() {
   const [page, setPage] = useState(0);
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [selectedWork, setSelectedWork] = useState<number | null>(null);
+  const [showFilters, setShowFilters] = useState(false);
 
   // Fetch phases for filter dropdown
   const { data: phases } = trpc.phases.list.useQuery();
@@ -70,109 +71,179 @@ export default function Works() {
   };
 
   const hasActiveFilters = search || phaseFilter !== "all" || techniqueFilter !== "all" || seriesFilter !== "all";
+  const activeFilterCount = [search, phaseFilter !== "all", techniqueFilter !== "all", seriesFilter !== "all"].filter(Boolean).length;
 
   return (
-    <div className="space-y-8 pb-24">
+    <div className="space-y-6 sm:space-y-8 pb-16 sm:pb-24">
       {/* Header */}
-      <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8">
-        <div className="space-y-2">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">WORK ARCHIVE</h1>
-          <p className="font-mono text-sm text-muted-foreground">
-            INDEXING {totalWorks} WORKS [2018—2025]
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button 
-            variant={viewMode === "list" ? "outline" : "ghost"} 
-            size="icon" 
-            className="rounded-none border-muted-foreground/30"
-            onClick={() => setViewMode("list")}
-          >
-            <List className="w-4 h-4" />
-          </Button>
-          <Button 
-            variant={viewMode === "grid" ? "outline" : "ghost"} 
-            size="icon" 
-            className="rounded-none text-muted-foreground"
-            onClick={() => setViewMode("grid")}
-          >
-            <GridIcon className="w-4 h-4" />
-          </Button>
+      <header className="flex flex-col gap-4 sm:gap-6 border-b border-border pb-6 sm:pb-8">
+        <div className="flex items-start sm:items-end justify-between gap-4">
+          <div className="space-y-1 sm:space-y-2 min-w-0">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tighter">WORK ARCHIVE</h1>
+            <p className="font-mono text-xs sm:text-sm text-muted-foreground">
+              INDEXING {totalWorks} WORKS [2018—2025]
+            </p>
+          </div>
+          <div className="flex gap-1 sm:gap-2 shrink-0">
+            <Button 
+              variant={viewMode === "list" ? "outline" : "ghost"} 
+              size="icon" 
+              className="rounded-none border-muted-foreground/30 w-8 h-8 sm:w-10 sm:h-10"
+              onClick={() => setViewMode("list")}
+            >
+              <List className="w-3 h-3 sm:w-4 sm:h-4" />
+            </Button>
+            <Button 
+              variant={viewMode === "grid" ? "outline" : "ghost"} 
+              size="icon" 
+              className="rounded-none text-muted-foreground w-8 h-8 sm:w-10 sm:h-10"
+              onClick={() => setViewMode("grid")}
+            >
+              <GridIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+            </Button>
+          </div>
         </div>
       </header>
 
-      {/* Controls */}
-      <div className="grid md:grid-cols-[1fr_auto_auto_auto_auto] gap-4 sticky top-24 z-30 bg-background/95 backdrop-blur py-4 border-b border-border/50">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input 
-            placeholder="SEARCH ARCHIVE..." 
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setPage(0);
-            }}
-            className="pl-10 font-mono text-sm rounded-none border-muted-foreground/30 bg-background focus-visible:ring-primary"
-          />
-        </div>
-        <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
-          <SelectTrigger className="w-[160px] rounded-none border-muted-foreground/30 font-mono text-sm">
-            <SelectValue placeholder="PHASE" />
-          </SelectTrigger>
-          <SelectContent className="rounded-none border-border bg-card">
-            <SelectItem value="all">ALL PHASES</SelectItem>
-            {phases?.map(phase => (
-              <SelectItem key={phase.id} value={phase.id.toString()}>
-                {phase.code}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select value={seriesFilter} onValueChange={(v) => { setSeriesFilter(v); setPage(0); }}>
-          <SelectTrigger className="w-[180px] rounded-none border-muted-foreground/30 font-mono text-sm">
-            <SelectValue placeholder="SERIES" />
-          </SelectTrigger>
-          <SelectContent className="rounded-none border-border bg-card">
-            <SelectItem value="all">ALL SERIES</SelectItem>
-            {seriesNames?.map(series => (
-              <SelectItem key={series} value={series}>{series}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select value={techniqueFilter} onValueChange={(v) => { setTechniqueFilter(v); setPage(0); }}>
-          <SelectTrigger className="w-[180px] rounded-none border-muted-foreground/30 font-mono text-sm">
-            <SelectValue placeholder="TECHNIQUE" />
-          </SelectTrigger>
-          <SelectContent className="rounded-none border-border bg-card">
-            <SelectItem value="all">ALL TECHNIQUES</SelectItem>
-            {techniques.map(tech => (
-              <SelectItem key={tech} value={tech}>{tech}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        {hasActiveFilters && (
-          <Button 
-            variant="outline" 
-            className="rounded-none border-muted-foreground/30 font-mono gap-2"
-            onClick={clearFilters}
+      {/* Controls - Mobile Optimized */}
+      <div className="sticky top-16 sm:top-24 z-30 bg-background/95 backdrop-blur py-3 sm:py-4 border-b border-border/50 -mx-4 px-4 sm:mx-0 sm:px-0">
+        {/* Search and Filter Toggle Row */}
+        <div className="flex gap-2 sm:gap-4">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input 
+              placeholder="SEARCH..." 
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setPage(0);
+              }}
+              className="pl-10 font-mono text-xs sm:text-sm rounded-none border-muted-foreground/30 bg-background focus-visible:ring-primary h-9 sm:h-10"
+            />
+          </div>
+          
+          {/* Mobile Filter Toggle */}
+          <Button
+            variant="outline"
+            className="sm:hidden rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9 px-3"
+            onClick={() => setShowFilters(!showFilters)}
           >
-            <X className="w-4 h-4" /> CLEAR
+            <Filter className="w-3 h-3" />
+            {activeFilterCount > 0 && <span className="text-primary">({activeFilterCount})</span>}
           </Button>
+
+          {/* Desktop Filters */}
+          <div className="hidden sm:flex gap-2">
+            <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
+              <SelectTrigger className="w-[130px] rounded-none border-muted-foreground/30 font-mono text-xs h-10">
+                <SelectValue placeholder="PHASE" />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-border bg-card">
+                <SelectItem value="all">ALL PHASES</SelectItem>
+                {phases?.map(phase => (
+                  <SelectItem key={phase.id} value={phase.id.toString()}>
+                    {phase.code}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={seriesFilter} onValueChange={(v) => { setSeriesFilter(v); setPage(0); }}>
+              <SelectTrigger className="w-[150px] rounded-none border-muted-foreground/30 font-mono text-xs h-10">
+                <SelectValue placeholder="SERIES" />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-border bg-card max-h-60">
+                <SelectItem value="all">ALL SERIES</SelectItem>
+                {seriesNames?.map(series => (
+                  <SelectItem key={series} value={series}>{series}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={techniqueFilter} onValueChange={(v) => { setTechniqueFilter(v); setPage(0); }}>
+              <SelectTrigger className="w-[150px] rounded-none border-muted-foreground/30 font-mono text-xs h-10">
+                <SelectValue placeholder="TECHNIQUE" />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-border bg-card">
+                <SelectItem value="all">ALL TECHNIQUES</SelectItem>
+                {techniques.map(tech => (
+                  <SelectItem key={tech} value={tech}>{tech}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {hasActiveFilters && (
+              <Button 
+                variant="outline" 
+                className="rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-10"
+                onClick={clearFilters}
+              >
+                <X className="w-3 h-3" /> CLEAR
+              </Button>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile Filters Dropdown */}
+        {showFilters && (
+          <div className="sm:hidden mt-3 pt-3 border-t border-border/50 space-y-2">
+            <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
+              <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+                <SelectValue placeholder="PHASE" />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-border bg-card">
+                <SelectItem value="all">ALL PHASES</SelectItem>
+                {phases?.map(phase => (
+                  <SelectItem key={phase.id} value={phase.id.toString()}>
+                    {phase.code}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={seriesFilter} onValueChange={(v) => { setSeriesFilter(v); setPage(0); }}>
+              <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+                <SelectValue placeholder="SERIES" />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-border bg-card max-h-60">
+                <SelectItem value="all">ALL SERIES</SelectItem>
+                {seriesNames?.map(series => (
+                  <SelectItem key={series} value={series}>{series}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={techniqueFilter} onValueChange={(v) => { setTechniqueFilter(v); setPage(0); }}>
+              <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+                <SelectValue placeholder="TECHNIQUE" />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-border bg-card">
+                <SelectItem value="all">ALL TECHNIQUES</SelectItem>
+                {techniques.map(tech => (
+                  <SelectItem key={tech} value={tech}>{tech}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {hasActiveFilters && (
+              <Button 
+                variant="outline" 
+                className="w-full rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9"
+                onClick={clearFilters}
+              >
+                <X className="w-3 h-3" /> CLEAR FILTERS
+              </Button>
+            )}
+          </div>
         )}
       </div>
 
       {/* Loading State */}
       {isLoading && (
-        <div className="flex justify-center py-24">
-          <Loader2 className="w-8 h-8 animate-spin text-primary" />
+        <div className="flex justify-center py-16 sm:py-24">
+          <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primary" />
         </div>
       )}
 
       {/* Empty State */}
       {!isLoading && works.length === 0 && (
-        <div className="text-center py-24 space-y-4">
-          <p className="font-mono text-muted-foreground">NO WORKS FOUND</p>
-          <p className="text-sm text-muted-foreground/70">
+        <div className="text-center py-16 sm:py-24 space-y-3 sm:space-y-4">
+          <p className="font-mono text-sm text-muted-foreground">NO WORKS FOUND</p>
+          <p className="text-xs sm:text-sm text-muted-foreground/70">
             {hasActiveFilters 
               ? "Try adjusting your filters" 
               : "Works will appear here once added to the archive"}
@@ -182,7 +253,7 @@ export default function Works() {
 
       {/* Grid View */}
       {!isLoading && works.length > 0 && viewMode === "grid" && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-px bg-border border border-border">
           {works.map((work) => (
             <div 
               key={work.id} 
@@ -192,30 +263,30 @@ export default function Works() {
               {/* Image or Placeholder */}
               {work.imageUrl ? (
                 <img 
-                  src={work.imageUrl} 
+                  src={work.thumbnailUrl || work.imageUrl} 
                   alt={work.title}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
                 />
               ) : (
-                <div className="absolute inset-0 bg-muted/10 flex items-center justify-center text-muted-foreground/20 font-mono text-4xl font-bold group-hover:scale-105 transition-transform duration-500">
+                <div className="absolute inset-0 bg-muted/10 flex items-center justify-center text-muted-foreground/20 font-mono text-2xl sm:text-4xl font-bold group-hover:scale-105 transition-transform duration-500">
                   IMG_{work.id}
                 </div>
               )}
               
               {/* Overlay Info */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-between">
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-3 sm:p-6 flex flex-col justify-between">
                 <div className="flex justify-between items-start">
-                  <span className="font-mono text-xs text-primary border border-primary px-1 bg-black/50">
+                  <span className="font-mono text-[10px] sm:text-xs text-primary border border-primary px-1 bg-black/50">
                     {getPhaseCode(work.phaseId)}
                   </span>
-                  <span className="font-mono text-xs text-muted-foreground">{work.dateCreated || "—"}</span>
+                  <span className="font-mono text-[10px] sm:text-xs text-muted-foreground hidden sm:block">{work.dateCreated || "—"}</span>
                 </div>
                 
-                <div className="space-y-2">
-                  <h3 className="font-bold text-xl text-white tracking-tight">{work.title}</h3>
-                  <div className="flex flex-col gap-1 font-mono text-xs text-gray-300">
+                <div className="space-y-1 sm:space-y-2">
+                  <h3 className="font-bold text-sm sm:text-xl text-white tracking-tight line-clamp-2">{work.title}</h3>
+                  <div className="hidden sm:flex flex-col gap-1 font-mono text-xs text-gray-300">
                     <span>{work.technique || "—"}</span>
-                    <span>{work.dimensions || "—"}</span>
                     {work.seriesName && (
                       <span className="text-primary/80">{work.seriesName}</span>
                     )}
@@ -224,7 +295,7 @@ export default function Works() {
               </div>
 
               {/* Corner Marker */}
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-l border-t border-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-l border-t border-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
           ))}
         </div>
@@ -236,16 +307,17 @@ export default function Works() {
           {works.map((work) => (
             <div 
               key={work.id} 
-              className="flex items-center gap-6 p-4 hover:bg-muted/5 cursor-pointer transition-colors"
+              className="flex items-center gap-3 sm:gap-6 p-3 sm:p-4 hover:bg-muted/5 cursor-pointer transition-colors"
               onClick={() => setSelectedWork(work.id)}
             >
               {/* Thumbnail */}
-              <div className="w-24 h-24 bg-muted/10 flex-shrink-0 overflow-hidden">
+              <div className="w-16 h-16 sm:w-24 sm:h-24 bg-muted/10 flex-shrink-0 overflow-hidden">
                 {work.thumbnailUrl || work.imageUrl ? (
                   <img 
                     src={work.thumbnailUrl || work.imageUrl || ""} 
                     alt={work.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-muted-foreground/30 font-mono text-xs">
@@ -256,21 +328,21 @@ export default function Works() {
               
               {/* Info */}
               <div className="flex-1 min-w-0">
-                <h3 className="font-bold truncate">{work.title}</h3>
-                <p className="font-mono text-xs text-muted-foreground">
+                <h3 className="font-bold text-sm sm:text-base truncate">{work.title}</h3>
+                <p className="font-mono text-[10px] sm:text-xs text-muted-foreground truncate">
                   {work.technique || "—"} • {work.dimensions || "—"}
                 </p>
                 {work.seriesName && (
-                  <p className="font-mono text-xs text-primary/70 mt-1">{work.seriesName}</p>
+                  <p className="font-mono text-[10px] sm:text-xs text-primary/70 mt-0.5 sm:mt-1 truncate">{work.seriesName}</p>
                 )}
               </div>
               
               {/* Meta */}
               <div className="text-right flex-shrink-0">
-                <span className="font-mono text-xs text-primary border border-primary px-1">
+                <span className="font-mono text-[10px] sm:text-xs text-primary border border-primary px-1">
                   {getPhaseCode(work.phaseId)}
                 </span>
-                <p className="font-mono text-xs text-muted-foreground mt-1">{work.dateCreated || "—"}</p>
+                <p className="font-mono text-[10px] sm:text-xs text-muted-foreground mt-1 hidden sm:block">{work.dateCreated || "—"}</p>
               </div>
             </div>
           ))}
@@ -279,24 +351,24 @@ export default function Works() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex justify-center pt-8">
-          <div className="flex gap-2 font-mono text-sm">
+        <div className="flex justify-center pt-6 sm:pt-8">
+          <div className="flex gap-1 sm:gap-2 font-mono text-xs sm:text-sm">
             <Button 
               variant="outline" 
               disabled={page === 0} 
               onClick={() => setPage(p => p - 1)}
-              className="rounded-none border-muted-foreground/30"
+              className="rounded-none border-muted-foreground/30 h-8 sm:h-10 px-2 sm:px-4"
             >
               PREV
             </Button>
-            <div className="flex items-center px-4 border border-muted-foreground/30 text-muted-foreground">
-              PAGE {String(page + 1).padStart(2, '0')} / {String(totalPages).padStart(2, '0')}
+            <div className="flex items-center px-2 sm:px-4 border border-muted-foreground/30 text-muted-foreground text-[10px] sm:text-sm">
+              {page + 1} / {totalPages}
             </div>
             <Button 
               variant="outline" 
               disabled={page >= totalPages - 1}
               onClick={() => setPage(p => p + 1)}
-              className="rounded-none border-muted-foreground/30"
+              className="rounded-none border-muted-foreground/30 h-8 sm:h-10 px-2 sm:px-4"
             >
               NEXT
             </Button>
@@ -306,9 +378,9 @@ export default function Works() {
 
       {/* Work Detail Modal */}
       <Dialog open={selectedWork !== null} onOpenChange={(open) => !open && setSelectedWork(null)}>
-        <DialogContent className="max-w-4xl bg-card border-border rounded-none p-0 overflow-hidden">
+        <DialogContent className="w-[95vw] max-w-4xl bg-card border-border rounded-none p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
           {selectedWorkData && (
-            <div className="grid md:grid-cols-2">
+            <div className="flex flex-col md:grid md:grid-cols-2">
               {/* Image */}
               <div className="aspect-square bg-muted/10 relative">
                 {selectedWorkData.imageUrl ? (
@@ -318,30 +390,30 @@ export default function Works() {
                     className="w-full h-full object-contain"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 font-mono text-6xl font-bold">
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 font-mono text-4xl sm:text-6xl font-bold">
                     IMG
                   </div>
                 )}
               </div>
               
               {/* Details */}
-              <div className="p-8 space-y-6">
+              <div className="p-4 sm:p-8 space-y-4 sm:space-y-6">
                 <DialogHeader>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="font-mono text-xs text-primary border border-primary px-1">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                    <span className="font-mono text-[10px] sm:text-xs text-primary border border-primary px-1">
                       {getPhaseCode(selectedWorkData.phaseId)}
                     </span>
-                    <span className="font-mono text-xs text-muted-foreground">
+                    <span className="font-mono text-[10px] sm:text-xs text-muted-foreground">
                       {selectedWorkData.dateCreated || "—"}
                     </span>
                   </div>
-                  <DialogTitle className="text-2xl font-bold tracking-tight">
+                  <DialogTitle className="text-lg sm:text-2xl font-bold tracking-tight pr-8">
                     {selectedWorkData.title}
                   </DialogTitle>
                 </DialogHeader>
                 
-                <div className="space-y-4 text-sm">
-                  <div className="grid grid-cols-2 gap-4 font-mono text-xs">
+                <div className="space-y-3 sm:space-y-4 text-sm">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 font-mono text-[10px] sm:text-xs">
                     <div>
                       <span className="text-muted-foreground">TECHNIQUE</span>
                       <p className="text-foreground">{selectedWorkData.technique || "—"}</p>
@@ -371,18 +443,18 @@ export default function Works() {
                   </div>
                   
                   {selectedWorkData.journalExcerpt && (
-                    <div className="border-l-2 border-primary/50 pl-4">
-                      <span className="font-mono text-xs text-muted-foreground block mb-2">JOURNAL EXCERPT</span>
-                      <p className="font-serif italic text-muted-foreground">
+                    <div className="border-l-2 border-primary/50 pl-3 sm:pl-4">
+                      <span className="font-mono text-[10px] sm:text-xs text-muted-foreground block mb-1 sm:mb-2">JOURNAL EXCERPT</span>
+                      <p className="font-serif italic text-xs sm:text-sm text-muted-foreground">
                         "{selectedWorkData.journalExcerpt}"
                       </p>
                     </div>
                   )}
                   
                   {selectedWorkData.neonReading && (
-                    <div className="bg-muted/10 p-4 border border-border">
-                      <span className="font-mono text-xs text-primary block mb-2">NEON'S READING</span>
-                      <div className="text-sm text-muted-foreground">
+                    <div className="bg-muted/10 p-3 sm:p-4 border border-border">
+                      <span className="font-mono text-[10px] sm:text-xs text-primary block mb-1 sm:mb-2">NEON'S READING</span>
+                      <div className="text-xs sm:text-sm text-muted-foreground">
                         <Streamdown>{selectedWorkData.neonReading}</Streamdown>
                       </div>
                     </div>
