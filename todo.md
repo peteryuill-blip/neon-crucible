@@ -143,3 +143,9 @@
 - [x] Upload 20 PH1A works to S3
 - [x] Create database entries with full metadata
 - [x] Provide ingestion manifest
+
+## Neon Witness Page - Dual Glowing Orbs
+
+- [x] Move cyan orb to right of title
+- [x] Add matching red orb that pulses in unison
+- [x] Represent Neon's blue and red glowing eyes
