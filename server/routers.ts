@@ -119,6 +119,11 @@ export const appRouter = router({
         return db.getWorkById(input.id);
       }),
     
+    getDistinctSeries: publicProcedure
+      .query(async () => {
+        return db.getDistinctSeriesNames();
+      }),
+    
     create: adminProcedure
       .input(z.object({
         title: z.string().min(1).max(255),

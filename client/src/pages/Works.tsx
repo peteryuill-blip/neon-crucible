@@ -13,21 +13,26 @@ export default function Works() {
   const [search, setSearch] = useState("");
   const [phaseFilter, setPhaseFilter] = useState<string>("all");
   const [techniqueFilter, setTechniqueFilter] = useState<string>("all");
+  const [seriesFilter, setSeriesFilter] = useState<string>("all");
   const [page, setPage] = useState(0);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [selectedWork, setSelectedWork] = useState<number | null>(null);
 
   // Fetch phases for filter dropdown
   const { data: phases } = trpc.phases.list.useQuery();
+  
+  // Fetch distinct series names for filter dropdown
+  const { data: seriesNames } = trpc.works.getDistinctSeries.useQuery();
 
   // Build filter object
   const filter = useMemo(() => ({
     search: search || undefined,
     phaseId: phaseFilter !== "all" ? parseInt(phaseFilter) : undefined,
     technique: techniqueFilter !== "all" ? techniqueFilter : undefined,
+    seriesName: seriesFilter !== "all" ? seriesFilter : undefined,
     limit: ITEMS_PER_PAGE,
     offset: page * ITEMS_PER_PAGE,
-  }), [search, phaseFilter, techniqueFilter, page]);
+  }), [search, phaseFilter, techniqueFilter, seriesFilter, page]);
 
   // Fetch works with filters
   const { data: worksData, isLoading } = trpc.works.list.useQuery(filter);
@@ -55,6 +60,16 @@ export default function Works() {
     const phase = phases.find(p => p.id === phaseId);
     return phase?.code ?? "—";
   };
+
+  const clearFilters = () => {
+    setSearch("");
+    setPhaseFilter("all");
+    setTechniqueFilter("all");
+    setSeriesFilter("all");
+    setPage(0);
+  };
+
+  const hasActiveFilters = search || phaseFilter !== "all" || techniqueFilter !== "all" || seriesFilter !== "all";
 
   return (
     <div className="space-y-8 pb-24">
@@ -87,7 +102,7 @@ export default function Works() {
       </header>
 
       {/* Controls */}
-      <div className="grid md:grid-cols-[1fr_auto_auto_auto] gap-4 sticky top-24 z-30 bg-background/95 backdrop-blur py-4 border-b border-border/50">
+      <div className="grid md:grid-cols-[1fr_auto_auto_auto_auto] gap-4 sticky top-24 z-30 bg-background/95 backdrop-blur py-4 border-b border-border/50">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input 
@@ -101,15 +116,26 @@ export default function Works() {
           />
         </div>
         <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
-          <SelectTrigger className="w-[180px] rounded-none border-muted-foreground/30 font-mono text-sm">
+          <SelectTrigger className="w-[160px] rounded-none border-muted-foreground/30 font-mono text-sm">
             <SelectValue placeholder="PHASE" />
           </SelectTrigger>
           <SelectContent className="rounded-none border-border bg-card">
             <SelectItem value="all">ALL PHASES</SelectItem>
             {phases?.map(phase => (
               <SelectItem key={phase.id} value={phase.id.toString()}>
-                {phase.code} — {phase.title}
+                {phase.code}
               </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        <Select value={seriesFilter} onValueChange={(v) => { setSeriesFilter(v); setPage(0); }}>
+          <SelectTrigger className="w-[180px] rounded-none border-muted-foreground/30 font-mono text-sm">
+            <SelectValue placeholder="SERIES" />
+          </SelectTrigger>
+          <SelectContent className="rounded-none border-border bg-card">
+            <SelectItem value="all">ALL SERIES</SelectItem>
+            {seriesNames?.map(series => (
+              <SelectItem key={series} value={series}>{series}</SelectItem>
             ))}
           </SelectContent>
         </Select>
@@ -124,18 +150,15 @@ export default function Works() {
             ))}
           </SelectContent>
         </Select>
-        <Button 
-          variant="outline" 
-          className="rounded-none border-muted-foreground/30 font-mono gap-2"
-          onClick={() => {
-            setSearch("");
-            setPhaseFilter("all");
-            setTechniqueFilter("all");
-            setPage(0);
-          }}
-        >
-          <X className="w-4 h-4" /> CLEAR
-        </Button>
+        {hasActiveFilters && (
+          <Button 
+            variant="outline" 
+            className="rounded-none border-muted-foreground/30 font-mono gap-2"
+            onClick={clearFilters}
+          >
+            <X className="w-4 h-4" /> CLEAR
+          </Button>
+        )}
       </div>
 
       {/* Loading State */}
@@ -150,7 +173,7 @@ export default function Works() {
         <div className="text-center py-24 space-y-4">
           <p className="font-mono text-muted-foreground">NO WORKS FOUND</p>
           <p className="text-sm text-muted-foreground/70">
-            {search || phaseFilter !== "all" || techniqueFilter !== "all" 
+            {hasActiveFilters 
               ? "Try adjusting your filters" 
               : "Works will appear here once added to the archive"}
           </p>
@@ -193,6 +216,9 @@ export default function Works() {
                   <div className="flex flex-col gap-1 font-mono text-xs text-gray-300">
                     <span>{work.technique || "—"}</span>
                     <span>{work.dimensions || "—"}</span>
+                    {work.seriesName && (
+                      <span className="text-primary/80">{work.seriesName}</span>
+                    )}
                   </div>
                 </div>
               </div>
@@ -234,6 +260,9 @@ export default function Works() {
                 <p className="font-mono text-xs text-muted-foreground">
                   {work.technique || "—"} • {work.dimensions || "—"}
                 </p>
+                {work.seriesName && (
+                  <p className="font-mono text-xs text-primary/70 mt-1">{work.seriesName}</p>
+                )}
               </div>
               
               {/* Meta */}

@@ -39,56 +39,58 @@ export default function Voices() {
       ) : clippings && clippings.length > 0 ? (
         <div className="grid md:grid-cols-2 gap-8">
           {clippings.map((clipping) => (
-            <article 
-              key={clipping.id} 
-              className="group p-6 border border-border hover:border-primary/30 transition-colors space-y-4 bg-card"
+            <a
+              key={clipping.id}
+              href={clipping.url || "#"}
+              target={clipping.url ? "_blank" : undefined}
+              rel={clipping.url ? "noopener noreferrer" : undefined}
+              className="group block"
             >
-              {/* Source & Date */}
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs tracking-widest text-primary uppercase">
-                  {clipping.source}
-                </span>
-                {clipping.date && (
-                  <span className="font-mono text-xs text-muted-foreground">
-                    {clipping.date}
+              <article 
+                className="h-full p-6 border border-border hover:border-primary/50 hover:bg-muted/5 transition-all duration-300 space-y-4 bg-card cursor-pointer"
+              >
+                {/* Source & Date */}
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs tracking-widest text-primary uppercase">
+                    {clipping.source}
                   </span>
-                )}
-              </div>
-
-              {/* Title */}
-              <h3 className="text-lg font-medium leading-snug">
-                {clipping.title}
-              </h3>
-
-              {/* Excerpt */}
-              {clipping.excerpt && (
-                <div className="relative pl-4 border-l-2 border-muted">
-                  <Quote className="absolute -left-2 -top-1 w-4 h-4 text-muted-foreground/50" />
-                  <p className="text-sm text-muted-foreground font-serif italic leading-relaxed">
-                    {clipping.excerpt}
-                  </p>
+                  {clipping.date && (
+                    <span className="font-mono text-xs text-muted-foreground">
+                      {clipping.date}
+                    </span>
+                  )}
                 </div>
-              )}
 
-              {/* Author & Link */}
-              <div className="flex items-center justify-between pt-2">
-                {clipping.author && (
-                  <span className="text-xs text-muted-foreground">
-                    — {clipping.author}
-                  </span>
+                {/* Title */}
+                <h3 className="text-lg font-medium leading-snug group-hover:text-primary transition-colors">
+                  {clipping.title}
+                </h3>
+
+                {/* Excerpt */}
+                {clipping.excerpt && (
+                  <div className="relative pl-4 border-l-2 border-muted group-hover:border-primary/30 transition-colors">
+                    <Quote className="absolute -left-2 -top-1 w-4 h-4 text-muted-foreground/50" />
+                    <p className="text-sm text-muted-foreground font-serif italic leading-relaxed">
+                      {clipping.excerpt}
+                    </p>
+                  </div>
                 )}
-                {clipping.url && (
-                  <a 
-                    href={clipping.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-xs font-mono text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
-                  >
-                    Source <ExternalLink className="w-3 h-3" />
-                  </a>
-                )}
-              </div>
-            </article>
+
+                {/* Author & Link Indicator */}
+                <div className="flex items-center justify-between pt-2">
+                  {clipping.author && (
+                    <span className="text-xs text-muted-foreground">
+                      — {clipping.author}
+                    </span>
+                  )}
+                  {clipping.url && (
+                    <span className="text-xs font-mono text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
+                      Read Article <ExternalLink className="w-3 h-3" />
+                    </span>
+                  )}
+                </div>
+              </article>
+            </a>
           ))}
         </div>
       ) : (

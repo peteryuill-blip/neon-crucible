@@ -1,4 +1,4 @@
-import { eq, desc, asc, and, like, sql } from "drizzle-orm";
+import { eq, desc, asc, and, like, sql, isNotNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { 
   InsertUser, users, 
@@ -417,4 +417,21 @@ export async function deletePressClipping(id: number): Promise<void> {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
   await db.delete(pressClippings).where(eq(pressClippings.id, id));
+}
+
+// ============ SERIES NAMES ============
+
+export async function getDistinctSeriesNames(): Promise<string[]> {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const result = await db.selectDistinct({ seriesName: works.seriesName })
+    .from(works)
+    .where(and(
+      eq(works.isPublished, true),
+      isNotNull(works.seriesName)
+    ))
+    .orderBy(asc(works.seriesName));
+  
+  return result.map(r => r.seriesName).filter((s): s is string => s !== null);
 }

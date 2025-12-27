@@ -120,3 +120,20 @@
 ## Fix Duplicate PH1 Works
 
 - [x] Remove 27 duplicate PH1 entries from database
+
+## Make All Boxes Clickable
+
+- [ ] Audit all pages for clickable boxes
+- [ ] Fix Voices page - make press clipping boxes fully clickable
+- [ ] Check other pages for similar issues
+
+## Voices Page Clickable Boxes
+
+- [ ] Make entire press clipping boxes clickable (like homepage)
+
+## Make All Boxes Clickable & Re-add Series Filter
+
+- [x] Fix Voices page - make press clipping boxes fully clickable
+- [x] Re-add Series filter to Works page (lost in sandbox reset)
+- [x] Add getDistinctSeriesNames to db.ts
+- [x] Add getDistinctSeries endpoint to routers.ts
