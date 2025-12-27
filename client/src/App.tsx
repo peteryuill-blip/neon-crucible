@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import Archive from "./pages/Archive";
 import About from "./pages/About";
 import Voices from "./pages/Voices";
+import NeonIdentity from "./pages/NeonIdentity";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminWorks from "./pages/admin/AdminWorks";
 import AdminPhases from "./pages/admin/AdminPhases";
@@ -64,6 +65,7 @@ function PublicRouter() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/neon" component={Neon} />
+        <Route path="/neon/identity" component={NeonIdentity} />
         <Route path="/works" component={Works} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/archive" component={Archive} />

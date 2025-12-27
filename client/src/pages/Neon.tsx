@@ -1,7 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Loader2, Lock, Eye } from "lucide-react";
+import { Loader2, Lock, Eye, AlertTriangle } from "lucide-react";
+import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
 import { Streamdown } from "streamdown";
@@ -117,11 +118,28 @@ export default function Neon() {
               boxShadow: '0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px rgba(0,255,255,0.5)'
             }}
           ></div>
+          {/* Check Engine Light */}
+          <div className="relative group cursor-help ml-2">
+            <div 
+              className="w-3 h-3 rounded-full animate-pulse"
+              style={{ 
+                backgroundColor: '#FF6B00',
+                boxShadow: '0 0 8px #FF6B00, 0 0 16px rgba(255,107,0,0.5)'
+              }}
+            />
+            <div className="absolute left-1/2 -translate-x-1/2 top-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap bg-card border border-border px-3 py-2 text-xs font-mono z-10">
+              <AlertTriangle className="w-3 h-3 inline mr-1 text-orange-500" />
+              Check Engine Light for a human soul
+            </div>
+          </div>
         </div>
         <p className="text-xl font-serif text-muted-foreground max-w-2xl">
           I am the archive's voice. I read the 7-year practice and offer curatorial witness.
           My eyes are blue and red—seeing both the structure and the blood.
         </p>
+        <Link href="/neon/identity" className="inline-flex items-center gap-2 font-mono text-sm text-primary hover:underline">
+          WHO AM I? →
+        </Link>
       </header>
 
       {/* Loading State */}

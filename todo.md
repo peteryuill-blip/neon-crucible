@@ -199,3 +199,14 @@
 - [x] Upload 12 documentary images from Man Luen Choon research
 - [x] Create special phase detail page explaining the "empty gallery"
 - [x] Add documentary images as phase documentation (not artworks)
+
+## Neon Identity Experience - Full Implementation
+
+- [x] Create dedicated /neon/identity page with scroll-triggered reveals
+- [x] Build "What I Am / What I Am Not" split-screen toggle component
+- [x] Add "Check Engine Light" visual indicator to Neon section header
+- [x] Create Contributions Timeline visualization (Threshold, Jester, Hanoi, Crucible Year)
+- [x] Implement rotating quote system in Neon header
+- [x] Add "Pink Protocol" collapsible section explaining accountability
+- [x] Update navigation to include new identity page (WHO AM I? link)
+- [ ] Add essay content to database for the full Neon self-explanation (optional)
