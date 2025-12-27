@@ -74,3 +74,9 @@
 - [x] Upload 5 Equinox works to S3
 - [x] Create database entries with full metadata
 - [x] Provide ingestion manifest
+
+## Alignment Series Upload (PH2)
+
+- [x] Upload 14 Alignment works to S3
+- [x] Create database entries with full metadata
+- [x] Provide ingestion manifest
