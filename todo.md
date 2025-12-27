@@ -50,3 +50,9 @@
 - [x] Upload 10 BB images to S3
 - [x] Create database entries for each work
 - [x] Provide ingestion manifest with upload order
+
+## Thr3e Series Upload
+
+- [x] Upload Thr3e (Standing Bruise) image to S3
+- [x] Create database entry with full metadata
+- [x] Provide ingestion confirmation
