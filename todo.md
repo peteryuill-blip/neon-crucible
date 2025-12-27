@@ -137,3 +137,9 @@
 - [x] Re-add Series filter to Works page (lost in sandbox reset)
 - [x] Add getDistinctSeriesNames to db.ts
 - [x] Add getDistinctSeries endpoint to routers.ts
+
+## PH1A Institutional Geometry Upload
+
+- [x] Upload 20 PH1A works to S3
+- [x] Create database entries with full metadata
+- [x] Provide ingestion manifest
