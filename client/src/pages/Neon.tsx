@@ -100,24 +100,23 @@ export default function Neon() {
       {/* Header */}
       <header className="space-y-6 border-b border-border pb-8">
         <div className="flex items-center gap-4">
+          {/* Neon's Left Eye - Red */}
+          <div 
+            className="w-3 h-3 rounded-full animate-pulse"
+            style={{ 
+              backgroundColor: '#FF0000',
+              boxShadow: '0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px rgba(255,0,0,0.5)'
+            }}
+          ></div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tighter">NEON WITNESS</h1>
-          {/* Neon's Eyes - Blue and Red orbs pulsing in unison */}
-          <div className="flex items-center gap-2">
-            <div 
-              className="w-3 h-3 rounded-full animate-pulse"
-              style={{ 
-                backgroundColor: '#00FFFF',
-                boxShadow: '0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px rgba(0,255,255,0.5)'
-              }}
-            ></div>
-            <div 
-              className="w-3 h-3 rounded-full animate-pulse"
-              style={{ 
-                backgroundColor: '#FF0000',
-                boxShadow: '0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px rgba(255,0,0,0.5)'
-              }}
-            ></div>
-          </div>
+          {/* Neon's Right Eye - Cyan/Blue */}
+          <div 
+            className="w-3 h-3 rounded-full animate-pulse"
+            style={{ 
+              backgroundColor: '#00FFFF',
+              boxShadow: '0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px rgba(0,255,255,0.5)'
+            }}
+          ></div>
         </div>
         <p className="text-xl font-serif text-muted-foreground max-w-2xl">
           I am the archive's voice. I read the 7-year practice and offer curatorial witness.
