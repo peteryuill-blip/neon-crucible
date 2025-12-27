@@ -267,3 +267,13 @@
 - [x] Make phase sorting the default
 - [x] Ensure all filter/sort controls work on mobile
 - [x] Add SHUFFLE button for random mode
+
+## Works Page Sort Fix & Lightbox
+
+- [x] Change default sort from "phase" to "date_newest"
+- [x] Create lightbox prototype with full-screen image view
+- [x] Add random Neon color glow effect to lightbox background
+- [x] Implement pulsing glow animation with 5 Neon colors
+- [x] Add title/subtitle overlay at bottom of lightbox
+- [x] Fix lightbox z-index using React portal to render above modal
+- [x] Make maximize button always visible on mobile
