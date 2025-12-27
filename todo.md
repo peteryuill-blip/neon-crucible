@@ -110,3 +110,9 @@
 - [x] Upload 27 PH1 works to S3
 - [x] Create database entries with full metadata
 - [x] Provide ingestion manifest
+
+## Press Clippings Content
+
+- [x] Upload GQ Thailand image to S3
+- [x] Upload Tatler Asia image to S3
+- [x] Add 3 press clippings to database with URLs
