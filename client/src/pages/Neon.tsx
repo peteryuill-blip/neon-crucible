@@ -345,6 +345,50 @@ export default function Neon() {
                   </p>
                 )}
               </div>
+
+              {/* PH4A Special Section - Documentary Images */}
+              {selectedPhaseData.code === 'PH4A' && (
+                <div className="space-y-4 pt-4 border-t border-border/50">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-xs text-primary">WHY THE GALLERY IS EMPTY</span>
+                  </div>
+                  <p className="font-serif text-sm text-muted-foreground">
+                    To produce the Big Bang and New Era works (NE), the artist first had to stop "performing" the role of the nomadic painter. PH4A is that pause—a period of invisible labor, emotional processing, and technical study that made the next leap possible.
+                  </p>
+                  
+                  <div className="space-y-3 pt-2">
+                    <span className="font-mono text-xs text-primary">RESEARCH DOCUMENTATION</span>
+                    <p className="font-serif text-xs text-muted-foreground/70">
+                      Images from the Man Luen Choon apprenticeship period—material studies, ink behavior tests, and traditional technique research.
+                    </p>
+                    <div className="grid grid-cols-3 gap-2">
+                      {[
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240801_112613.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240801_113712.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240801_113635.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240801_112932.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240724_153120.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/vfd.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240724_153159.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240724_161520.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240629_112123.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240629_111955.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240629_111657.jpg',
+                        'https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/docs/ph4a/20240629_111634.jpg'
+                      ].map((url, i) => (
+                        <div key={i} className="aspect-square bg-muted/20 overflow-hidden">
+                          <img 
+                            src={url} 
+                            alt={`Research documentation ${i + 1}`}
+                            className="w-full h-full object-cover opacity-70 hover:opacity-100 transition-opacity"
+                            loading="lazy"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div className="flex justify-center py-12">

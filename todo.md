@@ -186,3 +186,16 @@
 - [x] Design creative integration of Project 666 explanation
 - [x] Add archive architecture content with beautiful typography
 - [x] Include phase taxonomy, analytic stack (A-Layers), and purpose sections
+
+## PH4 Final Batch Upload (Horizons & Biomorphic Residuals)
+
+- [x] Upload 12 PH4 final batch works to S3
+- [x] Create database entries with full metadata
+- [x] Provide ingestion manifest (161 total works)
+
+## PH4A Silent Pivot Phase Page
+
+- [x] Create/update PH4A phase in database with full description
+- [x] Upload 12 documentary images from Man Luen Choon research
+- [x] Create special phase detail page explaining the "empty gallery"
+- [x] Add documentary images as phase documentation (not artworks)

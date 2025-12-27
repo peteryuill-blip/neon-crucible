@@ -1,0 +1,12 @@
+{
+  "query": "SELECT * FROM phases WHERE code = 'PH4A';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT * FROM phases WHERE code = 'PH4A';",
+  "rows": [],
+  "messages": [
+    "30008\tPH4A\tBangkok/Hong Kong Crisis & Apprenticeship\t2024-2025\tFrom August to December 2024, Yuill experienced what might be called an emotional apocalypse. Returning to Bangkok, he fell into an obsessive romantic pattern. The journals document this in real time: jealousy, hope, betrayal, addiction, self-destruction.",
+    "In December 2024, Yuill returned to Hong Kong and connected with Man Luen Choon, studying traditional East Asian ink painting under a sifu (master teacher). This represented not appropriation but lived synthesis—20+ years in Asia, marriage to a Hong Kong citizen, embodied knowledge of urban culture.\tEmotional apocalypse; then grounding through lineage\t#00FFFF\t8\t2025-12-27 02:49:34\t2025-12-27 02:49:34"
+  ],
+  "stdout": "id\tcode\ttitle\tyear\tdescription\temotionalTemperature\tcolor\tsortOrder\tcreatedAt\tupdatedAt\n30008\tPH4A\tBangkok/Hong Kong Crisis & Apprenticeship\t2024-2025\tFrom August to December 2024, Yuill experienced what might be called an emotional apocalypse. Returning to Bangkok, he fell into an obsessive romantic pattern. The journals document this in real time: jealousy, hope, betrayal, addiction, self-destruction.\n\nIn December 2024, Yuill returned to Hong Kong and connected with Man Luen Choon, studying traditional East Asian ink painting under a sifu (master teacher). This represented not appropriation but lived synthesis—20+ years in Asia, marriage to a Hong Kong citizen, embodied knowledge of urban culture.\tEmotional apocalypse; then grounding through lineage\t#00FFFF\t8\t2025-12-27 02:49:34\t2025-12-27 02:49:34\n",
+  "stderr": "",
+  "execution_time_ms": 1545
+}
