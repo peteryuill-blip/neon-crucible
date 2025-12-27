@@ -1,0 +1,1 @@
+ALTER TABLE `metaquestions` ADD `isAnswerPrivate` boolean DEFAULT true NOT NULL;

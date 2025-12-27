@@ -92,6 +92,7 @@ export const metaquestions = mysqlTable("metaquestions", {
   question: text("question").notNull(),
   answer: text("answer"), // Optional - some questions remain open
   isAnswered: boolean("isAnswered").default(false).notNull(),
+  isAnswerPrivate: boolean("isAnswerPrivate").default(true).notNull(), // Answers are private by default
   sortOrder: int("sortOrder").notNull().default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

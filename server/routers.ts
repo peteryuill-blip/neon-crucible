@@ -236,7 +236,19 @@ export const appRouter = router({
 
   // ============ METAQUESTIONS ============
   metaquestions: router({
-    list: publicProcedure.query(async () => {
+    list: publicProcedure.query(async ({ ctx }) => {
+      const metaquestions = await db.getAllMetaquestions();
+      // Filter out private answers for non-admin users
+      const isAdmin = ctx.user?.role === 'admin';
+      return metaquestions.map(mq => ({
+        ...mq,
+        // Hide answer if it's marked private and user is not admin
+        answer: (mq.isAnswerPrivate && !isAdmin) ? null : mq.answer,
+      }));
+    }),
+    
+    // Admin-only endpoint to get all metaquestions with answers
+    listWithAnswers: adminProcedure.query(async () => {
       return db.getAllMetaquestions();
     }),
     
@@ -245,6 +257,7 @@ export const appRouter = router({
         question: z.string().min(1),
         answer: z.string().optional(),
         isAnswered: z.boolean().optional(),
+        isAnswerPrivate: z.boolean().optional().default(true),
         sortOrder: z.number().optional(),
       }))
       .mutation(async ({ input }) => {
@@ -258,6 +271,7 @@ export const appRouter = router({
         question: z.string().min(1).optional(),
         answer: z.string().optional(),
         isAnswered: z.boolean().optional(),
+        isAnswerPrivate: z.boolean().optional(),
         sortOrder: z.number().optional(),
       }))
       .mutation(async ({ input }) => {

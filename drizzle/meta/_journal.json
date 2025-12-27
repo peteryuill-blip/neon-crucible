@@ -15,6 +15,13 @@
       "when": 1766793935068,
       "tag": "0001_melodic_the_captain",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1766803548092,
+      "tag": "0002_neat_sleepwalker",
+      "breakpoints": true
     }
   ]
 }
