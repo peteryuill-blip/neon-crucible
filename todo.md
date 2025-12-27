@@ -154,3 +154,8 @@
 
 - [x] Add essay to database with polished metadata
 - [x] Place at top of Core Readings list (sortOrder: 1)
+
+## PH4 Ink Storms Batch 01 Upload
+
+- [x] Upload 7 PH4 Ink Storms works to S3
+- [x] Create database entries with full metadata
