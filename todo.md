@@ -8,3 +8,18 @@
 - [x] Refactor `Neon.tsx` to fetch essays and phases from API
 - [x] Create admin interface (optional/basic) or seed script for initial data
 - [x] Test database persistence and file uploads
+
+## Admin Panel & Dashboard Integration
+
+- [x] Create protected `/admin` route with role-based access
+- [x] Build admin layout with sidebar navigation
+- [x] Create Works management page (list, add, edit, delete)
+- [x] Create Phases management page
+- [x] Create Essays management page
+- [x] Create Metaquestions management page
+- [x] Create Archive Files management page
+- [x] Add image upload functionality for works
+- [x] Integrate neonsigns.manus.space dashboard (embed or deep link)
+- [x] Share authentication state between sites if possible
+- [x] Test admin CRUD operations
+- [x] Write vitest tests for admin functionality
