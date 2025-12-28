@@ -107,8 +107,11 @@ export default function Home() {
       <section className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8 px-4">
         <h2 className="sr-only">Artist Statement and Manifesto</h2>
         <div className="w-px h-12 sm:h-16 bg-gradient-to-b from-transparent via-primary to-transparent mx-auto"></div>
-        <blockquote className="font-serif text-lg sm:text-2xl md:text-3xl italic text-muted-foreground">
-          "The site is the first permanent address for the work. You're not just displaying; you're hosting living infrastructure."
+        <blockquote className="font-serif text-lg sm:text-2xl md:text-3xl italic text-muted-foreground leading-relaxed">
+          <div>"Every time someone dies, a library burns down."</div>
+          <div className="mt-3">She said it twenty years ago.</div>
+          <div>It has followed me ever since.</div>
+          <div className="mt-4">This is mine. While I'm still here.</div>
         </blockquote>
         <div className="font-mono text-[10px] sm:text-xs tracking-widest text-muted-foreground/50">
           EST. 2025 // BANGKOK
