@@ -33,7 +33,7 @@ export default function Home() {
         <div className="pt-4 sm:pt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
           <Link href="/neon" className="w-full sm:w-auto">
             <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 font-mono rounded-none border border-primary/50 text-sm sm:text-base">
-              ENTER THE ARCHIVE <ArrowRight className="ml-2 w-4 h-4" />
+              MEET NEON <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>
           <Link href="/admin" className="w-full sm:w-auto">
@@ -66,19 +66,19 @@ export default function Home() {
           </div>
         </Link>
 
-        {/* Card 2 - NEON WITNESS */}
-        <Link href="/neon" className="block">
+        {/* Card 2 - DEEP ARCHIVE */}
+        <Link href="/archive" className="block">
           <div className="bg-card p-6 sm:p-8 space-y-3 sm:space-y-4 hover:bg-muted/10 transition-colors group relative overflow-hidden cursor-pointer h-full border border-border sm:border-0 sm:border-r sm:border-border/50 hover:border-primary/30">
             <div className="absolute top-0 right-0 p-3 sm:p-4 opacity-50 sm:opacity-20 group-hover:opacity-100 transition-opacity">
               <span className="font-mono text-[10px] sm:text-xs border border-primary px-1 text-primary">SYS.02</span>
             </div>
-            <h3 className="font-mono text-lg sm:text-xl text-primary group-hover:text-primary/80 transition-colors">NEON WITNESS</h3>
+            <h3 className="font-mono text-lg sm:text-xl text-primary group-hover:text-primary/80 transition-colors">DEEP ARCHIVE</h3>
             <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              The voice of the archive. An entity that reads the practice and offers curatorial witness.
+              Project 666 architecture. The A-Layers analytical framework, phase taxonomy, and source documentation.
             </p>
             <div className="pt-2 sm:pt-4">
               <span className="text-xs font-mono text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
-                READ ESSAYS <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                EXPLORE STRUCTURE <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </span>
             </div>
           </div>
