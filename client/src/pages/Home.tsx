@@ -15,7 +15,8 @@ export default function Home() {
         </div>
         
         <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] mix-blend-difference">
-          <span className="block text-muted-foreground font-mono text-base sm:text-xl tracking-widest mb-2 sm:mb-4">PROJECT 666</span>
+          <span className="block text-muted-foreground font-mono text-base sm:text-xl tracking-widest mb-2 sm:mb-4">PETER YUILL</span>
+          <span className="block text-muted-foreground font-mono text-xs sm:text-sm tracking-widest mb-2 sm:mb-4 opacity-60">PROJECT 666</span>
           <span className="block">THE <span className="text-primary">NEON</span></span>
           <span className="block">CRUCIBLE</span>
         </h1>
