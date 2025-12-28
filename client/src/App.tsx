@@ -35,8 +35,9 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
   }
 
   if (!user) {
-    // Redirect to login
-    window.location.href = `${import.meta.env.VITE_OAUTH_PORTAL_URL}?app_id=${import.meta.env.VITE_APP_ID}`;
+    // Redirect to login with callback to admin panel
+    const callbackUrl = `${window.location.origin}/admin`;
+    window.location.href = `${import.meta.env.VITE_OAUTH_PORTAL_URL}?app_id=${import.meta.env.VITE_APP_ID}&redirect_uri=${encodeURIComponent(callbackUrl)}`;
     return null;
   }
 
