@@ -36,7 +36,7 @@ export default function Home() {
               ENTER THE ARCHIVE <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Link>
-          <Link href="/dashboard" className="w-full sm:w-auto">
+          <Link href="/admin" className="w-full sm:w-auto">
             <Button size="lg" variant="outline" className="w-full sm:w-auto font-mono rounded-none border-muted-foreground/50 hover:bg-muted/10 hover:text-primary hover:border-primary text-sm sm:text-base">
               ACCESS DASHBOARD
             </Button>
