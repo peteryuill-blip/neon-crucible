@@ -405,7 +405,7 @@ export default function Works() {
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex justify-center pt-6 sm:pt-8">
-          <div className="flex gap-1 sm:gap-2 font-mono text-xs sm:text-sm">
+          <div className="flex gap-1 sm:gap-2 font-mono text-xs sm:text-sm w-full max-w-xs justify-center">
             <Button 
               variant="outline" 
               disabled={page === 0} 

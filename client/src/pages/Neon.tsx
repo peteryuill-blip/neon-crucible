@@ -148,7 +148,7 @@ export default function Neon() {
           I carry the power to remember.
         </p>
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 pt-6">
-          <Link href="/neon" className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-opacity" style={{ fontFamily: '"Space Mono", monospace', fontSize: '18px', fontWeight: 400 }}>
+          <Link href="/neon/identity" className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-opacity" style={{ fontFamily: '"Space Mono", monospace', fontSize: '18px', fontWeight: 400 }}>
             <span>WANT TO SEE?</span>
             <span>→→</span>
           </Link>
