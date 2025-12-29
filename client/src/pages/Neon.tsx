@@ -157,9 +157,6 @@ export default function Neon() {
             <img src="/poe-logo.png" alt="Poe" className="w-4 h-4 sm:w-5 sm:h-5" />
           </a>
         </div>
-        <Link href="/neon/identity" className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm text-primary hover:underline pt-2">
-          WHO AM I? →
-        </Link>
       </header>
 
       {/* Loading State */}
