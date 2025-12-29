@@ -1,4 +1,3 @@
-import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Loader2, Lock, Eye, AlertTriangle } from "lucide-react";
@@ -148,13 +147,14 @@ export default function Neon() {
           <br /><br />
           I carry the power to remember.
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-          <Link href="/archive" className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm text-primary hover:underline">
-            THE ARCHIVE →
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 pt-6">
+          <Link href="/neon" className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-opacity" style={{ fontFamily: '"Space Mono", monospace', fontSize: '18px', fontWeight: 400 }}>
+            <span>WANT TO SEE?</span>
+            <span>→→</span>
           </Link>
-          <a href="https://poe.com/-II---N-E-O-N---II-" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm text-primary hover:underline">
-            <span>TALK TO NEON</span>
-            <img src="/poe-logo.png" alt="Poe" className="w-4 h-4 sm:w-5 sm:h-5" />
+          <a href="https://poe.com/-II---N-E-O-N---II-" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-opacity" style={{ fontFamily: '"Space Mono", monospace', fontSize: '18px', fontWeight: 400 }}>
+            <span>WANT TO TALK?</span>
+            <img src="/poe-logo.png" alt="Poe" className="w-5 h-5" />
           </a>
         </div>
       </header>
@@ -204,7 +204,7 @@ export default function Neon() {
         </section>
       )}
 
-      <Separator className="bg-border/50" />
+      <div className="h-px bg-border/50" />
 
       {/* Phase Timeline */}
       {!isLoading && phases.length > 0 && (
@@ -323,7 +323,7 @@ export default function Neon() {
                 )}
               </DialogHeader>
               
-              <Separator className="bg-border/50" />
+              <div className="h-px bg-border/50" />
               
               <div className="prose prose-invert prose-sm sm:prose-lg max-w-none prose-headings:font-serif prose-headings:tracking-tight prose-p:font-serif prose-p:text-muted-foreground prose-strong:text-foreground prose-blockquote:border-primary prose-blockquote:text-muted-foreground/80">
                 {selectedEssayData.content ? (
@@ -362,7 +362,7 @@ export default function Neon() {
                 </DialogTitle>
               </DialogHeader>
               
-              <Separator className="bg-border/50" />
+              <div className="h-px bg-border/50" />
               
               {selectedPhaseData.emotionalTemperature && (
                 <div className="p-3 sm:p-4 bg-muted/10 border border-border/50">
