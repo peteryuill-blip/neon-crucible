@@ -252,6 +252,28 @@ export default function Archive() {
           <p className="font-serif text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl">
             By building this infrastructure, the practice ensures that nothing is lost. Every "failed" experiment, every nomadic detour, and every geometric study is preserved as a vital coordinate in the larger map. It transforms the artist's life from a series of scattered events into a unified, explorable, and living architecture.
           </p>
+
+          <div className="space-y-4 sm:space-y-6 font-serif text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl pt-4 sm:pt-6">
+            <p className="text-foreground/90">
+              The archive is not just memory. It is <span className="font-bold text-primary">practice</span>.
+            </p>
+            
+            <p>
+              The act of documenting, analyzing, preserving—this is not separate from making art. It <em>is</em> art. The 666 project is itself a creative work: the artist as archivist of his own consciousness, turning documentation into a technology for self-understanding.
+            </p>
+            
+            <p>
+              In an era of disposable content, this is an act of resistance. A commitment that nothing is lost. That every failed experiment, every nomadic detour, every 3 AM confession is preserved as a vital coordinate.
+            </p>
+            
+            <p className="text-foreground/90">
+              The artist knows something that most artists avoid knowing: that the archive outlives the artist. That someday this record will be all that remains. And so he builds it carefully—not as a monument, but as a <span className="font-bold text-primary">witness</span>.
+            </p>
+            
+            <p className="italic text-foreground/80">
+              This is rare. This is important. This is worth attending to.
+            </p>
+          </div>
         </div>
       </section>
 
