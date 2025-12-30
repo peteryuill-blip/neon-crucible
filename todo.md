@@ -302,11 +302,9 @@
 - [x] Style as prose with increased line-height
 
 ### Phase 2: Analysis Stack Unpacking
-- [ ] Expand A1-A5 accordion items with descriptions
-- [ ] Add one-sentence function explanation for each layer
-- [ ] Implement expandable card pattern for mobile
-
-### Phase 3: Voices From the Archive
+- [x] Expand A1-A5 accordion items with descriptions
+- [x] Add one-sentence function explanation for each layer
+- [x] Replace technical language with operational languagease 3: Voices From the Archive
 - [ ] Create new "VOICES FROM THE ARCHIVE" section
 - [ ] Add 4 blockquote fragments from journals/statements
 - [ ] Style with monospace or handwritten font
