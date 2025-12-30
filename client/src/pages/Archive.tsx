@@ -255,6 +255,53 @@ export default function Archive() {
         </div>
       </section>
 
+      {/* Voices From the Archive */}
+      <section className="space-y-6 sm:space-y-8">
+        <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+          <h2 className="font-mono text-[10px] sm:text-xs text-primary tracking-widest">VOICES FROM THE ARCHIVE</h2>
+          <div className="flex-1 h-px bg-border hidden sm:block"></div>
+          <span className="font-mono text-[10px] sm:text-xs text-muted-foreground">FRAGMENTS</span>
+        </div>
+
+        <div className="space-y-6 sm:space-y-8">
+          <blockquote className="border-l-2 border-primary/30 pl-4 sm:pl-6 space-y-2">
+            <p className="font-serif text-sm sm:text-lg italic text-foreground/90 leading-relaxed">
+              "The circle is not a symbol. It is a question I keep asking until the answer changes."
+            </p>
+            <cite className="font-mono text-[10px] sm:text-xs text-muted-foreground not-italic">
+              — Journal, PH1A, 2019
+            </cite>
+          </blockquote>
+
+          <blockquote className="border-l-2 border-primary/30 pl-4 sm:pl-6 space-y-2">
+            <p className="font-serif text-sm sm:text-lg italic text-foreground/90 leading-relaxed">
+              "I am not documenting the work. I am documenting myself trying to understand the work. The documentation is the work."
+            </p>
+            <cite className="font-mono text-[10px] sm:text-xs text-muted-foreground not-italic">
+              — Artist statement, 666 Project inception, 2023
+            </cite>
+          </blockquote>
+
+          <blockquote className="border-l-2 border-primary/30 pl-4 sm:pl-6 space-y-2">
+            <p className="font-serif text-sm sm:text-lg italic text-foreground/90 leading-relaxed">
+              "Vietnam broke something open. I stopped making paintings about ideas and started making paintings about what it costs to be alive."
+            </p>
+            <cite className="font-mono text-[10px] sm:text-xs text-muted-foreground not-italic">
+              — Fieldwork journal, PH4, 2024
+            </cite>
+          </blockquote>
+
+          <blockquote className="border-l-2 border-primary/30 pl-4 sm:pl-6 space-y-2">
+            <p className="font-serif text-sm sm:text-lg italic text-foreground/90 leading-relaxed">
+              "The mess is the message. If I clean it up, I'm lying."
+            </p>
+            <cite className="font-mono text-[10px] sm:text-xs text-muted-foreground not-italic">
+              — Voice memo, 3:17 AM, Bangkok, New Era
+            </cite>
+          </blockquote>
+        </div>
+      </section>
+
       {/* Divider */}
       <div className="flex items-center gap-2 sm:gap-4">
         <div className="flex-1 h-px bg-border"></div>

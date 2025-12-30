@@ -304,12 +304,10 @@
 ### Phase 2: Analysis Stack Unpacking
 - [x] Expand A1-A5 accordion items with descriptions
 - [x] Add one-sentence function explanation for each layer
-- [x] Replace technical language with operational languagease 3: Voices From the Archive
-- [ ] Create new "VOICES FROM THE ARCHIVE" section
-- [ ] Add 4 blockquote fragments from journals/statements
-- [ ] Style with monospace or handwritten font
-
-### Phase 4: Entry Points Section
+- [x] Replace technical language with operational langu### Phase 3: Voices From the Archive
+- [x] Create new "VOICES FROM THE ARCHIVE" section
+- [x] Add 4 blockquote fragments from journals/statements
+- [x] Style with serif italic font and monospace citations## Phase 4: Entry Points Section
 - [ ] Create "FIND YOUR DOOR" section near top
 - [ ] Add 5 entry point pathways for different visitors
 - [ ] Implement card-based or tabbed interface
