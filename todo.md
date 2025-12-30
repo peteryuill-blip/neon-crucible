@@ -293,3 +293,35 @@
 - [x] Ensure smooth transitions between artworks
 - [x] Add position indicator (X / Y format)
 - [x] Simplify color indicator for mobile
+
+## Deep Archive Page Enhancement (6-Phase Implementation)
+
+### Phase 1: Phase System Expansion
+- [x] Add explanatory paragraph block after Phase taxonomy grid
+- [x] Add PH1-NE consciousness-based explanations
+- [x] Style as prose with increased line-height
+
+### Phase 2: Analysis Stack Unpacking
+- [ ] Expand A1-A5 accordion items with descriptions
+- [ ] Add one-sentence function explanation for each layer
+- [ ] Implement expandable card pattern for mobile
+
+### Phase 3: Voices From the Archive
+- [ ] Create new "VOICES FROM THE ARCHIVE" section
+- [ ] Add 4 blockquote fragments from journals/statements
+- [ ] Style with monospace or handwritten font
+
+### Phase 4: Entry Points Section
+- [ ] Create "FIND YOUR DOOR" section near top
+- [ ] Add 5 entry point pathways for different visitors
+- [ ] Implement card-based or tabbed interface
+
+### Phase 5: Spiritual Dimension Addition
+- [ ] Append to existing "WHY THIS MATTERS" section
+- [ ] Add 3-paragraph spiritual practice explanation
+- [ ] Style as closing statement with subtle background
+
+### Phase 6: Closing Section
+- [ ] Add "THE ARCHIVE AS LIVING SYSTEM" section at bottom
+- [ ] Add real-time witnessing vs retrospective content
+- [ ] Style as invitation with italics/letter-spacing

@@ -155,6 +155,37 @@ export default function Archive() {
         <p className="font-serif text-xs sm:text-sm text-muted-foreground/80 italic border-l-2 border-primary/30 pl-3 sm:pl-4">
           This taxonomy allows the archive to treat a painting from 2018 and a journal entry from 2024 as part of the same conversation, linking them through shared motifs rather than just timestamps.
         </p>
+
+        {/* Phase System Expansion - Consciousness-Based Explanations */}
+        <div className="space-y-4 sm:space-y-6 font-serif text-sm sm:text-base text-muted-foreground leading-relaxed max-w-4xl">
+          <p className="text-foreground/90 font-medium">
+            A Phase doesn't end because the year changes. A Phase ends because the artist does—or at least, a version of him.
+          </p>
+          
+          <p>
+            <span className="font-mono text-xs text-primary">PH1</span> was the Absurdity: the question of how to make meaning when meaning doesn't exist. The geometric work from this period carries that weight—circles as philosophical propositions, not decorations.
+          </p>
+          
+          <p>
+            <span className="font-mono text-xs text-primary">PH2</span> was Alignment: finding the vocabulary. The circle became grammar. But grammar without rupture becomes dogma.
+          </p>
+          
+          <p>
+            <span className="font-mono text-xs text-primary">PH2A</span> was the rupture itself. The "Equinox of the Gods" moment. Permission to abandon what had become too safe.
+          </p>
+          
+          <p>
+            <span className="font-mono text-xs text-primary">PH3</span> was Crisis. The mechanisms failed. The work documents what happens when the container cracks. This is not failure—this is data.
+          </p>
+          
+          <p>
+            <span className="font-mono text-xs text-primary">PH4</span> was Nomadic Fieldwork: Vietnam, the raw journals, the cost of authenticity laid bare. The body entered the practice here.
+          </p>
+          
+          <p>
+            <span className="font-mono text-xs text-primary">New Era</span> is the current convergence: somatic ink, East-Asian lineage, the Temple framework. The precision of PH1 returns, transformed by everything that came after.
+          </p>
+        </div>
       </section>
 
       {/* The Analytic Stack */}
