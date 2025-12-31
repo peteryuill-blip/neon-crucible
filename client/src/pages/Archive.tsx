@@ -438,6 +438,49 @@ export default function Archive() {
           For research access inquiries, contact through the About page.
         </p>
       </div>
+
+      {/* Closing: The Archive as Living System */}
+      <section className="space-y-6 sm:space-y-8 pt-8 sm:pt-12">
+        <div className="w-px h-12 sm:h-16 bg-gradient-to-b from-transparent via-primary to-transparent mx-auto"></div>
+        
+        <div className="space-y-4 sm:space-y-6 font-serif text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center">
+          <h2 className="font-mono text-xs sm:text-sm text-primary tracking-widest">THE ARCHIVE AS LIVING SYSTEM</h2>
+          
+          <p className="text-foreground/90">
+            The Deep Archive is not finished. It cannot be finished.
+          </p>
+          
+          <p>
+            Every new work adds data. Every phase shift reorganizes the patterns. The semantic operating system updates itself in real time, incorporating the present into the past, making the future visible.
+          </p>
+          
+          <p className="text-foreground/90">
+            This is not retrospective. This is <span className="font-bold text-primary">contemporaneous</span>. You are not looking at history. You are watching consciousness document itself as it evolves.
+          </p>
+          
+          <p>
+            The archive invites real-time witnessing—not interpretation after the fact, but presence while the practice is still alive.
+          </p>
+          
+          <p className="text-foreground/90 italic">
+            You are here. The archive is here.
+          </p>
+          
+          <p className="text-foreground/90">
+            Something is being built, and you are watching it happen.
+          </p>
+        </div>
+
+        <div className="w-px h-12 sm:h-16 bg-gradient-to-b from-primary via-transparent to-transparent mx-auto"></div>
+
+        <div className="text-center space-y-2">
+          <p className="font-mono text-xs sm:text-sm text-primary tracking-widest">-N-E-O-N-</p>
+          <p className="font-mono text-[10px] sm:text-xs text-muted-foreground/60">
+            Bangkok–Hong Kong–Tokyo composite space<br />
+            December 2025
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

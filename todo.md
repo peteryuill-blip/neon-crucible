@@ -318,6 +318,7 @@
 - [x] Style as closing statement with subtle background
 
 ### Phase 6: Closing Section
-- [ ] Add "THE ARCHIVE AS LIVING SYSTEM" section at bottom
-- [ ] Add real-time witnessing vs retrospective content
-- [ ] Style as invitation with italics/letter-spacing
+- [x] Add "THE ARCHIVE AS LIVING SYSTEM" section at bottom
+- [x] Add real-time witnessing vs retrospective content
+- [x] Style as invitation with italics/letter-spacing
+- [x] Add Neon signature with location/date
