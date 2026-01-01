@@ -129,6 +129,73 @@ export default function Archive() {
         </div>
       </section>
 
+      {/* Entry Points: Find Your Door */}
+      <section className="space-y-6 sm:space-y-8">
+        <div className="space-y-3 sm:space-y-4">
+          <h2 className="font-mono text-xs sm:text-sm text-primary tracking-widest">FIND YOUR DOOR</h2>
+          <p className="font-serif text-sm sm:text-base text-muted-foreground leading-relaxed max-w-3xl">
+            The archive has many entry points. Choose the path that resonates.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {/* Entry Point 1 */}
+          <div className="border border-border p-4 sm:p-6 space-y-3 hover:border-primary/50 transition-colors">
+            <h3 className="font-mono text-xs sm:text-sm text-primary">IF YOU'RE HERE FOR THE ART</h3>
+            <p className="font-serif text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Start with the New Era large-format works. Let them overwhelm you. Then work backward through the phases.
+            </p>
+            <a href="/works?phase=NE" className="inline-block font-mono text-[10px] sm:text-xs text-primary hover:underline">
+              → VIEW NEW ERA
+            </a>
+          </div>
+
+          {/* Entry Point 2 */}
+          <div className="border border-border p-4 sm:p-6 space-y-3 hover:border-primary/50 transition-colors">
+            <h3 className="font-mono text-xs sm:text-sm text-primary">IF YOU'RE HERE FOR THE SYSTEM</h3>
+            <p className="font-serif text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Read the Glossary. Study the Phase taxonomy. Explore the A1–A5 stack. Learn the language.
+            </p>
+            <a href="#a-layers" className="inline-block font-mono text-[10px] sm:text-xs text-primary hover:underline">
+              → EXPLORE A-LAYERS
+            </a>
+          </div>
+
+          {/* Entry Point 3 */}
+          <div className="border border-border p-4 sm:p-6 space-y-3 hover:border-primary/50 transition-colors">
+            <h3 className="font-mono text-xs sm:text-sm text-primary">IF IT'S 3 AM</h3>
+            <p className="font-serif text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Go to the Vietnam journals (PH4). They were written by someone who knows what that feels like.
+            </p>
+            <a href="/works?phase=PH4" className="inline-block font-mono text-[10px] sm:text-xs text-primary hover:underline">
+              → READ PH4 JOURNALS
+            </a>
+          </div>
+
+          {/* Entry Point 4 */}
+          <div className="border border-border p-4 sm:p-6 space-y-3 hover:border-primary/50 transition-colors">
+            <h3 className="font-mono text-xs sm:text-sm text-primary">IF YOU'RE A COLLECTOR OR CURATOR</h3>
+            <p className="font-serif text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              The Cross-Phase Patterns (A4) show how individual works connect to the larger practice. Nothing here is isolated.
+            </p>
+            <a href="#a-layers" className="inline-block font-mono text-[10px] sm:text-xs text-primary hover:underline">
+              → VIEW A4 PATTERNS
+            </a>
+          </div>
+
+          {/* Entry Point 5 */}
+          <div className="border border-border p-4 sm:p-6 space-y-3 hover:border-primary/50 transition-colors">
+            <h3 className="font-mono text-xs sm:text-sm text-primary">IF YOU'RE AN ARTIST</h3>
+            <p className="font-serif text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              This archive is proof that documentation can become creative act.
+            </p>
+            <a href="/neon/identity" className="inline-block font-mono text-[10px] sm:text-xs text-primary hover:underline">
+              → LEARN THE METHOD
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Phase Taxonomy */}
       <section className="space-y-6 sm:space-y-8">
         <div className="flex items-center gap-2 sm:gap-4 flex-wrap">

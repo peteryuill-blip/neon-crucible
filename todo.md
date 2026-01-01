@@ -307,10 +307,10 @@
 - [x] Replace technical language with operational langu### Phase 3: Voices From the Archive
 - [x] Create new "VOICES FROM THE ARCHIVE" section
 - [x] Add 4 blockquote fragments from journals/statements
-- [x] Style with serif italic font and monospace citations## Phase 4: Entry Points Section
-- [ ] Create "FIND YOUR DOOR" section near top
-- [ ] Add 5 entry point pathways for different visitors
-- [ ] Implement card-based or tabbed interface
+- [x] Style with serif italic font and monospace citation### Phase 4: Entry Points Section
+- [x] Create "FIND YOUR DOOR" section near top
+- [x] Add 5 entry point pathways for different visitors
+- [x] Implement card-based interface with hover effects
 
 ### Phase 5: Spiritual Dimension Addition
 - [x] Append to existing "WHY THIS MATTERS" section
