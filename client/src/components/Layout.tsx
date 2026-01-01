@@ -1,11 +1,13 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Activity, Archive, Eye, Grid, Home, User, Quote, Menu, X } from "lucide-react";
+import { Activity, Archive, Eye, Grid, Home, User, Quote, Menu, X, Search } from "lucide-react";
 import { useState } from "react";
+import { SearchDialog } from "./SearchDialog";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const navItems = [
     { href: "/", label: "THRESHOLD", icon: Home },
@@ -33,18 +35,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <span className="block">BANGKOK</span>
       </div>
 
+      {/* Search Dialog */}
+      <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
+
       {/* Mobile Header */}
       <header className="md:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border px-4 py-3 flex items-center justify-between">
         <Link href="/" className="font-mono text-xs text-primary">
           NEON CRUCIBLE
         </Link>
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 text-foreground"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="p-2 text-foreground hover:text-primary transition-colors"
+            aria-label="Search"
+          >
+            <Search className="w-5 h-5" />
+          </button>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </header>
 
       {/* Mobile Menu Overlay */}
@@ -103,10 +117,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             })}
           </div>
 
-          <div className="mt-auto pt-12 border-t border-border/50">
-            <div className="font-mono text-[10px] text-muted-foreground leading-relaxed">
-              <p>OPERATIONAL ARCHIVE</p>
-              <p>WITNESS SYSTEM V.1.0</p>
+          <div className="mt-auto pt-8 space-y-6">
+            {/* Search Button */}
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="w-full flex items-center gap-3 lg:gap-4 text-muted-foreground hover:text-primary transition-all duration-300 hover:translate-x-1 group"
+            >
+              <Search className="w-4 h-4 shrink-0" />
+              <span className="font-mono text-xs lg:text-sm tracking-widest">SEARCH</span>
+              <kbd className="ml-auto hidden lg:inline-block text-[10px] px-1.5 py-0.5 border border-border rounded opacity-50 group-hover:opacity-100 transition-opacity">⌘K</kbd>
+            </button>
+
+            <div className="pt-6 border-t border-border/50">
+              <div className="font-mono text-[10px] text-muted-foreground leading-relaxed">
+                <p>OPERATIONAL ARCHIVE</p>
+                <p>WITNESS SYSTEM V.1.0</p>
+              </div>
             </div>
           </div>
         </nav>

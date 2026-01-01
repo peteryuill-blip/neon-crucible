@@ -450,6 +450,18 @@ export const appRouter = router({
         return { key, url };
       }),
   }),
+
+  // ============ SEARCH ============
+  search: router({
+    query: publicProcedure
+      .input(z.object({
+        q: z.string().min(1),
+        limit: z.number().optional().default(20),
+      }))
+      .query(async ({ input }) => {
+        return db.searchArchive(input.q, input.limit);
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

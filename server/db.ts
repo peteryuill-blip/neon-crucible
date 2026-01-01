@@ -259,6 +259,127 @@ export async function deleteWork(id: number): Promise<void> {
   await db.delete(works).where(eq(works.id, id));
 }
 
+// ============ SEARCH QUERIES ============
+
+export interface SearchResult {
+  type: 'work' | 'phase' | 'essay';
+  id: number;
+  title: string;
+  description?: string;
+  imageUrl?: string;
+  phaseCode?: string;
+  emotionalRegister?: string;
+  seriesName?: string;
+  category?: string;
+}
+
+export async function searchArchive(query: string, limit = 20): Promise<SearchResult[]> {
+  const db = await getDb();
+  if (!db || !query.trim()) return [];
+
+  const searchTerm = `%${query.trim()}%`;
+  const results: SearchResult[] = [];
+
+  // Search works (title, technique, series, emotional register)
+  const workResults = await db
+    .select({
+      id: works.id,
+      title: works.title,
+      imageUrl: works.imageUrl,
+      phaseCode: phases.code,
+      emotionalRegister: works.emotionalRegister,
+      seriesName: works.seriesName,
+      technique: works.technique,
+    })
+    .from(works)
+    .leftJoin(phases, eq(works.phaseId, phases.id))
+    .where(
+      and(
+        eq(works.isPublished, true),
+        sql`(
+          ${works.title} LIKE ${searchTerm} OR
+          ${works.technique} LIKE ${searchTerm} OR
+          ${works.seriesName} LIKE ${searchTerm} OR
+          ${works.emotionalRegister} LIKE ${searchTerm}
+        )`
+      )
+    )
+    .limit(limit);
+
+  results.push(
+    ...workResults.map(w => ({
+      type: 'work' as const,
+      id: w.id,
+      title: w.title,
+      imageUrl: w.imageUrl ?? undefined,
+      phaseCode: w.phaseCode ?? undefined,
+      emotionalRegister: w.emotionalRegister ?? undefined,
+      seriesName: w.seriesName ?? undefined,
+      description: w.technique ?? undefined,
+    }))
+  );
+
+  // Search phases (code, title, description)
+  const phaseResults = await db
+    .select({
+      id: phases.id,
+      code: phases.code,
+      title: phases.title,
+      description: phases.description,
+    })
+    .from(phases)
+    .where(
+      sql`(
+        ${phases.code} LIKE ${searchTerm} OR
+        ${phases.title} LIKE ${searchTerm} OR
+        ${phases.description} LIKE ${searchTerm}
+      )`
+    )
+    .limit(10);
+
+  results.push(
+    ...phaseResults.map(p => ({
+      type: 'phase' as const,
+      id: p.id,
+      title: `${p.code}: ${p.title}`,
+      description: p.description ?? undefined,
+      phaseCode: p.code,
+    }))
+  );
+
+  // Search essays (title, content)
+  const essayResults = await db
+    .select({
+      id: essays.id,
+      title: essays.title,
+      category: essays.category,
+      content: essays.content,
+    })
+    .from(essays)
+    .where(
+      and(
+        eq(essays.isPublished, true),
+        sql`(
+          ${essays.title} LIKE ${searchTerm} OR
+          ${essays.content} LIKE ${searchTerm}
+        )`
+      )
+    )
+    .limit(10);
+
+  results.push(
+    ...essayResults.map(e => ({
+      type: 'essay' as const,
+      id: e.id,
+      title: e.title,
+      category: e.category ?? undefined,
+      description: e.content ? e.content.substring(0, 150) + '...' : undefined,
+    }))
+  );
+
+  return results.slice(0, limit);
+}
+
 // ============ ESSAYS QUERIES ============
 
 export async function getAllEssays(publishedOnly = true): Promise<Essay[]> {
