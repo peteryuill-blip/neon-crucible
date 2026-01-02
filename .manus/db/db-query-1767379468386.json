@@ -1,0 +1,35 @@
+{
+  "query": "SELECT id, title, technique FROM works WHERE technique LIKE '%Saunders Waterford%' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, technique FROM works WHERE technique LIKE '%Saunders Waterford%' LIMIT 5;",
+  "rows": [
+    {
+      "id": "30015",
+      "title": "Ode to Osiris",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30016",
+      "title": "Ode to Isis",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30017",
+      "title": "Ode to Hadit",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30018",
+      "title": "Ode to Hoor-pa-kraat",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30019",
+      "title": "Ode to Therion",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\ttechnique\n30015\tOde to Osiris\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30016\tOde to Isis\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30017\tOde to Hadit\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30018\tOde to Hoor-pa-kraat\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30019\tOde to Therion\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n",
+  "stderr": "",
+  "execution_time_ms": 1527
+}

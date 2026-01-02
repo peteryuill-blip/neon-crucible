@@ -340,3 +340,9 @@
 - [x] Query database for works with "Saunders Waterford 300gsm" in technique
 - [x] Update technique field to full specification: "Saunders Waterford 300gsm hot press cotton rag paper"
 - [x] Verify all updates applied correctly
+
+## Standardize Saunders Waterford Technique Field
+
+- [x] Replace entire technique field for all Saunders Waterford works
+- [x] Set to exact specification: "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+- [x] Verify all updates applied correctly
