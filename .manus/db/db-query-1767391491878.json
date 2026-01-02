@@ -1,0 +1,100 @@
+{
+  "query": "SELECT DISTINCT dimensions FROM works WHERE dimensions IS NOT NULL ORDER BY dimensions LIMIT 30;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT DISTINCT dimensions FROM works WHERE dimensions IS NOT NULL ORDER BY dimensions LIMIT 30;",
+  "rows": [
+    {
+      "dimensions": "100 x 100 cm"
+    },
+    {
+      "dimensions": "100 x 80 cm"
+    },
+    {
+      "dimensions": "100cm × 100cm"
+    },
+    {
+      "dimensions": "100cm × 70cm"
+    },
+    {
+      "dimensions": "100cm x 100cm"
+    },
+    {
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "dimensions": "120cm x 120cm"
+    },
+    {
+      "dimensions": "120cm x 160cm"
+    },
+    {
+      "dimensions": "150 x 100 cm"
+    },
+    {
+      "dimensions": "200 x 150 cm"
+    },
+    {
+      "dimensions": "200-300 cm per work"
+    },
+    {
+      "dimensions": "200cm × 200cm (monumental)"
+    },
+    {
+      "dimensions": "21cm × 30cm"
+    },
+    {
+      "dimensions": "21cm x 30cm"
+    },
+    {
+      "dimensions": "30cm × 21cm"
+    },
+    {
+      "dimensions": "30cm × 40cm"
+    },
+    {
+      "dimensions": "30cm x 40cm"
+    },
+    {
+      "dimensions": "35cm × 70cm"
+    },
+    {
+      "dimensions": "500 x 300 cm (estimated)"
+    },
+    {
+      "dimensions": "56 x 76 cm"
+    },
+    {
+      "dimensions": "56×76 cm horizontal"
+    },
+    {
+      "dimensions": "56×76 cm vertical"
+    },
+    {
+      "dimensions": "56cm ×76cm"
+    },
+    {
+      "dimensions": "56cm x 76 cm"
+    },
+    {
+      "dimensions": "56cm x 76cm"
+    },
+    {
+      "dimensions": "600×150 cm (installation view)"
+    },
+    {
+      "dimensions": "600×150 cm (large-scale mural)"
+    },
+    {
+      "dimensions": "76 x 56 cm"
+    },
+    {
+      "dimensions": "76×76 cm square"
+    },
+    {
+      "dimensions": "76cm × 56cm"
+    }
+  ],
+  "messages": [],
+  "stdout": "dimensions\n100 x 100 cm\n100 x 80 cm\n100cm × 100cm\n100cm × 70cm\n100cm x 100cm\n100cm x 200cm\n120cm x 120cm\n120cm x 160cm\n150 x 100 cm\n200 x 150 cm\n200-300 cm per work\n200cm × 200cm (monumental)\n21cm × 30cm\n21cm x 30cm\n30cm × 21cm\n30cm × 40cm\n30cm x 40cm\n35cm × 70cm\n500 x 300 cm (estimated)\n56 x 76 cm\n56×76 cm horizontal\n56×76 cm vertical\n56cm ×76cm\n56cm x 76 cm\n56cm x 76cm\n600×150 cm (installation view)\n600×150 cm (large-scale mural)\n76 x 56 cm\n76×76 cm square\n76cm × 56cm\n",
+  "stderr": "",
+  "execution_time_ms": 1533
+}

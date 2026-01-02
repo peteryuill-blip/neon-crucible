@@ -1,0 +1,60 @@
+{
+  "query": "SELECT id, title, dimensions FROM works WHERE dimensions IS NOT NULL ORDER BY id LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, dimensions FROM works WHERE dimensions IS NOT NULL ORDER BY id LIMIT 10;",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "Big Bang: Breath Aureole",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30002",
+      "title": "Big Bang: Diagonal Thrust",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30003",
+      "title": "Big Bang: Vertical Descent",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30004",
+      "title": "Big Bang: Smoke Field",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30005",
+      "title": "Big Bang: Diagonal Thrust II",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30006",
+      "title": "Big Bang: Geological Core",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30007",
+      "title": "Big Bang: Breath & Bone",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30008",
+      "title": "Big Bang: Geological Core II",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30009",
+      "title": "Big Bang: Cloud Mass",
+      "dimensions": "100cm x 200cm"
+    },
+    {
+      "id": "30010",
+      "title": "Big Bang: Shadow Self",
+      "dimensions": "100cm x 200cm"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdimensions\n30001\tBig Bang: Breath Aureole\t100cm x 200cm\n30002\tBig Bang: Diagonal Thrust\t100cm x 200cm\n30003\tBig Bang: Vertical Descent\t100cm x 200cm\n30004\tBig Bang: Smoke Field\t100cm x 200cm\n30005\tBig Bang: Diagonal Thrust II\t100cm x 200cm\n30006\tBig Bang: Geological Core\t100cm x 200cm\n30007\tBig Bang: Breath & Bone\t100cm x 200cm\n30008\tBig Bang: Geological Core II\t100cm x 200cm\n30009\tBig Bang: Cloud Mass\t100cm x 200cm\n30010\tBig Bang: Shadow Self\t100cm x 200cm\n",
+  "stderr": "",
+  "execution_time_ms": 1593
+}

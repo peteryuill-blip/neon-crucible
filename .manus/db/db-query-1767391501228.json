@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE works SET dimensions = REPLACE(REPLACE(dimensions, ' cm', 'cm'), 'CM', 'cm') WHERE dimensions IS NOT NULL;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute UPDATE works SET dimensions = REPLACE(REPLACE(dimensions, ' cm', 'cm'), 'CM', 'cm') WHERE dimensions IS NOT NULL;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1540
+}

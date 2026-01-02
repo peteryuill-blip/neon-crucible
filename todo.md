@@ -346,3 +346,10 @@
 - [x] Replace entire technique field for all Saunders Waterford works
 - [x] Set to exact specification: "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
 - [x] Verify all updates applied correctly
+
+## Standardize Dimensions Format
+
+- [x] Query database to identify all dimension format variations
+- [x] Standardize all dimensions to "##cm x ##cm" format (height x width)
+- [x] Remove inconsistent spacing, capitalization, and unit placement
+- [x] Verify all updates applied correctly

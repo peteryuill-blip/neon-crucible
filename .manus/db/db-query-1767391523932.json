@@ -1,0 +1,90 @@
+{
+  "query": "SELECT dimensions, COUNT(*) as count FROM works WHERE dimensions IS NOT NULL GROUP BY dimensions ORDER BY count DESC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT dimensions, COUNT(*) as count FROM works WHERE dimensions IS NOT NULL GROUP BY dimensions ORDER BY count DESC LIMIT 20;",
+  "rows": [
+    {
+      "dimensions": "Variable (large format)",
+      "count": "52"
+    },
+    {
+      "dimensions": "100cm x 200cm",
+      "count": "13"
+    },
+    {
+      "dimensions": "56×76cm vertical",
+      "count": "12"
+    },
+    {
+      "dimensions": "56cm x 76cm",
+      "count": "10"
+    },
+    {
+      "dimensions": "56 x 76cm",
+      "count": "9"
+    },
+    {
+      "dimensions": "30cm x 40cm",
+      "count": "8"
+    },
+    {
+      "dimensions": "200 x 150cm",
+      "count": "6"
+    },
+    {
+      "dimensions": "76 x 56cm",
+      "count": "6"
+    },
+    {
+      "dimensions": "76cm × 56cm",
+      "count": "6"
+    },
+    {
+      "dimensions": "200-300cm per work",
+      "count": "5"
+    },
+    {
+      "dimensions": "500 x 300cm (estimated)",
+      "count": "4"
+    },
+    {
+      "dimensions": "56×76cm horizontal",
+      "count": "4"
+    },
+    {
+      "dimensions": "120cm x 120cm",
+      "count": "2"
+    },
+    {
+      "dimensions": "76cm x 56cm",
+      "count": "2"
+    },
+    {
+      "dimensions": "100cm × 70cm",
+      "count": "2"
+    },
+    {
+      "dimensions": "100cm x 100cm",
+      "count": "2"
+    },
+    {
+      "dimensions": "150 x 100cm",
+      "count": "2"
+    },
+    {
+      "dimensions": "21cm × 30cm",
+      "count": "2"
+    },
+    {
+      "dimensions": "100 x 100cm",
+      "count": "1"
+    },
+    {
+      "dimensions": "76×76cm square",
+      "count": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "dimensions\tcount\nVariable (large format)\t52\n100cm x 200cm\t13\n56×76cm vertical\t12\n56cm x 76cm\t10\n56 x 76cm\t9\n30cm x 40cm\t8\n200 x 150cm\t6\n76 x 56cm\t6\n76cm × 56cm\t6\n200-300cm per work\t5\n500 x 300cm (estimated)\t4\n56×76cm horizontal\t4\n120cm x 120cm\t2\n76cm x 56cm\t2\n100cm × 70cm\t2\n100cm x 100cm\t2\n150 x 100cm\t2\n21cm × 30cm\t2\n100 x 100cm\t1\n76×76cm square\t1\n",
+  "stderr": "",
+  "execution_time_ms": 1589
+}
