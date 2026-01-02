@@ -1,0 +1,14 @@
+{
+  "query": "SELECT \n  COUNT(CASE WHEN technique LIKE '%Saunders Waterford 300gsm hot press cotton rag paper%' THEN 1 END) as updated_count,\n  COUNT(CASE WHEN technique LIKE '%Saunders Waterford 300gsm%' AND technique NOT LIKE '%hot press cotton rag paper%' THEN 1 END) as old_count\nFROM works;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT \n  COUNT(CASE WHEN technique LIKE '%Saunders Waterford 300gsm hot press cotton rag paper%' THEN 1 END) as updated_count,\n  COUNT(CASE WHEN technique LIKE '%Saunders Waterford 300gsm%' AND technique NOT LIKE '%hot press cotton rag paper%' THEN 1 END) as old_count\nFROM works;",
+  "rows": [
+    {
+      "updated_count": "71",
+      "old_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "updated_count\told_count\n71\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1499
+}

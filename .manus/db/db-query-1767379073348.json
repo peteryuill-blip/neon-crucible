@@ -1,0 +1,60 @@
+{
+  "query": "SELECT id, title, technique FROM works WHERE technique LIKE '%Saunders Waterford%' ORDER BY id LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, technique FROM works WHERE technique LIKE '%Saunders Waterford%' ORDER BY id LIMIT 10;",
+  "rows": [
+    {
+      "id": "30015",
+      "title": "Ode to Osiris",
+      "technique": "Black ink with copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    },
+    {
+      "id": "30016",
+      "title": "Ode to Isis",
+      "technique": "Black ink with gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    },
+    {
+      "id": "30017",
+      "title": "Ode to Hadit",
+      "technique": "Black ink with gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    },
+    {
+      "id": "30018",
+      "title": "Ode to Hoor-pa-kraat",
+      "technique": "Black ink with copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    },
+    {
+      "id": "30019",
+      "title": "Ode to Therion",
+      "technique": "Black ink with dual gold and copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag paper"
+    },
+    {
+      "id": "30020",
+      "title": "The Limitless Path of the Intuitive Mind I",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    },
+    {
+      "id": "30021",
+      "title": "The Limitless Path of the Intuitive Mind II",
+      "technique": "Black ink and copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    },
+    {
+      "id": "30022",
+      "title": "The Infinite Plane I",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    },
+    {
+      "id": "30023",
+      "title": "The Infinite Plane II",
+      "technique": "Black ink and copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    },
+    {
+      "id": "30024",
+      "title": "Dreamcatcher",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\ttechnique\n30015\tOde to Osiris\tBlack ink with copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n30016\tOde to Isis\tBlack ink with gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n30017\tOde to Hadit\tBlack ink with gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n30018\tOde to Hoor-pa-kraat\tBlack ink with copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n30019\tOde to Therion\tBlack ink with dual gold and copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag paper\n30020\tThe Limitless Path of the Intuitive Mind I\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n30021\tThe Limitless Path of the Intuitive Mind II\tBlack ink and copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n30022\tThe Infinite Plane I\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n30023\tThe Infinite Plane II\tBlack ink and copper leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n30024\tDreamcatcher\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper cotton rag\n",
+  "stderr": "",
+  "execution_time_ms": 1552
+}

@@ -334,3 +334,9 @@
 - [x] Add search to navigation/header
 - [x] Add keyboard shortcut (Cmd/Ctrl + K) for search
 - [x] Test search functionality
+
+## Update Saunders Waterford Paper Specification
+
+- [x] Query database for works with "Saunders Waterford 300gsm" in technique
+- [x] Update technique field to full specification: "Saunders Waterford 300gsm hot press cotton rag paper"
+- [x] Verify all updates applied correctly

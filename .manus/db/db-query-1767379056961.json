@@ -1,0 +1,365 @@
+{
+  "query": "SELECT id, title, technique FROM works WHERE technique LIKE '%Saunders Waterford 300gsm%' ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, technique FROM works WHERE technique LIKE '%Saunders Waterford 300gsm%' ORDER BY id;",
+  "rows": [
+    {
+      "id": "30015",
+      "title": "Ode to Osiris",
+      "technique": "Black ink with copper leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30016",
+      "title": "Ode to Isis",
+      "technique": "Black ink with gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30017",
+      "title": "Ode to Hadit",
+      "technique": "Black ink with gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30018",
+      "title": "Ode to Hoor-pa-kraat",
+      "technique": "Black ink with copper leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30019",
+      "title": "Ode to Therion",
+      "technique": "Black ink with dual gold and copper leaf on Saunders Waterford 300gsm cotton rag paper"
+    },
+    {
+      "id": "30020",
+      "title": "The Limitless Path of the Intuitive Mind I",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30021",
+      "title": "The Limitless Path of the Intuitive Mind II",
+      "technique": "Black ink and copper leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30022",
+      "title": "The Infinite Plane I",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30023",
+      "title": "The Infinite Plane II",
+      "technique": "Black ink and copper leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30024",
+      "title": "Dreamcatcher",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30025",
+      "title": "Aurorae Aureae",
+      "technique": "Black ink and copper leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30026",
+      "title": "Inside the Vortex",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30027",
+      "title": "Freyja",
+      "technique": "Black ink and copper leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30028",
+      "title": "Freyr",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30029",
+      "title": "As Above, So Below I",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30030",
+      "title": "Polaris",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30031",
+      "title": "Golden Dawn",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30032",
+      "title": "Vibrational Alignment",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "30033",
+      "title": "A Walking Bundle of Frequencies",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm cotton rag"
+    },
+    {
+      "id": "60002",
+      "title": "VALIS",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60003",
+      "title": "Electric Dreams",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60004",
+      "title": "A Momentary Lapse of Reason",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60005",
+      "title": "Labyrinth of Coral Caves (1)",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60006",
+      "title": "Gravity Well",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60007",
+      "title": "Amnesia",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60008",
+      "title": "Persistence of Time (1)",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60009",
+      "title": "Section 9",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60010",
+      "title": "Labyrinth of Coral Caves (2)",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60011",
+      "title": "Genesis",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60012",
+      "title": "Split Second",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60013",
+      "title": "Major Motoko",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60014",
+      "title": "Orbital Refraction",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60015",
+      "title": "A Delicate Sound of Thunder",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60016",
+      "title": "Persistence of Time (2)",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "60017",
+      "title": "Persistence of Time (3)",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60018",
+      "title": "Persistence of Time (4)",
+      "technique": "Black ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "90001",
+      "title": "Cross Mandala with Gold Center",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "90003",
+      "title": "Yin-Yang Gold Disc",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "90004",
+      "title": "Vertical Cross with Gold Satellites",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "90006",
+      "title": "Asymmetric Orbital Cluster",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "90007",
+      "title": "Gold Crescent Orbit",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "90008",
+      "title": "Vertical Axis with Gold Poles",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "90009",
+      "title": "Dense Cross Mandala",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "90010",
+      "title": "Spiral Galaxy S-Curve",
+      "technique": "Black ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "120014",
+      "title": "Absurdity of Meaning No. 1",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120016",
+      "title": "Absurdity of Meaning No. 2",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120021",
+      "title": "Absurdity of Meaning No. 3",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120028",
+      "title": "Absurdity of Meaning No. 4",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120032",
+      "title": "Absurdity of Meaning No. 5",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120033",
+      "title": "Absurdity of Meaning No. 6",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "120034",
+      "title": "Absurdity of Meaning No. 7",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120035",
+      "title": "Absurdity of Meaning No. 8",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120036",
+      "title": "Absurdity of Meaning No. 9",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120037",
+      "title": "Absurdity of Meaning No. 10",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120038",
+      "title": "Absurdity of Meaning No. 11",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120039",
+      "title": "Absurdity of Meaning No. 12",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120040",
+      "title": "Absurdity of Meaning No. 13",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120041",
+      "title": "Geometric Abstraction No. 4",
+      "technique": "Ink on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120042",
+      "title": "Geometric Abstraction No. 5",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120043",
+      "title": "Geometric Abstraction No. 6",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper "
+    },
+    {
+      "id": "120044",
+      "title": "Geometric Abstraction No. 7",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120045",
+      "title": "Geometric Abstraction No. 8",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120046",
+      "title": "Geometric Abstraction No. 9",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120047",
+      "title": "Geometric Abstraction No. 10",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120048",
+      "title": "Geometric Abstraction No. 11",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120049",
+      "title": "Geometric Abstraction No. 12",
+      "technique": "Ink on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120051",
+      "title": "Mathematical Meditation No. 1",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120053",
+      "title": "Mathematical Meditation No. 2",
+      "technique": "Ink and acrylic on Saunders Waterford 300gsm paper"
+    },
+    {
+      "id": "120055",
+      "title": "There Lay an Invincible Summer",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120056",
+      "title": "I Wonder If I Really Exist",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120057",
+      "title": "Theatre of Memory",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\ttechnique\n30015\tOde to Osiris\tBlack ink with copper leaf on Saunders Waterford 300gsm cotton rag\n30016\tOde to Isis\tBlack ink with gold leaf on Saunders Waterford 300gsm cotton rag\n30017\tOde to Hadit\tBlack ink with gold leaf on Saunders Waterford 300gsm cotton rag\n30018\tOde to Hoor-pa-kraat\tBlack ink with copper leaf on Saunders Waterford 300gsm cotton rag\n30019\tOde to Therion\tBlack ink with dual gold and copper leaf on Saunders Waterford 300gsm cotton rag paper\n30020\tThe Limitless Path of the Intuitive Mind I\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30021\tThe Limitless Path of the Intuitive Mind II\tBlack ink and copper leaf on Saunders Waterford 300gsm cotton rag\n30022\tThe Infinite Plane I\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30023\tThe Infinite Plane II\tBlack ink and copper leaf on Saunders Waterford 300gsm cotton rag\n30024\tDreamcatcher\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30025\tAurorae Aureae\tBlack ink and copper leaf on Saunders Waterford 300gsm cotton rag\n30026\tInside the Vortex\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30027\tFreyja\tBlack ink and copper leaf on Saunders Waterford 300gsm cotton rag\n30028\tFreyr\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30029\tAs Above, So Below I\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30030\tPolaris\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30031\tGolden Dawn\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30032\tVibrational Alignment\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n30033\tA Walking Bundle of Frequencies\tBlack ink and gold leaf on Saunders Waterford 300gsm cotton rag\n60002\tVALIS\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60003\tElectric Dreams\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60004\tA Momentary Lapse of Reason\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60005\tLabyrinth of Coral Caves (1)\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60006\tGravity Well\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60007\tAmnesia\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60008\tPersistence of Time (1)\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60009\tSection 9\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60010\tLabyrinth of Coral Caves (2)\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60011\tGenesis\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60012\tSplit Second\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60013\tMajor Motoko\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60014\tOrbital Refraction\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60015\tA Delicate Sound of Thunder\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60016\tPersistence of Time (2)\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n60017\tPersistence of Time (3)\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper\n60018\tPersistence of Time (4)\tBlack ink on Saunders Waterford 300gsm hot press cotton rag paper \n90001\tCross Mandala with Gold Center\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper \n90003\tYin-Yang Gold Disc\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper \n90004\tVertical Cross with Gold Satellites\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper \n90006\tAsymmetric Orbital Cluster\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper \n90007\tGold Crescent Orbit\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper \n90008\tVertical Axis with Gold Poles\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper \n90009\tDense Cross Mandala\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper \n90010\tSpiral Galaxy S-Curve\tBlack ink and gold leaf on Saunders Waterford 300gsm hot press cotton rag paper \n120014\tAbsurdity of Meaning No. 1\tInk and acrylic on Saunders Waterford 300gsm paper\n120016\tAbsurdity of Meaning No. 2\tInk and acrylic on Saunders Waterford 300gsm paper\n120021\tAbsurdity of Meaning No. 3\tInk and acrylic on Saunders Waterford 300gsm paper\n120028\tAbsurdity of Meaning No. 4\tInk and acrylic on Saunders Waterford 300gsm paper\n120032\tAbsurdity of Meaning No. 5\tInk and acrylic on Saunders Waterford 300gsm paper\n120033\tAbsurdity of Meaning No. 6\tInk on Saunders Waterford 300gsm hot press cotton rag paper \n120034\tAbsurdity of Meaning No. 7\tInk and acrylic on Saunders Waterford 300gsm paper\n120035\tAbsurdity of Meaning No. 8\tInk and acrylic on Saunders Waterford 300gsm paper\n120036\tAbsurdity of Meaning No. 9\tInk and acrylic on Saunders Waterford 300gsm paper\n120037\tAbsurdity of Meaning No. 10\tInk and acrylic on Saunders Waterford 300gsm paper\n120038\tAbsurdity of Meaning No. 11\tInk and acrylic on Saunders Waterford 300gsm paper\n120039\tAbsurdity of Meaning No. 12\tInk and acrylic on Saunders Waterford 300gsm paper\n120040\tAbsurdity of Meaning No. 13\tInk and acrylic on Saunders Waterford 300gsm paper\n120041\tGeometric Abstraction No. 4\tInk on Saunders Waterford 300gsm paper\n120042\tGeometric Abstraction No. 5\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n120043\tGeometric Abstraction No. 6\tInk on Saunders Waterford 300gsm hot press cotton rag paper \n120044\tGeometric Abstraction No. 7\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n120045\tGeometric Abstraction No. 8\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n120046\tGeometric Abstraction No. 9\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n120047\tGeometric Abstraction No. 10\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n120048\tGeometric Abstraction No. 11\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n120049\tGeometric Abstraction No. 12\tInk on Saunders Waterford 300gsm paper\n120051\tMathematical Meditation No. 1\tInk and acrylic on Saunders Waterford 300gsm paper\n120053\tMathematical Meditation No. 2\tInk and acrylic on Saunders Waterford 300gsm paper\n120055\tThere Lay an Invincible Summer\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n120056\tI Wonder If I Really Exist\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n120057\tTheatre of Memory\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n",
+  "stderr": "",
+  "execution_time_ms": 1523
+}
