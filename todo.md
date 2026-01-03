@@ -353,3 +353,15 @@
 - [x] Standardize all dimensions to "##cm x ##cm" format (height x width)
 - [x] Remove inconsistent spacing, capitalization, and unit placement
 - [x] Verify all updates applied correctly
+
+## Collection Statistics Page
+
+- [x] Design statistics page layout and sections
+- [x] Create backend API endpoint for statistics data
+- [x] Implement works count by phase
+- [x] Implement technique distribution analysis
+- [x] Implement size/dimension range statistics
+- [x] Build frontend Statistics page component
+- [x] Add visual timeline showing 7-year progression
+- [x] Add navigation link to Statistics page
+- [x] Test statistics calculations and visualizations

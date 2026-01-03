@@ -462,6 +462,13 @@ export const appRouter = router({
         return db.searchArchive(input.q, input.limit);
       }),
   }),
+
+  // ============ STATISTICS ============
+  statistics: router({
+    collection: publicProcedure.query(async () => {
+      return db.getCollectionStatistics();
+    }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

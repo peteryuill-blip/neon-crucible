@@ -569,3 +569,144 @@ export async function getDistinctSeriesNames(): Promise<string[]> {
   
   return result.map(r => r.seriesName).filter((s): s is string => s !== null);
 }
+
+// ============ STATISTICS QUERIES ============
+
+export interface WorksByPhase {
+  phaseId: number;
+  phaseCode: string;
+  phaseTitle: string;
+  year: string;
+  count: number;
+}
+
+export interface TechniqueDistribution {
+  technique: string;
+  count: number;
+}
+
+export interface SizeRange {
+  range: string;
+  count: number;
+}
+
+export interface CollectionStatistics {
+  totalWorks: number;
+  worksByPhase: WorksByPhase[];
+  techniqueDistribution: TechniqueDistribution[];
+  sizeRanges: SizeRange[];
+  totalPhases: number;
+  yearSpan: string;
+}
+
+export async function getCollectionStatistics(): Promise<CollectionStatistics> {
+  const db = await getDb();
+  if (!db) {
+    return {
+      totalWorks: 0,
+      worksByPhase: [],
+      techniqueDistribution: [],
+      sizeRanges: [],
+      totalPhases: 0,
+      yearSpan: "2018-2025",
+    };
+  }
+
+  // Total works count
+  const totalWorksResult = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(works)
+    .where(eq(works.isPublished, true));
+  const totalWorks = totalWorksResult[0]?.count ?? 0;
+
+  // Works by phase
+  const worksByPhaseResult = await db
+    .select({
+      phaseId: phases.id,
+      phaseCode: phases.code,
+      phaseTitle: phases.title,
+      year: phases.year,
+      count: sql<number>`count(${works.id})`,
+    })
+    .from(phases)
+    .leftJoin(works, and(eq(works.phaseId, phases.id), eq(works.isPublished, true)))
+    .groupBy(phases.id, phases.code, phases.title, phases.year)
+    .orderBy(asc(phases.sortOrder));
+
+  const worksByPhase: WorksByPhase[] = worksByPhaseResult.map(row => ({
+    phaseId: row.phaseId,
+    phaseCode: row.phaseCode,
+    phaseTitle: row.phaseTitle,
+    year: row.year,
+    count: row.count,
+  }));
+
+  // Technique distribution
+  const techniqueResult = await db
+    .select({
+      technique: works.technique,
+      count: sql<number>`count(*)`,
+    })
+    .from(works)
+    .where(and(eq(works.isPublished, true), isNotNull(works.technique)))
+    .groupBy(works.technique)
+    .orderBy(desc(sql<number>`count(*)`));
+
+  const techniqueDistribution: TechniqueDistribution[] = techniqueResult.map(row => ({
+    technique: row.technique ?? "Unknown",
+    count: row.count,
+  }));
+
+  // Size ranges (parse dimensions and categorize)
+  const allWorks = await db
+    .select({ dimensions: works.dimensions })
+    .from(works)
+    .where(and(eq(works.isPublished, true), isNotNull(works.dimensions)));
+
+  const sizeRanges: { [key: string]: number } = {
+    "Small (<50cm)": 0,
+    "Medium (50-100cm)": 0,
+    "Large (100-150cm)": 0,
+    "Monumental (>150cm)": 0,
+  };
+
+  allWorks.forEach(work => {
+    if (!work.dimensions) return;
+    
+    // Parse dimensions like "56cm x 76cm"
+    const match = work.dimensions.match(/(\d+)cm\s*x\s*(\d+)cm/);
+    if (match) {
+      const height = parseInt(match[1]);
+      const width = parseInt(match[2]);
+      const maxDimension = Math.max(height, width);
+
+      if (maxDimension < 50) {
+        sizeRanges["Small (<50cm)"]++;
+      } else if (maxDimension < 100) {
+        sizeRanges["Medium (50-100cm)"]++;
+      } else if (maxDimension < 150) {
+        sizeRanges["Large (100-150cm)"]++;
+      } else {
+        sizeRanges["Monumental (>150cm)"]++;
+      }
+    }
+  });
+
+  const sizeRangesArray: SizeRange[] = Object.entries(sizeRanges).map(([range, count]) => ({
+    range,
+    count,
+  }));
+
+  // Total phases
+  const totalPhasesResult = await db.select({ count: sql<number>`count(*)` }).from(phases);
+  const totalPhases = totalPhasesResult[0]?.count ?? 0;
+
+  return {
+    totalWorks,
+    worksByPhase,
+    techniqueDistribution,
+    sizeRanges: sizeRangesArray,
+    totalPhases,
+    yearSpan: "2018-2025",
+  };
+}
