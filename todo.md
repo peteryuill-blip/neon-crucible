@@ -379,3 +379,13 @@
 - [x] Upload installation photo to S3
 - [x] Create database entry for 7-panel monumental work
 - [x] Verify entry appears in Works page
+
+## Create Commissions Page
+
+- [x] Design page structure and layout
+- [x] Create Commissions page component
+- [x] Add institutional project showcases (Swire, Peninsula, Soho House, etc.)
+- [x] Include commission process information
+- [x] Add client testimonials section
+- [x] Create navigation link to Commissions page
+- [x] Test and verify page functionality

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Activity, Archive, Eye, Grid, Home, User, Quote, Menu, X, Search, BarChart3 } from "lucide-react";
+import { Activity, Archive, Eye, Grid, Home, User, Quote, Menu, X, Search, BarChart3, Briefcase } from "lucide-react";
 import { useState } from "react";
 import { SearchDialog } from "./SearchDialog";
 
@@ -16,6 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { href: "/dashboard", label: "DASHBOARD", icon: Activity },
     { href: "/archive", label: "ARCHIVE", icon: Archive },
     { href: "/statistics", label: "STATISTICS", icon: BarChart3 },
+    { href: "/commissions", label: "COMMISSIONS", icon: Briefcase },
     { href: "/voices", label: "VOICES", icon: Quote },
     { href: "/about", label: "ABOUT", icon: User },
   ];
