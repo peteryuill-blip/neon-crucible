@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE works \nSET additionalImages = JSON_ARRAY(\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/AlpMWahxbuKiFMSF.jpg',\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/uKGmTnEDaoiVJmLV.jpg',\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/lcPqrrIpBoiUBCpM.jpg'\n)\nWHERE title = 'Tidal';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute UPDATE works \nSET additionalImages = JSON_ARRAY(\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/AlpMWahxbuKiFMSF.jpg',\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/uKGmTnEDaoiVJmLV.jpg',\n  'https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/lcPqrrIpBoiUBCpM.jpg'\n)\nWHERE title = 'Tidal';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1619
+}

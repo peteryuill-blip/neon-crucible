@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle } from "lucide-react";
+import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle, ChevronLeft, ChevronRight } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo } from "react";
 import { Streamdown } from "streamdown";
@@ -434,21 +434,85 @@ export default function Works() {
         <DialogContent className="w-[95vw] max-w-4xl bg-card border-border rounded-none p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
           {selectedWorkData && (
             <div className="flex flex-col md:grid md:grid-cols-2">
-              {/* Image */}
+              {/* Image Gallery */}
               <div className="aspect-square bg-muted/10 relative group">
-                {selectedWorkData.imageUrl ? (
-                  <>
-                    <img 
-                      src={selectedWorkData.imageUrl} 
-                      alt={selectedWorkData.title}
-                      className="w-full h-full object-contain"
-                    />
-                  </>
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 font-mono text-4xl sm:text-6xl font-bold">
-                    IMG
-                  </div>
-                )}
+                {(() => {
+                  const additionalImages = selectedWorkData.additionalImages 
+                    ? (typeof selectedWorkData.additionalImages === 'string' 
+                        ? JSON.parse(selectedWorkData.additionalImages) 
+                        : selectedWorkData.additionalImages)
+                    : [];
+                  const allImages = selectedWorkData.imageUrl 
+                    ? [selectedWorkData.imageUrl, ...additionalImages]
+                    : additionalImages;
+                  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+                  
+                  if (allImages.length === 0) {
+                    return (
+                      <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 font-mono text-4xl sm:text-6xl font-bold">
+                        IMG
+                      </div>
+                    );
+                  }
+                  
+                  return (
+                    <>
+                      <img 
+                        src={allImages[currentImageIndex]} 
+                        alt={`${selectedWorkData.title} - Image ${currentImageIndex + 1}`}
+                        className="w-full h-full object-contain"
+                      />
+                      
+                      {/* Gallery Navigation */}
+                      {allImages.length > 1 && (
+                        <>
+                          {/* Previous Button */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCurrentImageIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
+                            }}
+                            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <ChevronLeft className="w-5 h-5" />
+                          </button>
+                          
+                          {/* Next Button */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCurrentImageIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
+                            }}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                          >
+                            <ChevronRight className="w-5 h-5" />
+                          </button>
+                          
+                          {/* Image Counter */}
+                          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/70 text-white px-3 py-1 font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                            {currentImageIndex + 1} / {allImages.length}
+                          </div>
+                          
+                          {/* Thumbnail Dots */}
+                          <div className="absolute bottom-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            {allImages.map((_: string, idx: number) => (
+                              <button
+                                key={idx}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setCurrentImageIndex(idx);
+                                }}
+                                className={`w-2 h-2 rounded-full transition-colors ${
+                                  idx === currentImageIndex ? 'bg-primary' : 'bg-white/50 hover:bg-white/75'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </>
+                  );
+                })()}
               </div>
               
               {/* Details */}

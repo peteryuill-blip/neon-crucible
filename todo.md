@@ -389,3 +389,10 @@
 - [x] Add client testimonials section
 - [x] Create navigation link to Commissions page
 - [x] Test and verify page functionality
+
+## Add Tidal Installation Detail Photos
+
+- [x] Upload 3 detail photos to CDN
+- [x] Store additional image URLs in database
+- [x] Create image gallery component for Works detail view
+- [x] Test gallery functionality
