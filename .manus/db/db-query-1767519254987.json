@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, code, title FROM phases WHERE code = 'NE' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, code, title FROM phases WHERE code = 'NE' LIMIT 1;",
+  "rows": [
+    {
+      "id": "30009",
+      "code": "NE",
+      "title": "New Era: Big Bang, Thr3e, Covenant"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tcode\ttitle\n30009\tNE\tNew Era: Big Bang, Thr3e, Covenant\n",
+  "stderr": "",
+  "execution_time_ms": 2823
+}

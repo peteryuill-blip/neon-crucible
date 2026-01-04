@@ -372,3 +372,10 @@
 - [x] Redesign About page layout to feature portrait
 - [x] Ensure responsive design for mobile and desktop
 - [x] Test visual integration and deliver
+
+## Add Covenant Tidal Installation (Swire Commission)
+
+- [x] Read installation details from TIDAL_INFO_SWIRE.txt
+- [x] Upload installation photo to S3
+- [x] Create database entry for 7-panel monumental work
+- [x] Verify entry appears in Works page

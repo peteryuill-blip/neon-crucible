@@ -1,0 +1,13 @@
+{
+  "query": "SELECT * FROM phases WHERE code = 'NE';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT * FROM phases WHERE code = 'NE';",
+  "rows": [],
+  "messages": [
+    "30009\tNE\tNew Era: Big Bang, Thr3e, Covenant\t2025-present\tThe New Era practice (2025–present) integrates rigorous traditional training with personal vision: large-format somatic ink works combining sacred geometry's mathematical precision with Zen spontaneity, creating works that are simultaneously controlled and surrendered.",
+    "What's remarkable about these works is the simultaneity: they are rigorously disciplined (studied with a master, in a traditional lineage extending back centuries) AND completely open (one-shot, gestural, surrendered to ink and gravity). The artist has learned that mastery comes not through total control but through disciplined surrender.",
+    "The artist writes: \"I have jumped into the deep end and I'm fully embracing my true creative desire.\" This is the culmination of seven years of practice.\tCulmination; disciplined surrender; rooting\t#00FF00\t9\t2025-12-27 02:49:35\t2025-12-27 02:49:35"
+  ],
+  "stdout": "id\tcode\ttitle\tyear\tdescription\temotionalTemperature\tcolor\tsortOrder\tcreatedAt\tupdatedAt\n30009\tNE\tNew Era: Big Bang, Thr3e, Covenant\t2025-present\tThe New Era practice (2025–present) integrates rigorous traditional training with personal vision: large-format somatic ink works combining sacred geometry's mathematical precision with Zen spontaneity, creating works that are simultaneously controlled and surrendered.\n\nWhat's remarkable about these works is the simultaneity: they are rigorously disciplined (studied with a master, in a traditional lineage extending back centuries) AND completely open (one-shot, gestural, surrendered to ink and gravity). The artist has learned that mastery comes not through total control but through disciplined surrender.\n\nThe artist writes: \"I have jumped into the deep end and I'm fully embracing my true creative desire.\" This is the culmination of seven years of practice.\tCulmination; disciplined surrender; rooting\t#00FF00\t9\t2025-12-27 02:49:35\t2025-12-27 02:49:35\n",
+  "stderr": "",
+  "execution_time_ms": 1571
+}

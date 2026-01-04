@@ -1,0 +1,55 @@
+{
+  "query": "SELECT id, code, title FROM phases ORDER BY sortOrder;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, code, title FROM phases ORDER BY sortOrder;",
+  "rows": [
+    {
+      "id": "30001",
+      "code": "PH1",
+      "title": "Absurdity of Meaning"
+    },
+    {
+      "id": "30002",
+      "code": "PH1A",
+      "title": "Institutional Geometry"
+    },
+    {
+      "id": "30003",
+      "code": "PH2",
+      "title": "Alignment – Circular Paradigm"
+    },
+    {
+      "id": "30004",
+      "code": "PH2A",
+      "title": "Equinox of the Gods – Thelemic Rupture"
+    },
+    {
+      "id": "30005",
+      "code": "PH3",
+      "title": "Echoes"
+    },
+    {
+      "id": "30006",
+      "code": "PH3A",
+      "title": "Celestial Secrets"
+    },
+    {
+      "id": "30007",
+      "code": "PH4",
+      "title": "Nomadic – Emotional Crisis & Expressionism"
+    },
+    {
+      "id": "30008",
+      "code": "PH4A",
+      "title": "The Silent Pivot (Recalibration)"
+    },
+    {
+      "id": "30009",
+      "code": "NE",
+      "title": "New Era: Big Bang, Thr3e, Covenant"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tcode\ttitle\n30001\tPH1\tAbsurdity of Meaning\n30002\tPH1A\tInstitutional Geometry\n30003\tPH2\tAlignment – Circular Paradigm\n30004\tPH2A\tEquinox of the Gods – Thelemic Rupture\n30005\tPH3\tEchoes\n30006\tPH3A\tCelestial Secrets\n30007\tPH4\tNomadic – Emotional Crisis & Expressionism\n30008\tPH4A\tThe Silent Pivot (Recalibration)\n30009\tNE\tNew Era: Big Bang, Thr3e, Covenant\n",
+  "stderr": "",
+  "execution_time_ms": 1521
+}

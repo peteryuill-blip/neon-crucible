@@ -1,0 +1,17 @@
+{
+  "query": "SELECT id, title, seriesName, dimensions, technique FROM works WHERE title = 'Tidal' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, seriesName, dimensions, technique FROM works WHERE title = 'Tidal' LIMIT 1;",
+  "rows": [
+    {
+      "id": "240002",
+      "title": "Tidal",
+      "seriesName": "Covenant",
+      "dimensions": "300cm x 1000cm",
+      "technique": "Acrylic and spray paint on linen"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tseriesName\tdimensions\ttechnique\n240002\tTidal\tCovenant\t300cm x 1000cm\tAcrylic and spray paint on linen\n",
+  "stderr": "",
+  "execution_time_ms": 1558
+}
