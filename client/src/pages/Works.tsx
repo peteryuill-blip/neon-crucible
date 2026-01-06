@@ -21,6 +21,7 @@ export default function Works() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [selectedWork, setSelectedWork] = useState<number | null>(null);
   const [showFilters, setShowFilters] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Track random seed to allow reshuffling
   const [randomSeed, setRandomSeed] = useState(0);
@@ -52,6 +53,24 @@ export default function Works() {
     { id: selectedWork! },
     { enabled: selectedWork !== null }
   );
+
+  // Parse additional images for gallery
+  const allImages = useMemo(() => {
+    if (!selectedWorkData) return [];
+    const additionalImages = selectedWorkData.additionalImages 
+      ? (typeof selectedWorkData.additionalImages === 'string' 
+          ? JSON.parse(selectedWorkData.additionalImages) 
+          : selectedWorkData.additionalImages)
+      : [];
+    return selectedWorkData.imageUrl 
+      ? [selectedWorkData.imageUrl, ...additionalImages]
+      : additionalImages;
+  }, [selectedWorkData]);
+
+  // Reset image index when work changes
+  useMemo(() => {
+    setCurrentImageIndex(0);
+  }, [selectedWork]);
 
   const works = worksData?.items ?? [];
   const totalWorks = worksData?.total ?? 0;
@@ -436,83 +455,67 @@ export default function Works() {
             <div className="flex flex-col md:grid md:grid-cols-2">
               {/* Image Gallery */}
               <div className="aspect-square bg-muted/10 relative group">
-                {(() => {
-                  const additionalImages = selectedWorkData.additionalImages 
-                    ? (typeof selectedWorkData.additionalImages === 'string' 
-                        ? JSON.parse(selectedWorkData.additionalImages) 
-                        : selectedWorkData.additionalImages)
-                    : [];
-                  const allImages = selectedWorkData.imageUrl 
-                    ? [selectedWorkData.imageUrl, ...additionalImages]
-                    : additionalImages;
-                  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-                  
-                  if (allImages.length === 0) {
-                    return (
-                      <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 font-mono text-4xl sm:text-6xl font-bold">
-                        IMG
-                      </div>
-                    );
-                  }
-                  
-                  return (
-                    <>
-                      <img 
-                        src={allImages[currentImageIndex]} 
-                        alt={`${selectedWorkData.title} - Image ${currentImageIndex + 1}`}
-                        className="w-full h-full object-contain"
-                      />
-                      
-                      {/* Gallery Navigation */}
-                      {allImages.length > 1 && (
-                        <>
-                          {/* Previous Button */}
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCurrentImageIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
-                            }}
-                            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                          >
-                            <ChevronLeft className="w-5 h-5" />
-                          </button>
-                          
-                          {/* Next Button */}
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCurrentImageIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
-                            }}
-                            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                          >
-                            <ChevronRight className="w-5 h-5" />
-                          </button>
-                          
-                          {/* Image Counter */}
-                          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/70 text-white px-3 py-1 font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                            {currentImageIndex + 1} / {allImages.length}
-                          </div>
-                          
-                          {/* Thumbnail Dots */}
-                          <div className="absolute bottom-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                            {allImages.map((_: string, idx: number) => (
-                              <button
-                                key={idx}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setCurrentImageIndex(idx);
-                                }}
-                                className={`w-2 h-2 rounded-full transition-colors ${
-                                  idx === currentImageIndex ? 'bg-primary' : 'bg-white/50 hover:bg-white/75'
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </>
-                  );
-                })()}
+                {allImages.length === 0 ? (
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 font-mono text-4xl sm:text-6xl font-bold">
+                    IMG
+                  </div>
+                ) : (
+                  <>
+                    <img 
+                      src={allImages[currentImageIndex]} 
+                      alt={`${selectedWorkData.title} - Image ${currentImageIndex + 1}`}
+                      className="w-full h-full object-contain"
+                    />
+                    
+                    {/* Gallery Navigation */}
+                    {allImages.length > 1 && (
+                      <>
+                        {/* Previous Button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentImageIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
+                          }}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                        </button>
+                        
+                        {/* Next Button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentImageIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
+                          }}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </button>
+                        
+                        {/* Image Counter */}
+                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/70 text-white px-3 py-1 font-mono text-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                          {currentImageIndex + 1} / {allImages.length}
+                        </div>
+                        
+                        {/* Thumbnail Dots */}
+                        <div className="absolute bottom-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                          {allImages.map((_: string, idx: number) => (
+                            <button
+                              key={idx}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setCurrentImageIndex(idx);
+                              }}
+                              className={`w-2 h-2 rounded-full transition-colors ${
+                                idx === currentImageIndex ? 'bg-primary' : 'bg-white/50 hover:bg-white/75'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </>
+                )}
               </div>
               
               {/* Details */}
