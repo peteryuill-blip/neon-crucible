@@ -402,3 +402,10 @@
 - [x] Move useState hook to component level (not inside IIFE)
 - [x] Test Tidal work detail modal
 - [x] Verify gallery navigation works correctly
+
+## Add Keyboard Navigation to Gallery
+
+- [x] Implement useEffect for keyboard event listeners
+- [x] Add arrow key support (← → for prev/next)
+- [x] Ensure keyboard navigation only works when dialog is open
+- [x] Test keyboard navigation functionality

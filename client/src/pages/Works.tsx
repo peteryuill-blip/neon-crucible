@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle, ChevronLeft, ChevronRight } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Streamdown } from "streamdown";
 
 const ITEMS_PER_PAGE = 12;
@@ -71,6 +71,24 @@ export default function Works() {
   useMemo(() => {
     setCurrentImageIndex(0);
   }, [selectedWork]);
+
+  // Keyboard navigation for gallery
+  useEffect(() => {
+    if (selectedWork === null || allImages.length <= 1) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        setCurrentImageIndex((prev) => (prev === 0 ? allImages.length - 1 : prev - 1));
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        setCurrentImageIndex((prev) => (prev === allImages.length - 1 ? 0 : prev + 1));
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedWork, allImages.length]);
 
   const works = worksData?.items ?? [];
   const totalWorks = worksData?.total ?? 0;
