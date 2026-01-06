@@ -6,6 +6,7 @@ import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffl
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo, useEffect } from "react";
 import { Streamdown } from "streamdown";
+import { ProgressiveImage } from "@/components/ProgressiveImage";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -479,8 +480,8 @@ export default function Works() {
                   </div>
                 ) : (
                   <>
-                    <img 
-                      src={allImages[currentImageIndex]} 
+                    <ProgressiveImage
+                      src={allImages[currentImageIndex]}
                       alt={`${selectedWorkData.title} - Image ${currentImageIndex + 1}`}
                       className="w-full h-full object-contain"
                     />
