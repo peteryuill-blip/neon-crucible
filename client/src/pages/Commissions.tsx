@@ -165,14 +165,25 @@ export default function Commissions() {
 
         <div className="grid grid-cols-1 gap-8 sm:gap-12 max-w-6xl">
           {commissions.slice(1).map((commission, index) => (
-            <div key={index} className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 pb-8 sm:pb-12 border-b border-border last:border-0">
-              <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-                <div className="space-y-2">
-                  <h3 className="text-lg sm:text-2xl font-bold">{commission.title}</h3>
-                  <div className="font-mono text-xs sm:text-sm text-primary">
-                    {commission.client} — {commission.year}
-                  </div>
+            <div key={index} className="space-y-6 sm:space-y-8 pb-8 sm:pb-12 border-b border-border last:border-0">
+              {commission.image && (
+                <div className="relative aspect-[16/9] overflow-hidden border border-border bg-muted">
+                  <img
+                    src={commission.image}
+                    alt={`${commission.title} for ${commission.client}`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+              )}
+              
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+                  <div className="space-y-2">
+                    <h3 className="text-lg sm:text-2xl font-bold">{commission.title}</h3>
+                    <div className="font-mono text-xs sm:text-sm text-primary">
+                      {commission.client} — {commission.year}
+                    </div>
+                  </div>
 
                 <div className="font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
                   <p>{commission.description}</p>
@@ -214,6 +225,7 @@ export default function Commissions() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           ))}
         </div>
