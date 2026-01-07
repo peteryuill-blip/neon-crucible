@@ -416,3 +416,11 @@
 - [x] Add loading state and skeleton placeholder
 - [x] Implement lazy loading for gallery images
 - [x] Test loading performance and visual transitions
+
+## Add Images to Commission Entries
+
+- [x] Query database for Peninsula Hotels works
+- [x] Query database for Soho House works
+- [x] Query database for other institutional commission works
+- [x] Update Commissions page to display actual work images
+- [x] Test visual presentation of commission portfolio

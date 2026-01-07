@@ -1,0 +1,8 @@
+{
+  "query": "SELECT DISTINCT ON (seriesName) title, imageUrl, seriesName FROM works WHERE imageUrl IS NOT NULL AND imageUrl != '' AND seriesName IN ('Alignment', 'Vestige', 'Covenant', 'Big Bang', 'Thr3e') ORDER BY seriesName, dateCreated DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT DISTINCT ON (seriesName) title, imageUrl, seriesName FROM works WHERE imageUrl IS NOT NULL AND imageUrl != '' AND seriesName IN ('Alignment', 'Vestige', 'Covenant', 'Big Bang', 'Thr3e') ORDER BY seriesName, dateCreated DESC;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your TiDB version for the right syntax to use line 1 column 18 near \"ON (seriesName) title, imageUrl, seriesName FROM works WHERE imageUrl IS NOT NULL AND imageUrl != '' AND seriesName IN ('Alignment', 'Vestige', 'Covenant', 'Big Bang', 'Thr3e') ORDER BY seriesName, dateCreated DESC\""
+  ]
+}

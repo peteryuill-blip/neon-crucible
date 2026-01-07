@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, title, imageUrl FROM works WHERE title LIKE '%Soho%' OR journalExcerpt LIKE '%Soho%' OR neonReading LIKE '%Soho%' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, imageUrl FROM works WHERE title LIKE '%Soho%' OR journalExcerpt LIKE '%Soho%' OR neonReading LIKE '%Soho%' LIMIT 10;",
+  "rows": [
+    {
+      "id": "150002",
+      "title": "Torus No. 1 (Soho House Commission)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_1_soho_house_peteryuill.jpg"
+    },
+    {
+      "id": "150003",
+      "title": "Torus No. 2 (Soho House Commission, Copper Grounding)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_2_soho_house-peteryuill.jpg"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timageUrl\n150002\tTorus No. 1 (Soho House Commission)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_1_soho_house_peteryuill.jpg\n150003\tTorus No. 2 (Soho House Commission, Copper Grounding)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_2_soho_house-peteryuill.jpg\n",
+  "stderr": "",
+  "execution_time_ms": 1562
+}

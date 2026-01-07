@@ -1,0 +1,8 @@
+{
+  "query": "SELECT title, imageUrl, seriesName FROM works WHERE imageUrl IS NOT NULL AND imageUrl != '' AND seriesName IN ('Alignment', 'Vestige', 'Covenant', 'Big Bang', 'Thr3e') GROUP BY seriesName LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT title, imageUrl, seriesName FROM works WHERE imageUrl IS NOT NULL AND imageUrl != '' AND seriesName IN ('Alignment', 'Vestige', 'Covenant', 'Big Bang', 'Thr3e') GROUP BY seriesName LIMIT 10;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1055 (42000) at line 1: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'ZLCef8c8rdYgPCof2teogL.works.title' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by"
+  ]
+}
