@@ -1,0 +1,35 @@
+{
+  "query": "SELECT id, title, imageUrl FROM works WHERE imageUrl IS NOT NULL AND imageUrl != '' ORDER BY RAND() LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, imageUrl FROM works WHERE imageUrl IS NOT NULL AND imageUrl != '' ORDER BY RAND() LIMIT 5;",
+  "rows": [
+    {
+      "id": "150012",
+      "title": "Kith & Kin Mural Installation 2",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Keith&kin_mural2_2019.jpg"
+    },
+    {
+      "id": "210030",
+      "title": "Oculus (Wash Field)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134645.jpg"
+    },
+    {
+      "id": "210010",
+      "title": "Portal (Bleed)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_7.jpg"
+    },
+    {
+      "id": "150018",
+      "title": "Shenzhen Hotel Installation 1",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Shenzen_hotel1_2019.jpg"
+    },
+    {
+      "id": "90003",
+      "title": "Yin-Yang Gold Disc",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0013(1).jpg"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timageUrl\n150012\tKith & Kin Mural Installation 2\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Keith&kin_mural2_2019.jpg\n210030\tOculus (Wash Field)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134645.jpg\n210010\tPortal (Bleed)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_7.jpg\n150018\tShenzhen Hotel Installation 1\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Shenzen_hotel1_2019.jpg\n90003\tYin-Yang Gold Disc\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0013(1).jpg\n",
+  "stderr": "",
+  "execution_time_ms": 1524
+}

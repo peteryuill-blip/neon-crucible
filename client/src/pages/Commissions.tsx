@@ -27,7 +27,7 @@ export default function Commissions() {
       format: "Geometric abstractions",
       materials: "Ink and metallic paint on paper",
       duration: "Multi-year collaboration",
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/lqCxAZFSqGNgPLlv.jpg",
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
       description: "Curated collection of geometric works for Peninsula Hotels properties. Precision-drawn sacred geometry pieces combining mathematical rigor with spiritual inquiry. Works selected for timeless elegance and architectural harmony.",
       scope: ["Artwork selection", "Custom framing", "Installation coordination", "Collection curation"]
     },
@@ -41,7 +41,7 @@ export default function Commissions() {
       format: "Mixed media abstractions",
       materials: "Ink, gold leaf, mixed media",
       duration: "18 months",
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/aTxVJxlPuqWxCbxI.jpg",
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
       description: "Series of large-format works for Soho House Hong Kong interiors. Balancing bold visual presence with contemplative depth. Works designed to hold attention in high-traffic social spaces while rewarding sustained viewing.",
       scope: ["Site assessment", "Scale planning", "Material selection", "Installation supervision"]
     },
@@ -55,7 +55,7 @@ export default function Commissions() {
       format: "Alignment series",
       materials: "Ink, gold, copper on paper",
       duration: "3 months",
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/uWYQNKtMgfZMQtOk.jpg",
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
       description: "Corporate collection featuring works from the Alignment series. Gold and copper binary geometries encoding metaphysical systems—spirit and matter, eternal and temporal. Professional gravitas meeting philosophical depth.",
       scope: ["Collection design", "Corporate aesthetic alignment", "Delivery and installation"]
     },
@@ -69,7 +69,7 @@ export default function Commissions() {
       format: "Curated selection",
       materials: "Ink on paper, mixed media",
       duration: "Ongoing collaboration",
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/pRuQzDvBJdLQMYhm.jpg",
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
       description: "Curated artworks for luxury residential developments. Works selected for sophisticated collectors seeking contemporary abstraction with philosophical substance. Balancing aesthetic impact with intellectual engagement.",
       scope: ["Collector consultation", "Artwork curation", "Framing and presentation"]
     }
