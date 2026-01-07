@@ -27,7 +27,7 @@ export default function Commissions() {
       format: "Geometric abstractions",
       materials: "Ink and metallic paint on paper",
       duration: "Multi-year collaboration",
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
+      image: "",
       description: "Curated collection of geometric works for Peninsula Hotels properties. Precision-drawn sacred geometry pieces combining mathematical rigor with spiritual inquiry. Works selected for timeless elegance and architectural harmony.",
       scope: ["Artwork selection", "Custom framing", "Installation coordination", "Collection curation"]
     },
@@ -41,7 +41,7 @@ export default function Commissions() {
       format: "Mixed media abstractions",
       materials: "Ink, gold leaf, mixed media",
       duration: "18 months",
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
+      image: "",
       description: "Series of large-format works for Soho House Hong Kong interiors. Balancing bold visual presence with contemplative depth. Works designed to hold attention in high-traffic social spaces while rewarding sustained viewing.",
       scope: ["Site assessment", "Scale planning", "Material selection", "Installation supervision"]
     },
@@ -55,7 +55,7 @@ export default function Commissions() {
       format: "Alignment series",
       materials: "Ink, gold, copper on paper",
       duration: "3 months",
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
+      image: "",
       description: "Corporate collection featuring works from the Alignment series. Gold and copper binary geometries encoding metaphysical systems—spirit and matter, eternal and temporal. Professional gravitas meeting philosophical depth.",
       scope: ["Collection design", "Corporate aesthetic alignment", "Delivery and installation"]
     },
@@ -69,7 +69,7 @@ export default function Commissions() {
       format: "Curated selection",
       materials: "Ink on paper, mixed media",
       duration: "Ongoing collaboration",
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
+      image: "",
       description: "Curated artworks for luxury residential developments. Works selected for sophisticated collectors seeking contemporary abstraction with philosophical substance. Balancing aesthetic impact with intellectual engagement.",
       scope: ["Collector consultation", "Artwork curation", "Framing and presentation"]
     }
@@ -165,25 +165,14 @@ export default function Commissions() {
 
         <div className="grid grid-cols-1 gap-8 sm:gap-12 max-w-6xl">
           {commissions.slice(1).map((commission, index) => (
-            <div key={index} className="space-y-6 sm:space-y-8 pb-8 sm:pb-12 border-b border-border last:border-0">
-              {commission.image && (
-                <div className="relative aspect-[16/9] overflow-hidden border border-border bg-muted">
-                  <img
-                    src={commission.image}
-                    alt={`${commission.title} for ${commission.client}`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-                <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-                  <div className="space-y-2">
-                    <h3 className="text-lg sm:text-2xl font-bold">{commission.title}</h3>
-                    <div className="font-mono text-xs sm:text-sm text-primary">
-                      {commission.client} — {commission.year}
-                    </div>
+            <div key={index} className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 pb-8 sm:pb-12 border-b border-border last:border-0">
+              <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+                <div className="space-y-2">
+                  <h3 className="text-lg sm:text-2xl font-bold">{commission.title}</h3>
+                  <div className="font-mono text-xs sm:text-sm text-primary">
+                    {commission.client} — {commission.year}
                   </div>
+                </div>
 
                 <div className="font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
                   <p>{commission.description}</p>
@@ -225,7 +214,6 @@ export default function Commissions() {
                   </div>
                 </div>
               </div>
-            </div>
             </div>
           ))}
         </div>

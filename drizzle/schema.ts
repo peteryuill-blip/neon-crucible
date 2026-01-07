@@ -52,7 +52,6 @@ export const works = mysqlTable("works", {
   imageUrl: text("imageUrl"), // S3 URL for the work image
   imageKey: varchar("imageKey", { length: 512 }), // S3 key for reference
   thumbnailUrl: text("thumbnailUrl"), // Smaller version
-  additionalImages: text("additionalImages"), // JSON array of additional image URLs for galleries
   journalExcerpt: text("journalExcerpt"), // Quote from artist's journal
   neonReading: text("neonReading"), // Neon's curatorial interpretation
   seriesName: varchar("seriesName", { length: 128 }), // e.g., "Covenant triptych", "Big Bang"
