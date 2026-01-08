@@ -396,3 +396,9 @@
 - [x] Upload installation photo to CDN
 - [x] Insert work into database with all details
 - [x] Verify work appears in Works page
+
+## Update SEO Meta Description
+
+- [x] Find where SEO meta description is set
+- [x] Update description to include "Peter Yuill"
+- [x] Verify meta tags in page source
