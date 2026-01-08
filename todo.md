@@ -402,3 +402,11 @@
 - [x] Find where SEO meta description is set
 - [x] Update description to include "Peter Yuill"
 - [x] Verify meta tags in page source
+
+## Add Schema.org Structured Data and Sitemap
+
+- [x] Add Schema.org JSON-LD for Person/Artist
+- [x] Add Schema.org JSON-LD for CreativeWork
+- [x] Generate sitemap.xml with all pages
+- [x] Add robots.txt reference to sitemap
+- [x] Test structured data with Google Rich Results Test
