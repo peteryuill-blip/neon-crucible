@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, title, dateCreated, dimensions FROM works WHERE title = 'Carbon Mural';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, dateCreated, dimensions FROM works WHERE title = 'Carbon Mural';",
+  "rows": [
+    {
+      "id": "270001",
+      "title": "Carbon Mural",
+      "dateCreated": "2021-10",
+      "dimensions": "600cm x 80cm"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tdateCreated\tdimensions\n270001\tCarbon Mural\t2021-10\t600cm x 80cm\n",
+  "stderr": "",
+  "execution_time_ms": 1664
+}

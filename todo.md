@@ -389,3 +389,10 @@
 - [x] Add client testimonials section
 - [x] Create navigation link to Commissions page
 - [x] Test and verify page functionality
+
+## Add New Work Entry
+
+- [x] Read work information from provided text file
+- [x] Upload installation photo to CDN
+- [x] Insert work into database with all details
+- [x] Verify work appears in Works page
