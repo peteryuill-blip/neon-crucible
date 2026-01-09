@@ -410,3 +410,11 @@
 - [x] Generate sitemap.xml with all pages
 - [x] Add robots.txt reference to sitemap
 - [x] Test structured data with Google Rich Results Test
+
+## Add Open Graph Images and Canonical URLs
+
+- [x] Add Open Graph image meta tags
+- [x] Add Twitter Card image meta tags
+- [x] Add canonical URL tags to index.html
+- [x] Create dynamic canonical URLs for all routes
+- [x] Document Google Search Console submission steps

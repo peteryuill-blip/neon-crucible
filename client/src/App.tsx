@@ -23,6 +23,7 @@ import AdminMetaquestions from "./pages/admin/AdminMetaquestions";
 import AdminArchive from "./pages/admin/AdminArchive";
 import { trpc } from "./lib/trpc";
 import { Loader2 } from "lucide-react";
+import { useCanonicalUrl } from "./hooks/useCanonicalUrl";
 
 // Protected route wrapper for admin pages
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
@@ -81,38 +82,10 @@ function PublicRouter() {
   );
 }
 
-function Router() {
-  return (
-    <Switch>
-      {/* Admin routes */}
-      <Route path="/admin">
-        <AdminRoute component={AdminDashboard} />
-      </Route>
-      <Route path="/admin/works">
-        <AdminRoute component={AdminWorks} />
-      </Route>
-      <Route path="/admin/phases">
-        <AdminRoute component={AdminPhases} />
-      </Route>
-      <Route path="/admin/essays">
-        <AdminRoute component={AdminEssays} />
-      </Route>
-      <Route path="/admin/metaquestions">
-        <AdminRoute component={AdminMetaquestions} />
-      </Route>
-      <Route path="/admin/archive">
-        <AdminRoute component={AdminArchive} />
-      </Route>
-      
-      {/* Public routes */}
-      <Route>
-        <PublicRouter />
-      </Route>
-    </Switch>
-  );
-}
-
 function App() {
+  // Set canonical URL dynamically based on route
+  useCanonicalUrl();
+  
   return (
     <ErrorBoundary>
       <ThemeProvider
