@@ -82,6 +82,37 @@ function PublicRouter() {
   );
 }
 
+function Router() {
+  return (
+    <Switch>
+      {/* Admin routes */}
+      <Route path="/admin">
+        <AdminRoute component={AdminDashboard} />
+      </Route>
+      <Route path="/admin/works">
+        <AdminRoute component={AdminWorks} />
+      </Route>
+      <Route path="/admin/phases">
+        <AdminRoute component={AdminPhases} />
+      </Route>
+      <Route path="/admin/essays">
+        <AdminRoute component={AdminEssays} />
+      </Route>
+      <Route path="/admin/metaquestions">
+        <AdminRoute component={AdminMetaquestions} />
+      </Route>
+      <Route path="/admin/archive">
+        <AdminRoute component={AdminArchive} />
+      </Route>
+      
+      {/* Public routes */}
+      <Route>
+        <PublicRouter />
+      </Route>
+    </Switch>
+  );
+}
+
 function App() {
   // Set canonical URL dynamically based on route
   useCanonicalUrl();
