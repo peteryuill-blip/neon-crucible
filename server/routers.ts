@@ -7,6 +7,7 @@ import { TRPCError } from "@trpc/server";
 import * as db from "./db";
 import { storagePut } from "./storage";
 import { nanoid } from "nanoid";
+import { contactRouter } from "./contact";
 
 // Admin check middleware
 const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
@@ -469,6 +470,9 @@ export const appRouter = router({
       return db.getCollectionStatistics();
     }),
   }),
+  
+  // ============ CONTACT ============
+  contact: contactRouter,
 });
 
 export type AppRouter = typeof appRouter;

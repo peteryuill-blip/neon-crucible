@@ -437,3 +437,13 @@
 - [x] Add alt text to Commissions page images
 - [x] Add alt text to homepage images
 - [x] Test accessibility with screen reader
+
+## Create Contact Form
+
+- [x] Design Contact page layout
+- [x] Build form component with validation
+- [x] Add fields: name, email, project type, message
+- [x] Create backend API endpoint for form submission
+- [x] Add email notification system
+- [x] Add navigation link to Contact page
+- [x] Test form submission and validation
