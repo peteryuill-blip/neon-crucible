@@ -447,3 +447,10 @@
 - [x] Add email notification system
 - [x] Add navigation link to Contact page
 - [x] Test form submission and validation
+
+## Simplify Contact Page
+
+- [x] Remove contact form from Contact page
+- [x] Display email, phone, and Instagram handle
+- [x] Keep backend contact router files for future use
+- [x] Test simplified Contact page
