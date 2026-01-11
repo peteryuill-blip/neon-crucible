@@ -1,5 +1,3 @@
-import { Mail, Phone, Instagram } from "lucide-react";
-
 export default function Contact() {
   return (
     <div className="max-w-3xl mx-auto space-y-12">
@@ -17,8 +15,12 @@ export default function Contact() {
       <div className="space-y-8 pt-8">
         {/* Email */}
         <div className="flex items-start gap-4 group">
-          <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-            <Mail className="w-6 h-6" />
+          <div className="w-16 h-16 flex items-center justify-center">
+            <img 
+              src="/email-neon.jpg" 
+              alt="Email icon"
+              className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+            />
           </div>
           <div className="flex-1">
             <h3 className="font-mono text-sm text-muted-foreground mb-2">EMAIL</h3>
@@ -31,15 +33,21 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Phone */}
+        {/* WhatsApp */}
         <div className="flex items-start gap-4 group">
-          <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-            <Phone className="w-6 h-6" />
+          <div className="w-16 h-16 flex items-center justify-center">
+            <img 
+              src="/whatsapp-neon.jpg" 
+              alt="WhatsApp icon"
+              className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+            />
           </div>
           <div className="flex-1">
-            <h3 className="font-mono text-sm text-muted-foreground mb-2">PHONE</h3>
+            <h3 className="font-mono text-sm text-muted-foreground mb-2">WHATSAPP</h3>
             <a 
-              href="tel:+85259326869"
+              href="https://wa.me/85259326869"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-2xl md:text-3xl font-light hover:text-primary transition-colors duration-300"
             >
               +852 5932 6869
@@ -49,8 +57,12 @@ export default function Contact() {
 
         {/* Instagram */}
         <div className="flex items-start gap-4 group">
-          <div className="p-3 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-            <Instagram className="w-6 h-6" />
+          <div className="w-16 h-16 flex items-center justify-center">
+            <img 
+              src="/instagram-neon.jpg" 
+              alt="Instagram icon"
+              className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+            />
           </div>
           <div className="flex-1">
             <h3 className="font-mono text-sm text-muted-foreground mb-2">INSTAGRAM</h3>

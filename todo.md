@@ -454,3 +454,12 @@
 - [x] Display email, phone, and Instagram handle
 - [x] Keep backend contact router files for future use
 - [x] Test simplified Contact page
+
+## Replace Contact Page Icons with Custom Neon Logos
+
+- [x] Upload WhatsApp neon logo to public directory
+- [x] Upload email neon logo to public directory
+- [x] Upload Instagram neon logo to public directory
+- [x] Update Contact.tsx to use custom logo images
+- [x] Add WhatsApp link functionality
+- [x] Test all contact links work properly
