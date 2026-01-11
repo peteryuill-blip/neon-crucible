@@ -317,7 +317,7 @@ export default function Works() {
               {work.imageUrl ? (
                 <img 
                   src={work.thumbnailUrl || work.imageUrl} 
-                  alt={work.title}
+                  alt={`Peter Yuill - ${work.title}, ${work.technique}, ${work.dateCreated ? new Date(work.dateCreated).getFullYear() : 'date unknown'}`}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
@@ -368,7 +368,7 @@ export default function Works() {
                 {work.thumbnailUrl || work.imageUrl ? (
                   <img 
                     src={work.thumbnailUrl || work.imageUrl || ""} 
-                    alt={work.title}
+                    alt={`Peter Yuill - ${work.title}, ${work.technique}, ${work.dateCreated ? new Date(work.dateCreated).getFullYear() : 'date unknown'}`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
@@ -440,7 +440,7 @@ export default function Works() {
                   <>
                     <img 
                       src={selectedWorkData.imageUrl} 
-                      alt={selectedWorkData.title}
+                      alt={`Peter Yuill - ${selectedWorkData.title}, ${selectedWorkData.technique}, ${selectedWorkData.dateCreated ? new Date(selectedWorkData.dateCreated).getFullYear() : 'date unknown'}`}
                       className="w-full h-full object-contain"
                     />
                   </>

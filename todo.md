@@ -429,3 +429,11 @@
 
 - [x] Fix "Cannot find name 'Router'" error on line 96
 - [x] Verify server loads correctly
+
+## Add Descriptive Alt Text to Images
+
+- [x] Update Works page to add dynamic alt text from work metadata
+- [x] Add alt text to About page portrait
+- [x] Add alt text to Commissions page images
+- [x] Add alt text to homepage images
+- [x] Test accessibility with screen reader

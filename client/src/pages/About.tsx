@@ -10,7 +10,7 @@ export default function About() {
           <div className="relative aspect-[4/3] overflow-hidden border border-border bg-muted">
             <img
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/BUUNnvdTPknAeVdZ.jpg"
-              alt="Peter Yuill in gallery"
+              alt="Peter Yuill, Bangkok-based contemporary artist, standing in gallery with circular geometric artworks, 2024"
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/95 to-transparent p-4 sm:p-6">

@@ -102,7 +102,7 @@ export default function Commissions() {
         <div className="relative aspect-[21/9] overflow-hidden border border-border bg-muted">
           <img
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg"
-            alt="Tidal installation at The Headland"
+            alt="Peter Yuill - Tidal, 7-panel curved installation showing lunar phases, acrylic and spray paint on linen, 300cm x 1000cm, Swire Properties The Headland rotunda, 2025"
             className="w-full h-full object-cover"
           />
         </div>
