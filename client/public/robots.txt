@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://peteryuill.art/sitemap.xml
 Sitemap: https://peter-yuill.manus.space/sitemap.xml

@@ -478,3 +478,15 @@
 - [x] Query database for NUVA Luxury commission works
 - [x] Update Commissions.tsx with correct image URLs from database
 - [x] Test all commission images display correctly
+
+## SEO Audit and Updates for Both Domains
+
+- [x] Update sitemap.xml URLs to support both peter-yuill.manus.space and peteryuill.art
+- [x] Update robots.txt to reference both domain sitemaps
+- [x] Update canonical URLs in index.html to use peteryuill.art as primary
+- [x] Update Open Graph og:url to peteryuill.art
+- [x] Update Schema.org structured data URLs to peteryuill.art
+- [x] Add /contact page to sitemap.xml
+- [x] Update sitemap lastmod dates to current date
+- [ ] Verify Google Search Console verification meta tag is added
+- [x] Test sitemap accessibility on both domains
