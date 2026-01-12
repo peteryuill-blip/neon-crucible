@@ -15,11 +15,11 @@ export default function Contact() {
       <div className="space-y-8 pt-8">
         {/* Email */}
         <div className="flex items-start gap-4 group">
-          <div className="w-16 h-16 flex items-center justify-center">
+          <div className="w-16 h-16 flex items-center justify-center flex-shrink-0">
             <img 
               src="/email-neon.jpg" 
               alt="Email icon"
-              className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+              className="w-16 h-16 object-cover rounded-lg group-hover:scale-110 transition-transform duration-300"
             />
           </div>
           <div className="flex-1">
@@ -35,11 +35,11 @@ export default function Contact() {
 
         {/* WhatsApp */}
         <div className="flex items-start gap-4 group">
-          <div className="w-16 h-16 flex items-center justify-center">
+          <div className="w-16 h-16 flex items-center justify-center flex-shrink-0">
             <img 
               src="/whatsapp-neon.jpg" 
               alt="WhatsApp icon"
-              className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+              className="w-16 h-16 object-cover rounded-lg group-hover:scale-110 transition-transform duration-300"
             />
           </div>
           <div className="flex-1">
@@ -57,11 +57,11 @@ export default function Contact() {
 
         {/* Instagram */}
         <div className="flex items-start gap-4 group">
-          <div className="w-16 h-16 flex items-center justify-center">
+          <div className="w-16 h-16 flex items-center justify-center flex-shrink-0">
             <img 
               src="/instagram-neon.jpg" 
               alt="Instagram icon"
-              className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+              className="w-16 h-16 object-cover rounded-lg group-hover:scale-110 transition-transform duration-300"
             />
           </div>
           <div className="flex-1">

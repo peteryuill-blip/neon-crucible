@@ -463,3 +463,9 @@
 - [x] Update Contact.tsx to use custom logo images
 - [x] Add WhatsApp link functionality
 - [x] Test all contact links work properly
+
+## Fix Contact Page Logo Sizing
+
+- [x] Ensure all three neon logos display at same size
+- [x] Use object-cover with fixed dimensions for consistency
+- [x] Test visual alignment across all three contact methods
