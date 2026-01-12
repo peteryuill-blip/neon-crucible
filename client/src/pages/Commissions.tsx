@@ -27,7 +27,7 @@ export default function Commissions() {
       format: "Geometric abstractions",
       materials: "Ink and metallic paint on paper",
       duration: "Multi-year collaboration",
-      image: "",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_1.jpg",
       description: "Curated collection of geometric works for Peninsula Hotels properties. Precision-drawn sacred geometry pieces combining mathematical rigor with spiritual inquiry. Works selected for timeless elegance and architectural harmony.",
       scope: ["Artwork selection", "Custom framing", "Installation coordination", "Collection curation"]
     },
@@ -41,7 +41,7 @@ export default function Commissions() {
       format: "Mixed media abstractions",
       materials: "Ink, gold leaf, mixed media",
       duration: "18 months",
-      image: "",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_1_soho_house_peteryuill.jpg",
       description: "Series of large-format works for Soho House Hong Kong interiors. Balancing bold visual presence with contemplative depth. Works designed to hold attention in high-traffic social spaces while rewarding sustained viewing.",
       scope: ["Site assessment", "Scale planning", "Material selection", "Installation supervision"]
     },
@@ -55,7 +55,7 @@ export default function Commissions() {
       format: "Alignment series",
       materials: "Ink, gold, copper on paper",
       duration: "3 months",
-      image: "",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_1_peteryuill(1).jpg",
       description: "Corporate collection featuring works from the Alignment series. Gold and copper binary geometries encoding metaphysical systems—spirit and matter, eternal and temporal. Professional gravitas meeting philosophical depth.",
       scope: ["Collection design", "Corporate aesthetic alignment", "Delivery and installation"]
     },
@@ -69,7 +69,7 @@ export default function Commissions() {
       format: "Curated selection",
       materials: "Ink on paper, mixed media",
       duration: "Ongoing collaboration",
-      image: "",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Nuva-airport_2019.jpg",
       description: "Curated artworks for luxury residential developments. Works selected for sophisticated collectors seeking contemporary abstraction with philosophical substance. Balancing aesthetic impact with intellectual engagement.",
       scope: ["Collector consultation", "Artwork curation", "Framing and presentation"]
     }
@@ -165,8 +165,20 @@ export default function Commissions() {
 
         <div className="grid grid-cols-1 gap-8 sm:gap-12 max-w-6xl">
           {commissions.slice(1).map((commission, index) => (
-            <div key={index} className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 pb-8 sm:pb-12 border-b border-border last:border-0">
-              <div className="lg:col-span-2 space-y-4 sm:space-y-6">
+            <div key={index} className="space-y-6 sm:space-y-8 pb-8 sm:pb-12 border-b border-border last:border-0">
+              {/* Commission Image */}
+              {commission.image && (
+                <div className="relative aspect-[16/9] overflow-hidden border border-border bg-muted">
+                  <img
+                    src={commission.image}
+                    alt={`Peter Yuill - ${commission.title}, ${commission.materials}, ${commission.client}, ${commission.year}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div className="lg:col-span-2 space-y-4 sm:space-y-6">
                 <div className="space-y-2">
                   <h3 className="text-lg sm:text-2xl font-bold">{commission.title}</h3>
                   <div className="font-mono text-xs sm:text-sm text-primary">
@@ -213,6 +225,7 @@ export default function Commissions() {
                     </div>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           ))}

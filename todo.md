@@ -469,3 +469,12 @@
 - [x] Ensure all three neon logos display at same size
 - [x] Use object-cover with fixed dimensions for consistency
 - [x] Test visual alignment across all three contact methods
+
+## Fix Commissions Page Images
+
+- [x] Query database for Peninsula Hotels commission works
+- [x] Query database for Soho House commission works
+- [x] Query database for JLL commission works
+- [x] Query database for NUVA Luxury commission works
+- [x] Update Commissions.tsx with correct image URLs from database
+- [x] Test all commission images display correctly
