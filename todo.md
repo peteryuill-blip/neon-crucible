@@ -488,5 +488,10 @@
 - [x] Update Schema.org structured data URLs to peteryuill.art
 - [x] Add /contact page to sitemap.xml
 - [x] Update sitemap lastmod dates to current date
-- [ ] Verify Google Search Console verification meta tag is added
+- [x] Verify Google Search Console verification meta tag is added
 - [x] Test sitemap accessibility on both domains
+
+## Google Search Console Verification
+
+- [x] Add Google Search Console verification meta tag to index.html
+- [ ] Verify site ownership in Google Search Console
