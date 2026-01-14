@@ -4,8 +4,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Streamdown } from "streamdown";
+
 
 const ITEMS_PER_PAGE = 12;
 
@@ -70,6 +71,87 @@ export default function Works() {
     const phase = phases.find(p => p.id === phaseId);
     return phase?.code ?? "—";
   };
+
+  // Inject Schema.org structured data when artwork modal opens
+  useEffect(() => {
+    if (!selectedWorkData) return;
+
+    const schema: any = {
+      "@context": "https://schema.org",
+      "@type": "VisualArtwork",
+      "name": selectedWorkData.title,
+      "creator": {
+        "@type": "Person",
+        "name": "Peter Yuill",
+        "jobTitle": "Contemporary Artist",
+        "url": "https://peteryuill.art",
+        "sameAs": [
+          "https://peteryuill.art",
+          "https://peter-yuill.manus.space",
+          "https://instagram.com/peteryuill"
+        ]
+      },
+      "dateCreated": selectedWorkData.dateCreated || undefined,
+      "artMedium": selectedWorkData.technique || undefined,
+      "artform": "Painting",
+      "image": selectedWorkData.imageUrl || undefined,
+      "url": `https://peteryuill.art/works?id=${selectedWorkData.id}`,
+      "isPartOf": selectedWorkData.seriesName ? {
+        "@type": "CreativeWorkSeries",
+        "name": selectedWorkData.seriesName
+      } : undefined,
+      "description": selectedWorkData.neonReading || selectedWorkData.journalExcerpt || `${selectedWorkData.title} by Peter Yuill, ${selectedWorkData.technique || 'contemporary artwork'}, ${selectedWorkData.dateCreated || 'date unknown'}`,
+      "keywords": [
+        "Peter Yuill",
+        "contemporary art",
+        "Bangkok artist",
+        selectedWorkData.technique,
+        selectedWorkData.seriesName,
+        getPhaseCode(selectedWorkData.phaseId),
+        "The Neon Crucible"
+      ].filter(Boolean).join(", "),
+      "inLanguage": "en",
+      "copyrightHolder": {
+        "@type": "Person",
+        "name": "Peter Yuill"
+      },
+      "copyrightYear": selectedWorkData.dateCreated ? new Date(selectedWorkData.dateCreated).getFullYear() : undefined,
+      "license": "All Rights Reserved"
+    };
+
+    // Add dimensions if available
+    if (selectedWorkData.dimensions) {
+      const dimensionMatch = selectedWorkData.dimensions.match(/(\d+)\s*x\s*(\d+)/i);
+      if (dimensionMatch) {
+        const [_, height, width] = dimensionMatch;
+        schema["height"] = {
+          "@type": "QuantitativeValue",
+          "value": height,
+          "unitCode": "CMT"
+        };
+        schema["width"] = {
+          "@type": "QuantitativeValue",
+          "value": width,
+          "unitCode": "CMT"
+        };
+      }
+    }
+
+    // Create and inject schema script tag
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.id = `artwork-schema-${selectedWorkData.id}`;
+    schemaScript.textContent = JSON.stringify(schema, null, 2);
+    document.head.appendChild(schemaScript);
+
+    // Cleanup function
+    return () => {
+      const existingSchema = document.getElementById(`artwork-schema-${selectedWorkData.id}`);
+      if (existingSchema) {
+        existingSchema.remove();
+      }
+    };
+  }, [selectedWorkData, phases]);
 
   const clearFilters = () => {
     setSearch("");
