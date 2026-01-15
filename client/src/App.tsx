@@ -122,7 +122,7 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider
-        defaultTheme="dark"
+        defaultTheme="light"
       >
         <TooltipProvider>
           <Toaster />

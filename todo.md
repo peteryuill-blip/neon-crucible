@@ -503,3 +503,9 @@
 - [x] Implement CreativeWork schema component
 - [x] Add schema markup to artwork detail pages
 - [x] Test structured data with Google Rich Results Test
+
+## Theme Color Updates
+
+- [x] Change global background color to #F2F0E9 in index.css
+- [x] Change primary text color to #1D1D1F in index.css
+- [x] Test color contrast and readability across all pages
