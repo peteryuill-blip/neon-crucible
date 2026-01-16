@@ -52,6 +52,13 @@
   --pigment-charcoal: #1D1D1F;
   --mono-font: 'JetBrains Mono', monospace;
   
+  /* THE 5-STEP WASH */
+  --noboku: #1D1D1F;      /* Heavy Ink - Headings */
+  --chuboku: #4F4F4F;     /* Narrative - Body Text */
+  --tanboku: #8E8E93;     /* Data - Metadata */
+  --ghost-trace: #C7C7CC; /* Structure - Lines/Dividers */
+  /* --substrate-bone is The Ground */
+  
   /* Cyber-Brutalist Monasticism Theme - Light Mode (Inverted) */
   --primary: oklch(0.6 0.15 250); /* Neon Blue-ish */
   --primary-foreground: oklch(0.98 0 0);
@@ -133,6 +140,23 @@
     color: var(--pigment-charcoal) !important;
     font-family: var(--mono-font) !important;
     -webkit-font-smoothing: antialiased;
+  }
+  
+  /* THE 5-STEP WASH */
+  h1, h2, .site-title {
+    color: var(--noboku) !important;
+    font-weight: 700;
+  }
+  p, .description {
+    color: var(--chuboku) !important;
+    line-height: 1.6;
+  }
+  .metadata, .date, .caption {
+    color: var(--tanboku) !important;
+    font-size: 0.8rem;
+  }
+  .grid-lines, .divider, .page-numbers {
+    color: var(--ghost-trace) !important;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),

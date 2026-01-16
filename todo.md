@@ -521,3 +521,11 @@
 - [x] Add custom CSS properties for substrate-bone, pigment-charcoal, and mono-font
 - [x] Add body styles with !important flags for consistent theming
 - [x] Test substrate styles across all pages
+
+## Add 5-Step Wash Ink Hierarchy
+
+- [x] Add Nōboku (heavy ink) styles for h1, h2, site-title
+- [x] Add Chūboku (narrative) styles for p, description
+- [x] Add Tanboku (data) styles for metadata, date, caption
+- [x] Add Ghost Trace (structure) styles for grid-lines, divider, page-numbers
+- [x] Test ink hierarchy across all pages
