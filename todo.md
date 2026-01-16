@@ -515,3 +515,9 @@
 - [x] Add JetBrains Mono font import to index.html
 - [x] Update font-sans to JetBrains Mono in index.css
 - [x] Test font rendering across all pages
+
+## Add Substrate Prep CSS
+
+- [x] Add custom CSS properties for substrate-bone, pigment-charcoal, and mono-font
+- [x] Add body styles with !important flags for consistent theming
+- [x] Test substrate styles across all pages

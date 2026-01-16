@@ -46,7 +46,12 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* SUBSTRATE PREP */
 :root {
+  --substrate-bone: #F2F0E9;
+  --pigment-charcoal: #1D1D1F;
+  --mono-font: 'JetBrains Mono', monospace;
+  
   /* Cyber-Brutalist Monasticism Theme - Light Mode (Inverted) */
   --primary: oklch(0.6 0.15 250); /* Neon Blue-ish */
   --primary-foreground: oklch(0.98 0 0);
@@ -124,7 +129,10 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--substrate-bone) !important;
+    color: var(--pigment-charcoal) !important;
+    font-family: var(--mono-font) !important;
+    -webkit-font-smoothing: antialiased;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
