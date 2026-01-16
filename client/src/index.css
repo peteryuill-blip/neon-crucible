@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "EB Garamond", serif;
+  --font-sans: "JetBrains Mono", monospace;
   --font-mono: "Space Mono", monospace;
   --font-tech: "Share Tech Mono", monospace;
   

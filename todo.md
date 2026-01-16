@@ -509,3 +509,9 @@
 - [x] Change global background color to #F2F0E9 in index.css
 - [x] Change primary text color to #1D1D1F in index.css
 - [x] Test color contrast and readability across all pages
+
+## Replace Font with JetBrains Mono
+
+- [x] Add JetBrains Mono font import to index.html
+- [x] Update font-sans to JetBrains Mono in index.css
+- [x] Test font rendering across all pages
