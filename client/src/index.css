@@ -214,6 +214,25 @@
   /* WRAP NAVIGATION LINKS IN BRACKETS VIA CSS */
   .nav-link::before { content: "["; color: #C7C7CC; }
   .nav-link::after { content: "]"; color: #C7C7CC; }
+  
+  /* STRICT LEFT-ALIGNMENT ENFORCEMENT */
+  /* Force 10% left margin on all major text containers */
+  main, section, article, .container, .content, .wrapper, 
+  [class*="content"], [class*="section"], [class*="container"] {
+    margin-left: 10% !important;
+    margin-right: 5% !important;
+  }
+  
+  /* Kill all center-alignment globally */
+  * {
+    text-align: left !important;
+  }
+  
+  /* Prevent flexbox/grid from centering content */
+  div, section, article, main {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),

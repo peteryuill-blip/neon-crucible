@@ -548,3 +548,9 @@
 - [x] Add link hover states with neon cyan (#00F5FF)
 - [x] Add bracket wrapping for .nav-link with ::before and ::after
 - [x] Test link interactions across all pages
+
+## Enforce Strict Left-Alignment
+
+- [x] Add 10% left margin to all major text containers
+- [x] Disable all center-align properties globally
+- [x] Verify single vertical axis alignment across all pages
