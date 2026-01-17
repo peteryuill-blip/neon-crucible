@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "JetBrains Mono", monospace;
+  --font-sans: "EB Garamond", serif;
   --font-mono: "Space Mono", monospace;
   --font-tech: "Share Tech Mono", monospace;
   
@@ -46,19 +46,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* SUBSTRATE PREP */
 :root {
-  --substrate-bone: #F2F0E9;
-  --pigment-charcoal: #1D1D1F;
-  --mono-font: 'JetBrains Mono', monospace;
-  
-  /* THE 5-STEP WASH */
-  --noboku: #1D1D1F;      /* Heavy Ink - Headings */
-  --chuboku: #4F4F4F;     /* Narrative - Body Text */
-  --tanboku: #8E8E93;     /* Data - Metadata */
-  --ghost-trace: #C7C7CC; /* Structure - Lines/Dividers */
-  /* --substrate-bone is The Ground */
-  
   /* Cyber-Brutalist Monasticism Theme - Light Mode (Inverted) */
   --primary: oklch(0.6 0.15 250); /* Neon Blue-ish */
   --primary-foreground: oklch(0.98 0 0);
@@ -70,25 +58,25 @@
   --chart-4: oklch(0.8 0.1 80);
   --chart-5: oklch(0.5 0.1 250);
   --radius: 0rem; /* Brutalist - no rounded corners */
-  --background: oklch(0.948 0.008 85); /* #F2F0E9 warm off-white */
-  --foreground: oklch(0.145 0 0); /* #1D1D1F near-black */
-  --card: oklch(0.948 0.008 85);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(0.948 0.008 85);
-  --popover-foreground: oklch(0.145 0 0);
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.1 0 0);
+  --card: oklch(0.98 0 0);
+  --card-foreground: oklch(0.1 0 0);
+  --popover: oklch(0.98 0 0);
+  --popover-foreground: oklch(0.1 0 0);
   --secondary: oklch(0.9 0 0);
-  --secondary-foreground: oklch(0.145 0 0);
+  --secondary-foreground: oklch(0.1 0 0);
   --muted: oklch(0.9 0 0);
   --muted-foreground: oklch(0.4 0 0);
   --accent: oklch(0.9 0 0);
-  --accent-foreground: oklch(0.145 0 0);
+  --accent-foreground: oklch(0.1 0 0);
   --destructive: oklch(0.6 0.2 20);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.1 0 0);
   --input: oklch(0.1 0 0);
   --ring: oklch(0.1 0 0);
   --sidebar: oklch(0.95 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-foreground: oklch(0.1 0 0);
   --sidebar-accent: oklch(0.9 0 0);
   --sidebar-accent-foreground: oklch(0.1 0 0);
   --sidebar-border: oklch(0.1 0 0);
@@ -136,102 +124,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    background-color: var(--substrate-bone) !important;
-    color: var(--pigment-charcoal) !important;
-    font-family: var(--mono-font) !important;
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  /* THE 5-STEP WASH */
-  h1, h2, .site-title {
-    color: var(--noboku) !important;
-    font-weight: 700;
-  }
-  p, .description {
-    color: var(--chuboku) !important;
-    line-height: 1.6;
-  }
-  .metadata, .date, .caption {
-    color: var(--tanboku) !important;
-    font-size: 0.8rem;
-  }
-  .grid-lines, .divider, .page-numbers {
-    color: var(--ghost-trace) !important;
-  }
-  
-  /* THE ARCHIVE GUTTER */
-  #main-content, .entry-content, .post-content, .section-inner {
-    margin-left: 10% !important;
-    margin-right: 5% !important;
-    max-width: 900px !important;
-    text-align: left !important;
-  }
-  
-  /* KILL CENTERED HEADINGS ONLY */
-  h1, h2, h3, h4, h5, h6, p, blockquote {
-    text-align: left !important;
-    align-self: flex-start !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
-  }
-  
-  /* THE WEIGHT LADDER */
-  /* NŌBOKU (HEAVY STRIKE) */
-  .site-title, h1 {
-    font-size: clamp(2rem, 8vw, 5rem) !important;
-    line-height: 0.85 !important;
-    letter-spacing: -3px !important;
-    text-transform: uppercase;
-    color: #1D1D1F !important;
-  }
-  
-  /* CHŪBOKU (NARRATIVE) */
-  p, .description {
-    font-size: 1.1rem !important;
-    line-height: 1.6 !important;
-    color: #4F4F4F !important;
-    max-width: 65ch !important;
-  }
-  
-  /* TANBOKU (DATA) */
-  .metadata, .wp-block-post-date, .caption {
-    font-size: 0.75rem !important;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #8E8E93 !important;
-  }
-  
-  /* DATA CHANNEL STYLING */
-  a {
-    text-decoration: none !important;
-    transition: all 0.2s ease;
-  }
-  
-  a:hover {
-    color: #00F5FF !important; /* Neon Trace */
-  }
-  
-  /* WRAP NAVIGATION LINKS IN BRACKETS VIA CSS */
-  .nav-link::before { content: "["; color: #C7C7CC; }
-  .nav-link::after { content: "]"; color: #C7C7CC; }
-  
-  /* STRICT LEFT-ALIGNMENT ENFORCEMENT */
-  /* Force 10% left margin on all major text containers */
-  main, section, article, .container, .content, .wrapper, 
-  [class*="content"], [class*="section"], [class*="container"] {
-    margin-left: 10% !important;
-    margin-right: 5% !important;
-  }
-  
-  /* Kill all center-alignment globally */
-  * {
-    text-align: left !important;
-  }
-  
-  /* Prevent flexbox/grid from centering content */
-  div, section, article, main {
-    justify-content: flex-start !important;
-    align-items: flex-start !important;
+    @apply bg-background text-foreground;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
