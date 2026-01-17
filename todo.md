@@ -535,3 +535,10 @@
 - [x] Add Archive Gutter margins (10% left, 5% right) to main content areas
 - [x] Kill centered headings with left-align and flex-start
 - [x] Test asymmetric layout across all pages
+
+## Add Weight Ladder Typography
+
+- [x] Add Nōboku (heavy strike) styles with clamp sizing and tight tracking
+- [x] Add Chūboku (narrative) styles with optimal line-height and 65ch max-width
+- [x] Add Tanboku (data) styles with uppercase and expanded letter-spacing
+- [x] Test typographic hierarchy across all pages
