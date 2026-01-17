@@ -529,3 +529,9 @@
 - [x] Add Tanboku (data) styles for metadata, date, caption
 - [x] Add Ghost Trace (structure) styles for grid-lines, divider, page-numbers
 - [x] Test ink hierarchy across all pages
+
+## Add Archive Gutter Layout
+
+- [x] Add Archive Gutter margins (10% left, 5% right) to main content areas
+- [x] Kill centered headings with left-align and flex-start
+- [x] Test asymmetric layout across all pages

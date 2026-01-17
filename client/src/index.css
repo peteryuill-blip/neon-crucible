@@ -158,6 +158,22 @@
   .grid-lines, .divider, .page-numbers {
     color: var(--ghost-trace) !important;
   }
+  
+  /* THE ARCHIVE GUTTER */
+  #main-content, .entry-content, .post-content, .section-inner {
+    margin-left: 10% !important;
+    margin-right: 5% !important;
+    max-width: 900px !important;
+    text-align: left !important;
+  }
+  
+  /* KILL CENTERED HEADINGS ONLY */
+  h1, h2, h3, h4, h5, h6, p, blockquote {
+    text-align: left !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
