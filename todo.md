@@ -542,3 +542,9 @@
 - [x] Add Chūboku (narrative) styles with optimal line-height and 65ch max-width
 - [x] Add Tanboku (data) styles with uppercase and expanded letter-spacing
 - [x] Test typographic hierarchy across all pages
+
+## Add Data Channel Styling
+
+- [x] Add link hover states with neon cyan (#00F5FF)
+- [x] Add bracket wrapping for .nav-link with ::before and ::after
+- [x] Test link interactions across all pages
