@@ -101,6 +101,7 @@ export const appRouter = router({
         technique: z.string().optional(),
         emotionalRegister: z.string().optional(),
         seriesName: z.string().optional(),
+        featured: z.boolean().optional(), // Filter by featured/selected works
         search: z.string().optional(),
         sortBy: z.enum(['phase', 'date_newest', 'date_oldest', 'title', 'random']).optional().default('date_newest'),
         limit: z.number().min(1).max(100).optional().default(12),
@@ -141,6 +142,7 @@ export const appRouter = router({
         journalExcerpt: z.string().optional(),
         neonReading: z.string().optional(),
         seriesName: z.string().optional(),
+        featured: z.boolean().optional(), // Mark as featured/selected work
         isPublished: z.boolean().optional(),
         sortOrder: z.number().optional(),
       }))
@@ -165,6 +167,7 @@ export const appRouter = router({
         journalExcerpt: z.string().optional(),
         neonReading: z.string().optional(),
         seriesName: z.string().optional(),
+        featured: z.boolean().optional(), // Mark as featured/selected work
         isPublished: z.boolean().optional(),
         sortOrder: z.number().optional(),
       }))

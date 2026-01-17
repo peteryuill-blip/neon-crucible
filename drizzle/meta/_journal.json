@@ -43,6 +43,13 @@
       "when": 1767816489045,
       "tag": "0005_lying_riptide",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1768691033883,
+      "tag": "0006_fancy_bishop",
+      "breakpoints": true
     }
   ]
 }

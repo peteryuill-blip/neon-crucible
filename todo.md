@@ -503,3 +503,10 @@
 - [x] Implement CreativeWork schema component
 - [x] Add schema markup to artwork detail pages
 - [x] Test structured data with Google Rich Results Test
+
+## Add Featured Works Field to Database
+
+- [x] Add 'featured' boolean field to works table in drizzle/schema.ts
+- [x] Run pnpm db:push to apply migration
+- [x] Update backend procedures to support featured filtering
+- [x] Test featured field in database

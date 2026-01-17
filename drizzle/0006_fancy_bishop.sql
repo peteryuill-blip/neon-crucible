@@ -1,0 +1,1 @@
+ALTER TABLE `works` ADD `featured` boolean DEFAULT false NOT NULL;

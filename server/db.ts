@@ -146,6 +146,7 @@ export interface WorksFilter {
   technique?: string;
   emotionalRegister?: string;
   seriesName?: string;
+  featured?: boolean; // Filter by featured/selected works
   search?: string;
   isPublished?: boolean;
   limit?: number;
@@ -170,6 +171,9 @@ export async function getWorks(filter: WorksFilter = {}): Promise<Work[]> {
   }
   if (filter.seriesName) {
     conditions.push(eq(works.seriesName, filter.seriesName));
+  }
+  if (filter.featured !== undefined) {
+    conditions.push(eq(works.featured, filter.featured));
   }
   if (filter.isPublished !== undefined) {
     conditions.push(eq(works.isPublished, filter.isPublished));

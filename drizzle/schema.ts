@@ -55,6 +55,7 @@ export const works = mysqlTable("works", {
   journalExcerpt: text("journalExcerpt"), // Quote from artist's journal
   neonReading: text("neonReading"), // Neon's curatorial interpretation
   seriesName: varchar("seriesName", { length: 128 }), // e.g., "Covenant triptych", "Big Bang"
+  featured: boolean("featured").default(false).notNull(), // Manually curated featured/selected works
   isPublished: boolean("isPublished").default(true).notNull(),
   sortOrder: int("sortOrder").notNull().default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
