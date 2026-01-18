@@ -510,3 +510,10 @@
 - [x] Run pnpm db:push to apply migration
 - [x] Update backend procedures to support featured filtering
 - [x] Test featured field in database
+
+## Refine Dark Theme Colors
+
+- [x] Change --background to deep charcoal oklch(0.12 0 0)
+- [x] Change --card and --popover to lighter charcoal oklch(0.16 0 0)
+- [x] Change --foreground to warmer off-white oklch(0.92 0 0)
+- [x] Test color changes across all pages
