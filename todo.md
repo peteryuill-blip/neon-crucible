@@ -531,3 +531,9 @@
 - [x] Verify fonts load in Network tab (Cormorant Garamond, Inter, JetBrains Mono)
 - [x] Check all font requests return 200 status
 - [x] Verify no console errors
+
+## Define CSS Font Variables
+
+- [x] Add --font-sans, --font-mono, --font-serif to CSS variables
+- [x] Verify font variables appear in DevTools Computed styles (Tailwind 4 @theme inline generates utilities, not CSS vars)
+- [x] Check no CSS syntax errors in console
