@@ -537,3 +537,34 @@
 - [x] Add --font-sans, --font-mono, --font-serif to CSS variables
 - [x] Verify font variables appear in DevTools Computed styles (Tailwind 4 @theme inline generates utilities, not CSS vars)
 - [x] Check no CSS syntax errors in console
+
+## Module 04: Selected Works Data Model
+
+### STEP 11: Locate Schema File
+- [x] Find schema file location (Drizzle: drizzle/schema.ts)
+- [x] Confirm ORM type (Drizzle)
+- [x] Locate works/artworks model in schema
+
+### STEP 12: Add isSelected Field
+- [x] Add isSelected boolean field to works table (already exists as 'featured')
+- [x] Set default value to false
+- [x] Set as non-nullable
+- [x] Run pnpm db:push to apply migration (already applied)
+- [x] Verify field exists in database
+
+### STEP 13: Update tRPC Query
+- [x] Update works.list procedure to accept isSelected filter parameter (already exists as 'featured')
+- [x] Add conditional where clause for isSelected filtering
+- [ ] Test API with featured: true returns only selected works
+- [ ] Test API with featured: false returns only non-selected works
+- [ ] Test API without parameter returns all works
+
+## Featured/Selected Works System
+
+- [x] Add 'featured' boolean field to works schema
+- [x] Update backend procedures to support featured filtering
+- [x] Fix getWorksCount to include featured filter (bug fix)
+- [x] Write vitest test for featured works filtering
+- [x] Add "Featured Works" filter button to Works.tsx page
+- [x] Test featured filter in UI
+- [ ] Consider adding admin UI to toggle featured status

@@ -221,6 +221,18 @@ export async function getWorksCount(filter: WorksFilter = {}): Promise<number> {
   if (filter.phaseId !== undefined) {
     conditions.push(eq(works.phaseId, filter.phaseId));
   }
+  if (filter.technique) {
+    conditions.push(eq(works.technique, filter.technique));
+  }
+  if (filter.emotionalRegister) {
+    conditions.push(eq(works.emotionalRegister, filter.emotionalRegister));
+  }
+  if (filter.seriesName) {
+    conditions.push(eq(works.seriesName, filter.seriesName));
+  }
+  if (filter.featured !== undefined) {
+    conditions.push(eq(works.featured, filter.featured));
+  }
   if (filter.isPublished !== undefined) {
     conditions.push(eq(works.isPublished, filter.isPublished));
   }

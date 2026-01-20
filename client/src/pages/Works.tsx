@@ -17,6 +17,7 @@ export default function Works() {
   const [phaseFilter, setPhaseFilter] = useState<string>("all");
   const [techniqueFilter, setTechniqueFilter] = useState<string>("all");
   const [seriesFilter, setSeriesFilter] = useState<string>("all");
+  const [featuredOnly, setFeaturedOnly] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>("date_newest");
   const [page, setPage] = useState(0);
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
@@ -38,12 +39,13 @@ export default function Works() {
     phaseId: phaseFilter !== "all" ? parseInt(phaseFilter) : undefined,
     technique: techniqueFilter !== "all" ? techniqueFilter : undefined,
     seriesName: seriesFilter !== "all" ? seriesFilter : undefined,
+    featured: featuredOnly || undefined,
     sortBy: sortBy,
     limit: ITEMS_PER_PAGE,
     offset: page * ITEMS_PER_PAGE,
     // Include randomSeed in dependency to trigger refetch on shuffle
     _seed: sortBy === 'random' ? randomSeed : undefined,
-  }), [search, phaseFilter, techniqueFilter, seriesFilter, sortBy, page, randomSeed]);
+  }), [search, phaseFilter, techniqueFilter, seriesFilter, featuredOnly, sortBy, page, randomSeed]);
 
   // Fetch works with filters
   const { data: worksData, isLoading, refetch } = trpc.works.list.useQuery(filter);
@@ -158,6 +160,7 @@ export default function Works() {
     setPhaseFilter("all");
     setTechniqueFilter("all");
     setSeriesFilter("all");
+    setFeaturedOnly(false);
     setPage(0);
   };
 
@@ -167,8 +170,8 @@ export default function Works() {
     refetch();
   };
 
-  const hasActiveFilters = search || phaseFilter !== "all" || techniqueFilter !== "all" || seriesFilter !== "all";
-  const activeFilterCount = [search, phaseFilter !== "all", techniqueFilter !== "all", seriesFilter !== "all"].filter(Boolean).length;
+  const hasActiveFilters = search || phaseFilter !== "all" || techniqueFilter !== "all" || seriesFilter !== "all" || featuredOnly;
+  const activeFilterCount = [search, phaseFilter !== "all", techniqueFilter !== "all", seriesFilter !== "all", featuredOnly].filter(Boolean).length;
 
   const sortOptions = [
     { value: 'phase', label: 'BY PHASE (NE→PH1)' },
@@ -254,6 +257,20 @@ export default function Works() {
             </SelectContent>
           </Select>
           
+          {/* Featured Works Toggle */}
+          <Button
+            variant={featuredOnly ? "default" : "outline"}
+            size="sm"
+            className="rounded-none border-muted-foreground/30 font-mono text-[10px] sm:text-xs gap-1 h-8 sm:h-9 px-2 sm:px-3"
+            onClick={() => {
+              setFeaturedOnly(!featuredOnly);
+              setPage(0);
+            }}
+          >
+            <span className="hidden sm:inline">FEATURED</span>
+            <span className="sm:hidden">★</span>
+          </Button>
+
           {/* Shuffle button for random mode */}
           {sortBy === 'random' && (
             <Button
