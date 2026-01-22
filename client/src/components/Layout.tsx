@@ -8,18 +8,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [systemExpanded, setSystemExpanded] = useState(false);
 
-  const navItems = [
-    { href: "/", label: "THRESHOLD", icon: Home },
-    { href: "/neon", label: "NEON", icon: Eye },
-    { href: "/works", label: "WORKS", icon: Grid },
-    { href: "/dashboard", label: "DASHBOARD", icon: Activity },
-    { href: "/archive", label: "ARCHIVE", icon: Archive },
-    { href: "/statistics", label: "STATISTICS", icon: BarChart3 },
-    { href: "/commissions", label: "COMMISSIONS", icon: Briefcase },
-    { href: "/voices", label: "VOICES", icon: Quote },
-    { href: "/about", label: "ABOUT", icon: User },
-    { href: "/contact", label: "CONTACT", icon: Mail },
+  // STUDIO group - always visible
+  const studioItems = [
+    { href: "/works", label: "Works", icon: Grid },
+    { href: "/about", label: "About", icon: User },
+    { href: "/voices", label: "Press", icon: Quote },
+    { href: "/contact", label: "Contact", icon: Mail },
+    { href: "/commissions", label: "Commissions", icon: Briefcase },
+  ];
+
+  // SYSTEM group - collapsible on mobile
+  const systemItems = [
+    { href: "/", label: "Threshold", icon: Home },
+    { href: "/neon", label: "Neon", icon: Eye },
+    { href: "/archive", label: "Archive", icon: Archive },
+    { href: "/statistics", label: "Statistics", icon: BarChart3 },
+    { href: "/dashboard", label: "Dashboard", icon: Activity },
   ];
 
   return (
@@ -68,26 +74,67 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {mobileMenuOpen && (
         <div className="md:hidden fixed inset-0 z-40 bg-background/98 pt-16">
           <nav className="flex flex-col p-6 space-y-6">
-            {navItems.map((item) => {
-              const isActive = location === item.href;
-              return (
-                <Link 
-                  key={item.href} 
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <div
-                    className={cn(
-                      "flex items-center gap-4 py-2",
-                      isActive ? "text-primary" : "text-muted-foreground"
-                    )}
-                  >
-                    <item.icon className="w-5 h-5" />
-                    <span className="font-mono text-lg tracking-widest">{item.label}</span>
-                  </div>
-                </Link>
-              );
-            })}
+            {/* STUDIO GROUP - Always visible */}
+            <div className="nav-group">
+              <p className="font-mono text-xs uppercase tracking-wider text-muted mb-3">
+                STUDIO
+              </p>
+              <div className="space-y-3">
+                {studioItems.map((item) => {
+                  const isActive = location === item.href;
+                  return (
+                    <Link 
+                      key={item.href} 
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div
+                        className={cn(
+                          "flex items-center gap-4 py-1",
+                          isActive ? "text-primary font-medium" : "text-foreground hover:text-secondary"
+                        )}
+                      >
+                        <item.icon className="w-4 h-4" />
+                        <span className="text-sm">{item.label}</span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* SYSTEM GROUP - Collapsible on mobile */}
+            <div className="nav-group">
+              <button
+                onClick={() => setSystemExpanded(!systemExpanded)}
+                className="w-full flex items-center justify-between font-mono text-xs uppercase tracking-wider text-muted mb-3"
+              >
+                <span>SYSTEM</span>
+                <span>{systemExpanded ? '−' : '+'}</span>
+              </button>
+              <div className={`space-y-3 ${systemExpanded ? 'block' : 'hidden'}`}>
+                {systemItems.map((item) => {
+                  const isActive = location === item.href;
+                  return (
+                    <Link 
+                      key={item.href} 
+                      href={item.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div
+                        className={cn(
+                          "flex items-center gap-4 py-1",
+                          isActive ? "text-primary font-medium" : "text-foreground hover:text-secondary"
+                        )}
+                      >
+                        <item.icon className="w-4 h-4" />
+                        <span className="text-sm">{item.label}</span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
           </nav>
           <div className="absolute bottom-8 left-6 font-mono text-[10px] text-muted-foreground">
             <p>OPERATIONAL ARCHIVE</p>
@@ -101,23 +148,57 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Sidebar Navigation - Desktop Only */}
         <nav className="hidden md:flex flex-col w-56 lg:w-64 border-r border-border bg-sidebar p-4 lg:p-6 pt-24 fixed h-full z-40">
           <div className="space-y-6 lg:space-y-8">
-            {navItems.map((item) => {
-              const isActive = location === item.href;
-              return (
-                <Link key={item.href} href={item.href}>
-                  <div
-                    className={cn(
-                      "group flex items-center gap-3 lg:gap-4 cursor-pointer transition-all duration-300",
-                      isActive ? "text-primary translate-x-2" : "text-muted-foreground hover:text-foreground hover:translate-x-1"
-                    )}
-                  >
-                    <item.icon className={cn("w-4 h-4 shrink-0", isActive && "animate-pulse")} />
-                    <span className="font-mono text-xs lg:text-sm tracking-widest truncate">{item.label}</span>
-                    {isActive && <span className="ml-auto text-xs animate-blink hidden lg:inline">_</span>}
-                  </div>
-                </Link>
-              );
-            })}
+            {/* STUDIO GROUP */}
+            <div className="nav-group">
+              <p className="font-mono text-xs uppercase tracking-wider text-muted mb-3">
+                STUDIO
+              </p>
+              <div className="space-y-4">
+                {studioItems.map((item) => {
+                  const isActive = location === item.href;
+                  return (
+                    <Link key={item.href} href={item.href}>
+                      <div
+                        className={cn(
+                          "group flex items-center gap-3 lg:gap-4 cursor-pointer transition-all duration-300",
+                          isActive ? "text-primary translate-x-2" : "text-muted-foreground hover:text-secondary hover:translate-x-1"
+                        )}
+                      >
+                        <item.icon className={cn("w-4 h-4 shrink-0", isActive && "animate-pulse")} />
+                        <span className="text-sm truncate">{item.label}</span>
+                        {isActive && <span className="ml-auto text-xs animate-blink hidden lg:inline">_</span>}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* SYSTEM GROUP - Always expanded on desktop */}
+            <div className="nav-group">
+              <p className="font-mono text-xs uppercase tracking-wider text-muted mb-3">
+                SYSTEM
+              </p>
+              <div className="space-y-4">
+                {systemItems.map((item) => {
+                  const isActive = location === item.href;
+                  return (
+                    <Link key={item.href} href={item.href}>
+                      <div
+                        className={cn(
+                          "group flex items-center gap-3 lg:gap-4 cursor-pointer transition-all duration-300",
+                          isActive ? "text-primary translate-x-2" : "text-muted-foreground hover:text-secondary hover:translate-x-1"
+                        )}
+                      >
+                        <item.icon className={cn("w-4 h-4 shrink-0", isActive && "animate-pulse")} />
+                        <span className="text-sm truncate">{item.label}</span>
+                        {isActive && <span className="ml-auto text-xs animate-blink hidden lg:inline">_</span>}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           <div className="mt-auto pt-8 space-y-6">
