@@ -50,7 +50,7 @@ export default function Home() {
         
         {/* Card 1 - WORK ARCHIVE */}
         <Link href="/works" className="block">
-          <div className="bg-card p-6 sm:p-8 space-y-3 sm:space-y-4 hover:bg-muted/10 transition-colors group relative overflow-hidden cursor-pointer h-full border border-border sm:border-0 sm:border-r sm:border-border/50 hover:border-primary/30">
+          <div className="bg-card p-6 sm:p-8 space-y-3 sm:space-y-4 transition-colors duration-150 group relative overflow-hidden cursor-pointer h-full border border-border sm:border-0 sm:border-r sm:border-border/50 hover:border-primary">
             <div className="absolute top-0 right-0 p-3 sm:p-4 opacity-50 sm:opacity-20 group-hover:opacity-100 transition-opacity">
               <span className="font-mono text-[10px] sm:text-xs border border-primary px-1 text-primary">SYS.01</span>
             </div>
@@ -68,7 +68,7 @@ export default function Home() {
 
         {/* Card 2 - DEEP ARCHIVE */}
         <Link href="/archive" className="block">
-          <div className="bg-card p-6 sm:p-8 space-y-3 sm:space-y-4 hover:bg-muted/10 transition-colors group relative overflow-hidden cursor-pointer h-full border border-border sm:border-0 sm:border-r sm:border-border/50 hover:border-primary/30">
+          <div className="bg-card p-6 sm:p-8 space-y-3 sm:space-y-4 transition-colors duration-150 group relative overflow-hidden cursor-pointer h-full border border-border sm:border-0 sm:border-r sm:border-border/50 hover:border-primary">
             <div className="absolute top-0 right-0 p-3 sm:p-4 opacity-50 sm:opacity-20 group-hover:opacity-100 transition-opacity">
               <span className="font-mono text-[10px] sm:text-xs border border-primary px-1 text-primary">SYS.02</span>
             </div>
@@ -86,7 +86,7 @@ export default function Home() {
 
         {/* Card 3 - WEEKLY PROTOCOL */}
         <Link href="/dashboard" className="block sm:col-span-2 md:col-span-1">
-          <div className="bg-card p-6 sm:p-8 space-y-3 sm:space-y-4 hover:bg-muted/10 transition-colors group relative overflow-hidden cursor-pointer h-full border border-border sm:border-0 hover:border-primary/30">
+          <div className="bg-card p-6 sm:p-8 space-y-3 sm:space-y-4 transition-colors duration-150 group relative overflow-hidden cursor-pointer h-full border border-border sm:border-0 hover:border-primary">
             <div className="absolute top-0 right-0 p-3 sm:p-4 opacity-50 sm:opacity-20 group-hover:opacity-100 transition-opacity">
               <span className="font-mono text-[10px] sm:text-xs border border-primary px-1 text-primary">SYS.03</span>
             </div>
