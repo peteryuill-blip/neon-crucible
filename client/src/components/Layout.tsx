@@ -31,15 +31,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
       {/* Sticky Metadata Corners - Hidden on very small screens */}
-      <div className="hidden sm:block fixed top-4 left-4 z-50 font-mono text-[10px] sm:text-xs text-muted-foreground pointer-events-none mix-blend-difference">
+      <div className="hidden sm:block fixed top-4 left-4 z-50 font-mono text-[10px] sm:text-xs text-muted-foreground pointer-events-none mix-blend-difference opacity-60">
         <span className="block">SYS.STATUS: ONLINE</span>
         <span className="block truncate max-w-[120px] sm:max-w-none">LOC: {location.toUpperCase()}</span>
       </div>
-      <div className="hidden sm:block fixed top-4 right-4 z-50 font-mono text-[10px] sm:text-xs text-muted-foreground pointer-events-none mix-blend-difference text-right">
+      <div className="hidden sm:block fixed top-4 right-4 z-50 font-mono text-[10px] sm:text-xs text-muted-foreground pointer-events-none mix-blend-difference opacity-60 text-right">
         <span className="block">PETER YUILL</span>
         <span className="block">2018—2025</span>
       </div>
-      <div className="hidden md:block fixed bottom-4 left-4 z-50 font-mono text-xs text-muted-foreground pointer-events-none mix-blend-difference">
+      <div className="hidden md:block fixed bottom-4 left-4 z-50 font-mono text-xs text-muted-foreground pointer-events-none mix-blend-difference opacity-60">
         <span className="block">CRUCIBLE YEAR</span>
         <span className="block">BANGKOK</span>
       </div>
@@ -224,8 +224,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {/* Main Content Area */}
         <main className="flex-1 md:ml-56 lg:ml-64 px-4 sm:px-6 md:px-8 lg:px-12 pt-20 md:pt-24 pb-8 min-h-screen relative">
           {/* Scanline Effect Overlay */}
-          <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat mix-blend-overlay"></div>
-          <div className="fixed inset-0 pointer-events-none z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-[1] bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
+          <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.015] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat mix-blend-overlay"></div>
+          <div className="fixed inset-0 pointer-events-none z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.12)_50%),linear-gradient(90deg,rgba(255,0,0,0.03),rgba(0,255,0,0.01),rgba(0,0,255,0.03))] z-[1] bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
           
           <div className="relative z-10 max-w-5xl mx-auto animate-in fade-in duration-700 slide-in-from-bottom-4">
             {children}
