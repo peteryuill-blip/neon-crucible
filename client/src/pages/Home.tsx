@@ -1,10 +1,20 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 export default function Home() {
   const { user, loading, isAuthenticated } = useAuth();
+  
+  // Query for featured works
+  const { data: featuredWorksData, isLoading: isLoadingWorks } = trpc.works.list.useQuery({
+    featured: true,
+    limit: 12,
+  });
+  
+  const displayWorks = featuredWorksData?.items || [];
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-16 sm:pb-24">
@@ -42,6 +52,63 @@ export default function Home() {
             </Button>
           </Link>
         </div>
+      </section>
+
+      {/* Featured Works Grid */}
+      <section className="space-y-6 sm:space-y-8">
+        <h2 className="font-mono text-xs sm:text-sm text-muted uppercase tracking-widest">
+          Selected Works
+        </h2>
+        
+        {isLoadingWorks ? (
+          <div className="flex justify-center items-center py-12 sm:py-16">
+            <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primary" />
+          </div>
+        ) : displayWorks.length === 0 ? (
+          <div className="text-center py-12 sm:py-16 space-y-4">
+            <p className="text-muted-foreground">No works currently selected</p>
+            <Link href="/works">
+              <Button variant="outline" className="font-mono">
+                VIEW FULL ARCHIVE
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+              {displayWorks.map((work) => (
+                <Link key={work.id} href={`/works/${work.id}`}>
+                  <Card className="group overflow-hidden h-full">
+                    <div className="aspect-square overflow-hidden">
+                      <img 
+                        src={work.thumbnailUrl || work.imageUrl || '/placeholder.png'} 
+                        alt={work.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-3 sm:p-4 space-y-1">
+                      <h3 className="text-sm font-serif line-clamp-1 group-hover:text-primary transition-colors">
+                        {work.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground font-mono">
+                        {work.dateCreated}
+                        {work.technique && ` • ${work.technique}`}
+                      </p>
+                    </div>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+            
+            <div className="text-center pt-4 sm:pt-6">
+              <Link href="/works">
+                <Button variant="outline" className="font-mono text-xs sm:text-sm">
+                  VIEW FULL ARCHIVE <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
+                </Button>
+              </Link>
+            </div>
+          </>
+        )}
       </section>
 
       {/* Three Systems Grid */}
