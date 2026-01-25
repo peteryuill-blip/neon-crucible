@@ -170,18 +170,30 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Manifesto Section */}
-      <section className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8 px-4">
-        <h2 className="sr-only">Artist Statement and Manifesto</h2>
-        <div className="w-px h-12 sm:h-16 bg-gradient-to-b from-transparent via-primary to-transparent mx-auto"></div>
-        <blockquote className="font-serif text-lg sm:text-2xl md:text-3xl italic text-muted-foreground leading-relaxed">
-          <div>"Every time someone dies, a library burns down."</div>
-          <div className="mt-3">She said it twenty years ago.</div>
-          <div>It has followed me ever since.</div>
-          <div className="mt-4">This is mine. While I'm still here.</div>
-        </blockquote>
-        <div className="font-mono text-[10px] sm:text-xs tracking-widest text-muted-foreground/50">
-          EST. 2025 // BANGKOK
+      {/* Quote Block */}
+      <section className="py-16 px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          {/* Top decorative line */}
+          <div className="h-px bg-secondary w-16 mx-auto mb-8"></div>
+          
+          {/* Main quote */}
+          <blockquote className="font-serif italic text-xl md:text-2xl leading-relaxed">
+            "Every time someone dies, a library burns down."
+          </blockquote>
+          
+          {/* Attribution */}
+          <p className="mt-4 text-muted text-sm md:text-base leading-relaxed">
+            She said it twenty years ago.<br />
+            It has followed me ever since.
+          </p>
+          
+          {/* Coda */}
+          <p className="mt-4 font-serif text-base md:text-lg">
+            This is mine. While I'm still here.
+          </p>
+          
+          {/* Bottom decorative line */}
+          <div className="h-px bg-secondary w-16 mx-auto mt-8"></div>
         </div>
       </section>
     </div>
