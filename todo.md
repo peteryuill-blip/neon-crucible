@@ -585,3 +585,9 @@
 - [x] Update database with working image URLs
 - [x] Verify all 6 featured works display correctly
 - [x] Click through each work to confirm images load
+
+## Add Canonical URL Tag for SEO
+
+- [x] Add canonical link tag to client/index.html in head section
+- [x] Use https://peteryuill.art/ with trailing slash
+- [x] Save checkpoint and deploy
