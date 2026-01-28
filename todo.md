@@ -576,3 +576,12 @@
 - [x] Add to featured: Thr3e, Covenant series, Big Bang selection
 - [x] Verify final count is 5-6 definition specimens (6 total)
 - [x] Test display on homepage
+
+## Fix Featured Works Image 404 Errors
+
+- [x] Investigate why S3 uploaded images return 404 (overwrote existing image URLs)
+- [x] Check if Tidal image is also affected or only new uploads (Tidal was missing thumbnailUrl)
+- [x] Re-upload images with correct S3 configuration (restored original imageKey URLs)
+- [x] Update database with working image URLs
+- [x] Verify all 6 featured works display correctly
+- [x] Click through each work to confirm images load
