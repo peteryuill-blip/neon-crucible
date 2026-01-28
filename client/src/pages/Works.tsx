@@ -187,7 +187,7 @@ export default function Works() {
       <header className="flex flex-col gap-4 sm:gap-6 border-b border-border pb-6 sm:pb-8">
         <div className="flex items-start sm:items-end justify-between gap-4">
           <div className="space-y-1 sm:space-y-2 min-w-0">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tighter">WORK ARCHIVE</h1>
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-light tracking-tighter">WORK ARCHIVE</h1>
             <p className="font-mono text-xs sm:text-sm text-muted-foreground">
               INDEXING {totalWorks} WORKS [2018—2025]
             </p>

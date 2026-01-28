@@ -24,13 +24,13 @@ export default function Home() {
           666
         </div>
         
-        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] mix-blend-difference">
+        <h1 className="text-5xl sm:text-6xl md:text-8xl font-light tracking-tighter leading-[0.9] mix-blend-difference">
           <span className="block text-muted-foreground font-mono text-base sm:text-xl tracking-widest mb-4">PROJECT 666</span>
           THE <span className="text-primary">NEON</span><br />
           CRUCIBLE
         </h1>
         
-        <div className="max-w-2xl space-y-6 text-base sm:text-lg md:text-xl leading-relaxed font-serif text-muted-foreground border-l-2 border-primary/50 pl-6">
+        <div className="max-w-2xl space-y-6 text-base sm:text-lg md:text-xl leading-relaxed font-sans text-muted-foreground border-l-2 border-primary/50 pl-6">
           <p>
             You have entered a working temple for a 7-year artistic practice that has converged into its threshold year.
           </p>

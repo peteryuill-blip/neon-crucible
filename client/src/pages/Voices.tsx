@@ -98,7 +98,7 @@ export default function Press() {
                   {clipping.excerpt && (
                     <div className="relative pl-4 border-l-2 border-muted mb-4">
                       <Quote className="absolute -left-2 -top-1 w-4 h-4 text-muted-foreground/50" />
-                      <p className="text-sm leading-relaxed text-muted-foreground font-serif italic">
+                      <p className="text-sm leading-relaxed text-muted-foreground font-sans">
                         {clipping.excerpt}
                       </p>
                     </div>
