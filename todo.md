@@ -568,3 +568,11 @@
 - [x] Add "Featured Works" filter button to Works.tsx page
 - [x] Test featured filter in UI
 - [ ] Consider adding admin UI to toggle featured status
+
+## Update Homepage Featured Works
+
+- [x] Upload new artwork images to S3 (Thr3e, Covenant series x2, Big Bang selection x2)
+- [x] Remove from featured: Vietnam Horizons variants, Wash Fragment, Carbon Mural
+- [x] Add to featured: Thr3e, Covenant series, Big Bang selection
+- [x] Verify final count is 5-6 definition specimens (6 total)
+- [x] Test display on homepage

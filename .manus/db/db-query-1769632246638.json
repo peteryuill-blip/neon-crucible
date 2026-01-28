@@ -1,0 +1,100 @@
+{
+  "query": "SELECT id, title, seriesName, phaseId FROM works WHERE title LIKE '%Thr3e%' OR seriesName LIKE '%Covenant%' OR seriesName LIKE '%Big Bang%' ORDER BY seriesName, title;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, seriesName, phaseId FROM works WHERE title LIKE '%Thr3e%' OR seriesName LIKE '%Covenant%' OR seriesName LIKE '%Big Bang%' ORDER BY seriesName, title;",
+  "rows": [
+    {
+      "id": "30007",
+      "title": "Big Bang: Breath & Bone",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30001",
+      "title": "Big Bang: Breath Aureole",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30009",
+      "title": "Big Bang: Cloud Mass",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30002",
+      "title": "Big Bang: Diagonal Thrust",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30005",
+      "title": "Big Bang: Diagonal Thrust II",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30006",
+      "title": "Big Bang: Geological Core",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30008",
+      "title": "Big Bang: Geological Core II",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30010",
+      "title": "Big Bang: Shadow Self",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30004",
+      "title": "Big Bang: Smoke Field",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30003",
+      "title": "Big Bang: Vertical Descent",
+      "seriesName": "Big Bang",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30012",
+      "title": "Covenant I: Storm-Body",
+      "seriesName": "Covenant",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30013",
+      "title": "Covenant II: Vessel-Body",
+      "seriesName": "Covenant",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30014",
+      "title": "Covenant III: Threshold-Body",
+      "seriesName": "Covenant",
+      "phaseId": "30009"
+    },
+    {
+      "id": "240002",
+      "title": "Tidal",
+      "seriesName": "Covenant",
+      "phaseId": "30009"
+    },
+    {
+      "id": "30011",
+      "title": "THR3E (Standing Bruise)",
+      "seriesName": "Thr3e",
+      "phaseId": "30009"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tseriesName\tphaseId\n30007\tBig Bang: Breath & Bone\tBig Bang\t30009\n30001\tBig Bang: Breath Aureole\tBig Bang\t30009\n30009\tBig Bang: Cloud Mass\tBig Bang\t30009\n30002\tBig Bang: Diagonal Thrust\tBig Bang\t30009\n30005\tBig Bang: Diagonal Thrust II\tBig Bang\t30009\n30006\tBig Bang: Geological Core\tBig Bang\t30009\n30008\tBig Bang: Geological Core II\tBig Bang\t30009\n30010\tBig Bang: Shadow Self\tBig Bang\t30009\n30004\tBig Bang: Smoke Field\tBig Bang\t30009\n30003\tBig Bang: Vertical Descent\tBig Bang\t30009\n30012\tCovenant I: Storm-Body\tCovenant\t30009\n30013\tCovenant II: Vessel-Body\tCovenant\t30009\n30014\tCovenant III: Threshold-Body\tCovenant\t30009\n240002\tTidal\tCovenant\t30009\n30011\tTHR3E (Standing Bruise)\tThr3e\t30009\n",
+  "stderr": "",
+  "execution_time_ms": 1750
+}

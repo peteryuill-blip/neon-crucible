@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, title, seriesName, phase FROM works WHERE title LIKE '%Thr3e%' OR seriesName LIKE '%Covenant%' OR seriesName LIKE '%Big Bang%' ORDER BY seriesName, title;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, title, seriesName, phase FROM works WHERE title LIKE '%Thr3e%' OR seriesName LIKE '%Covenant%' OR seriesName LIKE '%Big Bang%' ORDER BY seriesName, title;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'phase' in 'field list'"
+  ]
+}
