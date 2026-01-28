@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Search, Filter, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle } from "lucide-react";
+import { Search, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo, useEffect } from "react";
 import { Streamdown } from "streamdown";
@@ -22,7 +22,6 @@ export default function Works() {
   const [page, setPage] = useState(0);
   const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const [selectedWork, setSelectedWork] = useState<number | null>(null);
-  const [showFilters, setShowFilters] = useState(false);
 
   // Track random seed to allow reshuffling
   const [randomSeed, setRandomSeed] = useState(0);
@@ -171,7 +170,6 @@ export default function Works() {
   };
 
   const hasActiveFilters = search || phaseFilter !== "all" || techniqueFilter !== "all" || seriesFilter !== "all" || featuredOnly;
-  const activeFilterCount = [search, phaseFilter !== "all", techniqueFilter !== "all", seriesFilter !== "all", featuredOnly].filter(Boolean).length;
 
   const sortOptions = [
     { value: 'phase', label: 'BY PHASE (NE→PH1)' },
@@ -231,16 +229,6 @@ export default function Works() {
               className="pl-10 font-mono text-xs sm:text-sm rounded-none border-muted-foreground/30 bg-background focus-visible:ring-primary h-9 sm:h-10"
             />
           </div>
-          
-          {/* Mobile Filter Toggle */}
-          <Button
-            variant={showFilters ? "default" : "outline"}
-            className="sm:hidden rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9 px-3"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            <Filter className="w-3 h-3" />
-            {activeFilterCount > 0 && <span className={showFilters ? "" : "text-primary"}>({activeFilterCount})</span>}
-          </Button>
         </div>
 
         {/* Sort Row - Always Visible */}
@@ -335,55 +323,53 @@ export default function Works() {
           </div>
         </div>
 
-        {/* Mobile Filters Dropdown */}
-        {showFilters && (
-          <div className="sm:hidden mt-3 pt-3 border-t border-border/50 space-y-2">
-            <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
-              <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
-                <SelectValue placeholder="PHASE" />
-              </SelectTrigger>
-              <SelectContent className="rounded-none border-border bg-card">
-                <SelectItem value="all">ALL PHASES</SelectItem>
-                {phases?.map(phase => (
-                  <SelectItem key={phase.id} value={phase.id.toString()}>
-                    {phase.code}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select value={seriesFilter} onValueChange={(v) => { setSeriesFilter(v); setPage(0); }}>
-              <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
-                <SelectValue placeholder="SERIES" />
-              </SelectTrigger>
-              <SelectContent className="rounded-none border-border bg-card max-h-60">
-                <SelectItem value="all">ALL SERIES</SelectItem>
-                {seriesNames?.map(series => (
-                  <SelectItem key={series} value={series}>{series}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select value={techniqueFilter} onValueChange={(v) => { setTechniqueFilter(v); setPage(0); }}>
-              <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
-                <SelectValue placeholder="TECHNIQUE" />
-              </SelectTrigger>
-              <SelectContent className="rounded-none border-border bg-card">
-                <SelectItem value="all">ALL TECHNIQUES</SelectItem>
-                {techniques.map(tech => (
-                  <SelectItem key={tech} value={tech}>{tech}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {hasActiveFilters && (
-              <Button 
-                variant="outline" 
-                className="w-full rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9"
-                onClick={clearFilters}
-              >
-                <X className="w-3 h-3" /> CLEAR FILTERS
-              </Button>
-            )}
-          </div>
-        )}
+        {/* Mobile Filters - Always Visible */}
+        <div className="sm:hidden mt-3 pt-3 border-t border-border/50 space-y-2">
+          <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
+            <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+              <SelectValue placeholder="PHASE" />
+            </SelectTrigger>
+            <SelectContent className="rounded-none border-border bg-card">
+              <SelectItem value="all">ALL PHASES</SelectItem>
+              {phases?.map(phase => (
+                <SelectItem key={phase.id} value={phase.id.toString()}>
+                  {phase.code}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={seriesFilter} onValueChange={(v) => { setSeriesFilter(v); setPage(0); }}>
+            <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+              <SelectValue placeholder="SERIES" />
+            </SelectTrigger>
+            <SelectContent className="rounded-none border-border bg-card max-h-60">
+              <SelectItem value="all">ALL SERIES</SelectItem>
+              {seriesNames?.map(series => (
+                <SelectItem key={series} value={series}>{series}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={techniqueFilter} onValueChange={(v) => { setTechniqueFilter(v); setPage(0); }}>
+            <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+              <SelectValue placeholder="TECHNIQUE" />
+            </SelectTrigger>
+            <SelectContent className="rounded-none border-border bg-card">
+              <SelectItem value="all">ALL TECHNIQUES</SelectItem>
+              {techniques.map(tech => (
+                <SelectItem key={tech} value={tech}>{tech}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {hasActiveFilters && (
+            <Button 
+              variant="outline" 
+              className="w-full rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9"
+              onClick={clearFilters}
+            >
+              <X className="w-3 h-3" /> CLEAR FILTERS
+            </Button>
+          )}
+        </div>
       </div>
 
       {/* Loading State */}

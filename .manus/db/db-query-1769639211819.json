@@ -1,0 +1,64 @@
+{
+  "query": "SELECT p.id, p.code, p.title, COUNT(w.id) as work_count \nFROM phases p \nLEFT JOIN works w ON w.phaseId = p.id \nGROUP BY p.id, p.code, p.title \nORDER BY p.sortOrder;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT p.id, p.code, p.title, COUNT(w.id) as work_count \nFROM phases p \nLEFT JOIN works w ON w.phaseId = p.id \nGROUP BY p.id, p.code, p.title \nORDER BY p.sortOrder;",
+  "rows": [
+    {
+      "id": "30001",
+      "code": "PH1",
+      "title": "Absurdity of Meaning",
+      "work_count": "27"
+    },
+    {
+      "id": "30002",
+      "code": "PH1A",
+      "title": "Institutional Geometry",
+      "work_count": "20"
+    },
+    {
+      "id": "30003",
+      "code": "PH2",
+      "title": "Alignment – Circular Paradigm",
+      "work_count": "14"
+    },
+    {
+      "id": "30004",
+      "code": "PH2A",
+      "title": "Equinox of the Gods – Thelemic Rupture",
+      "work_count": "5"
+    },
+    {
+      "id": "30005",
+      "code": "PH3",
+      "title": "Echoes",
+      "work_count": "18"
+    },
+    {
+      "id": "30006",
+      "code": "PH3A",
+      "title": "Celestial Secrets",
+      "work_count": "10"
+    },
+    {
+      "id": "30007",
+      "code": "PH4",
+      "title": "Nomadic – Emotional Crisis & Expressionism",
+      "work_count": "42"
+    },
+    {
+      "id": "30008",
+      "code": "PH4A",
+      "title": "The Silent Pivot (Recalibration)",
+      "work_count": "0"
+    },
+    {
+      "id": "30009",
+      "code": "NE",
+      "title": "New Era: Big Bang, Thr3e, Covenant",
+      "work_count": "16"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tcode\ttitle\twork_count\n30001\tPH1\tAbsurdity of Meaning\t27\n30002\tPH1A\tInstitutional Geometry\t20\n30003\tPH2\tAlignment – Circular Paradigm\t14\n30004\tPH2A\tEquinox of the Gods – Thelemic Rupture\t5\n30005\tPH3\tEchoes\t18\n30006\tPH3A\tCelestial Secrets\t10\n30007\tPH4\tNomadic – Emotional Crisis & Expressionism\t42\n30008\tPH4A\tThe Silent Pivot (Recalibration)\t0\n30009\tNE\tNew Era: Big Bang, Thr3e, Covenant\t16\n",
+  "stderr": "",
+  "execution_time_ms": 1595
+}

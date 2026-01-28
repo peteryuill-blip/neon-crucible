@@ -198,7 +198,8 @@ export async function getWorks(filter: WorksFilter = {}): Promise<Work[]> {
   } else if (filter.sortBy === 'random') {
     query = query.orderBy(sql`RAND()`) as typeof query;
   } else {
-    // Default: sort by phase (newest phase first via sortOrder), then by date
+    // Default or 'phase': sort by works.sortOrder within the filtered phase, then by date
+    // sortOrder is sequential per phase (1, 2, 3...), so this gives chronological order within phase
     query = query.orderBy(asc(works.sortOrder), desc(works.dateCreated), desc(works.createdAt)) as typeof query;
   }
   
