@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, code, title FROM phases WHERE id = 30007;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, code, title FROM phases WHERE id = 30007;",
+  "rows": [
+    {
+      "id": "30007",
+      "code": "PH4",
+      "title": "Nomadic – Emotional Crisis & Expressionism"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tcode\ttitle\n30007\tPH4\tNomadic – Emotional Crisis & Expressionism\n",
+  "stderr": "",
+  "execution_time_ms": 1572
+}

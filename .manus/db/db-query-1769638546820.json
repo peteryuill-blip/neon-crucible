@@ -1,0 +1,9 @@
+{
+  "query": "DELETE FROM works WHERE id IN (210013, 210021, 210020, 210009, 210011, 210016, 210014, 210005, 210007);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute DELETE FROM works WHERE id IN (210013, 210021, 210020, 210009, 210011, 210016, 210014, 210005, 210007);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1620
+}

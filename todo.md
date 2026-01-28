@@ -591,3 +591,16 @@
 - [x] Add canonical link tag to client/index.html in head section
 - [x] Use https://peteryuill.art/ with trailing slash
 - [x] Save checkpoint and deploy
+
+## Database Cleanup: Duplicates and Sort Order
+
+- [x] Create database backup before any changes
+- [x] Identify duplicate artworks (same title/year/phase)
+- [x] Generate duplicate report with recommendations
+- [x] Remove duplicate entries keeping best records
+- [x] Identify works with sortOrder = 0
+- [x] Fix sortOrder values (sequential from 1 per phase)
+- [x] Verify no duplicates remain
+- [x] Verify no sortOrder = 0 values remain
+- [x] Test phase filter displays correct order
+- [x] Generate final cleanup report

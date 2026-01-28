@@ -1,0 +1,64 @@
+{
+  "query": "SELECT id, code, title, year FROM phases ORDER BY sortOrder;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT id, code, title, year FROM phases ORDER BY sortOrder;",
+  "rows": [
+    {
+      "id": "30001",
+      "code": "PH1",
+      "title": "Absurdity of Meaning",
+      "year": "2018"
+    },
+    {
+      "id": "30002",
+      "code": "PH1A",
+      "title": "Institutional Geometry",
+      "year": "2018-2019"
+    },
+    {
+      "id": "30003",
+      "code": "PH2",
+      "title": "Alignment – Circular Paradigm",
+      "year": "2019-2020"
+    },
+    {
+      "id": "30004",
+      "code": "PH2A",
+      "title": "Equinox of the Gods – Thelemic Rupture",
+      "year": "2020"
+    },
+    {
+      "id": "30005",
+      "code": "PH3",
+      "title": "Echoes",
+      "year": "2022"
+    },
+    {
+      "id": "30006",
+      "code": "PH3A",
+      "title": "Celestial Secrets",
+      "year": "2023"
+    },
+    {
+      "id": "30007",
+      "code": "PH4",
+      "title": "Nomadic – Emotional Crisis & Expressionism",
+      "year": "2024"
+    },
+    {
+      "id": "30008",
+      "code": "PH4A",
+      "title": "The Silent Pivot (Recalibration)",
+      "year": "2024-2025"
+    },
+    {
+      "id": "30009",
+      "code": "NE",
+      "title": "New Era: Big Bang, Thr3e, Covenant",
+      "year": "2025-present"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tcode\ttitle\tyear\n30001\tPH1\tAbsurdity of Meaning\t2018\n30002\tPH1A\tInstitutional Geometry\t2018-2019\n30003\tPH2\tAlignment – Circular Paradigm\t2019-2020\n30004\tPH2A\tEquinox of the Gods – Thelemic Rupture\t2020\n30005\tPH3\tEchoes\t2022\n30006\tPH3A\tCelestial Secrets\t2023\n30007\tPH4\tNomadic – Emotional Crisis & Expressionism\t2024\n30008\tPH4A\tThe Silent Pivot (Recalibration)\t2024-2025\n30009\tNE\tNew Era: Big Bang, Thr3e, Covenant\t2025-present\n",
+  "stderr": "",
+  "execution_time_ms": 1531
+}

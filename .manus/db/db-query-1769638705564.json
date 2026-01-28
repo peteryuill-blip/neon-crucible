@@ -1,0 +1,16 @@
+{
+  "query": "SELECT p.id, p.code, p.title, COUNT(w.id) as work_count FROM phases p LEFT JOIN works w ON w.phaseId = p.id WHERE p.code = 'PH4A' GROUP BY p.id, p.code, p.title;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT p.id, p.code, p.title, COUNT(w.id) as work_count FROM phases p LEFT JOIN works w ON w.phaseId = p.id WHERE p.code = 'PH4A' GROUP BY p.id, p.code, p.title;",
+  "rows": [
+    {
+      "id": "30008",
+      "code": "PH4A",
+      "title": "The Silent Pivot (Recalibration)",
+      "work_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tcode\ttitle\twork_count\n30008\tPH4A\tThe Silent Pivot (Recalibration)\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1522
+}
