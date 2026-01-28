@@ -1,187 +1,108 @@
-import { Separator } from "@/components/ui/separator";
-
 export default function About() {
   return (
-    <div className="space-y-10 sm:space-y-16 pb-16 sm:pb-24">
-      {/* Hero Section with Portrait */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-        {/* Portrait */}
-        <div className="order-2 lg:order-1">
-          <div className="relative aspect-[4/3] overflow-hidden border border-border bg-muted">
-            <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/BUUNnvdTPknAeVdZ.jpg"
-              alt="Peter Yuill, Bangkok-based contemporary artist, standing in gallery with circular geometric artworks, 2024"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/95 to-transparent p-4 sm:p-6">
-              <p className="font-mono text-[10px] sm:text-xs text-muted-foreground">
-                PETER YUILL / GALLERY CONTEXT / 2024
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Header */}
-        <div className="order-1 lg:order-2 space-y-4 sm:space-y-8">
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold tracking-tighter">PETER YUILL</h1>
-          <div className="font-mono text-xs sm:text-sm text-primary border-l-2 border-primary pl-3 sm:pl-4">
-            ARTIST | HONG KONG — BANGKOK | 2018—2025
-          </div>
-          <div className="font-serif text-sm sm:text-lg leading-relaxed text-muted-foreground pt-4">
-            <p>
-              <span className="text-foreground font-semibold">Peter Yuill</span> is a Canadian painter and geometric abstractionist whose documented practice (2018–2025) constitutes a rigorous, longitudinal investigation into the relationship between sacred mathematics, existential philosophy, and emotional authenticity.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <Separator className="bg-border max-w-4xl" />
-
-      <div className="max-w-4xl space-y-10 sm:space-y-16">
-        {/* The Arc */}
-        <section className="space-y-4 sm:space-y-6">
-          <h2 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">THE ARC: FROM SACRED GEOMETRY TO SOMATIC EXPRESSION</h2>
-          <div className="space-y-4 sm:space-y-6 font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
-            <p>
-              Yuill's career emerges from a single foundational question: <em className="text-foreground">How does one construct meaning in a meaningless universe?</em> Drawing on existential philosophy (Camus, Sartre, Kierkegaard), sacred geometry, Norse paganism, and Thelemic doctrine, he developed a visual language that treats geometry as a spiritual and philosophical technology—not as aesthetic ornament, but as a method for genuine inquiry.
-            </p>
-            <p>
-              From 2018–2020, working in near-isolation in a Hong Kong studio, Yuill created the <em>Absurdity of Meaning</em> and <em>Alignment</em> bodies of work: black-and-white geometric abstractions of extraordinary precision. Each work began with 30 compositional variations; each line was hand-drawn using custom geometric formulas, never mechanical aids. The no-undo constraint (permanent ink on paper) functioned as spiritual discipline: total presence, no revision. By introducing gold and copper binaries in <em>Alignment</em> (2020), he encoded a complete metaphysical system—spirit and matter, eternal and temporal, infinite and finite—achieving what critics recognized as "peak mathematical refinement."
-            </p>
-            <p>
-              But in 2020, permission to rupture arrived via Thelemic philosophy. The <em>Equinox of the Gods</em> exhibition (Jonathan LeVine Projects, NYC) marked a conscious shattering of geometric perfection. One-shot ink gestures replaced careful planning. Permission became central to the practice: the artist could break his own systems and remain spiritually authentic.
-            </p>
-          </div>
+    <div className="about-page">
+      <div className="max-w-3xl mx-auto py-16 px-4">
+        
+        {/* SECTION 1: Summary */}
+        <section className="summary mb-12">
+          <p className="text-lg leading-relaxed">
+            Peter Yuill is a painter working at the intersection of sacred geometry, 
+            ink abstraction, and threshold cosmology. Based in Bangkok since 2018, 
+            his practice is an archive of seven years—163 paintings catalogued, 
+            spanning seven distinct phases from geometric rigor to somatic intuition.
+          </p>
         </section>
 
-        <Separator className="bg-border" />
-
-        {/* Nomadic Crisis */}
-        <section className="space-y-4 sm:space-y-6">
-          <h2 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">NOMADIC CRISIS AND MAXIMUM OUTPUT (2021–2024)</h2>
-          <div className="space-y-4 sm:space-y-6 font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
-            <p>
-              Geographic displacement—Bangkok, Vietnam, nomadic circulation—catalyzed profound shifts. Between May–July 2024, Yuill created 195 paintings in seven weeks during an extended Vietnam residency, marking the most prolific period of his career. Simultaneously, he began sharing raw, unfiltered journals publicly, documenting emotional vulnerability, love addiction, existential daze, and the collapse of emotional walls maintained for two decades.
-            </p>
-            <p>
-              This produced a counterintuitive finding: <strong className="text-foreground">maximum creative output (195 works) coincided with maximum emotional vulnerability and zero market presence.</strong> The work emerged not from institutional demand but from urgent necessity. For the first time, color exploded into the practice after 15 years of monochrome restraint. The geometry dissolved into gestural expressionism. The work was truest when most invisible.
-            </p>
-          </div>
+        {/* SECTION 2: Practice */}
+        <section className="practice mb-12">
+          <h2 className="font-serif text-xl md:text-2xl mb-4">Practice</h2>
+          <p className="leading-relaxed mb-4">
+            The work maps threshold states—moments where structure dissolves into 
+            intuition, where geometry becomes gesture. Each painting is a single-shot 
+            irreversible act: ink on paper, no revision, no going back. The practice 
+            is both rigorous and surrendered, operating in the space between control 
+            and release.
+          </p>
+          <p className="leading-relaxed mb-4">
+            The archive spans seven phases (PH1-PH7), each representing a distinct 
+            approach to the same underlying question: What happens in the space 
+            between order and chaos? From early geometric grids (2018–2020) to later 
+            somatic abstractions and color explosions (2021–2024), the evolution is 
+            visible, documented, catalogued.
+          </p>
+          <p className="leading-relaxed">
+            In December 2024, Yuill began studying traditional East Asian ink painting 
+            under master teacher Man Luen Choon in Hong Kong, integrating 20+ years of 
+            lived experience in Asia with rigorous classical training. The New Era 
+            practice (2025–present) combines sacred geometry's mathematical precision 
+            with Zen spontaneity.
+          </p>
         </section>
 
-        <Separator className="bg-border" />
-
-        {/* East-West Lineage */}
-        <section className="space-y-4 sm:space-y-6">
-          <h2 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">EAST-WEST LINEAGE AND THE NEW ERA (2024–PRESENT)</h2>
-          <div className="space-y-4 sm:space-y-6 font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
-            <p>
-              In December 2024, Yuill returned to Hong Kong and connected with Man Luen Choon, studying traditional East Asian ink painting under a sifu (master teacher). This represented not appropriation but lived synthesis—20+ years in Asia, marriage to a Hong Kong citizen, embodied knowledge of urban culture. The New Era practice (2025–present) integrates rigorous traditional training with personal vision: large-format somatic ink works combining sacred geometry's mathematical precision with Zen spontaneity, creating works that are simultaneously controlled and surrendered.
-            </p>
-          </div>
+        {/* SECTION 3: Materials & Process */}
+        <section className="materials mb-12">
+          <h2 className="font-serif text-xl md:text-2xl mb-4">Materials & Process</h2>
+          <p className="leading-relaxed mb-4">
+            <strong>Ink:</strong> Sumi ink and high-flow acrylic ink on cotton paper. 
+            The ink is irreversible—once it touches paper, the mark is permanent. This 
+            constraint shapes the entire practice: total presence, no revision, no undo.
+          </p>
+          <p className="leading-relaxed mb-4">
+            <strong>Gold Leaf:</strong> 24k gold leaf applied as geometric accent 
+            or threshold marker. The gold functions as both material presence and 
+            alchemical symbol—transformation captured in metal. Introduced in the 
+            <em>Alignment</em> series (2020) to encode metaphysical binaries: spirit 
+            and matter, eternal and temporal.
+          </p>
+          <p className="leading-relaxed">
+            <strong>Sacred Geometry:</strong> Underlying grid systems drawn from 
+            Pythagorean, Islamic, and Vedic traditions. Each work begins with 30 
+            compositional variations; each line is hand-drawn using custom geometric 
+            formulas, never mechanical aids. The geometry provides structure, but the 
+            work lives in how that structure breaks down.
+          </p>
         </section>
 
-        <Separator className="bg-border" />
-
-        {/* Market Independence */}
-        <section className="space-y-4 sm:space-y-6">
-          <h2 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">MARKET INDEPENDENCE AND INSTITUTIONAL CREDIBILITY</h2>
-          <div className="space-y-4 sm:space-y-6 font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
-            <p>
-              Paradoxically, Yuill's greatest strength is strategic independence. By withdrawing from institutional visibility during peak crisis—creating the Vietnam 195 unseen, unsold—he paradoxically increased desirability upon return. The practice proves that genuine creativity does not require market validation; market validation seeks authentic creativity. His work now circulates within discerning collector networks and major galleries, grounded not in commercial necessity but in demonstrated spiritual and technical commitment.
-            </p>
-          </div>
+        {/* SECTION 4: Exhibitions & Clients */}
+        <section className="exhibitions mb-12">
+          <h2 className="font-serif text-xl md:text-2xl mb-4">Exhibitions & Clients</h2>
+          <ul className="space-y-2">
+            <li className="text-sm">
+              <span className="font-mono text-muted">2024</span> — <em>Celestial Secrets</em>, West Eden Gallery, Bangkok
+            </li>
+            <li className="text-sm">
+              <span className="font-mono text-muted">2020</span> — <em>Equinox of the Gods</em>, Jonathan LeVine Projects, NYC
+            </li>
+            <li className="text-sm">
+              <span className="font-mono text-muted">2020</span> — <em>Alignment</em>, Gallery HZ, Pearl Lam Galleries, Hong Kong
+            </li>
+            <li className="text-sm">
+              <span className="font-mono text-muted">2018</span> — <em>The Absurdity of Meaning</em>, Kong Art Space, Hong Kong
+            </li>
+            <li className="text-sm">
+              <span className="font-mono text-muted">—</span> — Institutional Commissions: Peninsula Hotels, Jones Lang LaSalle, Soho House, NUVA Luxury
+            </li>
+          </ul>
         </section>
 
-        <Separator className="bg-border" />
-
-        {/* The Archive */}
-        <section className="space-y-4 sm:space-y-6">
-          <h2 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">THE ARCHIVE AS SPIRITUAL PRACTICE</h2>
-          <div className="space-y-4 sm:space-y-6 font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
-            <p>
-              Yuill has constructed Project 666, an unprecedented meta-archive documenting his seven-year practice: 500+ works, institutional commissions, real-time journals, philosophical meta-analysis, and AI-powered pattern recognition (Neon Crucible). The archive itself functions as creative act—consciousness-raising technology, a second creative practice running parallel to the work itself. This transparency distinguishes his practice from most contemporary abstraction, which relies on mystery. Yuill's strength is <strong className="text-foreground">radical honesty</strong>: studio process documented in real-time, emotional truth preserved without performance.
-            </p>
-          </div>
+        {/* SECTION 5: Contact */}
+        <section className="contact">
+          <h2 className="font-serif text-xl md:text-2xl mb-4">Contact</h2>
+          <p className="text-sm">
+            For commissions, exhibitions, or inquiries:<br />
+            <a 
+              href="mailto:peteryuill@gmail.com" 
+              className="text-primary hover:text-secondary transition-colors"
+            >
+              peteryuill@gmail.com
+            </a>
+          </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            WhatsApp: +852 5932 6869<br />
+            Bangkok, Thailand
+          </p>
         </section>
 
-        <Separator className="bg-border" />
-
-        {/* Core Tensions */}
-        <section className="space-y-4 sm:space-y-6">
-          <h2 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">CORE TENSIONS AND SIGNIFICANCE</h2>
-          <div className="space-y-4 sm:space-y-6 font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
-            <p>
-              Yuill's practice is built on productive, unresolved tensions: spiritual authenticity vs. institutional visibility; geometric control vs. emotional surrender; Western precision vs. East Asian spontaneity; market independence vs. collector desirability; individual vulnerability vs. universal accessibility. Rather than resolving these, he inhabits them, making the tension itself the work's content.
-            </p>
-            <p className="text-foreground font-medium">
-              What emerges is rare: contemporary abstraction that is spiritually non-ironic, emotionally non-cynical, and technically uncompromised. In an era of irony and distance, this practice is radically present.
-            </p>
-          </div>
-        </section>
-
-        <Separator className="bg-border" />
-
-        {/* Professional Credentials */}
-        <section className="space-y-4 sm:space-y-6">
-          <h2 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">PROFESSIONAL CREDENTIALS</h2>
-          <div className="space-y-4 font-serif text-xs sm:text-base leading-relaxed text-muted-foreground">
-            <div>
-              <h3 className="font-mono text-[10px] sm:text-xs text-foreground mb-1 sm:mb-2">MAJOR EXHIBITIONS</h3>
-              <p>
-                <em>The Absurdity of Meaning</em> (Kong Art Space, 2018), <em>Alignment</em> (Gallery HZ, Pearl Lam Galleries, 2020), <em>Equinox of the Gods</em> (Jonathan LeVine Projects, NYC, 2020), <em>Celestial Secrets</em> (Bangkok, 2023)
-              </p>
-            </div>
-            <div>
-              <h3 className="font-mono text-[10px] sm:text-xs text-foreground mb-1 sm:mb-2">INSTITUTIONAL COMMISSIONS</h3>
-              <p>
-                Peninsula Hotels, Jones Lang LaSalle, Soho House, NUVA Luxury
-              </p>
-            </div>
-            <div>
-              <h3 className="font-mono text-[10px] sm:text-xs text-foreground mb-1 sm:mb-2">ARCHIVE</h3>
-              <p>
-                Project 666, Neon Crucible (ongoing documentation system, 2025)
-              </p>
-            </div>
-            <div>
-              <h3 className="font-mono text-[10px] sm:text-xs text-foreground mb-1 sm:mb-2">REPRESENTATION</h3>
-              <p>
-                Independent studio practice; previous gallery representation: Gallery HZ, Pearl Lam Galleries, Jonathan LeVine Projects
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <Separator className="bg-border" />
-
-        {/* Contact */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-12">
-          <div className="space-y-3 sm:space-y-4">
-            <h3 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">CONTACT</h3>
-            <div className="space-y-1 sm:space-y-2 font-mono text-xs sm:text-sm text-muted-foreground">
-              <p>PETERYUILL@GMAIL.COM</p>
-              <p>WHATSAPP: +852 5932 6869</p>
-              <p>BANGKOK, THAILAND</p>
-            </div>
-          </div>
-          <div className="space-y-3 sm:space-y-4">
-            <h3 className="font-mono text-[10px] sm:text-sm tracking-widest text-primary">INQUIRIES</h3>
-            <div className="space-y-1 sm:space-y-2 font-mono text-xs sm:text-sm text-muted-foreground">
-              <p>AVAILABLE FOR COMMISSION</p>
-              <p>ARCHIVE ACCESS BY REQUEST</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <div className="pt-8 sm:pt-12">
-          <div className="p-4 sm:p-6 border border-border bg-card font-mono text-[10px] sm:text-xs text-muted-foreground space-y-1 sm:space-y-2">
-            <p>SITE: THE NEON CRUCIBLE</p>
-            <p>SYSTEM VERSION: 1.0.0</p>
-            <p>LAST UPDATE: 2025-12-27</p>
-          </div>
-        </div>
       </div>
     </div>
   );
