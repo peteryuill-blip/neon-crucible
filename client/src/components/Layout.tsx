@@ -205,7 +205,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Search Button */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="w-full flex items-center gap-3 lg:gap-4 text-muted-foreground hover:text-primary transition-all duration-300 hover:translate-x-1 group"
+              className="w-full flex items-center gap-3 lg:gap-4 text-muted-foreground hover:text-primary transition-all duration-300 hover:translate-x-1 group min-h-[44px] py-2"
             >
               <Search className="w-4 h-4 shrink-0" />
               <span className="font-mono text-xs lg:text-sm tracking-widest">SEARCH</span>

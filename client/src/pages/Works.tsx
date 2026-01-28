@@ -198,6 +198,7 @@ export default function Works() {
               size="icon" 
               className="rounded-none border-muted-foreground/30 w-8 h-8 sm:w-10 sm:h-10"
               onClick={() => setViewMode("list")}
+              aria-label="List view"
             >
               <List className="w-3 h-3 sm:w-4 sm:h-4" />
             </Button>
@@ -206,6 +207,7 @@ export default function Works() {
               size="icon" 
               className="rounded-none text-muted-foreground w-8 h-8 sm:w-10 sm:h-10"
               onClick={() => setViewMode("grid")}
+              aria-label="Grid view"
             >
               <GridIcon className="w-3 h-3 sm:w-4 sm:h-4" />
             </Button>
