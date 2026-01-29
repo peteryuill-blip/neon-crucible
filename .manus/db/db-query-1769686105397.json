@@ -1,0 +1,1378 @@
+{
+  "query": "SELECT \n  id, \n  title, \n  imageUrl, \n  thumbnailUrl, \n  imageKey,\n  dimensions,\n  technique\nFROM works \nWHERE imageUrl IS NOT NULL \nORDER BY id \nLIMIT 200;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT \n  id, \n  title, \n  imageUrl, \n  thumbnailUrl, \n  imageKey,\n  dimensions,\n  technique\nFROM works \nWHERE imageUrl IS NOT NULL \nORDER BY id \nLIMIT 200;",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "Big Bang: Breath Aureole",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB1.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB1.jpg",
+      "imageKey": "works/bigbang/BB1.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30002",
+      "title": "Big Bang: Diagonal Thrust",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB2.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB2.jpg",
+      "imageKey": "works/bigbang/BB2.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30003",
+      "title": "Big Bang: Vertical Descent",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB3.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB3.jpg",
+      "imageKey": "works/bigbang/BB3.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30004",
+      "title": "Big Bang: Smoke Field",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB4.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB4.jpg",
+      "imageKey": "works/bigbang/BB4.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30005",
+      "title": "Big Bang: Diagonal Thrust Ii",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB5.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB5.jpg",
+      "imageKey": "works/bigbang/BB5.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30006",
+      "title": "Big Bang: Geological Core",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB6.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB6.jpg",
+      "imageKey": "works/bigbang/BB6.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30007",
+      "title": "Big Bang: Breath & Bone",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB7.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB7.jpg",
+      "imageKey": "works/bigbang/BB7.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30008",
+      "title": "Big Bang: Geological Core Ii",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB8.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB8.jpg",
+      "imageKey": "works/bigbang/BB8.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30009",
+      "title": "Big Bang: Cloud Mass",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB9.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB9.jpg",
+      "imageKey": "works/bigbang/BB9.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30010",
+      "title": "Big Bang: Shadow Self",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB10.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB10.jpg",
+      "imageKey": "works/bigbang/BB10.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30011",
+      "title": "Thr3e (standing Bruise)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/thr3e/THR3E.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/thr3e/THR3E.jpg",
+      "imageKey": "works/thr3e/THR3E.jpg",
+      "dimensions": "100cm × 100cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30012",
+      "title": "Covenant I: Storm-body",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic2.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic2.jpg",
+      "imageKey": "works/covenant/COVTryptic2.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30013",
+      "title": "Covenant Ii: Vessel-body",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic3.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic3.jpg",
+      "imageKey": "works/covenant/COVTryptic3.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30014",
+      "title": "Covenant Iii: Threshold-body",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic1.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic1.jpg",
+      "imageKey": "works/covenant/COVTryptic1.jpg",
+      "dimensions": "100cm × 200cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "30015",
+      "title": "Ode to Osiris",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/1_ode_to_osiris_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/1_ode_to_osiris_peteryuill(1).jpg",
+      "imageKey": "works/equinox/1_ode_to_osiris_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30016",
+      "title": "Ode to Isis",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/2_ode_to_isis_peteryuill(2).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/2_ode_to_isis_peteryuill(2).jpg",
+      "imageKey": "works/equinox/2_ode_to_isis_peteryuill(2).jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30017",
+      "title": "Ode to Hadit",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/3_ode_to_hadit_peteryuill(2).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/3_ode_to_hadit_peteryuill(2).jpg",
+      "imageKey": "works/equinox/3_ode_to_hadit_peteryuill(2).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30018",
+      "title": "Ode to Hoor-pa-kraat",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/6_ode_to_hoor_pa_kraat_peteryuill(2).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/6_ode_to_hoor_pa_kraat_peteryuill(2).jpg",
+      "imageKey": "works/equinox/6_ode_to_hoor_pa_kraat_peteryuill(2).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30019",
+      "title": "Ode to Therion",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/7_ode_to_therion_peteryuill.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/7_ode_to_therion_peteryuill.jpg",
+      "imageKey": "works/equinox/7_ode_to_therion_peteryuill.jpg",
+      "dimensions": "100cm × 100cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30020",
+      "title": "The Limitless Path of the Intuitive Mind I",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_1_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_1_peteryuill(1).jpg",
+      "imageKey": "works/alignment/the_limitless_path_of_the_intuitive_mind_1_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30021",
+      "title": "The Limitless Path of the Intuitive Mind Ii",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_2_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_2_peteryuill(1).jpg",
+      "imageKey": "works/alignment/the_limitless_path_of_the_intuitive_mind_2_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30022",
+      "title": "The Infinite Plane I",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_infinite_plane_1_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_infinite_plane_1_peteryuill(1).jpg",
+      "imageKey": "works/alignment/the_infinite_plane_1_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30023",
+      "title": "The Infinite Plane Ii",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_infinite_plane_2_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_infinite_plane_2_peteryuill(1).jpg",
+      "imageKey": "works/alignment/the_infinite_plane_2_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30024",
+      "title": "Dreamcatcher",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/dreamcatcher_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/dreamcatcher_peteryuill(1).jpg",
+      "imageKey": "works/alignment/dreamcatcher_peteryuill(1).jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30025",
+      "title": "Aurorae Aureae",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/aurorae_aureae_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/aurorae_aureae_peteryuill(1).jpg",
+      "imageKey": "works/alignment/aurorae_aureae_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30026",
+      "title": "Inside the Vortex",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/inside_the_vortex_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/inside_the_vortex_peteryuill(1).jpg",
+      "imageKey": "works/alignment/inside_the_vortex_peteryuill(1).jpg",
+      "dimensions": "76cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30027",
+      "title": "Freyja",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/freyja_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/freyja_peteryuill(1).jpg",
+      "imageKey": "works/alignment/freyja_peteryuill(1).jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30028",
+      "title": "Freyr",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/freyr_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/freyr_peteryuill(1).jpg",
+      "imageKey": "works/alignment/freyr_peteryuill(1).jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30029",
+      "title": "As Above, So Below I",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/as_above_so_below_1_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/as_above_so_below_1_peteryuill(1).jpg",
+      "imageKey": "works/alignment/as_above_so_below_1_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30030",
+      "title": "Polaris",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/polaris_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/polaris_peteryuill(1).jpg",
+      "imageKey": "works/alignment/polaris_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30031",
+      "title": "Golden Dawn",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/golden_dawn_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/golden_dawn_peteryuill(1).jpg",
+      "imageKey": "works/alignment/golden_dawn_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30032",
+      "title": "Vibrational Alignment",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/vibrational_alignment_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/vibrational_alignment_peteryuill(1).jpg",
+      "imageKey": "works/alignment/vibrational_alignment_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "30033",
+      "title": "A Walking Bundle of Frequencies",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/a_walking_bundle_of_frequencies_peteryuill(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/a_walking_bundle_of_frequencies_peteryuill(1).jpg",
+      "imageKey": "works/alignment/a_walking_bundle_of_frequencies_peteryuill(1).jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60001",
+      "title": "Echoes",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Echoes(2x2m).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Echoes(2x2m).jpg",
+      "imageKey": "NULL",
+      "dimensions": "200cm × 200cm",
+      "technique": "Acrylic paint on linen"
+    },
+    {
+      "id": "60002",
+      "title": "Valis",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Valis.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Valis.jpg",
+      "imageKey": "NULL",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60003",
+      "title": "Electric Dreams",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Electricdream.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Electricdream.jpg",
+      "imageKey": "NULL",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60004",
+      "title": "A Momentary Lapse of Reason",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/AMomentarilyLapseofReason.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/AMomentarilyLapseofReason.jpg",
+      "imageKey": "NULL",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60005",
+      "title": "Labyrinth of Coral Caves (1)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/LabyrinthofCoralCaves.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/LabyrinthofCoralCaves.jpg",
+      "imageKey": "NULL",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60006",
+      "title": "Gravity Well",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Gravitywell.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Gravitywell.jpg",
+      "imageKey": "NULL",
+      "dimensions": "35cm × 70cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60007",
+      "title": "Amnesia",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Amnesia.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Amnesia.jpg",
+      "imageKey": "NULL",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60008",
+      "title": "Persistence of Time (1)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/17.1.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/17.1.jpg",
+      "imageKey": "NULL",
+      "dimensions": "21cm × 30cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60009",
+      "title": "Section 9",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/9.1.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/9.1.jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60010",
+      "title": "Labyrinth of Coral Caves (2)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/13(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/13(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60011",
+      "title": "Genesis",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Genesis.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Genesis.jpg",
+      "imageKey": "NULL",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60012",
+      "title": "Split Second",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Spitsecond.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Spitsecond.jpg",
+      "imageKey": "NULL",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60013",
+      "title": "Major Motoko",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/MajorMotoko.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/MajorMotoko.jpg",
+      "imageKey": "NULL",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60014",
+      "title": "Orbital Refraction",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/OrbitalRefraction.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/OrbitalRefraction.jpg",
+      "imageKey": "NULL",
+      "dimensions": "100cm × 70cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60015",
+      "title": "A Delicate Sound of Thunder",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/DelicateSoundofThunder.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/DelicateSoundofThunder.jpg",
+      "imageKey": "NULL",
+      "dimensions": "100cm × 70cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60016",
+      "title": "Persistence of Time (2)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/18.1(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/18.1(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "21cm × 30cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60017",
+      "title": "Persistence of Time (3)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/19.1.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/19.1.jpg",
+      "imageKey": "NULL",
+      "dimensions": "21cm × 30cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "60018",
+      "title": "Persistence of Time (4)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/20.1.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/20.1.jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 21cm",
+      "technique": "Ink on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90001",
+      "title": "Cross Mandala with Gold Center",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0012(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0012(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90002",
+      "title": "Horizontal Orbital Mural (study)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/20230628_223310~2.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/20230628_223310~2.jpg",
+      "imageKey": "NULL",
+      "dimensions": "600cm × 150cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90003",
+      "title": "Yin-yang Gold Disc",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0013(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0013(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90004",
+      "title": "Vertical Cross with Gold Satellites",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0011(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0011(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90005",
+      "title": "Orbital Installation View",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/DSC07648~2.jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/DSC07648~2.jpg",
+      "imageKey": "NULL",
+      "dimensions": "600cm × 150cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90006",
+      "title": "Asymmetric Orbital Cluster",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0016(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0016(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90007",
+      "title": "Gold Crescent Orbit",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0014(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0014(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90008",
+      "title": "Vertical Axis with Gold Poles",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0015(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0015(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90009",
+      "title": "Dense Cross Mandala",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0017(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0017(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "90010",
+      "title": "Spiral Galaxy S-curve",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0018(1).jpg",
+      "thumbnailUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0018(1).jpg",
+      "imageKey": "NULL",
+      "dimensions": "30cm × 40cm",
+      "technique": "Ink and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120014",
+      "title": "Absurdity of Meaning No. 1",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825091966-peteryuill_absurdityofmeaning1.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825091966-peteryuill_absurdityofmeaning1.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120016",
+      "title": "Absurdity of Meaning No. 2",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825100649-peteryuill_absurdityofmeaning2.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825100649-peteryuill_absurdityofmeaning2.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120021",
+      "title": "Absurdity of Meaning No. 3",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825106028-peteryuill_absurdityofmeaning3_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825106028-peteryuill_absurdityofmeaning3_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120028",
+      "title": "Absurdity of Meaning No. 4",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825126989-peteryuill_absurdityofmeaning4_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825126989-peteryuill_absurdityofmeaning4_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120032",
+      "title": "Absurdity of Meaning No. 5",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825148901-peteryuill_absurdityofmeaning5_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825148901-peteryuill_absurdityofmeaning5_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120033",
+      "title": "Absurdity of Meaning No. 6",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825169192-peteryuill_absurdityofmeaning6.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825169192-peteryuill_absurdityofmeaning6.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120034",
+      "title": "Absurdity of Meaning No. 7",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825173449-peteryuill_absurdityofmeaning7.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825173449-peteryuill_absurdityofmeaning7.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120035",
+      "title": "Absurdity of Meaning No. 8",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825178772-peteryuill_absurdityofmeaning8.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825178772-peteryuill_absurdityofmeaning8.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120036",
+      "title": "Absurdity of Meaning No. 9",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825207823-peteryuill_absurdityofmeaning9.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825207823-peteryuill_absurdityofmeaning9.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120037",
+      "title": "Absurdity of Meaning No. 10",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825239047-peteryuill_absurdityofmeaning10.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825239047-peteryuill_absurdityofmeaning10.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120038",
+      "title": "Absurdity of Meaning No. 11",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825242802-peteryuill_absurdityofmeaning11.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825242802-peteryuill_absurdityofmeaning11.jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120039",
+      "title": "Absurdity of Meaning No. 12",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825247073-peteryuill_absurdityofmeaning12.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825247073-peteryuill_absurdityofmeaning12.jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120040",
+      "title": "Absurdity of Meaning No. 13",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825250756-peteryuill_absurdityofmeaning13_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825250756-peteryuill_absurdityofmeaning13_1_.jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120041",
+      "title": "Geometric Abstraction No. 4",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825271128-peteryuill_geometricabstraction_4_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825271128-peteryuill_geometricabstraction_4_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120042",
+      "title": "Geometric Abstraction No. 5",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825297824-peteryuill_geometricabstraction_5_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825297824-peteryuill_geometricabstraction_5_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120043",
+      "title": "Geometric Abstraction No. 6",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825321119-peteryuill_geometricabstraction_6_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825321119-peteryuill_geometricabstraction_6_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120044",
+      "title": "Geometric Abstraction No. 7",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825325436-peteryuill_geometricabstraction_7_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825325436-peteryuill_geometricabstraction_7_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120045",
+      "title": "Geometric Abstraction No. 8",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825330777-peteryuill_geometricabstraction_8_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825330777-peteryuill_geometricabstraction_8_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120046",
+      "title": "Geometric Abstraction No. 9",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825336740-peteryuill_geometricabstraction_9_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825336740-peteryuill_geometricabstraction_9_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120047",
+      "title": "Geometric Abstraction No. 10",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825343129-peteryuill_geometricabstraction_10_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825343129-peteryuill_geometricabstraction_10_1_.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120048",
+      "title": "Geometric Abstraction No. 11",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825348941-peteryuill_geometricabstraction_11.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825348941-peteryuill_geometricabstraction_11.jpg",
+      "dimensions": "56cm × 76cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120049",
+      "title": "Geometric Abstraction No. 12",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825352133-peteryuill_geometricabstraction_12.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825352133-peteryuill_geometricabstraction_12.jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120051",
+      "title": "Mathematical Meditation No. 1",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825355355-peteryuill_mathematicalmeditation1_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825355355-peteryuill_mathematicalmeditation1_1_.jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120053",
+      "title": "Mathematical Meditation No. 2",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825364852-peteryuill_mathematicalmeditation2_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825364852-peteryuill_mathematicalmeditation2_1_.jpg",
+      "dimensions": "76cm × 56cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120055",
+      "title": "There Lay an Invincible Summer",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825370507-peteryuill_there_lay_an_invincible_summer.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825370507-peteryuill_there_lay_an_invincible_summer.jpg",
+      "dimensions": "120cm × 120cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120056",
+      "title": "I Wonder If I Really Exist",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825393028-peteryuill_iwonderifireallyexist_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825393028-peteryuill_iwonderifireallyexist_1_.jpg",
+      "dimensions": "120cm × 160cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "120057",
+      "title": "Theatre of Memory",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825397041-peteryuill_theatre_of_memory.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1/1766825397041-peteryuill_theatre_of_memory.jpg",
+      "dimensions": "120cm × 120cm",
+      "technique": "Ink and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper"
+    },
+    {
+      "id": "150001",
+      "title": "Constructivist Composition with Burnt Orange Bar",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/sp_peteryuill_com.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/sp_peteryuill_com.jpg",
+      "dimensions": "200cm × 150cm",
+      "technique": "Ink and acrylic on canvas"
+    },
+    {
+      "id": "150002",
+      "title": "Torus No. 1 (soho House Commission)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_1_soho_house_peteryuill.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/torus_1_soho_house_peteryuill.jpg",
+      "dimensions": "150cm × 100cm",
+      "technique": "Ink, gold leaf, and copper leaf on mounted paper"
+    },
+    {
+      "id": "150003",
+      "title": "Torus No. 2 (soho House Commission, Copper Grounding)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_2_soho_house-peteryuill.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/torus_2_soho_house-peteryuill.jpg",
+      "dimensions": "150cm × 100cm",
+      "technique": "Ink and copper leaf on mounted paper"
+    },
+    {
+      "id": "150004",
+      "title": "Torus No. 3 (yin-yang Composition with Gold Plane)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_3_peteryuill_1.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/torus_3_peteryuill_1.jpg",
+      "dimensions": "80cm × 80cm",
+      "technique": "Ink and gold leaf on paper"
+    },
+    {
+      "id": "150005",
+      "title": "Torus No. 4 (dual-torus Chain with Gold Accent)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_4_peteryuill.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/torus_4_peteryuill.jpg",
+      "dimensions": "100cm × 100cm",
+      "technique": "Ink and gold leaf on paper"
+    },
+    {
+      "id": "150006",
+      "title": "Peninsula Hotels Installation View 1",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_1.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Peninsula_hotel_1.jpg",
+      "dimensions": "200cm × 300cm",
+      "technique": "Ink, gold, and copper on mounted paper (large-scale)"
+    },
+    {
+      "id": "150007",
+      "title": "Peninsula Hotels Installation View 2",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_2.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Peninsula_hotel_2.jpg",
+      "dimensions": "200cm × 300cm",
+      "technique": "Ink, gold, and copper on mounted paper (large-scale)"
+    },
+    {
+      "id": "150008",
+      "title": "Peninsula Hotels Installation View 3",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_3.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Peninsula_hotel_3.jpg",
+      "dimensions": "200cm × 300cm",
+      "technique": "Ink, gold, and copper on mounted paper (large-scale)"
+    },
+    {
+      "id": "150009",
+      "title": "Peninsula Hotels Installation View 4",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_4.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Peninsula_hotel_4.jpg",
+      "dimensions": "200cm × 300cm",
+      "technique": "Ink, gold, and copper on mounted paper (large-scale)"
+    },
+    {
+      "id": "150010",
+      "title": "Peninsula Hotels Installation View 5",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_5.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Peninsula_hotel_5.jpg",
+      "dimensions": "200cm × 300cm",
+      "technique": "Ink, gold, and copper on mounted paper (large-scale)"
+    },
+    {
+      "id": "150011",
+      "title": "Kith & Kin Mural Installation 1",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Keith&kin_mural1_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Keith&kin_mural1_2019.jpg",
+      "dimensions": "500cm × 300cm",
+      "technique": "Acrylic and ink on wall (large-scale mural)"
+    },
+    {
+      "id": "150012",
+      "title": "Kith & Kin Mural Installation 2",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Keith&kin_mural2_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Keith&kin_mural2_2019.jpg",
+      "dimensions": "500cm × 300cm",
+      "technique": "Acrylic and ink on wall (large-scale mural)"
+    },
+    {
+      "id": "150013",
+      "title": "Kith & Kin Mural Installation 3",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Keith&kin_mural3_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Keith&kin_mural3_2019.jpg",
+      "dimensions": "500cm × 300cm",
+      "technique": "Acrylic and ink on wall (large-scale mural)"
+    },
+    {
+      "id": "150014",
+      "title": "Kith & Kin Mural Installation 4",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Kith&kin_mural4_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Kith&kin_mural4_2019.jpg",
+      "dimensions": "500cm × 300cm",
+      "technique": "Acrylic and ink on wall (large-scale mural)"
+    },
+    {
+      "id": "150015",
+      "title": "Jll Corporate Installation",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/JLL_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/JLL_2019.jpg",
+      "dimensions": "200cm × 150cm",
+      "technique": "Ink on mounted paper (large-scale)"
+    },
+    {
+      "id": "150016",
+      "title": "Nuva Airport Installation",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Nuva-airport_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Nuva-airport_2019.jpg",
+      "dimensions": "200cm × 150cm",
+      "technique": "Ink on mounted paper (large-scale)"
+    },
+    {
+      "id": "150017",
+      "title": "Airport Restaurant Installation",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Airport_restaurnt_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Airport_restaurnt_2019.jpg",
+      "dimensions": "200cm × 150cm",
+      "technique": "Ink on mounted paper (large-scale)"
+    },
+    {
+      "id": "150018",
+      "title": "Shenzhen Hotel Installation 1",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Shenzen_hotel1_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Shenzen_hotel1_2019.jpg",
+      "dimensions": "200cm × 150cm",
+      "technique": "Ink on mounted paper (large-scale)"
+    },
+    {
+      "id": "150019",
+      "title": "Shenzhen Hotel Installation 2",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Shenzen_hotel3_2019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Shenzen_hotel3_2019.jpg",
+      "dimensions": "200cm × 150cm",
+      "technique": "Ink on mounted paper (large-scale)"
+    },
+    {
+      "id": "150020",
+      "title": "Justin Tan Private Commission",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Justin_tan_2018.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph1a/Justin_tan_2018.jpg",
+      "dimensions": "100cm × 80cm",
+      "technique": "Ink and gold leaf on paper"
+    },
+    {
+      "id": "180001",
+      "title": "Ink Storm (ascension)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/IMG_0386.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/IMG_0386.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "180002",
+      "title": "Ink Storm (diagonal 01)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240726_162209.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240726_162209.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "180003",
+      "title": "Ink Storm (mass)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/2255.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/2255.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "180004",
+      "title": "Ink Storm (strike)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_10.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/Painting_10.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "180005",
+      "title": "Vietnam Horizon 01",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_9.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/Painting_9.jpg",
+      "dimensions": "100cm × 100cm",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "180006",
+      "title": "Ink Storm (sweep)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_114217.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_114217.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "180007",
+      "title": "Ink Storm (burst)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240701_095820.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240701_095820.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210001",
+      "title": "Purple Portal (vietnam 01)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240803_113029.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240803_113029.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210002",
+      "title": "Wounded Portal (magenta)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_8.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/Painting_8.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210003",
+      "title": "Ink Storm (cyan & Magenta)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240725_104225.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240725_104225.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210004",
+      "title": "Ink Storm (purple Flare)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240728_102241.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240728_102241.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210006",
+      "title": "Cosmic Bloom (multi-ring)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240723_132742.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240723_132742.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210008",
+      "title": "Portal (nested Eye)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240717_142027.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240717_142027.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210010",
+      "title": "Portal (bleed)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_7.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/Painting_7.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210015",
+      "title": "Ink Storm (chaos)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240717_111943.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240717_111943.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210017",
+      "title": "Cosmic Bloom (teal)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_6_1_.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/Painting_6_1_.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210018",
+      "title": "Horizon Portal (split)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240717_113214.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240717_113214.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210022",
+      "title": "I Think I Can",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/2024071IthinkIcan7_111833.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/2024071IthinkIcan7_111833.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210023",
+      "title": "Oculus (dilating Ring)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134825.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240630_134825.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210024",
+      "title": "Oculus (eclipse)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111019.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_111019.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210025",
+      "title": "Oculus (soft Focus)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134809.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240630_134809.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210026",
+      "title": "Oculus (concentric Pulse)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134838.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240630_134838.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210027",
+      "title": "Oculus (horizon Split)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111207.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_111207.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210028",
+      "title": "Oculus (heavy Mass)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111125.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_111125.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210029",
+      "title": "Oculus (interior Tooth)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111153.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_111153.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210030",
+      "title": "Oculus (wash Field)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134645.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240630_134645.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210031",
+      "title": "Oculus (double Ring)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134723.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240630_134723.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210032",
+      "title": "Oculus (void Core)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134708.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240630_134708.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210033",
+      "title": "Oculus (horizon Maw)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134550.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240630_134550.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210034",
+      "title": "Oculus (nested Eye)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134624.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240630_134624.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210035",
+      "title": "Study (vertebral Form)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/vfd.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/vfd.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210036",
+      "title": "Residual (heavy Mass)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240724_161520.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240724_161520.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210037",
+      "title": "Residual (broken Loop)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240724_153159.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240724_153159.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210038",
+      "title": "Residual (horizontal Mass)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240724_153120.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240724_153120.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210039",
+      "title": "Study (cellular Wash)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240801_112613.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240801_112613.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210040",
+      "title": "Study (soft Ring)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240801_113712.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240801_113712.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210041",
+      "title": "Study (dense Core)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240801_113635.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240801_113635.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210042",
+      "title": "Vietnam Horizon (bar 01)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111657.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_111657.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210043",
+      "title": "Vietnam Horizon (bar 02)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_112123.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_112123.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210044",
+      "title": "Horizon (intersected)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111955.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_111955.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210045",
+      "title": "Study (wash Fragment)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240801_112932.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240801_112932.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "210046",
+      "title": "Vietnam Horizon (bar 03)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111634.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "works/ph4/20240629_111634.jpg",
+      "dimensions": "Variable dimensions",
+      "technique": "Inks on Anhui rice paper"
+    },
+    {
+      "id": "240002",
+      "title": "Tidal",
+      "imageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
+      "thumbnailUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg",
+      "imageKey": "NULL",
+      "dimensions": "300cm × 1000cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    },
+    {
+      "id": "270001",
+      "title": "Carbon Mural",
+      "imageUrl": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/AvlpgpAwaFZzvMwy.jpg",
+      "thumbnailUrl": "NULL",
+      "imageKey": "NULL",
+      "dimensions": "600cm × 180cm",
+      "technique": "Sumi ink on Chinese mulberry paper"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\timageUrl\tthumbnailUrl\timageKey\tdimensions\ttechnique\n30001\tBig Bang: Breath Aureole\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB1.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB1.jpg\tworks/bigbang/BB1.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30002\tBig Bang: Diagonal Thrust\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB2.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB2.jpg\tworks/bigbang/BB2.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30003\tBig Bang: Vertical Descent\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB3.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB3.jpg\tworks/bigbang/BB3.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30004\tBig Bang: Smoke Field\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB4.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB4.jpg\tworks/bigbang/BB4.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30005\tBig Bang: Diagonal Thrust Ii\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB5.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB5.jpg\tworks/bigbang/BB5.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30006\tBig Bang: Geological Core\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB6.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB6.jpg\tworks/bigbang/BB6.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30007\tBig Bang: Breath & Bone\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB7.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB7.jpg\tworks/bigbang/BB7.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30008\tBig Bang: Geological Core Ii\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB8.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB8.jpg\tworks/bigbang/BB8.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30009\tBig Bang: Cloud Mass\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB9.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB9.jpg\tworks/bigbang/BB9.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30010\tBig Bang: Shadow Self\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB10.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/bigbang/BB10.jpg\tworks/bigbang/BB10.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30011\tThr3e (standing Bruise)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/thr3e/THR3E.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/thr3e/THR3E.jpg\tworks/thr3e/THR3E.jpg\t100cm × 100cm\tSumi ink on Chinese mulberry paper\n30012\tCovenant I: Storm-body\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic2.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic2.jpg\tworks/covenant/COVTryptic2.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30013\tCovenant Ii: Vessel-body\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic3.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic3.jpg\tworks/covenant/COVTryptic3.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30014\tCovenant Iii: Threshold-body\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic1.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic1.jpg\tworks/covenant/COVTryptic1.jpg\t100cm × 200cm\tSumi ink on Chinese mulberry paper\n30015\tOde to Osiris\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/1_ode_to_osiris_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/1_ode_to_osiris_peteryuill(1).jpg\tworks/equinox/1_ode_to_osiris_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30016\tOde to Isis\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/2_ode_to_isis_peteryuill(2).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/2_ode_to_isis_peteryuill(2).jpg\tworks/equinox/2_ode_to_isis_peteryuill(2).jpg\t76cm × 56cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30017\tOde to Hadit\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/3_ode_to_hadit_peteryuill(2).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/3_ode_to_hadit_peteryuill(2).jpg\tworks/equinox/3_ode_to_hadit_peteryuill(2).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30018\tOde to Hoor-pa-kraat\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/6_ode_to_hoor_pa_kraat_peteryuill(2).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/6_ode_to_hoor_pa_kraat_peteryuill(2).jpg\tworks/equinox/6_ode_to_hoor_pa_kraat_peteryuill(2).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30019\tOde to Therion\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/7_ode_to_therion_peteryuill.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/7_ode_to_therion_peteryuill.jpg\tworks/equinox/7_ode_to_therion_peteryuill.jpg\t100cm × 100cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30020\tThe Limitless Path of the Intuitive Mind I\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_1_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_1_peteryuill(1).jpg\tworks/alignment/the_limitless_path_of_the_intuitive_mind_1_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30021\tThe Limitless Path of the Intuitive Mind Ii\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_2_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_limitless_path_of_the_intuitive_mind_2_peteryuill(1).jpg\tworks/alignment/the_limitless_path_of_the_intuitive_mind_2_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30022\tThe Infinite Plane I\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_infinite_plane_1_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_infinite_plane_1_peteryuill(1).jpg\tworks/alignment/the_infinite_plane_1_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30023\tThe Infinite Plane Ii\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_infinite_plane_2_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/the_infinite_plane_2_peteryuill(1).jpg\tworks/alignment/the_infinite_plane_2_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30024\tDreamcatcher\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/dreamcatcher_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/dreamcatcher_peteryuill(1).jpg\tworks/alignment/dreamcatcher_peteryuill(1).jpg\t76cm × 56cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30025\tAurorae Aureae\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/aurorae_aureae_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/aurorae_aureae_peteryuill(1).jpg\tworks/alignment/aurorae_aureae_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30026\tInside the Vortex\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/inside_the_vortex_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/inside_the_vortex_peteryuill(1).jpg\tworks/alignment/inside_the_vortex_peteryuill(1).jpg\t76cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30027\tFreyja\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/freyja_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/freyja_peteryuill(1).jpg\tworks/alignment/freyja_peteryuill(1).jpg\t76cm × 56cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30028\tFreyr\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/freyr_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/freyr_peteryuill(1).jpg\tworks/alignment/freyr_peteryuill(1).jpg\t76cm × 56cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30029\tAs Above, So Below I\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/as_above_so_below_1_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/as_above_so_below_1_peteryuill(1).jpg\tworks/alignment/as_above_so_below_1_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30030\tPolaris\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/polaris_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/polaris_peteryuill(1).jpg\tworks/alignment/polaris_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30031\tGolden Dawn\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/golden_dawn_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/golden_dawn_peteryuill(1).jpg\tworks/alignment/golden_dawn_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30032\tVibrational Alignment\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/vibrational_alignment_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/vibrational_alignment_peteryuill(1).jpg\tworks/alignment/vibrational_alignment_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n30033\tA Walking Bundle of Frequencies\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/a_walking_bundle_of_frequencies_peteryuill(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/a_walking_bundle_of_frequencies_peteryuill(1).jpg\tworks/alignment/a_walking_bundle_of_frequencies_peteryuill(1).jpg\t56cm × 76cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n60001\tEchoes\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Echoes(2x2m).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Echoes(2x2m).jpg\tNULL\t200cm × 200cm\tAcrylic paint on linen\n60002\tValis\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Valis.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Valis.jpg\tNULL\t76cm × 56cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60003\tElectric Dreams\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Electricdream.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Electricdream.jpg\tNULL\t76cm × 56cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60004\tA Momentary Lapse of Reason\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/AMomentarilyLapseofReason.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/AMomentarilyLapseofReason.jpg\tNULL\t76cm × 56cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60005\tLabyrinth of Coral Caves (1)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/LabyrinthofCoralCaves.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/LabyrinthofCoralCaves.jpg\tNULL\t76cm × 56cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60006\tGravity Well\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Gravitywell.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Gravitywell.jpg\tNULL\t35cm × 70cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60007\tAmnesia\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Amnesia.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Amnesia.jpg\tNULL\t76cm × 56cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60008\tPersistence of Time (1)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/17.1.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/17.1.jpg\tNULL\t21cm × 30cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60009\tSection 9\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/9.1.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/9.1.jpg\tNULL\t30cm × 40cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60010\tLabyrinth of Coral Caves (2)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/13(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/13(1).jpg\tNULL\t76cm × 56cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60011\tGenesis\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Genesis.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Genesis.jpg\tNULL\t76cm × 56cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60012\tSplit Second\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Spitsecond.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Spitsecond.jpg\tNULL\t76cm × 56cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60013\tMajor Motoko\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/MajorMotoko.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/MajorMotoko.jpg\tNULL\t56cm × 76cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60014\tOrbital Refraction\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/OrbitalRefraction.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/OrbitalRefraction.jpg\tNULL\t100cm × 70cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60015\tA Delicate Sound of Thunder\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/DelicateSoundofThunder.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/DelicateSoundofThunder.jpg\tNULL\t100cm × 70cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60016\tPersistence of Time (2)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/18.1(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/18.1(1).jpg\tNULL\t21cm × 30cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60017\tPersistence of Time (3)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/19.1.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/19.1.jpg\tNULL\t21cm × 30cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n60018\tPersistence of Time (4)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/20.1.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/20.1.jpg\tNULL\t30cm × 21cm\tInk on Saunders Waterford 300gsm hot press cotton rag paper\n90001\tCross Mandala with Gold Center\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0012(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0012(1).jpg\tNULL\t30cm × 40cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90002\tHorizontal Orbital Mural (study)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/20230628_223310~2.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/20230628_223310~2.jpg\tNULL\t600cm × 150cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90003\tYin-yang Gold Disc\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0013(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0013(1).jpg\tNULL\t30cm × 40cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90004\tVertical Cross with Gold Satellites\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0011(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0011(1).jpg\tNULL\t30cm × 40cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90005\tOrbital Installation View\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/DSC07648~2.jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/DSC07648~2.jpg\tNULL\t600cm × 150cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90006\tAsymmetric Orbital Cluster\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0016(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0016(1).jpg\tNULL\t30cm × 40cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90007\tGold Crescent Orbit\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0014(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0014(1).jpg\tNULL\t30cm × 40cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90008\tVertical Axis with Gold Poles\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0015(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0015(1).jpg\tNULL\t30cm × 40cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90009\tDense Cross Mandala\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0017(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0017(1).jpg\tNULL\t30cm × 40cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n90010\tSpiral Galaxy S-curve\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0018(1).jpg\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0018(1).jpg\tNULL\t30cm × 40cm\tInk and metallic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120014\tAbsurdity of Meaning No. 1\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825091966-peteryuill_absurdityofmeaning1.jpg\tNULL\tworks/ph1/1766825091966-peteryuill_absurdityofmeaning1.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120016\tAbsurdity of Meaning No. 2\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825100649-peteryuill_absurdityofmeaning2.jpg\tNULL\tworks/ph1/1766825100649-peteryuill_absurdityofmeaning2.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120021\tAbsurdity of Meaning No. 3\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825106028-peteryuill_absurdityofmeaning3_1_.jpg\tNULL\tworks/ph1/1766825106028-peteryuill_absurdityofmeaning3_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120028\tAbsurdity of Meaning No. 4\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825126989-peteryuill_absurdityofmeaning4_1_.jpg\tNULL\tworks/ph1/1766825126989-peteryuill_absurdityofmeaning4_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120032\tAbsurdity of Meaning No. 5\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825148901-peteryuill_absurdityofmeaning5_1_.jpg\tNULL\tworks/ph1/1766825148901-peteryuill_absurdityofmeaning5_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120033\tAbsurdity of Meaning No. 6\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825169192-peteryuill_absurdityofmeaning6.jpg\tNULL\tworks/ph1/1766825169192-peteryuill_absurdityofmeaning6.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120034\tAbsurdity of Meaning No. 7\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825173449-peteryuill_absurdityofmeaning7.jpg\tNULL\tworks/ph1/1766825173449-peteryuill_absurdityofmeaning7.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120035\tAbsurdity of Meaning No. 8\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825178772-peteryuill_absurdityofmeaning8.jpg\tNULL\tworks/ph1/1766825178772-peteryuill_absurdityofmeaning8.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120036\tAbsurdity of Meaning No. 9\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825207823-peteryuill_absurdityofmeaning9.jpg\tNULL\tworks/ph1/1766825207823-peteryuill_absurdityofmeaning9.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120037\tAbsurdity of Meaning No. 10\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825239047-peteryuill_absurdityofmeaning10.jpg\tNULL\tworks/ph1/1766825239047-peteryuill_absurdityofmeaning10.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120038\tAbsurdity of Meaning No. 11\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825242802-peteryuill_absurdityofmeaning11.jpg\tNULL\tworks/ph1/1766825242802-peteryuill_absurdityofmeaning11.jpg\t76cm × 56cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120039\tAbsurdity of Meaning No. 12\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825247073-peteryuill_absurdityofmeaning12.jpg\tNULL\tworks/ph1/1766825247073-peteryuill_absurdityofmeaning12.jpg\t76cm × 56cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120040\tAbsurdity of Meaning No. 13\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825250756-peteryuill_absurdityofmeaning13_1_.jpg\tNULL\tworks/ph1/1766825250756-peteryuill_absurdityofmeaning13_1_.jpg\t76cm × 56cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120041\tGeometric Abstraction No. 4\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825271128-peteryuill_geometricabstraction_4_1_.jpg\tNULL\tworks/ph1/1766825271128-peteryuill_geometricabstraction_4_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120042\tGeometric Abstraction No. 5\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825297824-peteryuill_geometricabstraction_5_1_.jpg\tNULL\tworks/ph1/1766825297824-peteryuill_geometricabstraction_5_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120043\tGeometric Abstraction No. 6\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825321119-peteryuill_geometricabstraction_6_1_.jpg\tNULL\tworks/ph1/1766825321119-peteryuill_geometricabstraction_6_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120044\tGeometric Abstraction No. 7\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825325436-peteryuill_geometricabstraction_7_1_.jpg\tNULL\tworks/ph1/1766825325436-peteryuill_geometricabstraction_7_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120045\tGeometric Abstraction No. 8\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825330777-peteryuill_geometricabstraction_8_1_.jpg\tNULL\tworks/ph1/1766825330777-peteryuill_geometricabstraction_8_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120046\tGeometric Abstraction No. 9\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825336740-peteryuill_geometricabstraction_9_1_.jpg\tNULL\tworks/ph1/1766825336740-peteryuill_geometricabstraction_9_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120047\tGeometric Abstraction No. 10\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825343129-peteryuill_geometricabstraction_10_1_.jpg\tNULL\tworks/ph1/1766825343129-peteryuill_geometricabstraction_10_1_.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120048\tGeometric Abstraction No. 11\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825348941-peteryuill_geometricabstraction_11.jpg\tNULL\tworks/ph1/1766825348941-peteryuill_geometricabstraction_11.jpg\t56cm × 76cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120049\tGeometric Abstraction No. 12\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825352133-peteryuill_geometricabstraction_12.jpg\tNULL\tworks/ph1/1766825352133-peteryuill_geometricabstraction_12.jpg\t76cm × 56cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120051\tMathematical Meditation No. 1\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825355355-peteryuill_mathematicalmeditation1_1_.jpg\tNULL\tworks/ph1/1766825355355-peteryuill_mathematicalmeditation1_1_.jpg\t76cm × 56cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120053\tMathematical Meditation No. 2\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825364852-peteryuill_mathematicalmeditation2_1_.jpg\tNULL\tworks/ph1/1766825364852-peteryuill_mathematicalmeditation2_1_.jpg\t76cm × 56cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120055\tThere Lay an Invincible Summer\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825370507-peteryuill_there_lay_an_invincible_summer.jpg\tNULL\tworks/ph1/1766825370507-peteryuill_there_lay_an_invincible_summer.jpg\t120cm × 120cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120056\tI Wonder If I Really Exist\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825393028-peteryuill_iwonderifireallyexist_1_.jpg\tNULL\tworks/ph1/1766825393028-peteryuill_iwonderifireallyexist_1_.jpg\t120cm × 160cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n120057\tTheatre of Memory\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825397041-peteryuill_theatre_of_memory.jpg\tNULL\tworks/ph1/1766825397041-peteryuill_theatre_of_memory.jpg\t120cm × 120cm\tInk and acrylic paint on Saunders Waterford 300gsm hot press cotton rag paper\n150001\tConstructivist Composition with Burnt Orange Bar\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/sp_peteryuill_com.jpg\tNULL\tworks/ph1a/sp_peteryuill_com.jpg\t200cm × 150cm\tInk and acrylic on canvas\n150002\tTorus No. 1 (soho House Commission)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_1_soho_house_peteryuill.jpg\tNULL\tworks/ph1a/torus_1_soho_house_peteryuill.jpg\t150cm × 100cm\tInk, gold leaf, and copper leaf on mounted paper\n150003\tTorus No. 2 (soho House Commission, Copper Grounding)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_2_soho_house-peteryuill.jpg\tNULL\tworks/ph1a/torus_2_soho_house-peteryuill.jpg\t150cm × 100cm\tInk and copper leaf on mounted paper\n150004\tTorus No. 3 (yin-yang Composition with Gold Plane)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_3_peteryuill_1.jpg\tNULL\tworks/ph1a/torus_3_peteryuill_1.jpg\t80cm × 80cm\tInk and gold leaf on paper\n150005\tTorus No. 4 (dual-torus Chain with Gold Accent)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/torus_4_peteryuill.jpg\tNULL\tworks/ph1a/torus_4_peteryuill.jpg\t100cm × 100cm\tInk and gold leaf on paper\n150006\tPeninsula Hotels Installation View 1\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_1.jpg\tNULL\tworks/ph1a/Peninsula_hotel_1.jpg\t200cm × 300cm\tInk, gold, and copper on mounted paper (large-scale)\n150007\tPeninsula Hotels Installation View 2\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_2.jpg\tNULL\tworks/ph1a/Peninsula_hotel_2.jpg\t200cm × 300cm\tInk, gold, and copper on mounted paper (large-scale)\n150008\tPeninsula Hotels Installation View 3\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_3.jpg\tNULL\tworks/ph1a/Peninsula_hotel_3.jpg\t200cm × 300cm\tInk, gold, and copper on mounted paper (large-scale)\n150009\tPeninsula Hotels Installation View 4\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_4.jpg\tNULL\tworks/ph1a/Peninsula_hotel_4.jpg\t200cm × 300cm\tInk, gold, and copper on mounted paper (large-scale)\n150010\tPeninsula Hotels Installation View 5\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Peninsula_hotel_5.jpg\tNULL\tworks/ph1a/Peninsula_hotel_5.jpg\t200cm × 300cm\tInk, gold, and copper on mounted paper (large-scale)\n150011\tKith & Kin Mural Installation 1\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Keith&kin_mural1_2019.jpg\tNULL\tworks/ph1a/Keith&kin_mural1_2019.jpg\t500cm × 300cm\tAcrylic and ink on wall (large-scale mural)\n150012\tKith & Kin Mural Installation 2\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Keith&kin_mural2_2019.jpg\tNULL\tworks/ph1a/Keith&kin_mural2_2019.jpg\t500cm × 300cm\tAcrylic and ink on wall (large-scale mural)\n150013\tKith & Kin Mural Installation 3\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Keith&kin_mural3_2019.jpg\tNULL\tworks/ph1a/Keith&kin_mural3_2019.jpg\t500cm × 300cm\tAcrylic and ink on wall (large-scale mural)\n150014\tKith & Kin Mural Installation 4\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Kith&kin_mural4_2019.jpg\tNULL\tworks/ph1a/Kith&kin_mural4_2019.jpg\t500cm × 300cm\tAcrylic and ink on wall (large-scale mural)\n150015\tJll Corporate Installation\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/JLL_2019.jpg\tNULL\tworks/ph1a/JLL_2019.jpg\t200cm × 150cm\tInk on mounted paper (large-scale)\n150016\tNuva Airport Installation\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Nuva-airport_2019.jpg\tNULL\tworks/ph1a/Nuva-airport_2019.jpg\t200cm × 150cm\tInk on mounted paper (large-scale)\n150017\tAirport Restaurant Installation\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Airport_restaurnt_2019.jpg\tNULL\tworks/ph1a/Airport_restaurnt_2019.jpg\t200cm × 150cm\tInk on mounted paper (large-scale)\n150018\tShenzhen Hotel Installation 1\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Shenzen_hotel1_2019.jpg\tNULL\tworks/ph1a/Shenzen_hotel1_2019.jpg\t200cm × 150cm\tInk on mounted paper (large-scale)\n150019\tShenzhen Hotel Installation 2\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Shenzen_hotel3_2019.jpg\tNULL\tworks/ph1a/Shenzen_hotel3_2019.jpg\t200cm × 150cm\tInk on mounted paper (large-scale)\n150020\tJustin Tan Private Commission\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1a/Justin_tan_2018.jpg\tNULL\tworks/ph1a/Justin_tan_2018.jpg\t100cm × 80cm\tInk and gold leaf on paper\n180001\tInk Storm (ascension)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/IMG_0386.jpg\tNULL\tworks/ph4/IMG_0386.jpg\tVariable dimensions\tInks on Anhui rice paper\n180002\tInk Storm (diagonal 01)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240726_162209.jpg\tNULL\tworks/ph4/20240726_162209.jpg\tVariable dimensions\tInks on Anhui rice paper\n180003\tInk Storm (mass)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/2255.jpg\tNULL\tworks/ph4/2255.jpg\tVariable dimensions\tInks on Anhui rice paper\n180004\tInk Storm (strike)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_10.jpg\tNULL\tworks/ph4/Painting_10.jpg\tVariable dimensions\tInks on Anhui rice paper\n180005\tVietnam Horizon 01\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_9.jpg\tNULL\tworks/ph4/Painting_9.jpg\t100cm × 100cm\tInks on Anhui rice paper\n180006\tInk Storm (sweep)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_114217.jpg\tNULL\tworks/ph4/20240629_114217.jpg\tVariable dimensions\tInks on Anhui rice paper\n180007\tInk Storm (burst)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240701_095820.jpg\tNULL\tworks/ph4/20240701_095820.jpg\tVariable dimensions\tInks on Anhui rice paper\n210001\tPurple Portal (vietnam 01)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240803_113029.jpg\tNULL\tworks/ph4/20240803_113029.jpg\tVariable dimensions\tInks on Anhui rice paper\n210002\tWounded Portal (magenta)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_8.jpg\tNULL\tworks/ph4/Painting_8.jpg\tVariable dimensions\tInks on Anhui rice paper\n210003\tInk Storm (cyan & Magenta)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240725_104225.jpg\tNULL\tworks/ph4/20240725_104225.jpg\tVariable dimensions\tInks on Anhui rice paper\n210004\tInk Storm (purple Flare)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240728_102241.jpg\tNULL\tworks/ph4/20240728_102241.jpg\tVariable dimensions\tInks on Anhui rice paper\n210006\tCosmic Bloom (multi-ring)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240723_132742.jpg\tNULL\tworks/ph4/20240723_132742.jpg\tVariable dimensions\tInks on Anhui rice paper\n210008\tPortal (nested Eye)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240717_142027.jpg\tNULL\tworks/ph4/20240717_142027.jpg\tVariable dimensions\tInks on Anhui rice paper\n210010\tPortal (bleed)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_7.jpg\tNULL\tworks/ph4/Painting_7.jpg\tVariable dimensions\tInks on Anhui rice paper\n210015\tInk Storm (chaos)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240717_111943.jpg\tNULL\tworks/ph4/20240717_111943.jpg\tVariable dimensions\tInks on Anhui rice paper\n210017\tCosmic Bloom (teal)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_6_1_.jpg\tNULL\tworks/ph4/Painting_6_1_.jpg\tVariable dimensions\tInks on Anhui rice paper\n210018\tHorizon Portal (split)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240717_113214.jpg\tNULL\tworks/ph4/20240717_113214.jpg\tVariable dimensions\tInks on Anhui rice paper\n210022\tI Think I Can\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/2024071IthinkIcan7_111833.jpg\tNULL\tworks/ph4/2024071IthinkIcan7_111833.jpg\tVariable dimensions\tInks on Anhui rice paper\n210023\tOculus (dilating Ring)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134825.jpg\tNULL\tworks/ph4/20240630_134825.jpg\tVariable dimensions\tInks on Anhui rice paper\n210024\tOculus (eclipse)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111019.jpg\tNULL\tworks/ph4/20240629_111019.jpg\tVariable dimensions\tInks on Anhui rice paper\n210025\tOculus (soft Focus)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134809.jpg\tNULL\tworks/ph4/20240630_134809.jpg\tVariable dimensions\tInks on Anhui rice paper\n210026\tOculus (concentric Pulse)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134838.jpg\tNULL\tworks/ph4/20240630_134838.jpg\tVariable dimensions\tInks on Anhui rice paper\n210027\tOculus (horizon Split)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111207.jpg\tNULL\tworks/ph4/20240629_111207.jpg\tVariable dimensions\tInks on Anhui rice paper\n210028\tOculus (heavy Mass)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111125.jpg\tNULL\tworks/ph4/20240629_111125.jpg\tVariable dimensions\tInks on Anhui rice paper\n210029\tOculus (interior Tooth)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111153.jpg\tNULL\tworks/ph4/20240629_111153.jpg\tVariable dimensions\tInks on Anhui rice paper\n210030\tOculus (wash Field)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134645.jpg\tNULL\tworks/ph4/20240630_134645.jpg\tVariable dimensions\tInks on Anhui rice paper\n210031\tOculus (double Ring)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134723.jpg\tNULL\tworks/ph4/20240630_134723.jpg\tVariable dimensions\tInks on Anhui rice paper\n210032\tOculus (void Core)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134708.jpg\tNULL\tworks/ph4/20240630_134708.jpg\tVariable dimensions\tInks on Anhui rice paper\n210033\tOculus (horizon Maw)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134550.jpg\tNULL\tworks/ph4/20240630_134550.jpg\tVariable dimensions\tInks on Anhui rice paper\n210034\tOculus (nested Eye)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240630_134624.jpg\tNULL\tworks/ph4/20240630_134624.jpg\tVariable dimensions\tInks on Anhui rice paper\n210035\tStudy (vertebral Form)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/vfd.jpg\tNULL\tworks/ph4/vfd.jpg\tVariable dimensions\tInks on Anhui rice paper\n210036\tResidual (heavy Mass)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240724_161520.jpg\tNULL\tworks/ph4/20240724_161520.jpg\tVariable dimensions\tInks on Anhui rice paper\n210037\tResidual (broken Loop)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240724_153159.jpg\tNULL\tworks/ph4/20240724_153159.jpg\tVariable dimensions\tInks on Anhui rice paper\n210038\tResidual (horizontal Mass)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240724_153120.jpg\tNULL\tworks/ph4/20240724_153120.jpg\tVariable dimensions\tInks on Anhui rice paper\n210039\tStudy (cellular Wash)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240801_112613.jpg\tNULL\tworks/ph4/20240801_112613.jpg\tVariable dimensions\tInks on Anhui rice paper\n210040\tStudy (soft Ring)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240801_113712.jpg\tNULL\tworks/ph4/20240801_113712.jpg\tVariable dimensions\tInks on Anhui rice paper\n210041\tStudy (dense Core)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240801_113635.jpg\tNULL\tworks/ph4/20240801_113635.jpg\tVariable dimensions\tInks on Anhui rice paper\n210042\tVietnam Horizon (bar 01)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111657.jpg\tNULL\tworks/ph4/20240629_111657.jpg\tVariable dimensions\tInks on Anhui rice paper\n210043\tVietnam Horizon (bar 02)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_112123.jpg\tNULL\tworks/ph4/20240629_112123.jpg\tVariable dimensions\tInks on Anhui rice paper\n210044\tHorizon (intersected)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111955.jpg\tNULL\tworks/ph4/20240629_111955.jpg\tVariable dimensions\tInks on Anhui rice paper\n210045\tStudy (wash Fragment)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240801_112932.jpg\tNULL\tworks/ph4/20240801_112932.jpg\tVariable dimensions\tInks on Anhui rice paper\n210046\tVietnam Horizon (bar 03)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_111634.jpg\tNULL\tworks/ph4/20240629_111634.jpg\tVariable dimensions\tInks on Anhui rice paper\n240002\tTidal\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/HBPLSsdFbphVwyis.jpg\tNULL\t300cm × 1000cm\tSumi ink on Chinese mulberry paper\n270001\tCarbon Mural\thttps://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/AvlpgpAwaFZzvMwy.jpg\tNULL\tNULL\t600cm × 180cm\tSumi ink on Chinese mulberry paper\n",
+  "stderr": "",
+  "execution_time_ms": 2604
+}

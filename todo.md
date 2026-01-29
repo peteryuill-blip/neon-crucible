@@ -672,3 +672,57 @@
 - [x] Change log CSV (CHANGE_LOG.csv)
 - [x] Validation report (VALIDATION_REPORT.txt)
 - [x] Updated database with standardized formatting (152/152 works pass validation)
+
+
+## Image Optimization for Web Delivery
+
+### Phase 1: Image Audit
+- [x] Identify all static images in client/public directory (4 images, 416.9KB)
+- [x] Identify all database-stored artwork images (S3/CloudFront) (152 images, 236.8MB)
+- [x] Record: filename, format, dimensions, file size, usage location
+- [x] Generate complete image inventory CSV (DB_IMAGE_INVENTORY.csv)
+
+### Phase 2: Analysis
+- [ ] Analyze current file sizes vs display requirements
+- [ ] Identify oversized images (source larger than max display)
+- [ ] Calculate potential bandwidth savings
+
+### Phase 3: Responsive Variants
+- [ ] Define breakpoints (mobile: 640px, tablet: 1024px, desktop: 1440px, large: 1920px)
+- [ ] Generate size variants for each image
+- [ ] Maintain aspect ratio, no upscaling
+
+### Phase 4: Modern Formats
+- [ ] Convert to WebP with quality 85-90 (visually lossless)
+- [ ] Generate AVIF where browser support allows
+- [ ] Keep original JPEG/PNG as fallbacks
+
+### Phase 5: Implement srcset
+- [ ] Update image components with srcset/sizes attributes
+- [ ] Configure responsive image loading in React components
+- [ ] Test browser selection of appropriate sizes
+
+### Phase 6: Verification
+- [ ] Test all pages render correctly
+- [ ] Verify no visual quality loss
+- [ ] Confirm responsive loading works
+
+### Phase 7: Reporting
+- [ ] Generate summary table with savings
+- [ ] List any images that couldn't be optimized
+- [ ] Save checkpoint
+
+
+## Descent Page - Archaeological Timeline
+
+- [x] Create /descent page - archaeological timeline of 9 phases
+- [x] Build hero section with scroll indicator
+- [x] Build all 9 phase blocks with placeholder content
+- [x] Special PH4A void section with darker background
+- [x] Add 3 interstitial thresholds between ruptures
+- [x] Add termination section with geometric SVG symbol
+- [x] Implement Conductive Line SVG with OKLCH color evolution
+- [x] Add X-Ray reveal interactions
+- [x] Add keyboard navigation and accessibility
+- [x] Add navigation integration (SYSTEM group)
+- [ ] Add SEO meta tags (pending)

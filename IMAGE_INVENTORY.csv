@@ -1,0 +1,5 @@
+source,id,title,filename,format,size_bytes,size_human,content_type,status,dimensions_db,phase,series,usage,url,path
+static,,,poe-logo.png,PNG,5820,5.7KB,,,,,,Static asset,,poe-logo.png
+static,,,whatsapp-neon.jpg,JPG,402085,392.7KB,,,,,,Contact page icons,,whatsapp-neon.jpg
+static,,,email-neon.jpg,JPG,6370,6.2KB,,,,,,Contact page icons,,email-neon.jpg
+static,,,instagram-neon.jpg,JPG,12669,12.4KB,,,,,,Contact page icons,,instagram-neon.jpg

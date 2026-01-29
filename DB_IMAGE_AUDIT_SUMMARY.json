@@ -1,0 +1,71 @@
+{
+  "total_database_images": 152,
+  "total_thumbnails": 0,
+  "total_size_bytes": 248276427,
+  "total_size_human": "236.8MB",
+  "by_format": {
+    "JPG": 152
+  },
+  "by_phase": {
+    "NE": 16,
+    "PH2A": 5,
+    "PH2": 14,
+    "PH3": 18,
+    "PH3A": 10,
+    "PH1": 27,
+    "PH1A": 20,
+    "PH4": 42
+  },
+  "largest_images": [
+    {
+      "title": "Gravity Well",
+      "size": "9.1MB",
+      "format": "JPG"
+    },
+    {
+      "title": "Persistence of Time (3)",
+      "size": "4.9MB",
+      "format": "JPG"
+    },
+    {
+      "title": "Geometric Abstraction No. 4",
+      "size": "4.8MB",
+      "format": "JPG"
+    },
+    {
+      "title": "Absurdity of Meaning No. 9",
+      "size": "4.7MB",
+      "format": "JPG"
+    },
+    {
+      "title": "Absurdity of Meaning No. 8",
+      "size": "4.7MB",
+      "format": "JPG"
+    },
+    {
+      "title": "Geometric Abstraction No. 5",
+      "size": "4.4MB",
+      "format": "JPG"
+    },
+    {
+      "title": "There Lay an Invincible Summer",
+      "size": "4.2MB",
+      "format": "JPG"
+    },
+    {
+      "title": "Absurdity of Meaning No. 3",
+      "size": "3.9MB",
+      "format": "JPG"
+    },
+    {
+      "title": "Peninsula Hotels Installation View 4",
+      "size": "3.8MB",
+      "format": "JPG"
+    },
+    {
+      "title": "Absurdity of Meaning No. 13",
+      "size": "3.8MB",
+      "format": "JPG"
+    }
+  ]
+}

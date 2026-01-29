@@ -16,6 +16,7 @@ import NeonIdentity from "./pages/NeonIdentity";
 import Statistics from "./pages/Statistics";
 import Commissions from "./pages/Commissions";
 import Contact from "./pages/Contact";
+import Descent from "./pages/Descent";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminWorks from "./pages/admin/AdminWorks";
 import AdminPhases from "./pages/admin/AdminPhases";
@@ -78,6 +79,7 @@ function PublicRouter() {
         <Route path="/about" component={About} />
         <Route path="/voices" component={Voices} />
         <Route path="/contact" component={Contact} />
+        <Route path="/descent" component={Descent} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

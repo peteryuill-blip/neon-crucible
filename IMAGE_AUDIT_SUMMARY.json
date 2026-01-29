@@ -1,0 +1,13 @@
+{
+  "total_images": 4,
+  "static_images": 4,
+  "database_images": 0,
+  "thumbnails": 0,
+  "total_size_bytes": 426944,
+  "total_size_human": "416.9KB",
+  "images_by_format": {
+    "PNG": 1,
+    "JPG": 3
+  },
+  "images_by_phase": {}
+}
