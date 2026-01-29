@@ -1,0 +1,64 @@
+{
+  "query": "SELECT \n  p.code as phase,\n  p.title as phaseName,\n  p.year,\n  COUNT(w.id) as workCount\nFROM phases p\nLEFT JOIN works w ON p.id = w.phaseId\nGROUP BY p.id, p.code, p.title, p.year\nORDER BY p.sortOrder;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT \n  p.code as phase,\n  p.title as phaseName,\n  p.year,\n  COUNT(w.id) as workCount\nFROM phases p\nLEFT JOIN works w ON p.id = w.phaseId\nGROUP BY p.id, p.code, p.title, p.year\nORDER BY p.sortOrder;",
+  "rows": [
+    {
+      "phase": "PH1",
+      "phaseName": "Absurdity of Meaning",
+      "year": "2018",
+      "workCount": "27"
+    },
+    {
+      "phase": "PH1A",
+      "phaseName": "Institutional Geometry",
+      "year": "2018-2019",
+      "workCount": "20"
+    },
+    {
+      "phase": "PH2",
+      "phaseName": "Alignment – Circular Paradigm",
+      "year": "2019-2020",
+      "workCount": "14"
+    },
+    {
+      "phase": "PH2A",
+      "phaseName": "Equinox of the Gods – Thelemic Rupture",
+      "year": "2020",
+      "workCount": "5"
+    },
+    {
+      "phase": "PH3",
+      "phaseName": "Echoes",
+      "year": "2022",
+      "workCount": "18"
+    },
+    {
+      "phase": "PH3A",
+      "phaseName": "Celestial Secrets",
+      "year": "2023",
+      "workCount": "10"
+    },
+    {
+      "phase": "PH4",
+      "phaseName": "Nomadic – Emotional Crisis & Expressionism",
+      "year": "2024",
+      "workCount": "42"
+    },
+    {
+      "phase": "PH4A",
+      "phaseName": "The Silent Pivot (Recalibration)",
+      "year": "2024-2025",
+      "workCount": "0"
+    },
+    {
+      "phase": "NE",
+      "phaseName": "New Era: Big Bang, Thr3e, Covenant",
+      "year": "2025-present",
+      "workCount": "16"
+    }
+  ],
+  "messages": [],
+  "stdout": "phase\tphaseName\tyear\tworkCount\nPH1\tAbsurdity of Meaning\t2018\t27\nPH1A\tInstitutional Geometry\t2018-2019\t20\nPH2\tAlignment – Circular Paradigm\t2019-2020\t14\nPH2A\tEquinox of the Gods – Thelemic Rupture\t2020\t5\nPH3\tEchoes\t2022\t18\nPH3A\tCelestial Secrets\t2023\t10\nPH4\tNomadic – Emotional Crisis & Expressionism\t2024\t42\nPH4A\tThe Silent Pivot (Recalibration)\t2024-2025\t0\nNE\tNew Era: Big Bang, Thr3e, Covenant\t2025-present\t16\n",
+  "stderr": "",
+  "execution_time_ms": 1653
+}

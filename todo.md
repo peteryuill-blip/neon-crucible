@@ -620,3 +620,55 @@
 - [x] Test layout on mobile viewport (375px, 414px, 768px widths)
 - [x] Ensure filters don't overflow or hide on small screens
 - [x] Verify grid/list view toggle works on mobile
+
+## Create Works Database Information Package
+
+- [x] Extract all works from database with complete metadata
+- [x] Include: title, date, dimensions, materials, series, phase, technique, imageUrl
+- [x] Generate CSV export for spreadsheet analysis
+- [x] Generate JSON export for programmatic access
+- [x] Generate Markdown export for human-readable documentation
+- [x] Create summary statistics (total works, works per phase, date range)
+- [x] Create phase breakdown with work counts
+- [x] Package all files together for delivery
+
+## Standardize Works Database (152 Records)
+
+### Step 1: Audit
+- [x] Export current works table to CSV
+- [x] Flag records with non-standard dimension format (133 works)
+- [x] Flag records with empty or partial medium/technique field (0 works)
+- [x] Flag records with inconsistent title capitalization (0 works)
+- [x] Flag records with missing or malformed year (0 works)
+- [x] Generate audit report CSV (AUDIT_REPORT.csv)
+
+### Step 2: Batch Corrections
+- [x] Apply phase default mediums to works missing medium data
+- [x] Reformat all dimensions to standard format (HEIGHTcm × WIDTHcm)
+- [x] Normalize all titles to title case
+- [x] Correct year formats to YYYY or YYYY–YYYY (no changes needed)
+
+### Step 3: Exception Handling
+- [x] Flag PH3 works that are acrylic on linen (Echoes - already correct)
+- [x] Flag PH1A works requiring manual medium entry (20 works - already correct)
+- [x] Generate exception report CSV for manual review (EXCEPTION_REPORT.csv)
+
+### Step 4: Validation
+- [x] Run validation check on all 152 records
+- [x] Confirm no empty required fields (100% pass)
+- [x] Confirm dimension format matches regex (100% pass)
+- [x] Confirm medium format matches approved patterns (100% pass)
+- [x] Generate validation report (VALIDATION_REPORT.txt)
+
+### Step 5: Database Update
+- [x] Create database backup before changes
+- [x] Apply all corrections to production database (148 works)
+- [x] Log all changes made (before/after values)
+- [x] Generate change log CSV (CHANGE_LOG.csv)
+
+### Step 6: Deliverables
+- [x] Audit report CSV (AUDIT_REPORT.csv)
+- [x] Exception report CSV (EXCEPTION_REPORT.csv)
+- [x] Change log CSV (CHANGE_LOG.csv)
+- [x] Validation report (VALIDATION_REPORT.txt)
+- [x] Updated database with standardized formatting (152/152 works pass validation)

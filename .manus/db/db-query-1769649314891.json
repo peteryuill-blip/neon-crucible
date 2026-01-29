@@ -1,0 +1,18 @@
+{
+  "query": "SELECT \n  COUNT(*) as totalWorks,\n  COUNT(DISTINCT phaseId) as totalPhases,\n  COUNT(DISTINCT seriesName) as totalSeries,\n  COUNT(CASE WHEN featured = 1 THEN 1 END) as featuredWorks,\n  MIN(dateCreated) as earliestWork,\n  MAX(dateCreated) as latestWork\nFROM works;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT \n  COUNT(*) as totalWorks,\n  COUNT(DISTINCT phaseId) as totalPhases,\n  COUNT(DISTINCT seriesName) as totalSeries,\n  COUNT(CASE WHEN featured = 1 THEN 1 END) as featuredWorks,\n  MIN(dateCreated) as earliestWork,\n  MAX(dateCreated) as latestWork\nFROM works;",
+  "rows": [
+    {
+      "totalWorks": "152",
+      "totalPhases": "8",
+      "totalSeries": "14",
+      "featuredWorks": "6",
+      "earliestWork": "2018",
+      "latestWork": "2025-12"
+    }
+  ],
+  "messages": [],
+  "stdout": "totalWorks\ttotalPhases\ttotalSeries\tfeaturedWorks\tearliestWork\tlatestWork\n152\t8\t14\t6\t2018\t2025-12\n",
+  "stderr": "",
+  "execution_time_ms": 1509
+}

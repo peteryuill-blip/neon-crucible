@@ -1,0 +1,8 @@
+{
+  "query": "SELECT \n  w.id,\n  w.title,\n  w.dateCreated,\n  w.dimensions,\n  w.materials,\n  w.technique,\n  w.series,\n  p.code as phaseCode,\n  p.title as phaseName,\n  w.imageUrl,\n  w.thumbnailUrl,\n  w.isFeatured,\n  w.sortOrder\nFROM works w\nLEFT JOIN phases p ON w.phaseId = p.id\nORDER BY w.dateCreated;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT \n  w.id,\n  w.title,\n  w.dateCreated,\n  w.dimensions,\n  w.materials,\n  w.technique,\n  w.series,\n  p.code as phaseCode,\n  p.title as phaseName,\n  w.imageUrl,\n  w.thumbnailUrl,\n  w.isFeatured,\n  w.sortOrder\nFROM works w\nLEFT JOIN phases p ON w.phaseId = p.id\nORDER BY w.dateCreated;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'w.materials' in 'field list'"
+  ]
+}
