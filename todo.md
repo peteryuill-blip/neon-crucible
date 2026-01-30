@@ -726,3 +726,14 @@
 - [x] Add keyboard navigation and accessibility
 - [x] Add navigation integration (SYSTEM group)
 - [ ] Add SEO meta tags (pending)
+
+## Descent Page Content Population
+- [x] Populate CR (Crucible) phase content
+- [x] Populate NE (New Era) phase content
+- [x] Populate PH4A (The Drought) void section content
+- [x] Populate PH4 (Nomadic) phase content
+- [x] Populate PH3A (Celestial Codification) phase content
+- [x] Populate PH3 (Celestial Secrets) phase content
+- [x] Populate PH2A (Equinox of the Gods) phase content
+- [x] Populate PH2 (Alignment) phase content
+- [x] Update threshold markers with real text
