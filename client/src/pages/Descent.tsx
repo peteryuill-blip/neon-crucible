@@ -184,49 +184,57 @@ const phases: PhaseData[] = [
     code: "PH1A",
     numericId: "30002",
     year: "2018-2019",
-    title: "[PLACEHOLDER - Institutional Geometry Title]",
-    narrative: "[PLACEHOLDER - 2-3 sentences about institutional commissions and geometric foundations]",
-    metadata: "[PLACEHOLDER - XX works over XX weeks · Medium]",
+    title: "Sacred Geometry Meets Institutional Demand",
+    narrative: "The first test: can personal geometric practice survive commercial application? Gold introduced as institutional accent. Client work, commission pressure, the question of whether the method bends or breaks.",
+    metadata: "2018-2019 · 30+ works · Ink, graphite, gold leaf · Commercial and personal",
     heroImage: "/images/phases/PH1A-hero.jpg",
     lineColor: "oklch(0.72 0.12 75)",
-    lineState: "solid",
-    materialSignature: "[PLACEHOLDER - Material signature for PH1A]",
+    lineState: "accented",
+    materialSignature: "Ink, graphite, and gold leaf. Gold enters the practice here—not as cosmological principle (that comes in PH3) but as institutional accent, commercial requirement, visual marker of 'value' in market contexts. The gold is applied precisely, controlled, subservient to geometry. Substrates begin to improve: better papers, more archival grounds. This reflects institutional demand for longevity and presentation quality.",
     neonAnalysis: {
-      worksCatalogued: "[PLACEHOLDER]",
-      hoursInvested: "[PLACEHOLDER]",
-      wordsDocumented: "[PLACEHOLDER]",
-      keyDiscovery: "[PLACEHOLDER - Key discovery for PH1A]",
-      phaseBreakthrough: "[PLACEHOLDER - Phase breakthrough for PH1A]"
+      worksCatalogued: "30+ works (institutional and personal mixed)",
+      hoursInvested: "~500 hours estimated",
+      wordsDocumented: "~8,000 words (project briefs, client correspondence, reflective notes)",
+      keyDiscovery: "PH1A documents the first encounter between the practice and market forces. The archive reveals tension: client requirements vs. artistic integrity, commercial deadlines vs. no-undo precision, external approval vs. internal standards. The gold that enters here is not chosen freely—it is requested, expected, valued by buyers. The question becomes: can the artist deploy demanded materials without compromising method?",
+      phaseBreakthrough: "Survival. PH1A's breakthrough is not visual innovation but practical demonstration: the no-undo constraint can operate under commercial pressure without breaking. The gold can be integrated without becoming decoration. The institutional context can be navigated without losing the method."
     }
   },
   {
     code: "PH1",
     numericId: "30001",
-    year: "2018",
-    title: "[PLACEHOLDER - Foundation Title]",
-    narrative: "[PLACEHOLDER - 2-3 sentences about the beginning, geometric abstraction, and first investigations]",
-    metadata: "[PLACEHOLDER - XX works over XX weeks · Medium]",
+    year: "2017-2018",
+    title: "First Geometry",
+    narrative: "The origin point. Geometric abstraction as primary vocabulary emerges. Hand precision under no-undo constraints. Everything that follows begins here—not as style, but as method.",
+    metadata: "2017-2018 · 40+ works · Ink and graphite on paper · Variable scales",
     heroImage: "/images/phases/PH1-hero.jpg",
-    lineColor: "oklch(0.72 0.12 75)",
-    lineState: "solid",
-    materialSignature: "[PLACEHOLDER - Material signature for PH1]",
+    lineColor: "oklch(0.10 0.01 255)",
+    lineState: "emerging",
+    materialSignature: "Ink and graphite on paper. Variable scales throughout phase—the standardization of format (56 × 76 cm) does not occur until PH2. Materials are modest, deliberately so: no precious substrates, no gold, no elaborate preparation. The constraint is in execution, not materials. Hand-drawn precision under the no-undo principle emerges here as foundational method. Every mark committed. Corrections impossible.",
     neonAnalysis: {
-      worksCatalogued: "[PLACEHOLDER]",
-      hoursInvested: "[PLACEHOLDER]",
-      wordsDocumented: "[PLACEHOLDER]",
-      keyDiscovery: "[PLACEHOLDER - Key discovery for PH1]",
-      phaseBreakthrough: "[PLACEHOLDER - Phase breakthrough for PH1]"
+      worksCatalogued: "40+ works (foundational archive)",
+      hoursInvested: "~600 hours estimated",
+      wordsDocumented: "~10,000 words (early process notes, foundational statements)",
+      keyDiscovery: "PH1's apparent simplicity conceals significant methodological innovation. The no-undo constraint—which becomes the defining feature of the entire practice—is not an inherited tradition but a deliberate choice made in this phase. The artist was trained in digital contexts where undo is infinite; the decision to eliminate it is philosophical, not technical.",
+      phaseBreakthrough: "The no-undo constraint as operational philosophy. PH1's breakthrough is not visual—the geometric vocabulary is not yet distinctive. The breakthrough is methodological: the decision that every mark is final, that the work cannot be corrected, that failure is visible and permanent."
     }
   },
 ];
 
-// Threshold data - updated with real content
+// Threshold data - complete list from Module 8
 const thresholds = [
-  { afterPhase: "PH4A", text: "The void breaks. Colour returns." },
+  { afterPhase: "NE", text: "Seven years. One crucible. Everything converges or fails." },
+  { afterPhase: "PH4A", text: "Something survives. Practice resumes." },
+  { afterPhase: "PH4", text: "Flight becomes void. The market collapses." },
   { afterPhase: "PH3A", text: "The system complete. The cage opens." },
-  { afterPhase: "PH2A", text: "Invocation replaces representation. Irreversible." },
+  { afterPhase: "PH3", text: "The system made explicit. Codification begins." },
+  { afterPhase: "PH2A", text: "After rupture, reorganization. Gold and ink as equals." },
+  { afterPhase: "PH2", text: "Invocation replaces representation. Irreversible." },
   { afterPhase: "PH1A", text: "From institution to invocation." },
+  { afterPhase: "PH1", text: "Personal vocabulary meets institutional demand." },
 ];
+
+// Entry threshold (displayed at archive origin)
+const entryThreshold = "The constraint begins. Every mark final.";
 
 // X-Ray Panel Component
 function XRayPanel({ 
@@ -688,6 +696,9 @@ export default function Descent() {
           </div>
         );
       })}
+
+      {/* Entry Threshold - Archive Origin */}
+      <Threshold text={entryThreshold} />
 
       {/* Termination */}
       <Termination />

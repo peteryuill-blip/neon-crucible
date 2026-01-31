@@ -737,3 +737,8 @@
 - [x] Populate PH2A (Equinox of the Gods) phase content
 - [x] Populate PH2 (Alignment) phase content
 - [x] Update threshold markers with real text
+
+- [x] Populate PH1A (Institutional Geometry) phase content from Module 7
+- [x] Populate PH1 (First Geometry) phase content from Module 7
+- [x] Add entry threshold marker: "The constraint begins. Every mark final."
+- [x] Add PH1→PH1A threshold marker: "Personal vocabulary meets institutional demand."
