@@ -742,3 +742,28 @@
 - [x] Populate PH1 (First Geometry) phase content from Module 7
 - [x] Add entry threshold marker: "The constraint begins. Every mark final."
 - [x] Add PH1→PH1A threshold marker: "Personal vocabulary meets institutional demand."
+
+
+## Descent Page Hero Images
+- [ ] PH1 hero: Theatre of Memory
+- [ ] PH1A hero: JLL Triptych (Segmented Infinite)
+- [ ] PH2 hero: As Above, So Below
+- [ ] PH2A hero: Ode to Therion
+- [ ] PH3 hero: Gravity Well
+- [ ] PH3A hero: Celestial Secrets 8
+- [ ] PH4 hero: Ink Storm representative work
+- [ ] NE hero: The Covenant (center panel)
+
+
+## Descent Page Hero Images - COMPLETED
+
+- [x] Add hero images to Descent page for all phases
+- [x] CR: No hero (ongoing phase - shows [PHASE IN PROGRESS])
+- [x] NE: Covenant I: Storm-body
+- [x] PH4: Ink Storm (ascension)
+- [x] PH3A: Cross Mandala with Gold Center
+- [x] PH3: Gravity Well
+- [x] PH2A: Ode to Therion
+- [x] PH2: As Above, So Below I
+- [x] PH1A: JLL Triptych (studio shot)
+- [x] PH1: Theatre of Memory

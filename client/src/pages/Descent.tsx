@@ -34,7 +34,7 @@ const phases: PhaseData[] = [
     title: "The Convergence Test",
     narrative: "Bangkok. One year. Stable studio. Seven years of graduated thresholds arrive at proof point. Not settling down—testing whether the arc consolidates.",
     metadata: "Ongoing · Week 5 active · Ink on Xuan paper · 14+ works in progress",
-    heroImage: "/images/phases/CR-hero.jpg",
+    heroImage: "", // CR is ongoing - no hero image yet
     lineColor: "oklch(0.10 0.01 255)",
     lineState: "testing",
     materialSignature: "Xuan paper from China—300 sheets delivered before studio activation. The substrate's absorbency refuses correction. Each ink mark is final, demanding somatic commitment over geometric planning. This is not continuation of PH4's velocity but its conscious integration: the hand knows what seven years taught it. The paper records whether that knowledge has become embodied or remains theoretical.",
@@ -53,7 +53,7 @@ const phases: PhaseData[] = [
     title: "The Reactivation",
     narrative: "Hanoi to Bangkok. Walking engine restarts after four-month void. Not the destination but the threshold crossing that made the destination visible.",
     metadata: "2025 · 8 weeks · Transitional · Infrastructure rebuilt",
-    heroImage: "/images/phases/NE-hero.jpg",
+    heroImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic2.jpg",
     lineColor: "oklch(0.10 0.01 255)",
     lineState: "reconstituting",
     materialSignature: "Transitional materials—whatever was available during the reactivation period. The focus was not on substrate but on movement: rebuilding the walking engine, reconstructing NEON infrastructure, generating the December 18 Crucible Conversation. Materials served process; process served recognition.",
@@ -92,7 +92,7 @@ const phases: PhaseData[] = [
     title: "The Invisible Flood",
     narrative: "Nomadism as method. Myanmar to Vietnam to Bangkok. 195 paintings made for no audience. Freedom's cost: isolation, turbulence, existential daze.",
     metadata: "195+ works · 3 years · Ink, acrylic, mixed media · No fixed studio",
-    heroImage: "/images/phases/PH4-hero.jpg",
+    heroImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/IMG_0386.jpg",
     lineColor: "oklch(0.10 0.01 255)",
     lineState: "velocity",
     materialSignature: "No fixed substrate. Whatever was available: local papers, found materials, surfaces that travel in a suitcase. The constraint was portability, not archival permanence. Ink returns as primary medium but shares space with acrylic washes and gestural color. The hand moves faster than thought. No preliminary drawing. No undo. Each mark commits because the nomad cannot carry corrections—only accumulation.",
@@ -111,7 +111,7 @@ const phases: PhaseData[] = [
     title: "The System Made Explicit",
     narrative: "Codification of the celestial system. Gold-ink polarity documented, systematized, made transmissible. The framework crystallizes—and in crystallizing, approaches its limit.",
     metadata: "2022-2023 · 25+ works · Systematic documentation · Bangkok",
-    heroImage: "/images/phases/PH3A-hero.jpg",
+    heroImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/celestial-secrets/IMG-20230616-WA0012(1).jpg",
     lineColor: "oklch(0.45 0.01 255)",
     lineState: "transitioning",
     materialSignature: "Same materials as PH3—gold leaf, sumi ink, prepared panels—but deployed with increased systematization. Works begin to include explicit notation, diagrammatic elements, documentary qualities. The material remains precious but the approach becomes more analytical. This is the practice studying itself: codification as both preservation and potential ossification.",
@@ -130,7 +130,7 @@ const phases: PhaseData[] = [
     title: "The Hinge",
     narrative: "Gold and ink in equilibrium. Celestial codification reaches peak expression. Beneath the systematic calm, severe doubt. The last phase where geometry holds primacy.",
     metadata: "2021-2022 · 40+ works · Gold leaf, sumi ink · Bangkok",
-    heroImage: "/images/phases/PH3-hero.jpg",
+    heroImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Gravitywell.jpg",
     lineColor: "oklch(0.55 0.06 75)",
     lineState: "oscillating",
     materialSignature: "Gold leaf and sumi ink on prepared panels. The materials themselves embody the phase's cosmological binary: gold (solar, masculine, geometric) and ink (lunar, feminine, gestural). Application requires precision—gold leaf tears, ink bleeds—but the constraint produces works of unusual material presence. This is the peak of the gold-ink system before PH4's dissolution.",
@@ -149,7 +149,7 @@ const phases: PhaseData[] = [
     title: "The Cost of Living According to What You Know",
     narrative: "Thelemic rupture. The Equinox suite: four odes and a climax. One-shot ink—ultimate finality. Invocation replaces representation. Irreversible.",
     metadata: "2020-2021 · 5 major works · One-shot ink · Narrative suite structure",
-    heroImage: "/images/phases/PH2A-hero.jpg",
+    heroImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/7_ode_to_therion_peteryuill.jpg",
     lineColor: "oklch(0.72 0.12 75)",
     lineState: "disrupted",
     materialSignature: "One-shot ink. The ultimate extension of PH2's no-undo constraint: not merely 'no corrections' but single-session execution. Each work in the Equinox suite was completed in one continuous session without pause. The four Odes maintain PH2's 56 × 76 cm scale; Therion explodes to 100 × 100 cm. The scale increase marks the climactic rupture.",
@@ -168,7 +168,7 @@ const phases: PhaseData[] = [
     title: "Operating Inside Unknowing",
     narrative: "The centered phase. Torus geometry as cosmological anchor. Sacred pattern not as decoration but as method. Calm, meditative, grounded—the last sustained equilibrium before rupture.",
     metadata: "2019-2020 · 60+ works · Ink and graphite on paper · 56 × 76 cm consistent",
-    heroImage: "/images/phases/PH2-hero.jpg",
+    heroImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/as_above_so_below_1_peteryuill(1).jpg",
     lineColor: "oklch(0.72 0.12 75)",
     lineState: "solid",
     materialSignature: "Ink and graphite on paper. Consistent scale: 56 × 76 cm throughout phase. Hand-drawn precision under no-undo constraint—each mark committed, corrections impossible. The torus (continuous surface, single edge, infinite loop) becomes primary form. Materials are modest; execution is obsessive. This is geometry as meditation practice.",
@@ -187,7 +187,7 @@ const phases: PhaseData[] = [
     title: "Sacred Geometry Meets Institutional Demand",
     narrative: "The first test: can personal geometric practice survive commercial application? Gold introduced as institutional accent. Client work, commission pressure, the question of whether the method bends or breaks.",
     metadata: "2018-2019 · 30+ works · Ink, graphite, gold leaf · Commercial and personal",
-    heroImage: "/images/phases/PH1A-hero.jpg",
+    heroImage: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663243139088/ufwEWBkCwgobKlem.webp",
     lineColor: "oklch(0.72 0.12 75)",
     lineState: "accented",
     materialSignature: "Ink, graphite, and gold leaf. Gold enters the practice here—not as cosmological principle (that comes in PH3) but as institutional accent, commercial requirement, visual marker of 'value' in market contexts. The gold is applied precisely, controlled, subservient to geometry. Substrates begin to improve: better papers, more archival grounds. This reflects institutional demand for longevity and presentation quality.",
@@ -206,7 +206,7 @@ const phases: PhaseData[] = [
     title: "First Geometry",
     narrative: "The origin point. Geometric abstraction as primary vocabulary emerges. Hand precision under no-undo constraints. Everything that follows begins here—not as style, but as method.",
     metadata: "2017-2018 · 40+ works · Ink and graphite on paper · Variable scales",
-    heroImage: "/images/phases/PH1-hero.jpg",
+    heroImage: "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825397041-peteryuill_theatre_of_memory.jpg",
     lineColor: "oklch(0.10 0.01 255)",
     lineState: "emerging",
     materialSignature: "Ink and graphite on paper. Variable scales throughout phase—the standardization of format (56 × 76 cm) does not occur until PH2. Materials are modest, deliberately so: no precious substrates, no gold, no elaborate preparation. The constraint is in execution, not materials. Hand-drawn precision under the no-undo principle emerges here as foundational method. Every mark committed. Corrections impossible.",
@@ -431,11 +431,22 @@ function PhaseBlock({ phase, index }: { phase: PhaseData; index: number }) {
           <div className="phase-base space-y-8">
             {/* Hero Image */}
             <div className="w-full max-w-3xl mx-auto">
-              <div className="aspect-[4/3] bg-card border border-border flex items-center justify-center">
-                <span className="text-muted-foreground font-mono text-sm">
-                  [HERO IMAGE: {phase.code}]
-                </span>
-              </div>
+              {phase.heroImage ? (
+                <div className="aspect-[4/3] bg-card border border-border overflow-hidden">
+                  <img 
+                    src={phase.heroImage} 
+                    alt={`Representative work from ${phase.title}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <div className="aspect-[4/3] bg-card border border-border flex items-center justify-center">
+                  <span className="text-muted-foreground font-mono text-sm">
+                    [PHASE IN PROGRESS]
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Phase Title */}

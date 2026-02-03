@@ -1,0 +1,90 @@
+{
+  "query": "SELECT title, imageUrl, phaseId FROM works WHERE title LIKE '%Above%Below%' OR title LIKE '%Theatre%Memory%' OR title LIKE '%Celestial Secrets 8%' OR title LIKE '%Gravity%Well%' OR title LIKE '%Therion%' OR title LIKE '%Covenant%' OR title LIKE '%Ink Storm%' LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute SELECT title, imageUrl, phaseId FROM works WHERE title LIKE '%Above%Below%' OR title LIKE '%Theatre%Memory%' OR title LIKE '%Celestial Secrets 8%' OR title LIKE '%Gravity%Well%' OR title LIKE '%Therion%' OR title LIKE '%Covenant%' OR title LIKE '%Ink Storm%' LIMIT 20;",
+  "rows": [
+    {
+      "title": "Covenant I: Storm-body",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic2.jpg",
+      "phaseId": "30009"
+    },
+    {
+      "title": "Covenant Ii: Vessel-body",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic3.jpg",
+      "phaseId": "30009"
+    },
+    {
+      "title": "Covenant Iii: Threshold-body",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic1.jpg",
+      "phaseId": "30009"
+    },
+    {
+      "title": "Ode to Therion",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/7_ode_to_therion_peteryuill.jpg",
+      "phaseId": "30004"
+    },
+    {
+      "title": "As Above, So Below I",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/as_above_so_below_1_peteryuill(1).jpg",
+      "phaseId": "30003"
+    },
+    {
+      "title": "Gravity Well",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Gravitywell.jpg",
+      "phaseId": "30005"
+    },
+    {
+      "title": "Theatre of Memory",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825397041-peteryuill_theatre_of_memory.jpg",
+      "phaseId": "30001"
+    },
+    {
+      "title": "Ink Storm (ascension)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/IMG_0386.jpg",
+      "phaseId": "30007"
+    },
+    {
+      "title": "Ink Storm (diagonal 01)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240726_162209.jpg",
+      "phaseId": "30007"
+    },
+    {
+      "title": "Ink Storm (mass)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/2255.jpg",
+      "phaseId": "30007"
+    },
+    {
+      "title": "Ink Storm (strike)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_10.jpg",
+      "phaseId": "30007"
+    },
+    {
+      "title": "Ink Storm (sweep)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_114217.jpg",
+      "phaseId": "30007"
+    },
+    {
+      "title": "Ink Storm (burst)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240701_095820.jpg",
+      "phaseId": "30007"
+    },
+    {
+      "title": "Ink Storm (cyan & Magenta)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240725_104225.jpg",
+      "phaseId": "30007"
+    },
+    {
+      "title": "Ink Storm (purple Flare)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240728_102241.jpg",
+      "phaseId": "30007"
+    },
+    {
+      "title": "Ink Storm (chaos)",
+      "imageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240717_111943.jpg",
+      "phaseId": "30007"
+    }
+  ],
+  "messages": [],
+  "stdout": "title\timageUrl\tphaseId\nCovenant I: Storm-body\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic2.jpg\t30009\nCovenant Ii: Vessel-body\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic3.jpg\t30009\nCovenant Iii: Threshold-body\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/covenant/COVTryptic1.jpg\t30009\nOde to Therion\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/equinox/7_ode_to_therion_peteryuill.jpg\t30004\nAs Above, So Below I\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/alignment/as_above_so_below_1_peteryuill(1).jpg\t30003\nGravity Well\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/echoes/Gravitywell.jpg\t30005\nTheatre of Memory\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph1/1766825397041-peteryuill_theatre_of_memory.jpg\t30001\nInk Storm (ascension)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/IMG_0386.jpg\t30007\nInk Storm (diagonal 01)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240726_162209.jpg\t30007\nInk Storm (mass)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/2255.jpg\t30007\nInk Storm (strike)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/Painting_10.jpg\t30007\nInk Storm (sweep)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240629_114217.jpg\t30007\nInk Storm (burst)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240701_095820.jpg\t30007\nInk Storm (cyan & Magenta)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240725_104225.jpg\t30007\nInk Storm (purple Flare)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240728_102241.jpg\t30007\nInk Storm (chaos)\thttps://d2xsxph8kpxj0f.cloudfront.net/310519663243139088/ZLCef8c8rdYgPCof2teogL/works/ph4/20240717_111943.jpg\t30007\n",
+  "stderr": "",
+  "execution_time_ms": 1640
+}
