@@ -429,25 +429,27 @@ function PhaseBlock({ phase, index }: { phase: PhaseData; index: number }) {
 
           {/* Phase Base Layer */}
           <div className="phase-base space-y-8">
-            {/* Hero Image */}
-            <div className="w-full max-w-3xl mx-auto">
-              {phase.heroImage ? (
-                <div className="aspect-[4/3] bg-card border border-border overflow-hidden">
-                  <img 
-                    src={phase.heroImage} 
-                    alt={`Representative work from ${phase.title}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              ) : (
-                <div className="aspect-[4/3] bg-card border border-border flex items-center justify-center">
-                  <span className="text-muted-foreground font-mono text-sm">
-                    [PHASE IN PROGRESS]
-                  </span>
-                </div>
-              )}
-            </div>
+            {/* Hero Image - only show for non-CR phases */}
+            {phase.code !== "CR" && (
+              <div className="w-full max-w-3xl mx-auto">
+                {phase.heroImage ? (
+                  <div className="aspect-[4/3] bg-card border border-border overflow-hidden">
+                    <img 
+                      src={phase.heroImage} 
+                      alt={`Representative work from ${phase.title}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-[4/3] bg-card border border-border flex items-center justify-center">
+                    <span className="text-muted-foreground font-mono text-sm">
+                      [IMAGE PENDING]
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Phase Title */}
             <h2 className="font-serif text-4xl md:text-5xl font-light tracking-tight text-center">

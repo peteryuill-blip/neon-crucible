@@ -767,3 +767,5 @@
 - [x] PH2: As Above, So Below I
 - [x] PH1A: JLL Triptych (studio shot)
 - [x] PH1: Theatre of Memory
+
+- [x] Remove CR (Crucible Year) hero image section from Descent page
