@@ -797,3 +797,5 @@
 - [ ] Delete Mathematical Meditation series
 - [ ] Set Mathematical Meditation No. 1 to 50cm x 50cm
 - [ ] Verify all database updates
+
+- [x] Rename "The Descent" to "The Journey" throughout codebase

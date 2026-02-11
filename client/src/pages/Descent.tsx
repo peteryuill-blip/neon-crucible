@@ -660,7 +660,7 @@ function Termination() {
   );
 }
 
-// Main Descent Page
+// Main Journey Page (formerly Descent)
 export default function Descent() {
   return (
     <main className="relative" role="main">
@@ -671,7 +671,7 @@ export default function Descent() {
       <section className="min-h-screen flex flex-col items-center justify-center px-4 md:px-8 relative">
         <div className="max-w-3xl text-center space-y-8">
           <h1 className="font-serif text-5xl md:text-7xl font-light tracking-tight">
-            The Descent
+            The Journey
           </h1>
 
           <p className="font-mono text-sm uppercase tracking-wider text-secondary">
@@ -680,13 +680,13 @@ export default function Descent() {
 
           <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto">
             <p className="font-sans text-lg leading-relaxed">
-              Scroll down to go back. The deeper you go, the older the work.
-              This is not explanation. This is excavation.
+              Scroll down to travel back through time. The further you go, the older the work.
+              This is not explanation. This is exploration.
             </p>
             <p className="font-sans text-lg leading-relaxed">
               Ten phases. Seven years. One continuous investigation into what happens
               when geometry meets ink, control meets chaos, and the studio becomes
-              archaeological site.
+              a site of continuous transformation.
             </p>
           </div>
 

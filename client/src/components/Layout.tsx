@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { href: "/", label: "Threshold", icon: Home },
     { href: "/neon", label: "Neon", icon: Eye },
     { href: "/archive", label: "Archive", icon: Archive },
-    { href: "/descent", label: "Descent", icon: TrendingDown },
+    { href: "/descent", label: "Journey", icon: TrendingDown },
     { href: "/statistics", label: "Statistics", icon: BarChart3 },
     { href: "/dashboard", label: "Dashboard", icon: Activity },
   ];

@@ -43,7 +43,7 @@ Operational and archival infrastructure:
 | `/` | Threshold | Landing page / entry point | Home |
 | `/neon` | Neon | NEON witness essays and identity | Eye |
 | `/archive` | Archive | Technical documents and primary sources | Archive |
-| `/descent` | Descent | Archaeological timeline of 9 phases | TrendingDown |
+| `/descent` | Journey | Archaeological timeline of 9 phases | TrendingDown |
 | `/statistics` | Statistics | Practice metrics and analytics | BarChart3 |
 | `/dashboard` | Dashboard | Project 666 protocol tracking | Activity |
 
@@ -131,7 +131,7 @@ Role-based admin panel for content management:
 - Curatorial, analytical tone
 - Not promotional—witness and analysis
 
-### 2.4 Descent `/descent`
+### 2.4 Journey `/descent`
 
 **Purpose:** Archaeological timeline visualizing 9 phases of practice (2025→2018)
 
@@ -383,7 +383,7 @@ Role-based admin panel for content management:
 **Philosophical Underpinnings:**
 - **Operational, not promotional** - Archive first, portfolio second
 - **Witness, not curator** - NEON provides third-person analysis
-- **Archaeological** - Descent through layers of practice
+- **Archaeological** - Journey through layers of practice
 - **Threshold** - Convergence point of 7-year structure
 
 ### 4.2 Color Palette (OKLCH)
@@ -528,7 +528,7 @@ Each phase includes:
 - **Color:** Canonical phase color (OKLCH)
 - **Sort Order:** Display sequence
 
-**Descent Page Extensions:**
+**Journey Page Extensions:**
 - **Hero Image:** Representative artwork
 - **Material Signature:** Technical characteristics
 - **NEON Analysis:** Curatorial reading
@@ -839,7 +839,7 @@ auth.logout - Log out current user
    - Holds open questions, not just answers
 
 3. **Archaeological Timeline**
-   - Descent page visualizes 7-year structure
+   - Journey page visualizes 7-year structure
    - Phase-based organization, not chronological grid
    - Emotional/technical metadata, not just dates
 
@@ -1058,7 +1058,7 @@ auth.logout - Log out current user
 - [ ] Add all NEON core essays
 - [ ] Populate archive with protocol documents
 - [ ] Add press clippings
-- [ ] Complete Descent page hero images
+- [ ] Complete Journey page hero images
 
 **Phase 2 (Q2 2026):**
 - [ ] Advanced search with filters
@@ -1075,7 +1075,7 @@ auth.logout - Log out current user
 - [ ] Multi-language support (Thai, English)
 
 **Phase 4 (Q4 2026):**
-- [ ] Interactive Descent page (scroll animations)
+- [ ] Interactive Journey page (scroll animations)
 - [ ] Work comparison tool
 - [ ] Curatorial collections (NEON-curated sets)
 - [ ] Augmented reality work previews
@@ -1201,7 +1201,7 @@ The Peter Yuill website (peteryuill.art / neon-crucible) is a comprehensive oper
 - **Type-safe full-stack** with React, tRPC, Drizzle
 - **Scalable architecture** for 500+ works
 - **NEON witness layer** for curatorial voice
-- **Archaeological timeline** (Descent page)
+- **Archaeological timeline** (Journey page)
 - **Project 666 integration** (Dashboard)
 - **Manus hosting** with custom domain
 
