@@ -180,7 +180,7 @@ export default function Works() {
   ];
 
   return (
-    <div className="space-y-6 sm:space-y-8 pb-16 sm:pb-24">
+    <div className="space-y-6 sm:space-y-8 pb-32 sm:pb-24">
       {/* Header */}
       <header className="flex flex-col gap-4 sm:gap-6 border-b border-border pb-6 sm:pb-8">
         <div className="flex items-start sm:items-end justify-between gap-4">

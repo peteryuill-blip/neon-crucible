@@ -223,7 +223,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </nav>
 
         {/* Main Content Area */}
-        <main className="flex-1 md:ml-56 lg:ml-64 px-4 sm:px-6 md:px-8 lg:px-12 pt-20 md:pt-24 pb-8 min-h-screen relative">
+        <main className="flex-1 md:ml-56 lg:ml-64 px-4 sm:px-6 md:px-8 lg:px-12 pt-20 md:pt-24 pb-32 md:pb-8 min-h-screen relative" style={{paddingBottom: 'max(8rem, env(safe-area-inset-bottom, 0px) + 8rem)'}}>
           {/* Scanline Effect Overlay */}
           <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.015] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat mix-blend-overlay"></div>
           <div className="fixed inset-0 pointer-events-none z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.12)_50%),linear-gradient(90deg,rgba(255,0,0,0.03),rgba(0,255,0,0.01),rgba(0,0,255,0.03))] z-[1] bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
