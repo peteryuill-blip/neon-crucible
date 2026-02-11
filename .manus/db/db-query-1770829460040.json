@@ -1,0 +1,9 @@
+{
+  "query": "-- Corrective updates for remaining issues\n\n-- Fix Portals series: Update ID 210017 (Cosmic Bloom teal)\nUPDATE works SET dimensions = '75cm × 75cm' WHERE id = 210017;\n\n-- Fix Ink Storms series: Update 6 works with Variable dimensions\nUPDATE works SET dimensions = '75cm × 75cm' WHERE id IN (180007, 180006, 180004, 180003, 180002, 180001);\n\n-- Move Chromatic Storms work to Portals: ID 210022 \"I Think I Can\"\nUPDATE works SET seriesName = 'Portals', dimensions = '75cm × 75cm', technique = 'Chinese and Western Inks of Anhui Rice Paper' WHERE id = 210022;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute -- Corrective updates for remaining issues\n\n-- Fix Portals series: Update ID 210017 (Cosmic Bloom teal)\nUPDATE works SET dimensions = '75cm × 75cm' WHERE id = 210017;\n\n-- Fix Ink Storms series: Update 6 works with Variable dimensions\nUPDATE works SET dimensions = '75cm × 75cm' WHERE id IN (180007, 180006, 180004, 180003, 180002, 180001);\n\n-- Move Chromatic Storms work to Portals: ID 210022 \"I Think I Can\"\nUPDATE works SET seriesName = 'Portals', dimensions = '75cm × 75cm', technique = 'Chinese and Western Inks of Anhui Rice Paper' WHERE id = 210022;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 2135
+}

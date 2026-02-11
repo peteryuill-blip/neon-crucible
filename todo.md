@@ -769,3 +769,31 @@
 - [x] PH1: Theatre of Memory
 
 - [x] Remove CR (Crucible Year) hero image section from Descent page
+
+
+## Comprehensive Site Documentation for Project 666 White Paper
+- [x] Document site architecture and navigation structure
+- [x] Document all pages with URLs, purposes, and content types
+- [x] Document technical stack (React, tRPC, Drizzle, TiDB, Manus hosting)
+- [x] Document design philosophy and visual identity
+- [x] Document color palette (OKLCH values) and typography
+- [x] Document content strategy and phase architecture display
+- [x] Document portfolio/archive presentation approach
+- [x] Document witness-as-curatorial-strategy implementation
+- [x] Document technical functionality (UX, backend, analytics)
+- [x] Document Project 666 integration and dashboard connections
+- [x] Document strategic positioning and target audiences
+- [x] Document maintenance workflow and update frequency
+- [x] Compile comprehensive markdown documentation file
+
+
+## Database Corrections for Series, Dimensions, and Techniques
+- [ ] Update Oculus series: Set all works to 40cm x 40cm, technique "Chinese and Western Inks of Anhui Rice Paper"
+- [ ] Move all Chromatic Storms works to Portals series
+- [ ] Delete Chromatic Storms series
+- [ ] Update Portals series: Set all works to 75cm x 75cm, technique "Chinese and Western Inks of Anhui Rice Paper"
+- [ ] Update Ink Storms series: Set all works to 75cm x 75cm, technique "Chinese and Western Inks of Anhui Rice Paper"
+- [ ] Move Mathematical Meditation works to Absurdity of Meaning series
+- [ ] Delete Mathematical Meditation series
+- [ ] Set Mathematical Meditation No. 1 to 50cm x 50cm
+- [ ] Verify all database updates
