@@ -803,3 +803,57 @@
 - [x] Fix Works page pagination button not clickable on mobile (off-screen)
 - [x] Conduct comprehensive mobile optimization audit across all pages
 - [x] Ensure all interactive elements are accessible on mobile viewports
+
+## Monolith Gallery Rebuild
+
+### Schema & Data
+- [ ] Add new fields to works table: curatorialHook, slug, conceptTags
+- [ ] Rename technique → medium in schema
+- [ ] Derive series from title prefixes / imageKey paths
+- [ ] Generate slugs from titles
+- [ ] Seed/upsert 152 works from monolith_seed_updated_v2.json
+- [ ] Validate all required fields present after seed
+
+### tRPC Procedures
+- [ ] gallery.getAll with filters (phase, series, year, medium), sort, search
+- [ ] gallery.getBySlug for individual work pages
+- [ ] gallery.getFilterOptions for dynamic filter dropdowns
+
+### Gallery Grid Page (/gallery)
+- [ ] 3-column uniform image-only grid (desktop), 1-column (mobile)
+- [ ] URL-based filtering: phase, series, year, medium
+- [ ] URL-based sorting: title A-Z/Z-A, year newest/oldest
+- [ ] Live search with 300ms debounce across title, series, neonReading, tags
+- [ ] Result count display ("Showing X works")
+- [ ] Empty state with "Clear filters" button
+- [ ] Smooth filter transitions, no layout jank
+- [ ] Inherit existing site design (fonts, OKLCH colors, spacing)
+
+### Individual Work Page (/works/[slug])
+- [ ] Full viewport hero image (object-fit: contain, dark background)
+- [ ] Metadata below fold: title, neonReading, curatorialHook, tags, dimensions, medium, year
+- [ ] Back button restoring exact previous filter state (sessionStorage)
+- [ ] Fallback to /gallery if no previous state
+
+### Mobile Optimization
+- [ ] Shadcn Sheet for mobile filter panel
+- [ ] Sticky search bar on mobile
+- [ ] 44px minimum touch targets
+- [ ] No horizontal scroll, no broken layouts
+
+### Testing & Documentation
+- [ ] Filter persistence test (click work → back → same filters)
+- [ ] Direct link test (/works/[slug] → back defaults to /gallery)
+- [ ] Combined filters test
+- [ ] Mobile touch target test
+- [ ] README with data structure and filter logic docs
+
+## Monolith Gallery Rebuild
+
+- [x] Update database schema with new gallery fields (curatorialHook, slug, conceptTags)
+- [x] Seed database with enriched data from monolith_seed_updated_v2.json
+- [x] Build tRPC gallery procedures (getAll, getBySlug, getFilterOptions)
+- [x] Build /gallery grid page with filtering, sorting, search, and URL state
+- [x] Build /works/[slug] detail page with hero image and metadata
+- [x] Mobile optimization with Shadcn Sheet for filters
+- [x] Write vitest tests for gallery procedures (15 tests passing)

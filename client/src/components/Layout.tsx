@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Activity, Archive, Eye, Grid, Home, User, Quote, Menu, X, Search, BarChart3, Briefcase, Mail, TrendingDown } from "lucide-react";
+import { Activity, Archive, Eye, Grid, Home, User, Quote, Menu, X, Search, BarChart3, Briefcase, Mail, TrendingDown, LayoutGrid } from "lucide-react";
 import { useState } from "react";
 import { SearchDialog } from "./SearchDialog";
 
@@ -12,6 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   // STUDIO group - always visible
   const studioItems = [
+    { href: "/gallery", label: "Gallery", icon: LayoutGrid },
     { href: "/works", label: "Works", icon: Grid },
     { href: "/about", label: "About", icon: User },
     { href: "/voices", label: "Press", icon: Quote },

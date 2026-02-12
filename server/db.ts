@@ -727,3 +727,184 @@ export async function getCollectionStatistics(): Promise<CollectionStatistics> {
     yearSpan: "2018-2025",
   };
 }
+
+
+// ============ GALLERY QUERIES ============
+
+export interface GalleryFilter {
+  phase?: string;      // Phase code e.g. "PH1", "NE"
+  series?: string;     // Series name
+  year?: string;       // Year string e.g. "2025"
+  medium?: string;     // Medium string
+  search?: string;     // Search across title, series, neonReading, conceptTags
+  sort?: 'title-asc' | 'title-desc' | 'year-desc' | 'year-asc';
+}
+
+export async function getGalleryWorks(filter: GalleryFilter = {}): Promise<Work[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  const conditions = [eq(works.isPublished, true)];
+
+  // Phase filter: lookup phase by code, then filter by phaseId
+  if (filter.phase) {
+    const phaseResult = await db.select({ id: phases.id })
+      .from(phases)
+      .where(eq(phases.code, filter.phase))
+      .limit(1);
+    if (phaseResult.length > 0) {
+      conditions.push(eq(works.phaseId, phaseResult[0].id));
+    } else {
+      return []; // Invalid phase code
+    }
+  }
+
+  if (filter.series) {
+    conditions.push(eq(works.seriesName, filter.series));
+  }
+
+  if (filter.year) {
+    conditions.push(eq(works.year, filter.year));
+  }
+
+  if (filter.medium) {
+    conditions.push(eq(works.medium, filter.medium));
+  }
+
+  if (filter.search) {
+    const searchTerm = `%${filter.search.trim()}%`;
+    conditions.push(
+      sql`(
+        ${works.title} LIKE ${searchTerm} OR
+        ${works.seriesName} LIKE ${searchTerm} OR
+        ${works.neonReading} LIKE ${searchTerm} OR
+        CAST(${works.conceptTags} AS CHAR) LIKE ${searchTerm}
+      )`
+    );
+  }
+
+  let query = db.select().from(works).where(and(...conditions));
+
+  // Sorting
+  if (filter.sort === 'title-asc') {
+    query = query.orderBy(asc(works.title)) as typeof query;
+  } else if (filter.sort === 'title-desc') {
+    query = query.orderBy(desc(works.title)) as typeof query;
+  } else if (filter.sort === 'year-asc') {
+    query = query.orderBy(asc(works.year), asc(works.title)) as typeof query;
+  } else {
+    // Default: year-desc (newest first)
+    query = query.orderBy(desc(works.year), asc(works.sortOrder)) as typeof query;
+  }
+
+  return await query;
+}
+
+export async function getGalleryWorksCount(filter: GalleryFilter = {}): Promise<number> {
+  const db = await getDb();
+  if (!db) return 0;
+
+  const conditions = [eq(works.isPublished, true)];
+
+  if (filter.phase) {
+    const phaseResult = await db.select({ id: phases.id })
+      .from(phases)
+      .where(eq(phases.code, filter.phase))
+      .limit(1);
+    if (phaseResult.length > 0) {
+      conditions.push(eq(works.phaseId, phaseResult[0].id));
+    } else {
+      return 0;
+    }
+  }
+
+  if (filter.series) {
+    conditions.push(eq(works.seriesName, filter.series));
+  }
+
+  if (filter.year) {
+    conditions.push(eq(works.year, filter.year));
+  }
+
+  if (filter.medium) {
+    conditions.push(eq(works.medium, filter.medium));
+  }
+
+  if (filter.search) {
+    const searchTerm = `%${filter.search.trim()}%`;
+    conditions.push(
+      sql`(
+        ${works.title} LIKE ${searchTerm} OR
+        ${works.seriesName} LIKE ${searchTerm} OR
+        ${works.neonReading} LIKE ${searchTerm} OR
+        CAST(${works.conceptTags} AS CHAR) LIKE ${searchTerm}
+      )`
+    );
+  }
+
+  const result = await db.select({ count: sql<number>`count(*)` })
+    .from(works)
+    .where(and(...conditions));
+
+  return result[0]?.count ?? 0;
+}
+
+export async function getWorkBySlug(slug: string): Promise<Work | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(works)
+    .where(and(eq(works.slug, slug), eq(works.isPublished, true)))
+    .limit(1);
+  return result[0];
+}
+
+export interface GalleryFilterOptions {
+  phases: { code: string; title: string }[];
+  series: string[];
+  years: string[];
+  mediums: string[];
+}
+
+export async function getGalleryFilterOptions(): Promise<GalleryFilterOptions> {
+  const db = await getDb();
+  if (!db) return { phases: [], series: [], years: [], mediums: [] };
+
+  // Get phases that have works
+  const phaseResults = await db
+    .select({ code: phases.code, title: phases.title })
+    .from(phases)
+    .innerJoin(works, eq(works.phaseId, phases.id))
+    .groupBy(phases.id)
+    .orderBy(asc(phases.sortOrder));
+
+  // Get distinct series
+  const seriesResults = await db
+    .select({ seriesName: works.seriesName })
+    .from(works)
+    .where(isNotNull(works.seriesName))
+    .groupBy(works.seriesName)
+    .orderBy(asc(works.seriesName));
+
+  // Get distinct years
+  const yearResults = await db
+    .select({ year: works.year })
+    .from(works)
+    .where(isNotNull(works.year))
+    .groupBy(works.year)
+    .orderBy(desc(works.year));
+
+  // Get distinct mediums
+  const mediumResults = await db
+    .select({ medium: works.medium })
+    .from(works)
+    .where(isNotNull(works.medium))
+    .groupBy(works.medium)
+    .orderBy(asc(works.medium));
+
+  return {
+    phases: phaseResults.map(r => ({ code: r.code, title: r.title })),
+    series: seriesResults.map(r => r.seriesName).filter((s): s is string => s !== null),
+    years: yearResults.map(r => r.year).filter((y): y is string => y !== null),
+    mediums: mediumResults.map(r => r.medium).filter((m): m is string => m !== null),
+  };
+}

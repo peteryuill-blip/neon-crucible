@@ -1,0 +1,9 @@
+{
+  "query": "\nUPDATE works SET seriesName = 'Studies & Residuals' WHERE id IN (210035, 210036, 210037, 210038, 210039, 210040, 210041, 210045);\nUPDATE works SET seriesName = 'Vietnam Horizons' WHERE id IN (210042, 210043, 210044, 210046);\nUPDATE works SET seriesName = 'Celestial Secrets' WHERE id = 270001;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2Y9wzvyJgsWeM7p.fc93ab011512 --database ZLCef8c8rdYgPCof2teogL --execute \nUPDATE works SET seriesName = 'Studies & Residuals' WHERE id IN (210035, 210036, 210037, 210038, 210039, 210040, 210041, 210045);\nUPDATE works SET seriesName = 'Vietnam Horizons' WHERE id IN (210042, 210043, 210044, 210046);\nUPDATE works SET seriesName = 'Celestial Secrets' WHERE id = 270001;\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 3066
+}

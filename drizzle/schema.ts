@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
+import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -38,23 +38,28 @@ export type Phase = typeof phases.$inferSelect;
 export type InsertPhase = typeof phases.$inferInsert;
 
 /**
- * Artworks in the archive (500+ works)
+ * Artworks in the archive (152+ works)
  */
 export const works = mysqlTable("works", {
   id: int("id").autoincrement().primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
+  slug: varchar("slug", { length: 255 }).unique(), // URL-friendly identifier for /works/[slug]
   phaseId: int("phaseId").references(() => phases.id),
   dateCreated: varchar("dateCreated", { length: 32 }), // e.g., "2021-03", "2021"
-  technique: varchar("technique", { length: 128 }), // e.g., "Ink on Paper", "Mixed Media"
-  dimensions: varchar("dimensions", { length: 64 }), // e.g., "120x80cm"
+  medium: varchar("medium", { length: 255 }), // Full medium description (renamed from technique)
+  technique: varchar("technique", { length: 128 }), // Legacy field, kept for compatibility
+  dimensions: varchar("dimensions", { length: 128 }), // e.g., "100cm x 200cm"
+  year: varchar("year", { length: 16 }), // Creation year e.g., "2025"
   colorPalette: varchar("colorPalette", { length: 128 }), // Dominant colors
   emotionalRegister: varchar("emotionalRegister", { length: 64 }), // e.g., "gentle", "brutal"
   imageUrl: text("imageUrl"), // S3 URL for the work image
   imageKey: varchar("imageKey", { length: 512 }), // S3 key for reference
   thumbnailUrl: text("thumbnailUrl"), // Smaller version
   journalExcerpt: text("journalExcerpt"), // Quote from artist's journal
-  neonReading: text("neonReading"), // Neon's curatorial interpretation
-  seriesName: varchar("seriesName", { length: 128 }), // e.g., "Covenant triptych", "Big Bang"
+  neonReading: text("neonReading"), // Neon's curatorial interpretation (enriched)
+  curatorialHook: text("curatorialHook"), // Secondary curatorial context
+  conceptTags: json("conceptTags").$type<string[]>(), // Array of concept tags
+  seriesName: varchar("seriesName", { length: 128 }), // e.g., "Covenant", "Big Bang"
   featured: boolean("featured").default(false).notNull(), // Manually curated featured/selected works
   isPublished: boolean("isPublished").default(true).notNull(),
   sortOrder: int("sortOrder").notNull().default(0),

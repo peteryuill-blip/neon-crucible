@@ -455,6 +455,47 @@ export const appRouter = router({
       }),
   }),
 
+  // ============ GALLERY ============
+  gallery: router({
+    getAll: publicProcedure
+      .input(z.object({
+        phase: z.string().optional(),
+        series: z.string().optional(),
+        year: z.string().optional(),
+        medium: z.string().optional(),
+        search: z.string().optional(),
+        sort: z.enum(['title-asc', 'title-desc', 'year-desc', 'year-asc']).optional(),
+      }).optional())
+      .query(async ({ input }) => {
+        const filter = input ?? {};
+        const [items, total] = await Promise.all([
+          db.getGalleryWorks(filter),
+          db.getGalleryWorksCount(filter),
+        ]);
+        return { items, total };
+      }),
+
+    getBySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        const work = await db.getWorkBySlug(input.slug);
+        if (!work) {
+          throw new TRPCError({ code: 'NOT_FOUND', message: 'Work not found' });
+        }
+        // Get phase info
+        let phase = null;
+        if (work.phaseId) {
+          phase = await db.getPhaseById(work.phaseId);
+        }
+        return { ...work, phase };
+      }),
+
+    getFilterOptions: publicProcedure
+      .query(async () => {
+        return db.getGalleryFilterOptions();
+      }),
+  }),
+
   // ============ SEARCH ============
   search: router({
     query: publicProcedure
