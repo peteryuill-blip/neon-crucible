@@ -1,215 +1,77 @@
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Search, Grid as GridIcon, List, Loader2, X, ArrowUpDown, Shuffle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Search, Loader2, X, ArrowUpDown } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useState, useMemo, useEffect } from "react";
-import { Streamdown } from "streamdown";
-
+import { useLocation } from "wouter";
 
 const ITEMS_PER_PAGE = 12;
 
-type SortOption = 'phase' | 'date_newest' | 'date_oldest' | 'title' | 'random';
+type SortOption = 'year-desc' | 'year-asc' | 'title-asc' | 'title-desc';
 
 export default function Works() {
+  const [, setLocation] = useLocation();
   const [search, setSearch] = useState("");
   const [phaseFilter, setPhaseFilter] = useState<string>("all");
-  const [techniqueFilter, setTechniqueFilter] = useState<string>("all");
   const [seriesFilter, setSeriesFilter] = useState<string>("all");
-  const [featuredOnly, setFeaturedOnly] = useState(false);
-  const [sortBy, setSortBy] = useState<SortOption>("date_newest");
+  const [yearFilter, setYearFilter] = useState<string>("all");
+  const [mediumFilter, setMediumFilter] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<'year-desc' | 'year-asc' | 'title-asc' | 'title-desc'>("year-desc");
   const [page, setPage] = useState(0);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
-  const [selectedWork, setSelectedWork] = useState<number | null>(null);
 
-  // Track random seed to allow reshuffling
-  const [randomSeed, setRandomSeed] = useState(0);
-
-  // Fetch phases for filter dropdown
-  const { data: phases } = trpc.phases.list.useQuery();
-  
-  // Fetch distinct series names for filter dropdown
-  const { data: seriesNames } = trpc.works.getDistinctSeries.useQuery();
+  // Fetch filter options
+  const { data: filterOptions } = trpc.gallery.getFilterOptions.useQuery();
 
   // Build filter object
   const filter = useMemo(() => ({
     search: search || undefined,
-    phaseId: phaseFilter !== "all" ? parseInt(phaseFilter) : undefined,
-    technique: techniqueFilter !== "all" ? techniqueFilter : undefined,
-    seriesName: seriesFilter !== "all" ? seriesFilter : undefined,
-    featured: featuredOnly || undefined,
-    sortBy: sortBy,
-    limit: ITEMS_PER_PAGE,
-    offset: page * ITEMS_PER_PAGE,
-    // Include randomSeed in dependency to trigger refetch on shuffle
-    _seed: sortBy === 'random' ? randomSeed : undefined,
-  }), [search, phaseFilter, techniqueFilter, seriesFilter, featuredOnly, sortBy, page, randomSeed]);
+    phase: phaseFilter !== "all" ? phaseFilter : undefined,
+    series: seriesFilter !== "all" ? seriesFilter : undefined,
+    year: yearFilter !== "all" ? yearFilter : undefined,
+    medium: mediumFilter !== "all" ? mediumFilter : undefined,
+    sort: sortBy,
+  }), [search, phaseFilter, seriesFilter, yearFilter, mediumFilter, sortBy]);
 
-  // Fetch works with filters
-  const { data: worksData, isLoading, refetch } = trpc.works.list.useQuery(filter);
+  // Fetch gallery works
+  const { data: galleryData, isLoading } = trpc.gallery.getAll.useQuery(filter.search || filter.phase || filter.series || filter.year || filter.medium || filter.sort ? filter : undefined);
 
-  // Fetch selected work details
-  const { data: selectedWorkData } = trpc.works.getById.useQuery(
-    { id: selectedWork! },
-    { enabled: selectedWork !== null }
-  );
-
-  const works = worksData?.items ?? [];
-  const totalWorks = worksData?.total ?? 0;
+  const works = galleryData?.items ?? [];
+  const totalWorks = galleryData?.total ?? 0;
   const totalPages = Math.ceil(totalWorks / ITEMS_PER_PAGE);
-
-  // Get unique techniques from works for filter
-  const techniques = useMemo(() => {
-    const uniqueTechniques = new Set<string>();
-    works.forEach(w => w.technique && uniqueTechniques.add(w.technique));
-    return Array.from(uniqueTechniques);
-  }, [works]);
-
-  // Find phase info for a work
-  const getPhaseCode = (phaseId: number | null) => {
-    if (!phaseId || !phases) return "—";
-    const phase = phases.find(p => p.id === phaseId);
-    return phase?.code ?? "—";
-  };
-
-  // Inject Schema.org structured data when artwork modal opens
-  useEffect(() => {
-    if (!selectedWorkData) return;
-
-    const schema: any = {
-      "@context": "https://schema.org",
-      "@type": "VisualArtwork",
-      "name": selectedWorkData.title,
-      "creator": {
-        "@type": "Person",
-        "name": "Peter Yuill",
-        "jobTitle": "Contemporary Artist",
-        "url": "https://peteryuill.art",
-        "sameAs": [
-          "https://peteryuill.art",
-          "https://peter-yuill.manus.space",
-          "https://instagram.com/peteryuill"
-        ]
-      },
-      "dateCreated": selectedWorkData.dateCreated || undefined,
-      "artMedium": selectedWorkData.technique || undefined,
-      "artform": "Painting",
-      "image": selectedWorkData.imageUrl || undefined,
-      "url": `https://peteryuill.art/works?id=${selectedWorkData.id}`,
-      "isPartOf": selectedWorkData.seriesName ? {
-        "@type": "CreativeWorkSeries",
-        "name": selectedWorkData.seriesName
-      } : undefined,
-      "description": selectedWorkData.neonReading || selectedWorkData.journalExcerpt || `${selectedWorkData.title} by Peter Yuill, ${selectedWorkData.technique || 'contemporary artwork'}, ${selectedWorkData.dateCreated || 'date unknown'}`,
-      "keywords": [
-        "Peter Yuill",
-        "contemporary art",
-        "Bangkok artist",
-        selectedWorkData.technique,
-        selectedWorkData.seriesName,
-        getPhaseCode(selectedWorkData.phaseId),
-        "The Neon Crucible"
-      ].filter(Boolean).join(", "),
-      "inLanguage": "en",
-      "copyrightHolder": {
-        "@type": "Person",
-        "name": "Peter Yuill"
-      },
-      "copyrightYear": selectedWorkData.dateCreated ? new Date(selectedWorkData.dateCreated).getFullYear() : undefined,
-      "license": "All Rights Reserved"
-    };
-
-    // Add dimensions if available
-    if (selectedWorkData.dimensions) {
-      const dimensionMatch = selectedWorkData.dimensions.match(/(\d+)\s*x\s*(\d+)/i);
-      if (dimensionMatch) {
-        const [_, height, width] = dimensionMatch;
-        schema["height"] = {
-          "@type": "QuantitativeValue",
-          "value": height,
-          "unitCode": "CMT"
-        };
-        schema["width"] = {
-          "@type": "QuantitativeValue",
-          "value": width,
-          "unitCode": "CMT"
-        };
-      }
-    }
-
-    // Create and inject schema script tag
-    const schemaScript = document.createElement('script');
-    schemaScript.type = 'application/ld+json';
-    schemaScript.id = `artwork-schema-${selectedWorkData.id}`;
-    schemaScript.textContent = JSON.stringify(schema, null, 2);
-    document.head.appendChild(schemaScript);
-
-    // Cleanup function
-    return () => {
-      const existingSchema = document.getElementById(`artwork-schema-${selectedWorkData.id}`);
-      if (existingSchema) {
-        existingSchema.remove();
-      }
-    };
-  }, [selectedWorkData, phases]);
 
   const clearFilters = () => {
     setSearch("");
     setPhaseFilter("all");
-    setTechniqueFilter("all");
     setSeriesFilter("all");
-    setFeaturedOnly(false);
+    setYearFilter("all");
+    setMediumFilter("all");
     setPage(0);
   };
 
-  const handleShuffle = () => {
-    setRandomSeed(prev => prev + 1);
-    setPage(0);
-    refetch();
-  };
-
-  const hasActiveFilters = search || phaseFilter !== "all" || techniqueFilter !== "all" || seriesFilter !== "all" || featuredOnly;
+  const hasActiveFilters = search || phaseFilter !== "all" || seriesFilter !== "all" || yearFilter !== "all" || mediumFilter !== "all";
 
   const sortOptions = [
-    { value: 'phase', label: 'BY PHASE (NE→PH1)' },
-    { value: 'date_newest', label: 'DATE (NEWEST)' },
-    { value: 'date_oldest', label: 'DATE (OLDEST)' },
-    { value: 'title', label: 'TITLE (A-Z)' },
-    { value: 'random', label: 'RANDOM' },
+    { value: 'year-desc', label: 'YEAR (NEWEST)' },
+    { value: 'year-asc', label: 'YEAR (OLDEST)' },
+    { value: 'title-asc', label: 'TITLE (A-Z)' },
   ];
+
+  const handleWorkClick = (slug: string) => {
+    // Save return URL for back button
+    sessionStorage.setItem("gallery-return-url", window.location.href);
+    setLocation(`/works/${slug}`);
+  };
 
   return (
     <div className="space-y-6 sm:space-y-8 pb-32 sm:pb-24">
       {/* Header */}
       <header className="flex flex-col gap-4 sm:gap-6 border-b border-border pb-6 sm:pb-8">
-        <div className="flex items-start sm:items-end justify-between gap-4">
-          <div className="space-y-1 sm:space-y-2 min-w-0">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-light tracking-tighter">WORK ARCHIVE</h1>
-            <p className="font-mono text-xs sm:text-sm text-muted-foreground">
-              INDEXING {totalWorks} WORKS [2018—2025]
-            </p>
-          </div>
-          <div className="flex gap-1 sm:gap-2 shrink-0">
-            <Button 
-              variant={viewMode === "list" ? "outline" : "ghost"} 
-              size="icon" 
-              className="rounded-none border-muted-foreground/30 w-8 h-8 sm:w-10 sm:h-10"
-              onClick={() => setViewMode("list")}
-              aria-label="List view"
-            >
-              <List className="w-3 h-3 sm:w-4 sm:h-4" />
-            </Button>
-            <Button 
-              variant={viewMode === "grid" ? "outline" : "ghost"} 
-              size="icon" 
-              className="rounded-none text-muted-foreground w-8 h-8 sm:w-10 sm:h-10"
-              onClick={() => setViewMode("grid")}
-              aria-label="Grid view"
-            >
-              <GridIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-            </Button>
-          </div>
+        <div className="space-y-1 sm:space-y-2">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-light tracking-tighter">WORK ARCHIVE</h1>
+          <p className="font-mono text-xs sm:text-sm text-muted-foreground">
+            INDEXING {totalWorks} WORKS [2018—2025]
+          </p>
         </div>
       </header>
 
@@ -232,9 +94,9 @@ export default function Works() {
         </div>
 
         {/* Sort Row - Always Visible */}
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center flex-wrap">
           <ArrowUpDown className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground shrink-0" />
-          <Select value={sortBy} onValueChange={(v) => { setSortBy(v as SortOption); setPage(0); }}>
+          <Select value={sortBy} onValueChange={(v) => { setSortBy(v as any); setPage(0); }}>
             <SelectTrigger className="flex-1 sm:w-[180px] sm:flex-none rounded-none border-muted-foreground/30 font-mono text-[10px] sm:text-xs h-8 sm:h-9">
               <SelectValue placeholder="SORT BY" />
             </SelectTrigger>
@@ -246,33 +108,6 @@ export default function Works() {
               ))}
             </SelectContent>
           </Select>
-          
-          {/* Featured Works Toggle */}
-          <Button
-            variant={featuredOnly ? "default" : "outline"}
-            size="sm"
-            className="rounded-none border-muted-foreground/30 font-mono text-[10px] sm:text-xs gap-1 h-8 sm:h-9 px-2 sm:px-3"
-            onClick={() => {
-              setFeaturedOnly(!featuredOnly);
-              setPage(0);
-            }}
-          >
-            <span className="hidden sm:inline">FEATURED</span>
-            <span className="sm:hidden">★</span>
-          </Button>
-
-          {/* Shuffle button for random mode */}
-          {sortBy === 'random' && (
-            <Button
-              variant="outline"
-              size="sm"
-              className="rounded-none border-muted-foreground/30 font-mono text-[10px] sm:text-xs gap-1 h-8 sm:h-9 px-2 sm:px-3"
-              onClick={handleShuffle}
-            >
-              <Shuffle className="w-3 h-3" />
-              <span className="hidden sm:inline">SHUFFLE</span>
-            </Button>
-          )}
 
           {/* Desktop Filters Inline */}
           <div className="hidden sm:flex gap-2 ml-auto">
@@ -282,9 +117,9 @@ export default function Works() {
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card">
                 <SelectItem value="all">ALL PHASES</SelectItem>
-                {phases?.map(phase => (
-                  <SelectItem key={phase.id} value={phase.id.toString()}>
-                    {phase.code}
+                {filterOptions?.phases.map(phase => (
+                  <SelectItem key={phase.code} value={phase.code}>
+                    {phase.code}: {phase.title}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -295,19 +130,30 @@ export default function Works() {
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card max-h-60">
                 <SelectItem value="all">ALL SERIES</SelectItem>
-                {seriesNames?.map(series => (
+                {filterOptions?.series.map(series => (
                   <SelectItem key={series} value={series}>{series}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            <Select value={techniqueFilter} onValueChange={(v) => { setTechniqueFilter(v); setPage(0); }}>
-              <SelectTrigger className="w-[140px] rounded-none border-muted-foreground/30 font-mono text-xs h-9">
-                <SelectValue placeholder="TECHNIQUE" />
+            <Select value={yearFilter} onValueChange={(v) => { setYearFilter(v); setPage(0); }}>
+              <SelectTrigger className="w-[100px] rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+                <SelectValue placeholder="YEAR" />
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card">
-                <SelectItem value="all">ALL TECHNIQUES</SelectItem>
-                {techniques.map(tech => (
-                  <SelectItem key={tech} value={tech}>{tech}</SelectItem>
+                <SelectItem value="all">ALL YEARS</SelectItem>
+                {filterOptions?.years.map(year => (
+                  <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={mediumFilter} onValueChange={(v) => { setMediumFilter(v); setPage(0); }}>
+              <SelectTrigger className="w-[140px] rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+                <SelectValue placeholder="MEDIUM" />
+              </SelectTrigger>
+              <SelectContent className="rounded-none border-border bg-card max-h-60">
+                <SelectItem value="all">ALL MEDIUMS</SelectItem>
+                {filterOptions?.mediums.map(medium => (
+                  <SelectItem key={medium} value={medium}>{medium}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -323,7 +169,7 @@ export default function Works() {
           </div>
         </div>
 
-        {/* Mobile Filters - Always Visible */}
+        {/* Mobile Filters */}
         <div className="sm:hidden mt-3 pt-3 border-t border-border/50 space-y-2">
           <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
             <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
@@ -331,9 +177,9 @@ export default function Works() {
             </SelectTrigger>
             <SelectContent className="rounded-none border-border bg-card">
               <SelectItem value="all">ALL PHASES</SelectItem>
-              {phases?.map(phase => (
-                <SelectItem key={phase.id} value={phase.id.toString()}>
-                  {phase.code}
+              {filterOptions?.phases.map(phase => (
+                <SelectItem key={phase.code} value={phase.code}>
+                  {phase.code}: {phase.title}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -344,19 +190,30 @@ export default function Works() {
             </SelectTrigger>
             <SelectContent className="rounded-none border-border bg-card max-h-60">
               <SelectItem value="all">ALL SERIES</SelectItem>
-              {seriesNames?.map(series => (
+              {filterOptions?.series.map(series => (
                 <SelectItem key={series} value={series}>{series}</SelectItem>
               ))}
             </SelectContent>
           </Select>
-          <Select value={techniqueFilter} onValueChange={(v) => { setTechniqueFilter(v); setPage(0); }}>
+          <Select value={yearFilter} onValueChange={(v) => { setYearFilter(v); setPage(0); }}>
             <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
-              <SelectValue placeholder="TECHNIQUE" />
+              <SelectValue placeholder="YEAR" />
             </SelectTrigger>
             <SelectContent className="rounded-none border-border bg-card">
-              <SelectItem value="all">ALL TECHNIQUES</SelectItem>
-              {techniques.map(tech => (
-                <SelectItem key={tech} value={tech}>{tech}</SelectItem>
+              <SelectItem value="all">ALL YEARS</SelectItem>
+              {filterOptions?.years.map(year => (
+                <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Select value={mediumFilter} onValueChange={(v) => { setMediumFilter(v); setPage(0); }}>
+            <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
+              <SelectValue placeholder="MEDIUM" />
+            </SelectTrigger>
+            <SelectContent className="rounded-none border-border bg-card max-h-60">
+              <SelectItem value="all">ALL MEDIUMS</SelectItem>
+              {filterOptions?.mediums.map(medium => (
+                <SelectItem key={medium} value={medium}>{medium}</SelectItem>
               ))}
             </SelectContent>
           </Select>
@@ -372,243 +229,73 @@ export default function Works() {
         </div>
       </div>
 
-      {/* Loading State */}
-      {isLoading && (
-        <div className="flex justify-center py-16 sm:py-24">
-          <Loader2 className="w-6 h-6 sm:w-8 sm:h-8 animate-spin text-primary" />
+      {/* Gallery Grid */}
+      {isLoading ? (
+        <div className="flex items-center justify-center py-24">
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
-      )}
-
-      {/* Empty State */}
-      {!isLoading && works.length === 0 && (
-        <div className="text-center py-16 sm:py-24 space-y-3 sm:space-y-4">
+      ) : works.length === 0 ? (
+        <div className="text-center py-24">
           <p className="font-mono text-sm text-muted-foreground">NO WORKS FOUND</p>
-          <p className="text-xs sm:text-sm text-muted-foreground/70">
-            {hasActiveFilters 
-              ? "Try adjusting your filters" 
-              : "Works will appear here once added to the archive"}
-          </p>
         </div>
-      )}
-
-      {/* Grid View */}
-      {!isLoading && works.length > 0 && viewMode === "grid" && (
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-px bg-border border border-border">
-          {works.map((work) => (
-            <div 
-              key={work.id} 
-              className="group bg-card aspect-square relative overflow-hidden cursor-pointer hover:bg-muted/5 transition-colors"
-              onClick={() => setSelectedWork(work.id)}
-            >
-              {/* Image or Placeholder */}
-              {work.imageUrl ? (
-                <img 
-                  src={work.thumbnailUrl || work.imageUrl} 
-                  alt={`Peter Yuill - ${work.title}, ${work.technique}, ${work.dateCreated ? new Date(work.dateCreated).getFullYear() : 'date unknown'}`}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
+      ) : (
+        <>
+          {/* 3-Column Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {works.map((work) => (
+              <button
+                key={work.id}
+                onClick={() => handleWorkClick(work.slug || '')}
+                className="group relative aspect-square overflow-hidden bg-muted border border-border hover:border-primary transition-all duration-300 cursor-pointer rounded-none"
+              >
+                <img
+                  src={work.thumbnailUrl || work.imageUrl || ""}
+                  alt={work.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-              ) : (
-                <div className="absolute inset-0 bg-muted/10 flex items-center justify-center text-muted-foreground/20 font-mono text-2xl sm:text-4xl font-bold group-hover:scale-105 transition-transform duration-500">
-                  IMG_{work.id}
-                </div>
-              )}
-              
-              {/* Overlay Info */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity p-3 sm:p-6 flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                  <span className="font-mono text-[10px] sm:text-xs text-primary border border-primary px-1 bg-black/50">
-                    {getPhaseCode(work.phaseId)}
-                  </span>
-                  <span className="font-mono text-[10px] sm:text-xs text-muted-foreground hidden sm:block">{work.dateCreated || "—"}</span>
-                </div>
-                
-                <div className="space-y-1 sm:space-y-2">
-                  <h3 className="font-bold text-sm sm:text-xl text-white tracking-tight line-clamp-2">{work.title}</h3>
-                  <div className="hidden sm:flex flex-col gap-1 font-mono text-xs text-gray-300">
-                    <span>{work.technique || "—"}</span>
-                    {work.seriesName && (
-                      <span className="text-primary/80">{work.seriesName}</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Corner Marker */}
-              <div className="absolute bottom-0 right-0 w-3 h-3 sm:w-4 sm:h-4 border-l border-t border-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* List View */}
-      {!isLoading && works.length > 0 && viewMode === "list" && (
-        <div className="border border-border divide-y divide-border">
-          {works.map((work) => (
-            <div 
-              key={work.id} 
-              className="flex items-center gap-3 sm:gap-6 p-3 sm:p-4 hover:bg-muted/5 cursor-pointer transition-colors"
-              onClick={() => setSelectedWork(work.id)}
-            >
-              {/* Thumbnail */}
-              <div className="w-16 h-16 sm:w-24 sm:h-24 bg-muted/10 flex-shrink-0 overflow-hidden">
-                {work.thumbnailUrl || work.imageUrl ? (
-                  <img 
-                    src={work.thumbnailUrl || work.imageUrl || ""} 
-                    alt={`Peter Yuill - ${work.title}, ${work.technique}, ${work.dateCreated ? new Date(work.dateCreated).getFullYear() : 'date unknown'}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground/30 font-mono text-xs">
-                    IMG
-                  </div>
-                )}
-              </div>
-              
-              {/* Info */}
-              <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-sm sm:text-base truncate">{work.title}</h3>
-                <p className="font-mono text-[10px] sm:text-xs text-muted-foreground truncate">
-                  {work.technique || "—"} • {work.dimensions || "—"}
-                </p>
-                {work.seriesName && (
-                  <p className="font-mono text-[10px] sm:text-xs text-primary/70 mt-0.5 sm:mt-1 truncate">{work.seriesName}</p>
-                )}
-              </div>
-              
-              {/* Meta */}
-              <div className="text-right flex-shrink-0">
-                <span className="font-mono text-[10px] sm:text-xs text-primary border border-primary px-1">
-                  {getPhaseCode(work.phaseId)}
-                </span>
-                <p className="font-mono text-[10px] sm:text-xs text-muted-foreground mt-1 hidden sm:block">{work.dateCreated || "—"}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center pt-6 sm:pt-8">
-          <div className="flex gap-1 sm:gap-2 font-mono text-xs sm:text-sm w-full max-w-xs justify-center">
-            <Button 
-              variant="outline" 
-              disabled={page === 0} 
-              onClick={() => setPage(p => p - 1)}
-              className="rounded-none border-muted-foreground/30 h-8 sm:h-10 px-2 sm:px-4"
-            >
-              PREV
-            </Button>
-            <div className="flex items-center px-2 sm:px-4 border border-muted-foreground/30 text-muted-foreground text-[10px] sm:text-sm">
-              {page + 1} / {totalPages}
-            </div>
-            <Button 
-              variant="outline" 
-              disabled={page >= totalPages - 1}
-              onClick={() => setPage(p => p + 1)}
-              className="rounded-none border-muted-foreground/30 h-8 sm:h-10 px-2 sm:px-4"
-            >
-              NEXT
-            </Button>
-          </div>
-        </div>
-      )}
-
-      {/* Work Detail Modal */}
-      <Dialog open={selectedWork !== null} onOpenChange={(open) => !open && setSelectedWork(null)}>
-        <DialogContent className="w-[95vw] max-w-4xl bg-card border-border rounded-none p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
-          {selectedWorkData && (
-            <div className="flex flex-col md:grid md:grid-cols-2">
-              {/* Image */}
-              <div className="aspect-square bg-muted/10 relative group">
-                {selectedWorkData.imageUrl ? (
-                  <>
-                    <img 
-                      src={selectedWorkData.imageUrl} 
-                      alt={`Peter Yuill - ${selectedWorkData.title}, ${selectedWorkData.technique}, ${selectedWorkData.dateCreated ? new Date(selectedWorkData.dateCreated).getFullYear() : 'date unknown'}`}
-                      className="w-full h-full object-contain"
-                    />
-                  </>
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-muted-foreground/20 font-mono text-4xl sm:text-6xl font-bold">
-                    IMG
-                  </div>
-                )}
-              </div>
-              
-              {/* Details */}
-              <div className="p-4 sm:p-8 space-y-4 sm:space-y-6">
-                <DialogHeader>
-                  <div className="flex items-center gap-2 mb-2 flex-wrap">
-                    <span className="font-mono text-[10px] sm:text-xs text-primary border border-primary px-1">
-                      {getPhaseCode(selectedWorkData.phaseId)}
-                    </span>
-                    <span className="font-mono text-[10px] sm:text-xs text-muted-foreground">
-                      {selectedWorkData.dateCreated || "—"}
-                    </span>
-                  </div>
-                  <DialogTitle className="text-lg sm:text-2xl font-bold tracking-tight pr-8">
-                    {selectedWorkData.title}
-                  </DialogTitle>
-                </DialogHeader>
-                
-                <div className="space-y-3 sm:space-y-4 text-sm">
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4 font-mono text-[10px] sm:text-xs">
-                    <div>
-                      <span className="text-muted-foreground">TECHNIQUE</span>
-                      <p className="text-foreground">{selectedWorkData.technique || "—"}</p>
-                    </div>
-                    <div>
-                      <span className="text-muted-foreground">DIMENSIONS</span>
-                      <p className="text-foreground">{selectedWorkData.dimensions || "—"}</p>
-                    </div>
-                    {selectedWorkData.colorPalette && (
-                      <div>
-                        <span className="text-muted-foreground">PALETTE</span>
-                        <p className="text-foreground">{selectedWorkData.colorPalette}</p>
-                      </div>
-                    )}
-                    {selectedWorkData.emotionalRegister && (
-                      <div>
-                        <span className="text-muted-foreground">REGISTER</span>
-                        <p className="text-foreground">{selectedWorkData.emotionalRegister}</p>
-                      </div>
-                    )}
-                    {selectedWorkData.seriesName && (
-                      <div className="col-span-2">
-                        <span className="text-muted-foreground">SERIES</span>
-                        <p className="text-foreground">{selectedWorkData.seriesName}</p>
-                      </div>
-                    )}
-                  </div>
-                  
-                  {selectedWorkData.journalExcerpt && (
-                    <div className="border-l-2 border-primary/50 pl-3 sm:pl-4">
-                      <span className="font-mono text-[10px] sm:text-xs text-muted-foreground block mb-1 sm:mb-2">JOURNAL EXCERPT</span>
-                      <p className="font-serif italic text-xs sm:text-sm text-muted-foreground">
-                        "{selectedWorkData.journalExcerpt}"
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex flex-col items-end justify-end p-4">
+                  <div className="text-right opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="font-serif text-sm sm:text-base text-white leading-tight">
+                      {work.title}
+                    </p>
+                    {work.year && (
+                      <p className="font-mono text-xs text-white/70">
+                        {work.year}
                       </p>
-                    </div>
-                  )}
-                  
-                  {selectedWorkData.neonReading && (
-                    <div className="border-l-2 border-cyan-500/50 pl-3 sm:pl-4">
-                      <span className="font-mono text-[10px] sm:text-xs text-cyan-500 block mb-1 sm:mb-2">NEON'S READING</span>
-                      <div className="font-serif text-xs sm:text-sm text-muted-foreground">
-                        <Streamdown>{selectedWorkData.neonReading}</Streamdown>
-                      </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-between gap-4 pt-8 border-t border-border">
+              <Button
+                variant="outline"
+                disabled={page === 0}
+                onClick={() => setPage(p => Math.max(0, p - 1))}
+                className="rounded-none border-muted-foreground/30 font-mono text-xs h-9"
+              >
+                ← PREVIOUS
+              </Button>
+              <span className="font-mono text-xs text-muted-foreground">
+                PAGE {page + 1} OF {totalPages}
+              </span>
+              <Button
+                variant="outline"
+                disabled={page >= totalPages - 1}
+                onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+                className="rounded-none border-muted-foreground/30 font-mono text-xs h-9"
+              >
+                NEXT →
+              </Button>
             </div>
           )}
-        </DialogContent>
-      </Dialog>
-
-
+        </>
+      )}
     </div>
   );
 }

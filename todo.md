@@ -857,3 +857,20 @@
 - [x] Build /works/[slug] detail page with hero image and metadata
 - [x] Mobile optimization with Shadcn Sheet for filters
 - [x] Write vitest tests for gallery procedures (15 tests passing)
+
+## Gallery Integration Refinement
+
+- [ ] Remove Journal Entry section from work detail pages
+- [ ] Integrate Monolith Gallery into Works page (replace old gallery)
+- [ ] Remove /gallery route and WorkDetail page
+- [ ] Test gallery on Works page and verify mobile responsiveness
+
+
+## Monolith Gallery Integration
+
+- [x] Remove Journal Entry section from WorkDetail page
+- [x] Integrate Monolith Gallery into Works page (3-column grid)
+- [x] Remove old Gallery and WorkDetail routes
+- [x] Create new WorkDetail component for /works/:slug route
+- [x] Test integrated gallery system with filtering and sorting
+- [x] Verify work detail pages display correctly with hero images

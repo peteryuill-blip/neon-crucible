@@ -17,7 +17,6 @@ import Statistics from "./pages/Statistics";
 import Commissions from "./pages/Commissions";
 import Contact from "./pages/Contact";
 import Descent from "./pages/Descent";
-import Gallery from "./pages/Gallery";
 import WorkDetail from "./pages/WorkDetail";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminWorks from "./pages/admin/AdminWorks";
@@ -82,8 +81,8 @@ function PublicRouter() {
         <Route path="/voices" component={Voices} />
         <Route path="/contact" component={Contact} />
         <Route path="/descent" component={Descent} />
-        <Route path="/gallery" component={Gallery} />
         <Route path="/works/:slug" component={WorkDetail} />
+        <Route path="/works" component={Works} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

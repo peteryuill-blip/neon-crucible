@@ -1,4 +1,4 @@
-import { useParams, useLocation, Link } from "wouter";
+import { useParams, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Loader2 } from "lucide-react";
@@ -12,13 +12,13 @@ export default function WorkDetail() {
     { enabled: !!slug }
   );
 
-  // Back button: return to gallery with preserved filters
+  // Back button: return to works with preserved filters
   const handleBack = () => {
     const returnUrl = sessionStorage.getItem("gallery-return-url");
     if (returnUrl) {
       setLocation(returnUrl);
     } else {
-      setLocation("/gallery");
+      setLocation("/works");
     }
   };
 
@@ -43,7 +43,7 @@ export default function WorkDetail() {
             className="font-mono text-xs border-border"
           >
             <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
-            BACK TO GALLERY
+            BACK TO WORKS
           </Button>
         </div>
       </div>
@@ -72,7 +72,7 @@ export default function WorkDetail() {
             className="font-mono text-xs text-white/80 hover:text-white hover:bg-white/10 backdrop-blur-sm bg-black/30 rounded-none border border-white/20"
           >
             <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
-            GALLERY
+            WORKS
           </Button>
         </div>
 
@@ -88,12 +88,12 @@ export default function WorkDetail() {
           {/* Title & Phase */}
           <div className="space-y-3">
             {phase && (
-              <Link
-                href={`/gallery?phase=${phase.code}`}
+              <a
+                href={`/works?phase=${phase.code}`}
                 className="font-mono text-xs tracking-widest text-primary hover:text-primary/80 transition-colors"
               >
                 {phase.code}: {phase.title}
-              </Link>
+              </a>
             )}
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-foreground leading-tight">
               {work.title}
@@ -108,12 +108,12 @@ export default function WorkDetail() {
                   Year
                 </dt>
                 <dd className="font-mono text-sm text-foreground">
-                  <Link
-                    href={`/gallery?year=${work.year}`}
+                  <a
+                    href={`/works?year=${work.year}`}
                     className="hover:text-primary transition-colors"
                   >
                     {work.year}
-                  </Link>
+                  </a>
                 </dd>
               </div>
             )}
@@ -143,12 +143,12 @@ export default function WorkDetail() {
                   Series
                 </dt>
                 <dd className="font-mono text-sm text-foreground">
-                  <Link
-                    href={`/gallery?series=${encodeURIComponent(work.seriesName)}`}
+                  <a
+                    href={`/works?series=${encodeURIComponent(work.seriesName)}`}
                     className="hover:text-primary transition-colors"
                   >
                     {work.seriesName}
-                  </Link>
+                  </a>
                 </dd>
               </div>
             )}
@@ -182,18 +182,6 @@ export default function WorkDetail() {
                   </p>
                 ))}
               </div>
-            </div>
-          )}
-
-          {/* Journal Excerpt */}
-          {work.journalExcerpt && (
-            <div className="space-y-3">
-              <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                Journal Excerpt
-              </h2>
-              <blockquote className="font-serif text-lg italic text-muted-foreground border-l-2 border-muted-foreground/30 pl-6">
-                "{work.journalExcerpt}"
-              </blockquote>
             </div>
           )}
 
@@ -232,7 +220,7 @@ export default function WorkDetail() {
             )}
           </div>
 
-          {/* Back to Gallery */}
+          {/* Back to Works */}
           <div className="pt-4">
             <Button
               variant="outline"
@@ -240,7 +228,7 @@ export default function WorkDetail() {
               className="font-mono text-xs border-border rounded-none"
             >
               <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
-              BACK TO GALLERY
+              BACK TO WORKS
             </Button>
           </div>
         </div>
