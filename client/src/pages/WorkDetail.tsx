@@ -2,10 +2,16 @@ import { useParams, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Loader2 } from "lucide-react";
+import { useEffect } from "react";
 
 export default function WorkDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
+
+  // Scroll to top when component mounts or slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   const { data, isLoading, error } = trpc.gallery.getBySlug.useQuery(
     { slug: slug || "" },

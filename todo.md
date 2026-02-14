@@ -879,3 +879,8 @@
 ## Gallery Navigation Cleanup
 
 - [x] Remove Gallery link from navigation (gallery functionality integrated into Works page)
+
+
+## WorkDetail Page Scroll Fix
+
+- [x] Fix scroll position when navigating to work detail page (should scroll to top)
