@@ -60,37 +60,20 @@ export default function WorkDetail() {
   const phase = data.phase;
 
   return (
-    <div className="min-h-screen -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12">
-      {/* Hero Image - Full viewport */}
-      <div className="relative w-full h-[100svh]">
+    <div className="-mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12">
+      {/* Hero Image - Natural height based on aspect ratio */}
+      <div className="relative w-full">
         <img
           src={work.imageUrl || work.thumbnailUrl || ""}
           alt={work.title}
-          className="absolute inset-0 w-full h-full object-contain bg-black"
+          className="relative w-full h-auto object-contain bg-black block"
         />
 
-        {/* Back button overlay */}
-        <div className="absolute top-4 left-4 z-10">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleBack}
-            className="font-mono text-xs text-white/80 hover:text-white hover:bg-white/10 backdrop-blur-sm bg-black/30 rounded-none border border-white/20"
-          >
-            <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
-            WORKS
-          </Button>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-          <div className="w-px h-8 bg-white/40" />
-        </div>
       </div>
 
       {/* Metadata Section */}
       <div className="bg-background border-t border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 space-y-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 space-y-8">
           {/* Title & Phase */}
           <div className="space-y-3">
             {phase && (
