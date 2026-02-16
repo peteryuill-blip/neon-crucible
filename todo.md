@@ -902,3 +902,8 @@
 - [ ] Add image upload with S3 integration
 - [ ] Write vitest tests for admin procedures
 - [x] Secure dashboard with admin-only access control
+
+
+## Admin Navigation Integration
+
+- [x] Add admin panel link to main navigation (visible only to admin users)

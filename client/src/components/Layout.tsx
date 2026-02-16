@@ -1,14 +1,16 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import { Activity, Archive, Eye, Grid, Home, User, Quote, Menu, X, Search, BarChart3, Briefcase, Mail, TrendingDown } from "lucide-react";
+import { Activity, Archive, Eye, Grid, Home, User, Quote, Menu, X, Search, BarChart3, Briefcase, Mail, TrendingDown, Settings } from "lucide-react";
 import { useState } from "react";
 import { SearchDialog } from "./SearchDialog";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [systemExpanded, setSystemExpanded] = useState(false);
+  const { user } = useAuth();
 
   // STUDIO group - always visible
   const studioItems = [
@@ -27,6 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { href: "/descent", label: "Journey", icon: TrendingDown },
     { href: "/statistics", label: "Statistics", icon: BarChart3 },
     { href: "/dashboard", label: "Dashboard", icon: Activity },
+    ...(user?.role === 'admin' ? [{ href: "/admin", label: "Admin", icon: Settings }] : []),
   ];
 
   return (
