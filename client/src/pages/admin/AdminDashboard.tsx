@@ -1,167 +1,484 @@
-import AdminLayout from "@/components/AdminLayout";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { trpc } from "@/lib/trpc";
-import { Image, Layers, FileText, HelpCircle, Archive, ExternalLink } from "lucide-react";
-import { Link } from "wouter";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { trpc } from '@/lib/trpc';
+import { useAuth } from '@/_core/hooks/useAuth';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { AlertCircle, Loader2, Plus, Trash2, Edit2 } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+
+interface WorkFormData {
+  title: string;
+  slug: string;
+  year: string;
+  medium: string;
+  dimensions: string;
+  seriesName: string;
+  phaseId?: number;
+  curatorialHook?: string;
+  neonReading?: string;
+  conceptTags?: string[];
+  imageUrl?: string;
+  imageKey?: string;
+  colorPalette?: string;
+  emotionalRegister?: string;
+  isPublished?: boolean;
+}
 
 export default function AdminDashboard() {
-  const { data: works } = trpc.works.list.useQuery({ limit: 100 });
-  const { data: phases } = trpc.phases.list.useQuery();
-  const { data: essays } = trpc.essays.list.useQuery();
-  const { data: metaquestions } = trpc.metaquestions.list.useQuery();
-  const { data: archiveFiles } = trpc.archiveFiles.list.useQuery();
+  const { user, loading: authLoading } = useAuth();
+  const [formData, setFormData] = useState<WorkFormData>({
+    title: '',
+    slug: '',
+    year: new Date().getFullYear().toString(),
+    medium: '',
+    dimensions: '',
+    seriesName: '',
+    isPublished: true,
+  });
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
-  const stats = [
-    { 
-      label: "Works", 
-      value: works?.total ?? 0, 
-      icon: Image, 
-      href: "/admin/works",
-      color: "text-blue-400"
+  // Queries
+  const { data: allWorks, isLoading: worksLoading, refetch: refetchWorks } = trpc.gallery.getAll.useQuery();
+  const { data: phases, isLoading: phasesLoading } = trpc.phases.list.useQuery();
+  const { data: filterOptions } = trpc.gallery.getFilterOptions.useQuery();
+
+  // Mutations
+  const createWorkMutation = trpc.gallery.create.useMutation({
+    onSuccess: () => {
+      setMessage({ type: 'success', text: 'Work created successfully!' });
+      setFormData({
+        title: '',
+        slug: '',
+        year: new Date().getFullYear().toString(),
+        medium: '',
+        dimensions: '',
+        seriesName: '',
+        isPublished: true,
+      });
+      refetchWorks();
+      setTimeout(() => setMessage(null), 3000);
     },
-    { 
-      label: "Phases", 
-      value: phases?.length ?? 0, 
-      icon: Layers, 
-      href: "/admin/phases",
-      color: "text-purple-400"
+    onError: (error) => {
+      setMessage({ type: 'error', text: `Error: ${error.message}` });
     },
-    { 
-      label: "Essays", 
-      value: essays?.length ?? 0, 
-      icon: FileText, 
-      href: "/admin/essays",
-      color: "text-green-400"
+  });
+
+  const updateWorkMutation = trpc.gallery.update.useMutation({
+    onSuccess: () => {
+      setMessage({ type: 'success', text: 'Work updated successfully!' });
+      setEditingId(null);
+      setFormData({
+        title: '',
+        slug: '',
+        year: new Date().getFullYear().toString(),
+        medium: '',
+        dimensions: '',
+        seriesName: '',
+        isPublished: true,
+      });
+      refetchWorks();
+      setTimeout(() => setMessage(null), 3000);
     },
-    { 
-      label: "Metaquestions", 
-      value: metaquestions?.length ?? 0, 
-      icon: HelpCircle, 
-      href: "/admin/metaquestions",
-      color: "text-yellow-400"
+    onError: (error) => {
+      setMessage({ type: 'error', text: `Error: ${error.message}` });
     },
-    { 
-      label: "Archive Files", 
-      value: archiveFiles?.length ?? 0, 
-      icon: Archive, 
-      href: "/admin/archive",
-      color: "text-red-400"
+  });
+
+  const deleteWorkMutation = trpc.gallery.delete.useMutation({
+    onSuccess: () => {
+      setMessage({ type: 'success', text: 'Work deleted successfully!' });
+      refetchWorks();
+      setTimeout(() => setMessage(null), 3000);
     },
-  ];
+    onError: (error) => {
+      setMessage({ type: 'error', text: `Error: ${error.message}` });
+    },
+  });
+
+  // Check admin access
+  if (authLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="w-8 h-8 animate-spin" />
+      </div>
+    );
+  }
+
+  if (!user || user.role !== 'admin') {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>
+            You do not have permission to access this page. Admin access required.
+          </AlertDescription>
+        </Alert>
+      </div>
+    );
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Generate slug from title if not provided
+    const slug = formData.slug || formData.title.toLowerCase().replace(/\s+/g, '-');
+
+    const payload = {
+      ...formData,
+      slug,
+      phaseId: formData.phaseId ? parseInt(formData.phaseId.toString()) : undefined,
+    };
+
+    if (editingId) {
+      updateWorkMutation.mutate({ id: editingId, ...payload });
+    } else {
+      createWorkMutation.mutate(payload);
+    }
+  };
+
+  const handleEdit = (work: any) => {
+    setEditingId(work.id);
+    setFormData({
+      title: work.title,
+      slug: work.slug,
+      year: work.year,
+      medium: work.medium,
+      dimensions: work.dimensions,
+      seriesName: work.seriesName,
+      phaseId: work.phaseId,
+      curatorialHook: work.curatorialHook,
+      neonReading: work.neonReading,
+      conceptTags: work.conceptTags,
+      imageUrl: work.imageUrl,
+      imageKey: work.imageKey,
+      colorPalette: work.colorPalette,
+      emotionalRegister: work.emotionalRegister,
+      isPublished: work.isPublished,
+    });
+  };
+
+  const handleCancel = () => {
+    setEditingId(null);
+    setFormData({
+      title: '',
+      slug: '',
+      year: new Date().getFullYear().toString(),
+      medium: '',
+      dimensions: '',
+      seriesName: '',
+      isPublished: true,
+    });
+  };
+
+  const filteredWorks = allWorks?.items?.filter((work: any) =>
+    work.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    work.seriesName.toLowerCase().includes(searchQuery.toLowerCase())
+  ) || [];
 
   return (
-    <AdminLayout>
-      <div className="space-y-8">
-        {/* Header */}
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <p className="text-muted-foreground font-mono text-sm mt-1">
-            NEON CRUCIBLE ADMIN // CONTENT MANAGEMENT
-          </p>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-          {stats.map((stat) => (
-            <Link key={stat.label} href={stat.href}>
-              <Card className="rounded-none border-border hover:border-primary/50 transition-colors cursor-pointer">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center justify-between">
-                    <stat.icon className={`w-5 h-5 ${stat.color}`} />
-                    <span className="font-mono text-3xl font-bold">{stat.value}</span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-mono text-xs text-muted-foreground">{stat.label.toUpperCase()}</p>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
-
-        {/* Quick Actions */}
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="rounded-none border-border">
-            <CardHeader>
-              <CardTitle className="text-lg">Quick Actions</CardTitle>
-              <CardDescription className="font-mono text-xs">
-                COMMON ADMIN TASKS
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <Link href="/admin/works?action=new">
-                <Button variant="outline" className="w-full justify-start rounded-none font-mono text-xs gap-2">
-                  <Image className="w-4 h-4" />
-                  ADD NEW WORK
-                </Button>
-              </Link>
-              <Link href="/admin/essays?action=new">
-                <Button variant="outline" className="w-full justify-start rounded-none font-mono text-xs gap-2">
-                  <FileText className="w-4 h-4" />
-                  WRITE NEW ESSAY
-                </Button>
-              </Link>
-              <Link href="/admin/archive?action=new">
-                <Button variant="outline" className="w-full justify-start rounded-none font-mono text-xs gap-2">
-                  <Archive className="w-4 h-4" />
-                  UPLOAD ARCHIVE FILE
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="rounded-none border-border">
-            <CardHeader>
-              <CardTitle className="text-lg">External Systems</CardTitle>
-              <CardDescription className="font-mono text-xs">
-                CONNECTED SERVICES
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <a 
-                href="https://neonsigns.manus.space" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <Button variant="outline" className="w-full justify-start rounded-none font-mono text-xs gap-2">
-                  <ExternalLink className="w-4 h-4" />
-                  NEON SIGNS DASHBOARD
-                </Button>
-              </a>
-              <p className="text-xs text-muted-foreground font-mono pl-6">
-                Weekly roundups, pattern archaeology, accountability protocols
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Recent Activity Placeholder */}
-        <Card className="rounded-none border-border">
-          <CardHeader>
-            <CardTitle className="text-lg">System Status</CardTitle>
-            <CardDescription className="font-mono text-xs">
-              OPERATIONAL METRICS
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-3 gap-4 font-mono text-sm">
-              <div className="space-y-1">
-                <p className="text-muted-foreground text-xs">DATABASE</p>
-                <p className="text-green-400">● CONNECTED</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-muted-foreground text-xs">FILE STORAGE</p>
-                <p className="text-green-400">● ACTIVE</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-muted-foreground text-xs">AUTH</p>
-                <p className="text-green-400">● AUTHENTICATED</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+    <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-2">Admin Dashboard</h1>
+        <p className="text-muted-foreground">Manage gallery works and metadata</p>
       </div>
-    </AdminLayout>
+
+      {message && (
+        <Alert variant={message.type === 'success' ? 'default' : 'destructive'} className="mb-6">
+          <AlertDescription>{message.text}</AlertDescription>
+        </Alert>
+      )}
+
+      <Tabs defaultValue="form" className="space-y-6">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="form">
+            <Plus className="w-4 h-4 mr-2" />
+            {editingId ? 'Edit Work' : 'Add Work'}
+          </TabsTrigger>
+          <TabsTrigger value="list">
+            Manage Works ({allWorks?.items?.length || 0})
+          </TabsTrigger>
+        </TabsList>
+
+        {/* Form Tab */}
+        <TabsContent value="form" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>{editingId ? 'Edit Work' : 'Add New Work'}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Title and Slug */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Title *</label>
+                    <Input
+                      value={formData.title}
+                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                      placeholder="Work title"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Slug</label>
+                    <Input
+                      value={formData.slug}
+                      onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                      placeholder="Auto-generated from title"
+                    />
+                  </div>
+                </div>
+
+                {/* Year, Medium, Dimensions */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Year *</label>
+                    <Input
+                      value={formData.year}
+                      onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+                      placeholder="2024"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Medium *</label>
+                    <Input
+                      value={formData.medium}
+                      onChange={(e) => setFormData({ ...formData, medium: e.target.value })}
+                      placeholder="e.g., Ink on Paper"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Dimensions *</label>
+                    <Input
+                      value={formData.dimensions}
+                      onChange={(e) => setFormData({ ...formData, dimensions: e.target.value })}
+                      placeholder="e.g., 40cm × 40cm"
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Series and Phase */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Series *</label>
+                    <Select
+                      value={formData.seriesName}
+                      onValueChange={(value) => setFormData({ ...formData, seriesName: value })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select series" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {filterOptions?.series?.map((series: string) => (
+                          <SelectItem key={series} value={series}>
+                            {series}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Phase</label>
+                    <Select
+                      value={formData.phaseId?.toString() || ''}
+                      onValueChange={(value) =>
+                        setFormData({ ...formData, phaseId: parseInt(value) })
+                      }
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select phase" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {phases?.map((phase: any) => (
+                          <SelectItem key={phase.id} value={phase.id.toString()}>
+                            {phase.title}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                {/* Curatorial Hook */}
+                <div>
+                  <label className="block text-sm font-medium mb-2">Curatorial Hook</label>
+                  <Textarea
+                    value={formData.curatorialHook || ''}
+                    onChange={(e) => setFormData({ ...formData, curatorialHook: e.target.value })}
+                    placeholder="Brief curatorial note about this work"
+                    rows={3}
+                  />
+                </div>
+
+                {/* Neon Reading */}
+                <div>
+                  <label className="block text-sm font-medium mb-2">Neon Reading</label>
+                  <Textarea
+                    value={formData.neonReading || ''}
+                    onChange={(e) => setFormData({ ...formData, neonReading: e.target.value })}
+                    placeholder="Detailed analysis and reading of the work"
+                    rows={4}
+                  />
+                </div>
+
+                {/* Image URL */}
+                <div>
+                  <label className="block text-sm font-medium mb-2">Image URL</label>
+                  <Input
+                    value={formData.imageUrl || ''}
+                    onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                    placeholder="https://..."
+                    type="url"
+                  />
+                </div>
+
+                {/* Color Palette and Emotional Register */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Color Palette</label>
+                    <Input
+                      value={formData.colorPalette || ''}
+                      onChange={(e) => setFormData({ ...formData, colorPalette: e.target.value })}
+                      placeholder="e.g., Ink, Gold, Cream"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Emotional Register</label>
+                    <Input
+                      value={formData.emotionalRegister || ''}
+                      onChange={(e) =>
+                        setFormData({ ...formData, emotionalRegister: e.target.value })
+                      }
+                      placeholder="e.g., Meditative, Urgent"
+                    />
+                  </div>
+                </div>
+
+                {/* Publish Status */}
+                <div className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    id="isPublished"
+                    checked={formData.isPublished || false}
+                    onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
+                    className="w-4 h-4"
+                  />
+                  <label htmlFor="isPublished" className="text-sm font-medium">
+                    Publish this work
+                  </label>
+                </div>
+
+                {/* Submit Buttons */}
+                <div className="flex gap-4 pt-4">
+                  <Button
+                    type="submit"
+                    disabled={
+                      createWorkMutation.isPending ||
+                      updateWorkMutation.isPending ||
+                      !formData.title ||
+                      !formData.medium ||
+                      !formData.dimensions ||
+                      !formData.seriesName
+                    }
+                  >
+                    {createWorkMutation.isPending || updateWorkMutation.isPending ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        {editingId ? 'Updating...' : 'Creating...'}
+                      </>
+                    ) : editingId ? (
+                      'Update Work'
+                    ) : (
+                      'Create Work'
+                    )}
+                  </Button>
+                  {editingId && (
+                    <Button type="button" variant="outline" onClick={handleCancel}>
+                      Cancel
+                    </Button>
+                  )}
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* List Tab */}
+        <TabsContent value="list" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>Gallery Works</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {/* Search */}
+              <div>
+                <Input
+                  placeholder="Search works by title or series..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="mb-4"
+                />
+              </div>
+
+              {/* Works List */}
+              {worksLoading ? (
+                <div className="flex justify-center py-8">
+                  <Loader2 className="w-8 h-8 animate-spin" />
+                </div>
+              ) : filteredWorks.length === 0 ? (
+                <p className="text-center text-muted-foreground py-8">No works found</p>
+              ) : (
+                <div className="space-y-2 max-h-96 overflow-y-auto">
+                  {filteredWorks.map((work: any) => (
+                    <div
+                      key={work.id}
+                      className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
+                    >
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium truncate">{work.title}</h3>
+                        <p className="text-sm text-muted-foreground">
+                          {work.seriesName} • {work.year} • {work.medium}
+                        </p>
+                      </div>
+                      <div className="flex gap-2 ml-4">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleEdit(work)}
+                        >
+                          <Edit2 className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => deleteWorkMutation.mutate({ id: work.id })}
+                          disabled={deleteWorkMutation.isPending}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
   );
 }

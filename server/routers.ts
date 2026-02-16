@@ -494,6 +494,61 @@ export const appRouter = router({
       .query(async () => {
         return db.getGalleryFilterOptions();
       }),
+
+    create: adminProcedure
+      .input(z.object({
+        title: z.string().min(1).max(255),
+        slug: z.string().min(1).max(128),
+        year: z.string().min(1).max(16),
+        medium: z.string().min(1).max(128),
+        dimensions: z.string().min(1).max(128),
+        seriesName: z.string().min(1).max(128),
+        phaseId: z.number().optional(),
+        curatorialHook: z.string().optional(),
+        neonReading: z.string().optional(),
+        conceptTags: z.array(z.string()).optional(),
+        imageUrl: z.string().optional(),
+        imageKey: z.string().optional(),
+        colorPalette: z.string().optional(),
+        emotionalRegister: z.string().optional(),
+        isPublished: z.boolean().optional().default(true),
+      }))
+      .mutation(async ({ input }) => {
+        const work = await db.createWork(input);
+        return { success: true, work };
+      }),
+
+    update: adminProcedure
+      .input(z.object({
+        id: z.number(),
+        title: z.string().min(1).max(255).optional(),
+        slug: z.string().min(1).max(128).optional(),
+        year: z.string().min(1).max(16).optional(),
+        medium: z.string().min(1).max(128).optional(),
+        dimensions: z.string().min(1).max(128).optional(),
+        seriesName: z.string().min(1).max(128).optional(),
+        phaseId: z.number().nullable().optional(),
+        curatorialHook: z.string().optional(),
+        neonReading: z.string().optional(),
+        conceptTags: z.array(z.string()).optional(),
+        imageUrl: z.string().optional(),
+        imageKey: z.string().optional(),
+        colorPalette: z.string().optional(),
+        emotionalRegister: z.string().optional(),
+        isPublished: z.boolean().optional(),
+      }))
+      .mutation(async ({ input }) => {
+        const { id, ...data } = input;
+        await db.updateWork(id, data);
+        return { success: true };
+      }),
+
+    delete: adminProcedure
+      .input(z.object({ id: z.number() }))
+      .mutation(async ({ input }) => {
+        await db.deleteWork(input.id);
+        return { success: true };
+      }),
   }),
 
   // ============ SEARCH ============
