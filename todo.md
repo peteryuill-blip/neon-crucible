@@ -921,3 +921,10 @@
 - [x] Rename /admin route to /manage to avoid Manus platform conflict
 - [x] Update navigation link to point to /manage
 - [ ] Test accessing /manage route directly
+
+
+## Work Detail Page 404 Fix
+
+- [x] Investigate why clicking works shows 404 error
+- [x] Fix work detail page routing (added WorkDetail import and /works/:slug route)
+- [ ] Test work detail pages load correctly
