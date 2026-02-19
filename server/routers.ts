@@ -549,6 +549,27 @@ export const appRouter = router({
         await db.deleteWork(input.id);
         return { success: true };
       }),
+
+    uploadImage: adminProcedure
+      .input(z.object({
+        filename: z.string(),
+        contentType: z.string(),
+        data: z.string(), // base64 encoded image
+      }))
+      .mutation(async ({ input }) => {
+        // Convert base64 to buffer
+        const base64Data = input.data.replace(/^data:image\/\w+;base64,/, "");
+        const buffer = Buffer.from(base64Data, "base64");
+        
+        // Generate unique filename
+        const ext = input.filename.split(".").pop() || "jpg";
+        const uniqueFilename = `works/${nanoid()}.${ext}`;
+        
+        // Upload to S3
+        const result = await storagePut(uniqueFilename, buffer, input.contentType);
+        
+        return { url: result.url, key: uniqueFilename };
+      }),
   }),
 
   // ============ SEARCH ============

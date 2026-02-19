@@ -928,3 +928,12 @@
 - [x] Investigate why clicking works shows 404 error
 - [x] Fix work detail page routing (added WorkDetail import and /works/:slug route)
 - [ ] Test work detail pages load correctly
+
+
+## Image Upload for Manage Works
+
+- [x] Create image upload component with drag-and-drop and file picker
+- [x] Implement client-side image resizing and optimization (max 1920px width, 85% quality)
+- [x] Add tRPC procedure for S3 upload with presigned URL
+- [x] Integrate upload component into AdminDashboard form
+- [x] Test image upload and optimization

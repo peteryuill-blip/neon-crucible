@@ -15,6 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { AlertCircle, Loader2, Plus, Trash2, Edit2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { ImageUpload } from '@/components/ImageUpload';
 
 interface WorkFormData {
   title: string;
@@ -335,16 +336,11 @@ export default function AdminDashboard() {
                   />
                 </div>
 
-                {/* Image URL */}
-                <div>
-                  <label className="block text-sm font-medium mb-2">Image URL</label>
-                  <Input
-                    value={formData.imageUrl || ''}
-                    onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                    placeholder="https://..."
-                    type="url"
-                  />
-                </div>
+                {/* Image Upload */}
+                <ImageUpload
+                  currentImageUrl={formData.imageUrl}
+                  onUploadComplete={(url) => setFormData({ ...formData, imageUrl: url })}
+                />
 
                 {/* Color Palette and Emotional Register */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
