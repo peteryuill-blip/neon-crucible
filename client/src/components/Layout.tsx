@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { href: "/descent", label: "Journey", icon: TrendingDown },
     { href: "/statistics", label: "Statistics", icon: BarChart3 },
     { href: "/dashboard", label: "Dashboard", icon: Activity },
-    ...(user?.role === 'admin' ? [{ href: "/admin", label: "Admin", icon: Settings }] : []),
+    ...(user?.role === 'admin' ? [{ href: "/manage", label: "Manage", icon: Settings }] : []),
   ];
 
   return (

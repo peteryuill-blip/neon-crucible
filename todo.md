@@ -914,3 +914,10 @@
 - [x] Debug admin link visibility issue (user role was not set to admin)
 - [x] Update user role to admin in database
 - [x] Verify admin link now appears and navigates correctly
+
+
+## Admin Route Conflict Fix
+
+- [x] Rename /admin route to /manage to avoid Manus platform conflict
+- [x] Update navigation link to point to /manage
+- [ ] Test accessing /manage route directly

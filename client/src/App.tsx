@@ -91,22 +91,22 @@ function Router() {
   return (
     <Switch>
       {/* Admin routes */}
-      <Route path="/admin">
+      <Route path="/manage">
         <AdminRoute component={AdminDashboard} />
       </Route>
-      <Route path="/admin/works">
+      <Route path="/manage/works">
         <AdminRoute component={AdminWorks} />
       </Route>
-      <Route path="/admin/phases">
+      <Route path="/manage/phases">
         <AdminRoute component={AdminPhases} />
       </Route>
-      <Route path="/admin/essays">
+      <Route path="/manage/essays">
         <AdminRoute component={AdminEssays} />
       </Route>
-      <Route path="/admin/metaquestions">
+      <Route path="/manage/metaquestions">
         <AdminRoute component={AdminMetaquestions} />
       </Route>
-      <Route path="/admin/archive">
+      <Route path="/manage/archive">
         <AdminRoute component={AdminArchive} />
       </Route>
       
