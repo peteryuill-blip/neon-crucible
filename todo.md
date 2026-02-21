@@ -944,3 +944,17 @@
 - [x] Add login button to bottom left of homepage
 - [x] Style button to match site design (font-mono, outline variant, shadow)
 - [x] Test login flow from homepage (button only shows when not authenticated)
+
+
+## Manage Works Form Enhancements
+
+- [ ] Update year field to support full date input (year/month/day with optional month/day)
+- [ ] Add "Create New" option to series dropdown
+- [ ] Add "Create New" option to phase dropdown
+- [ ] Test date input and new series/phase creation
+
+## Manage Works Form Enhancements
+
+- [x] Add full date input capability (year/month/day with optional month/day)
+- [x] Add "Create New Series" option to Series dropdown
+- [x] Add "Create New Phase" option to Phase dropdown (UI only, backend requires mutation)

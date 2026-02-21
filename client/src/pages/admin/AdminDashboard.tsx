@@ -21,6 +21,8 @@ interface WorkFormData {
   title: string;
   slug: string;
   year: string;
+  month?: string;
+  day?: string;
   medium: string;
   dimensions: string;
   seriesName: string;
@@ -49,6 +51,10 @@ export default function AdminDashboard() {
   const [editingId, setEditingId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [showNewSeriesInput, setShowNewSeriesInput] = useState(false);
+  const [showNewPhaseInput, setShowNewPhaseInput] = useState(false);
+  const [newSeriesName, setNewSeriesName] = useState('');
+  const [newPhaseName, setNewPhaseName] = useState('');
 
   // Queries
   const { data: allWorks, isLoading: worksLoading, refetch: refetchWorks } = trpc.gallery.getAll.useQuery();
@@ -241,17 +247,40 @@ export default function AdminDashboard() {
                   </div>
                 </div>
 
-                {/* Year, Medium, Dimensions */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Year *</label>
-                    <Input
-                      value={formData.year}
-                      onChange={(e) => setFormData({ ...formData, year: e.target.value })}
-                      placeholder="2024"
-                      required
-                    />
+                {/* Date: Year, Month, Day */}
+                <div className="space-y-4">
+                  <label className="block text-sm font-medium">Date *</label>
+                  <div className="grid grid-cols-3 gap-4">
+                    <div>
+                      <Input
+                        value={formData.year}
+                        onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+                        placeholder="Year (2024)"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Input
+                        value={formData.month || ''}
+                        onChange={(e) => setFormData({ ...formData, month: e.target.value })}
+                        placeholder="Month (01-12)"
+                        maxLength={2}
+                      />
+                    </div>
+                    <div>
+                      <Input
+                        value={formData.day || ''}
+                        onChange={(e) => setFormData({ ...formData, day: e.target.value })}
+                        placeholder="Day (01-31)"
+                        maxLength={2}
+                      />
+                    </div>
                   </div>
+                  <p className="text-xs text-muted-foreground">Month and day are optional</p>
+                </div>
+
+                {/* Medium, Dimensions */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">Medium *</label>
                     <Input
@@ -276,41 +305,127 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">Series *</label>
-                    <Select
-                      value={formData.seriesName}
-                      onValueChange={(value) => setFormData({ ...formData, seriesName: value })}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select series" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {filterOptions?.series?.map((series: string) => (
-                          <SelectItem key={series} value={series}>
-                            {series}
+                    {showNewSeriesInput ? (
+                      <div className="space-y-2">
+                        <Input
+                          value={newSeriesName}
+                          onChange={(e) => {
+                            setNewSeriesName(e.target.value);
+                            setFormData({ ...formData, seriesName: e.target.value });
+                          }}
+                          placeholder="Enter new series name"
+                          autoFocus
+                        />
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => {
+                            setShowNewSeriesInput(false);
+                            setNewSeriesName('');
+                            setFormData({ ...formData, seriesName: '' });
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    ) : (
+                      <Select
+                        value={formData.seriesName}
+                        onValueChange={(value) => {
+                          if (value === '__new__') {
+                            setShowNewSeriesInput(true);
+                          } else {
+                            setFormData({ ...formData, seriesName: value });
+                          }
+                        }}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select series" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="__new__">
+                            <span className="flex items-center gap-2">
+                              <Plus className="w-4 h-4" />
+                              Create New Series
+                            </span>
                           </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                          {filterOptions?.series?.map((series: string) => (
+                            <SelectItem key={series} value={series}>
+                              {series}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Phase</label>
-                    <Select
-                      value={formData.phaseId?.toString() || ''}
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, phaseId: parseInt(value) })
-                      }
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select phase" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {phases?.map((phase: any) => (
-                          <SelectItem key={phase.id} value={phase.id.toString()}>
-                            {phase.title}
+                    {showNewPhaseInput ? (
+                      <div className="space-y-2">
+                        <Input
+                          value={newPhaseName}
+                          onChange={(e) => setNewPhaseName(e.target.value)}
+                          placeholder="Enter new phase name"
+                          autoFocus
+                        />
+                        <div className="flex gap-2">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              if (newPhaseName.trim()) {
+                                // Note: Phase creation would need a backend mutation
+                                // For now, just show message
+                                setMessage({ type: 'error', text: 'Phase creation requires database setup. Please contact admin.' });
+                              }
+                            }}
+                          >
+                            Create
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => {
+                              setShowNewPhaseInput(false);
+                              setNewPhaseName('');
+                            }}
+                          >
+                            Cancel
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <Select
+                        value={formData.phaseId?.toString() || ''}
+                        onValueChange={(value) => {
+                          if (value === '__new__') {
+                            setShowNewPhaseInput(true);
+                          } else {
+                            setFormData({ ...formData, phaseId: parseInt(value) });
+                          }
+                        }}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select phase" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="__new__">
+                            <span className="flex items-center gap-2">
+                              <Plus className="w-4 h-4" />
+                              Create New Phase
+                            </span>
                           </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                          {phases?.map((phase: any) => (
+                            <SelectItem key={phase.id} value={phase.id.toString()}>
+                              {phase.title}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
                   </div>
                 </div>
 
