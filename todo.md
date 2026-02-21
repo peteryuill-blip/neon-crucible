@@ -958,3 +958,10 @@
 - [x] Add full date input capability (year/month/day with optional month/day)
 - [x] Add "Create New Series" option to Series dropdown
 - [x] Add "Create New Phase" option to Phase dropdown (UI only, backend requires mutation)
+
+## Phase Creation Backend Implementation
+
+- [x] Add tRPC mutation for creating new phases
+- [x] Update admin dashboard to call phase creation mutation
+- [x] Test phase creation functionality end-to-end
+- [x] Write vitest tests for phase creation

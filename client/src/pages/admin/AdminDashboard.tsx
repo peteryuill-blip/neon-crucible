@@ -57,6 +57,7 @@ export default function AdminDashboard() {
   const [newPhaseName, setNewPhaseName] = useState('');
 
   // Queries
+  const utils = trpc.useUtils();
   const { data: allWorks, isLoading: worksLoading, refetch: refetchWorks } = trpc.gallery.getAll.useQuery();
   const { data: phases, isLoading: phasesLoading } = trpc.phases.list.useQuery();
   const { data: filterOptions } = trpc.gallery.getFilterOptions.useQuery();
@@ -111,6 +112,20 @@ export default function AdminDashboard() {
     },
     onError: (error) => {
       setMessage({ type: 'error', text: `Error: ${error.message}` });
+    },
+  });
+
+  const createPhaseMutation = trpc.phases.create.useMutation({
+    onSuccess: () => {
+      setMessage({ type: 'success', text: 'Phase created successfully!' });
+      setShowNewPhaseInput(false);
+      setNewPhaseName('');
+      // Invalidate phase queries to refetch the updated list
+      utils.phases.list.invalidate();
+      setTimeout(() => setMessage(null), 3000);
+    },
+    onError: (error) => {
+      setMessage({ type: 'error', text: `Error creating phase: ${error.message}` });
     },
   });
 
@@ -376,13 +391,25 @@ export default function AdminDashboard() {
                             size="sm"
                             onClick={() => {
                               if (newPhaseName.trim()) {
-                                // Note: Phase creation would need a backend mutation
-                                // For now, just show message
-                                setMessage({ type: 'error', text: 'Phase creation requires database setup. Please contact admin.' });
+                                // Generate a code from the title (e.g., "New Phase" -> "NEW_PHASE")
+                                const code = newPhaseName.toUpperCase().replace(/\s+/g, '_').substring(0, 16);
+                                const currentYear = new Date().getFullYear().toString();
+                                
+                                createPhaseMutation.mutate({
+                                  code,
+                                  title: newPhaseName.trim(),
+                                  year: currentYear,
+                                  sortOrder: 999, // Place new phases at the end
+                                });
                               }
                             }}
+                            disabled={createPhaseMutation.isPending}
                           >
-                            Create
+                            {createPhaseMutation.isPending ? (
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                            ) : (
+                              'Create'
+                            )}
                           </Button>
                           <Button
                             type="button"
