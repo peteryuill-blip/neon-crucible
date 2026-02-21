@@ -937,3 +937,10 @@
 - [x] Add tRPC procedure for S3 upload with presigned URL
 - [x] Integrate upload component into AdminDashboard form
 - [x] Test image upload and optimization
+
+
+## Homepage Login Button
+
+- [x] Add login button to bottom left of homepage
+- [x] Style button to match site design (font-mono, outline variant, shadow)
+- [x] Test login flow from homepage (button only shows when not authenticated)

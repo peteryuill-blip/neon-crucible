@@ -2,7 +2,8 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Link } from "wouter";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight, Loader2, LogIn } from "lucide-react";
+import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 
 export default function Home() {
@@ -17,7 +18,23 @@ export default function Home() {
   });
 
   return (
-    <div className="space-y-0">
+    <div className="space-y-0 relative">
+      {/* Login Button - Bottom Left */}
+      {!isAuthenticated && (
+        <a
+          href={getLoginUrl()}
+          className="fixed bottom-8 left-8 z-50"
+        >
+          <Button
+            size="sm"
+            variant="outline"
+            className="font-mono gap-2 shadow-lg"
+          >
+            <LogIn className="w-4 h-4" />
+            LOGIN
+          </Button>
+        </a>
+      )}
       {/* Hero Section */}
       <section className="space-y-8 relative px-4 py-16 sm:py-24">
         <div className="absolute -left-4 -top-12 text-[10rem] font-bold text-muted/5 font-mono select-none pointer-events-none hidden sm:block">
