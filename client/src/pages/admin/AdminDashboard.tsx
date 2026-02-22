@@ -75,7 +75,9 @@ export default function AdminDashboard() {
         seriesName: '',
         isPublished: true,
       });
-      refetchWorks();
+      // Invalidate all works-related queries to refresh the UI
+      utils.gallery.invalidate();
+      utils.works.invalidate();
       setTimeout(() => setMessage(null), 3000);
     },
     onError: (error) => {
@@ -96,7 +98,9 @@ export default function AdminDashboard() {
         seriesName: '',
         isPublished: true,
       });
-      refetchWorks();
+      // Invalidate all works-related queries to refresh the UI
+      utils.gallery.invalidate();
+      utils.works.invalidate();
       setTimeout(() => setMessage(null), 3000);
     },
     onError: (error) => {
@@ -107,7 +111,9 @@ export default function AdminDashboard() {
   const deleteWorkMutation = trpc.gallery.delete.useMutation({
     onSuccess: () => {
       setMessage({ type: 'success', text: 'Work deleted successfully!' });
-      refetchWorks();
+      // Invalidate all works-related queries to refresh the UI
+      utils.gallery.invalidate();
+      utils.works.invalidate();
       setTimeout(() => setMessage(null), 3000);
     },
     onError: (error) => {
@@ -155,11 +161,22 @@ export default function AdminDashboard() {
     e.preventDefault();
 
     // Generate slug from title if not provided
-    const slug = formData.slug || formData.title.toLowerCase().replace(/\s+/g, '-');
+    const slug = formData.slug || formData.title.toLowerCase().replace(/s+/g, '-');
 
+    // Combine year/month/day into dateCreated field
+    let dateCreated = formData.year;
+    if (formData.month) {
+      dateCreated += `-${formData.month.padStart(2, '0')}`;
+      if (formData.day) {
+        dateCreated += `-${formData.day.padStart(2, '0')}`;
+      }
+    }
+
+    const { month, day, ...restFormData } = formData;
     const payload = {
-      ...formData,
+      ...restFormData,
       slug,
+      dateCreated,
       phaseId: formData.phaseId ? parseInt(formData.phaseId.toString()) : undefined,
     };
 
@@ -172,10 +189,25 @@ export default function AdminDashboard() {
 
   const handleEdit = (work: any) => {
     setEditingId(work.id);
+    
+    // Parse dateCreated (YYYY-MM-DD or YYYY-MM or YYYY) into separate fields
+    let year = work.year || new Date().getFullYear().toString();
+    let month = '';
+    let day = '';
+    
+    if (work.dateCreated) {
+      const parts = work.dateCreated.split('-');
+      year = parts[0] || year;
+      month = parts[1] || '';
+      day = parts[2] || '';
+    }
+    
     setFormData({
       title: work.title,
       slug: work.slug,
-      year: work.year,
+      year,
+      month,
+      day,
       medium: work.medium,
       dimensions: work.dimensions,
       seriesName: work.seriesName,

@@ -524,6 +524,7 @@ export const appRouter = router({
         title: z.string().min(1).max(255).optional(),
         slug: z.string().min(1).max(128).optional(),
         year: z.string().min(1).max(16).optional(),
+        dateCreated: z.string().optional(),
         medium: z.string().min(1).max(128).optional(),
         dimensions: z.string().min(1).max(128).optional(),
         seriesName: z.string().min(1).max(128).optional(),
