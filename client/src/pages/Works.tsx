@@ -259,9 +259,9 @@ export default function Works() {
                     <p className="font-serif text-sm sm:text-base text-white leading-tight">
                       {work.title}
                     </p>
-                    {work.year && (
+                    {(work.dateCreated || work.year) && (
                       <p className="font-mono text-xs text-white/70">
-                        {work.year}
+                        {work.dateCreated || work.year}
                       </p>
                     )}
                   </div>

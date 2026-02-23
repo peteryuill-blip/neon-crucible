@@ -988,3 +988,11 @@
 - [x] Verify all changes persist to database
 - [x] Verify all changes refresh on Works page immediately (cache invalidation fixed)
 - [x] Write comprehensive tests for all CRUD operations (5 tests passing)
+
+## URGENT: Fix Work Update Not Showing on Works Page
+
+- [x] Check database state for "thr3e" work - verify dateCreated is actually saved (CONFIRMED: dateCreated = "2025-08-26")
+- [x] Check Works page query - see what data it's fetching (Found: displaying work.year instead of work.dateCreated)
+- [x] Identify why updates aren't reflecting on Works page (Works page was showing year field, not dateCreated)
+- [x] Delete all test works from database (Deleted IDs: 300001, 330001)
+- [x] Fix the root cause and verify updates work (Changed Works.tsx to display dateCreated || year)
