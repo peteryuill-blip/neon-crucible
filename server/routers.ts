@@ -500,6 +500,7 @@ export const appRouter = router({
         title: z.string().min(1).max(255),
         slug: z.string().min(1).max(128),
         year: z.string().min(1).max(16),
+        dateCreated: z.string().optional(),
         medium: z.string().min(1).max(128),
         dimensions: z.string().min(1).max(128),
         seriesName: z.string().min(1).max(128),
