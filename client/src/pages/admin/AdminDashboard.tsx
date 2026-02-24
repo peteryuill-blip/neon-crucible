@@ -76,7 +76,8 @@ export default function AdminDashboard() {
         isPublished: true,
       });
       // Invalidate all works-related queries to refresh the UI
-      utils.gallery.invalidate();
+      utils.gallery.getAll.invalidate();
+      utils.gallery.getFilterOptions.invalidate();
       utils.works.invalidate();
       setTimeout(() => setMessage(null), 3000);
     },
@@ -99,7 +100,8 @@ export default function AdminDashboard() {
         isPublished: true,
       });
       // Invalidate all works-related queries to refresh the UI
-      utils.gallery.invalidate();
+      utils.gallery.getAll.invalidate();
+      utils.gallery.getFilterOptions.invalidate();
       utils.works.invalidate();
       setTimeout(() => setMessage(null), 3000);
     },
@@ -112,7 +114,8 @@ export default function AdminDashboard() {
     onSuccess: () => {
       setMessage({ type: 'success', text: 'Work deleted successfully!' });
       // Invalidate all works-related queries to refresh the UI
-      utils.gallery.invalidate();
+      utils.gallery.getAll.invalidate();
+      utils.gallery.getFilterOptions.invalidate();
       utils.works.invalidate();
       setTimeout(() => setMessage(null), 3000);
     },

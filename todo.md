@@ -996,3 +996,11 @@
 - [x] Identify why updates aren't reflecting on Works page (Works page was showing year field, not dateCreated)
 - [x] Delete all test works from database (Deleted IDs: 300001, 330001)
 - [x] Fix the root cause and verify updates work (Changed Works.tsx to display dateCreated || year)
+
+## CRITICAL: Works Page Not Refreshing After Dashboard Edits
+
+- [x] Test cache invalidation behavior in browser
+- [x] Check if utils.gallery.invalidate() and utils.works.invalidate() are actually being called
+- [x] Verify tRPC query keys are correct (Works page uses trpc.gallery.getAll.useQuery)
+- [x] Fix cache invalidation to be more explicit (changed to utils.gallery.getAll.invalidate())
+- [x] Test that edits show up immediately without manual page refresh (Fixed by making invalidation more explicit)
