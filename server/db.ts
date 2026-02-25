@@ -791,10 +791,19 @@ export async function getGalleryWorks(filter: GalleryFilter = {}): Promise<Work[
   } else if (filter.sort === 'title-desc') {
     query = query.orderBy(desc(works.title)) as typeof query;
   } else if (filter.sort === 'year-asc') {
-    query = query.orderBy(asc(works.year), asc(works.title)) as typeof query;
+    // Oldest first: prioritize works with full dates, then year-only
+    query = query.orderBy(
+      sql`CASE WHEN ${works.dateCreated} IS NULL OR ${works.dateCreated} = '' THEN 1 ELSE 0 END`,
+      asc(sql`COALESCE(${works.dateCreated}, ${works.year})`),
+      asc(works.title)
+    ) as typeof query;
   } else {
-    // Default: year-desc (newest first)
-    query = query.orderBy(desc(works.year), asc(works.sortOrder)) as typeof query;
+    // Default: year-desc (newest first): prioritize works with full dates, then year-only
+    query = query.orderBy(
+      sql`CASE WHEN ${works.dateCreated} IS NULL OR ${works.dateCreated} = '' THEN 1 ELSE 0 END`,
+      desc(sql`COALESCE(${works.dateCreated}, ${works.year})`),
+      asc(works.sortOrder)
+    ) as typeof query;
   }
 
   return await query;

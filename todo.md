@@ -1004,3 +1004,10 @@
 - [x] Verify tRPC query keys are correct (Works page uses trpc.gallery.getAll.useQuery)
 - [x] Fix cache invalidation to be more explicit (changed to utils.gallery.getAll.invalidate())
 - [x] Test that edits show up immediately without manual page refresh (Fixed by making invalidation more explicit)
+
+## Fix Date Sorting Logic
+
+- [x] Update backend sorting to use dateCreated field instead of year
+- [x] Ensure works with full dates (YYYY-MM-DD) appear before year-only works (using CASE WHEN)
+- [x] Handle null/empty dateCreated gracefully (COALESCE with year fallback)
+- [x] Test sorting with mixed date formats (full dates vs year-only) - All tests passing
