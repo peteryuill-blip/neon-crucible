@@ -1011,3 +1011,7 @@
 - [x] Ensure works with full dates (YYYY-MM-DD) appear before year-only works (using CASE WHEN)
 - [x] Handle null/empty dateCreated gracefully (COALESCE with year fallback)
 - [x] Test sorting with mixed date formats (full dates vs year-only) - All tests passing
+
+## Landing Page Header Update
+
+- [x] Change "PROJECT 666" subheading to "Peter Yuill" on the main landing page
