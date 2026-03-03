@@ -1029,3 +1029,11 @@
 - [x] Find individual work detail component (WorkDetail.tsx)
 - [x] Add Schema.org VisualArtwork JSON-LD to work detail pages
 - [ ] Test structured data with Google Rich Results tool (manual step for user)
+
+## Per-Work SEO Enhancements
+
+- [x] Add dynamic <title> per work page (work title + artist name)
+- [x] Add dynamic <meta description> per work page (neon reading snippet)
+- [x] Add dynamic og:image per work page (work imageUrl)
+- [x] Generate sitemap.xml listing all /works/[slug] URLs
+- [x] Serve sitemap.xml from the backend (159 URLs: 7 static + 152 works)

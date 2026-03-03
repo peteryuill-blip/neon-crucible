@@ -92,6 +92,66 @@ export default function WorkDetail() {
   const work = data;
   const phase = data.phase;
 
+  // Dynamically update page title, meta description, and og:image
+  useEffect(() => {
+    if (!work) return;
+
+    // Title
+    const pageTitle = `${work.title} — Peter Yuill | The Neon Crucible`;
+    document.title = pageTitle;
+
+    // Meta description: first 160 chars of neonReading or a fallback
+    const description = work.neonReading
+      ? work.neonReading.slice(0, 157).trimEnd() + (work.neonReading.length > 157 ? '...' : '')
+      : `${work.title} — ${work.medium || 'Artwork'} by Peter Yuill, ${work.year || ''}. Part of the Neon Crucible archive.`;
+
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', description);
+
+    // og:title
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', pageTitle);
+
+    // og:description
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', description);
+
+    // og:image
+    const imageUrl = work.imageUrl || work.thumbnailUrl || '';
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (ogImage) ogImage.setAttribute('content', imageUrl);
+
+    // og:url
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute('content', `https://peteryuill.art/works/${work.slug}`);
+
+    // Twitter title
+    let twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twTitle) twTitle.setAttribute('content', pageTitle);
+
+    // Twitter description
+    let twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', description);
+
+    // Twitter image
+    let twImage = document.querySelector('meta[name="twitter:image"]');
+    if (twImage) twImage.setAttribute('content', imageUrl);
+
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', `https://peteryuill.art/works/${work.slug}`);
+
+    // Restore defaults on unmount
+    return () => {
+      document.title = 'The Neon Crucible | Peter Yuill 2018-2025';
+      if (metaDesc) metaDesc.setAttribute('content', "Peter Yuill's 7-year artistic practice archive and witness system. 500+ works spanning ink, mixed media, and oil. Bangkok-based contemporary artist, 2018-2025.");
+      if (ogTitle) ogTitle.setAttribute('content', 'The Neon Crucible | Peter Yuill 2018-2025');
+      if (ogDesc) ogDesc.setAttribute('content', "Peter Yuill's 7-year artistic practice archive and witness system.");
+      if (ogUrl) ogUrl.setAttribute('content', 'https://peteryuill.art');
+      if (canonical) canonical.setAttribute('href', 'https://peteryuill.art/');
+    };
+  }, [work]);
+
   return (
     <>
       <WorkStructuredData work={work} phase={phase} />
