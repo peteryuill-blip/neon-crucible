@@ -4,6 +4,39 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { useEffect } from "react";
 
+function WorkStructuredData({ work, phase }: { work: any; phase: any }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "VisualArtwork",
+    "name": work.title,
+    "url": `https://peteryuill.art/works/${work.slug}`,
+    "image": work.imageUrl || work.thumbnailUrl,
+    "dateCreated": work.dateCreated || work.year,
+    "creator": {
+      "@type": "Person",
+      "name": "Peter Yuill",
+      "url": "https://peteryuill.art"
+    },
+    ...(work.medium && { "artMedium": work.medium }),
+    ...(work.dimensions && { "size": work.dimensions }),
+    ...(work.seriesName && { "isPartOf": { "@type": "CreativeWorkSeries", "name": work.seriesName } }),
+    ...(work.neonReading && { "description": work.neonReading }),
+    ...(work.conceptTags?.length && { "keywords": work.conceptTags.join(", ") }),
+    ...(phase && { "genre": `${phase.code}: ${phase.title}` }),
+    "locationCreated": {
+      "@type": "Place",
+      "name": work.location || "Bangkok, Thailand"
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
 export default function WorkDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
@@ -60,6 +93,8 @@ export default function WorkDetail() {
   const phase = data.phase;
 
   return (
+    <>
+      <WorkStructuredData work={work} phase={phase} />
     <div className="-mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12">
       {/* Hero Image - Natural height based on aspect ratio */}
       <div className="relative w-full">
@@ -223,5 +258,6 @@ export default function WorkDetail() {
         </div>
       </div>
     </div>
+    </>
   );
 }

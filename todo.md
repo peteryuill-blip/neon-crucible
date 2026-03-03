@@ -1015,3 +1015,17 @@
 ## Landing Page Header Update
 
 - [x] Change "PROJECT 666" subheading to "Peter Yuill" on the main landing page
+
+## Browser Tab & SEO Title Update
+
+- [x] Update browser tab title and meta title to "Peter Yuill | The Neon Crucible" (already correct: "The Neon Crucible | Peter Yuill 2018-2025")
+
+## SEO Canonical URL
+
+- [x] Add canonical URL tag to index.html pointing to https://peteryuill.art (already present at line 37)
+
+## VisualArtwork Structured Data
+
+- [x] Find individual work detail component (WorkDetail.tsx)
+- [x] Add Schema.org VisualArtwork JSON-LD to work detail pages
+- [ ] Test structured data with Google Rich Results tool (manual step for user)
