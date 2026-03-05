@@ -1037,3 +1037,9 @@
 - [x] Add dynamic og:image per work page (work imageUrl)
 - [x] Generate sitemap.xml listing all /works/[slug] URLs
 - [x] Serve sitemap.xml from the backend (159 URLs: 7 static + 152 works)
+
+## CRITICAL: React Error #310 When Clicking Images on Works Page
+
+- [x] Diagnose React error #310 in Works page image click handler (conditional query causing hook violation)
+- [x] Fix hook or state management issue causing the error (always pass filter to useQuery)
+- [x] Test image clicks work without errors (TypeScript clean, dev server running)

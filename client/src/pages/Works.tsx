@@ -23,7 +23,7 @@ export default function Works() {
   // Fetch filter options
   const { data: filterOptions } = trpc.gallery.getFilterOptions.useQuery();
 
-  // Build filter object
+  // Build filter object - always include sort to ensure consistent query
   const filter = useMemo(() => ({
     search: search || undefined,
     phase: phaseFilter !== "all" ? phaseFilter : undefined,
@@ -33,8 +33,8 @@ export default function Works() {
     sort: sortBy,
   }), [search, phaseFilter, seriesFilter, yearFilter, mediumFilter, sortBy]);
 
-  // Fetch gallery works
-  const { data: galleryData, isLoading } = trpc.gallery.getAll.useQuery(filter.search || filter.phase || filter.series || filter.year || filter.medium || filter.sort ? filter : undefined);
+  // Fetch gallery works - always pass filter object to avoid conditional hook issues
+  const { data: galleryData, isLoading } = trpc.gallery.getAll.useQuery(filter);
 
   const works = galleryData?.items ?? [];
   const totalWorks = galleryData?.total ?? 0;
