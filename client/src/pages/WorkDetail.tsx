@@ -41,6 +41,7 @@ export default function WorkDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [, setLocation] = useLocation();
 
+  // ✅ ALL HOOKS MUST BE CALLED BEFORE ANY EARLY RETURNS
   // Scroll to top when component mounts or slug changes
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -51,51 +52,11 @@ export default function WorkDetail() {
     { enabled: !!slug }
   );
 
-  // Back button: return to works with preserved filters
-  const handleBack = () => {
-    const returnUrl = sessionStorage.getItem("gallery-return-url");
-    if (returnUrl) {
-      setLocation(returnUrl);
-    } else {
-      setLocation("/works");
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (error || !data) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <p className="font-mono text-sm text-muted-foreground">
-            WORK NOT FOUND
-          </p>
-          <Button
-            variant="outline"
-            onClick={handleBack}
-            className="font-mono text-xs border-border"
-          >
-            <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
-            BACK TO WORKS
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
-  const work = data;
-  const phase = data.phase;
-
-  // Dynamically update page title, meta description, and og:image
+  // ✅ Update head tags BEFORE early returns - this prevents hook violation
   useEffect(() => {
-    if (!work) return;
+    if (!data) return;
 
+    const work = data;
     // Title
     const pageTitle = `${work.title} — Peter Yuill | The Neon Crucible`;
     document.title = pageTitle;
@@ -150,7 +111,49 @@ export default function WorkDetail() {
       if (ogUrl) ogUrl.setAttribute('content', 'https://peteryuill.art');
       if (canonical) canonical.setAttribute('href', 'https://peteryuill.art/');
     };
-  }, [work]);
+  }, [data]);
+
+  // Back button: return to works with preserved filters
+  const handleBack = () => {
+    const returnUrl = sessionStorage.getItem("gallery-return-url");
+    if (returnUrl) {
+      setLocation(returnUrl);
+    } else {
+      setLocation("/works");
+    }
+  };
+
+  // ✅ NOW early returns are safe - all hooks have been called
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <p className="font-mono text-sm text-muted-foreground">
+            WORK NOT FOUND
+          </p>
+          <Button
+            variant="outline"
+            onClick={handleBack}
+            className="font-mono text-xs border-border"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
+            BACK TO WORKS
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  const work = data;
+  const phase = data.phase;
 
   return (
     <>
