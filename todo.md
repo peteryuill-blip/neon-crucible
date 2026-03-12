@@ -1050,3 +1050,9 @@
 - [x] Check the dynamic head tag useEffect in WorkDetail (confirmed: placed after early returns)
 - [x] Fix any conditional hooks in WorkDetail (moved all hooks before early returns)
 - [x] Test navigation to work detail pages works without errors (TypeScript clean, dev server running)
+
+## Image Preloading on Work Detail Pages
+
+- [x] Add image preloading useEffect to WorkDetail component
+- [x] Show loading state while image is preloading (spinner overlay)
+- [x] Test that images load instantly without flicker (TypeScript clean)

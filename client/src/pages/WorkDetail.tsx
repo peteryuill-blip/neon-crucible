@@ -2,7 +2,7 @@ import { useParams, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Loader2 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function WorkStructuredData({ work, phase }: { work: any; phase: any }) {
   const schema = {
@@ -51,6 +51,20 @@ export default function WorkDetail() {
     { slug: slug || "" },
     { enabled: !!slug }
   );
+
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // ✅ Preload the main work image for instant display
+  useEffect(() => {
+    if (!data?.imageUrl && !data?.thumbnailUrl) return;
+
+    setImageLoaded(false);
+    const imageUrl = (data.imageUrl || data.thumbnailUrl) as string;
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.onerror = () => setImageLoaded(true); // Show image even if preload fails
+    img.src = imageUrl;
+  }, [data?.imageUrl, data?.thumbnailUrl]);
 
   // ✅ Update head tags BEFORE early returns - this prevents hook violation
   useEffect(() => {
@@ -160,13 +174,20 @@ export default function WorkDetail() {
       <WorkStructuredData work={work} phase={phase} />
     <div className="-mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12">
       {/* Hero Image - Natural height based on aspect ratio */}
-      <div className="relative w-full">
+      <div className="relative w-full bg-black">
+        {!imageLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        )}
         <img
           src={work.imageUrl || work.thumbnailUrl || ""}
           alt={work.title}
-          className="relative w-full h-auto object-contain bg-black block"
+          className={`relative w-full h-auto object-contain bg-black block transition-opacity duration-300 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoad={() => setImageLoaded(true)}
         />
-
       </div>
 
       {/* Metadata Section */}
