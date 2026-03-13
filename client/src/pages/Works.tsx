@@ -251,6 +251,7 @@ export default function Works() {
                 <img
                   src={work.thumbnailUrl || work.imageUrl || ""}
                   alt={work.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 {/* Overlay on hover */}
