@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle, Home } from "lucide-react";
@@ -5,6 +6,18 @@ import { useLocation } from "wouter";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    // Add noindex meta tag to prevent 404 pages from being indexed
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex";
+    document.head.appendChild(meta);
+
+    return () => {
+      document.head.removeChild(meta);
+    };
+  }, []);
 
   const handleGoHome = () => {
     setLocation("/");

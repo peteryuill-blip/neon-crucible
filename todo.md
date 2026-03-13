@@ -1057,6 +1057,6 @@
 - [x] Show loading state while image is preloading (spinner overlay)
 - [x] Test that images load instantly without flicker (TypeScript clean)
 
-## robots.txt
+## noindex Meta Tag on 404 Page
 
-- [x] Create robots.txt with sitemap reference and disallow rules for private routes
+- [x] Add `<meta name="robots" content="noindex">` to NotFound component (useEffect cleanup included)
