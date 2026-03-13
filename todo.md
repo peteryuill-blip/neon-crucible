@@ -1056,3 +1056,7 @@
 - [x] Add image preloading useEffect to WorkDetail component
 - [x] Show loading state while image is preloading (spinner overlay)
 - [x] Test that images load instantly without flicker (TypeScript clean)
+
+## robots.txt
+
+- [x] Create robots.txt with sitemap reference and disallow rules for private routes

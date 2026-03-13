@@ -1,5 +1,17 @@
+# robots.txt for peteryuill.art
+# https://www.robotstxt.org/robotstxt.html
+
 User-agent: *
 Allow: /
 
+# Block private admin and dashboard routes
+Disallow: /manage
+Disallow: /manage/
+Disallow: /admin
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /dashboard/
+
+# Sitemap location — discoverable by all crawlers
 Sitemap: https://peteryuill.art/sitemap.xml
 Sitemap: https://peter-yuill.manus.space/sitemap.xml
