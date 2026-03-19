@@ -9,4 +9,10 @@ export const ENV = {
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
   // Local auth — bcrypt hash of admin password (portable, no Manus dependency)
   adminPasswordHash: process.env.ADMIN_PASSWORD_HASH ?? "",
+  // Cloudflare R2 storage (replaces Manus Forge API storage)
+  r2AccountId: process.env.R2_ACCOUNT_ID ?? "",
+  r2AccessKeyId: process.env.R2_ACCESS_KEY_ID ?? "",
+  r2SecretAccessKey: process.env.R2_SECRET_ACCESS_KEY ?? "",
+  r2BucketName: process.env.R2_BUCKET_NAME ?? "",
+  r2PublicUrl: process.env.R2_PUBLIC_URL ?? "", // e.g. https://pub-xxx.r2.dev or custom domain
 };
