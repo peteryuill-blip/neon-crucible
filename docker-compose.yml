@@ -1,0 +1,80 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Neon Crucible — docker-compose.yml
+# Local development / self-hosted deployment stack
+#
+# Services:
+#   app   — Node.js Express server (production build)
+#   db    — MySQL 8 (mirrors Railway MySQL plugin)
+#
+# Usage:
+#   docker compose up --build          # first run
+#   docker compose up -d               # background
+#   docker compose down -v             # stop + remove volumes
+#
+# Environment:
+#   Copy .env.example to .env and fill in all values before running.
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-neon_crucible}
+      MYSQL_USER: ${MYSQL_USER:-neon}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-neonpassword}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database_backup_2026-03-19.sql:/docker-entrypoint-initdb.d/01-seed.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    environment:
+      NODE_ENV: production
+      PORT: ${PORT:-3000}
+      # Database (points to local MySQL container)
+      DATABASE_URL: mysql://${MYSQL_USER:-neon}:${MYSQL_PASSWORD:-neonpassword}@db:3306/${MYSQL_DATABASE:-neon_crucible}
+      # Auth
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_PASSWORD_HASH: ${ADMIN_PASSWORD_HASH}
+      # Cloudflare R2
+      R2_ACCOUNT_ID: ${R2_ACCOUNT_ID}
+      R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID}
+      R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY}
+      R2_BUCKET_NAME: ${R2_BUCKET_NAME}
+      R2_PUBLIC_URL: ${R2_PUBLIC_URL}
+      # Optional: Manus built-in APIs (LLM, notifications)
+      # These will stop working after Manus subscription ends.
+      # Remove or replace with your own LLM provider if needed.
+      BUILT_IN_FORGE_API_URL: ${BUILT_IN_FORGE_API_URL:-}
+      BUILT_IN_FORGE_API_KEY: ${BUILT_IN_FORGE_API_KEY:-}
+      VITE_FRONTEND_FORGE_API_URL: ${VITE_FRONTEND_FORGE_API_URL:-}
+      VITE_FRONTEND_FORGE_API_KEY: ${VITE_FRONTEND_FORGE_API_KEY:-}
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:${PORT:-3000}/api/trpc/system.health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  mysql_data:
+    driver: local
