@@ -105,3 +105,8 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
+
+# Image export (too large for git - use archive)
+image_export/full/
+image_export/thumbs/
+image_export_*.tar.gz
