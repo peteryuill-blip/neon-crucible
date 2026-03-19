@@ -7,7 +7,6 @@
 # ── Stage 1: Install dependencies ────────────────────────────────────────────
 FROM node:22-alpine AS deps
 
-# Install pnpm
 RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
 
 WORKDIR /app
@@ -32,7 +31,9 @@ COPY --from=deps /app/node_modules ./node_modules
 # Copy source
 COPY . .
 
-# Build: Vite (client) + esbuild (server)
+# Build:
+#   - Vite builds client → dist/public/
+#   - esbuild bundles server → dist/index.js
 RUN pnpm build
 
 # ── Stage 3: Production runtime ───────────────────────────────────────────────
@@ -50,10 +51,11 @@ COPY patches/ ./patches/
 RUN pnpm install --frozen-lockfile --prod
 
 # Copy built artefacts from builder
+# - dist/index.js  → server bundle
+# - dist/public/   → Vite client build (served as static files)
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/client/dist ./client/dist
 
-# Copy drizzle migrations (needed for db:push at runtime if required)
+# Copy drizzle migrations (needed at runtime for schema reference)
 COPY drizzle/ ./drizzle/
 COPY drizzle.config.ts ./
 
@@ -61,7 +63,7 @@ COPY drizzle.config.ts ./
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
-# Expose the port (Railway injects PORT env var)
+# Railway injects PORT env var; default to 3000
 EXPOSE 3000
 
 # Health check
