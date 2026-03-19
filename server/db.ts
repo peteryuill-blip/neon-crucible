@@ -99,6 +99,15 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
+export async function setUserRole(openId: string, role: "user" | "admin"): Promise<void> {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot set user role: database not available");
+    return;
+  }
+  await db.update(users).set({ role }).where(eq(users.openId, openId));
+}
+
 // ============ PHASES QUERIES ============
 
 export async function getAllPhases(): Promise<Phase[]> {

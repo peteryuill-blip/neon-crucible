@@ -24,6 +24,7 @@ import AdminPhases from "./pages/admin/AdminPhases";
 import AdminEssays from "./pages/admin/AdminEssays";
 import AdminMetaquestions from "./pages/admin/AdminMetaquestions";
 import AdminArchive from "./pages/admin/AdminArchive";
+import Login from "./pages/Login";
 import { trpc } from "./lib/trpc";
 import { Loader2 } from "lucide-react";
 import { useCanonicalUrl } from "./hooks/useCanonicalUrl";
@@ -41,8 +42,8 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
   }
 
   if (!user) {
-    // Redirect to login
-    window.location.href = `${import.meta.env.VITE_OAUTH_PORTAL_URL}?app_id=${import.meta.env.VITE_APP_ID}`;
+    // Redirect to local login page
+    window.location.href = "/login";
     return null;
   }
 
@@ -112,6 +113,9 @@ function Router() {
         <AdminRoute component={AdminArchive} />
       </Route>
       
+      {/* Login page */}
+      <Route path="/login" component={Login} />
+
       {/* Public routes */}
       <Route>
         <PublicRouter />
