@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /manage
+Disallow: /api/
 
+Sitemap: https://peter-yuill.com/sitemap.xml
 Sitemap: https://peteryuill.art/sitemap.xml
-Sitemap: https://peter-yuill.manus.space/sitemap.xml
