@@ -2,7 +2,8 @@
 
 Personal archive and operational infrastructure for Peter Yuill's 7-year artistic practice (2018–2025). Built with React 19, Express 4, tRPC 11, Drizzle ORM, and Tailwind CSS 4.
 
-**Live site:** [peteryuill.art](https://peteryuill.art)
+**Live site:** 
+[peter-yuill.com](https://peter-yuill.com)
 
 ---
 
