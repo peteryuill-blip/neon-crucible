@@ -3,12 +3,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from "@/components/ui/button";
 import { Search, Loader2, X, ArrowUpDown } from "lucide-react";
 import { trpc } from "@/lib/trpc";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { useLocation } from "wouter";
 
 const ITEMS_PER_PAGE = 12;
-
-type SortOption = 'year-desc' | 'year-asc' | 'title-asc' | 'title-desc';
 
 export default function Works() {
   const [, setLocation] = useLocation();
@@ -17,13 +15,11 @@ export default function Works() {
   const [seriesFilter, setSeriesFilter] = useState<string>("all");
   const [yearFilter, setYearFilter] = useState<string>("all");
   const [mediumFilter, setMediumFilter] = useState<string>("all");
-  const [sortBy, setSortBy] = useState<'year-desc' | 'year-asc' | 'title-asc' | 'title-desc'>("year-desc");
+  const [sortBy, setSortBy] = useState<"year-desc" | "year-asc" | "title-asc" | "title-desc">("year-desc");
   const [page, setPage] = useState(0);
 
-  // Fetch filter options
   const { data: filterOptions } = trpc.gallery.getFilterOptions.useQuery();
 
-  // Build filter object - always include sort to ensure consistent query
   const filter = useMemo(() => ({
     search: search || undefined,
     phase: phaseFilter !== "all" ? phaseFilter : undefined,
@@ -33,7 +29,6 @@ export default function Works() {
     sort: sortBy,
   }), [search, phaseFilter, seriesFilter, yearFilter, mediumFilter, sortBy]);
 
-  // Fetch gallery works - always pass filter object to avoid conditional hook issues
   const { data: galleryData, isLoading } = trpc.gallery.getAll.useQuery(filter);
 
   const works = galleryData?.items ?? [];
@@ -49,40 +44,37 @@ export default function Works() {
     setPage(0);
   };
 
-  const hasActiveFilters = search || phaseFilter !== "all" || seriesFilter !== "all" || yearFilter !== "all" || mediumFilter !== "all";
+  const hasActiveFilters =
+    search || phaseFilter !== "all" || seriesFilter !== "all" || yearFilter !== "all" || mediumFilter !== "all";
 
   const sortOptions = [
-    { value: 'year-desc', label: 'YEAR (NEWEST)' },
-    { value: 'year-asc', label: 'YEAR (OLDEST)' },
-    { value: 'title-asc', label: 'TITLE (A-Z)' },
+    { value: "year-desc", label: "YEAR (NEWEST)" },
+    { value: "year-asc", label: "YEAR (OLDEST)" },
+    { value: "title-asc", label: "TITLE (A-Z)" },
   ];
 
   const handleWorkClick = (slug: string) => {
-    // Save return URL for back button
     sessionStorage.setItem("gallery-return-url", window.location.href);
     setLocation(`/works/${slug}`);
   };
 
   return (
     <div className="space-y-6 sm:space-y-8 pb-32 sm:pb-24">
-      {/* Header */}
       <header className="flex flex-col gap-4 sm:gap-6 border-b border-border pb-6 sm:pb-8">
         <div className="space-y-1 sm:space-y-2">
           <h1 className="text-2xl sm:text-4xl md:text-6xl font-light tracking-tighter">WORK ARCHIVE</h1>
           <p className="font-mono text-xs sm:text-sm text-muted-foreground">
-            INDEXING {totalWorks} WORKS [2018—2025]
+            INDEXING {totalWorks} WORKS [2018—PRESENT]
           </p>
         </div>
       </header>
 
-      {/* Controls - Mobile Optimized */}
       <div className="sticky top-16 sm:top-24 z-30 bg-background/95 backdrop-blur py-3 sm:py-4 border-b border-border/50 -mx-4 px-4 sm:mx-0 sm:px-0">
-        {/* Search Row */}
         <div className="flex gap-2 sm:gap-4 mb-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input 
-              placeholder="SEARCH..." 
+            <Input
+              placeholder="SEARCH..."
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -93,7 +85,6 @@ export default function Works() {
           </div>
         </div>
 
-        {/* Sort Row - Always Visible */}
         <div className="flex gap-2 items-center flex-wrap">
           <ArrowUpDown className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground shrink-0" />
           <Select value={sortBy} onValueChange={(v) => { setSortBy(v as any); setPage(0); }}>
@@ -101,7 +92,7 @@ export default function Works() {
               <SelectValue placeholder="SORT BY" />
             </SelectTrigger>
             <SelectContent className="rounded-none border-border bg-card">
-              {sortOptions.map(opt => (
+              {sortOptions.map((opt) => (
                 <SelectItem key={opt.value} value={opt.value} className="font-mono text-xs">
                   {opt.label}
                 </SelectItem>
@@ -109,7 +100,6 @@ export default function Works() {
             </SelectContent>
           </Select>
 
-          {/* Desktop Filters Inline */}
           <div className="hidden sm:flex gap-2 ml-auto">
             <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
               <SelectTrigger className="w-[120px] rounded-none border-muted-foreground/30 font-mono text-xs h-9">
@@ -117,7 +107,7 @@ export default function Works() {
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card">
                 <SelectItem value="all">ALL PHASES</SelectItem>
-                {filterOptions?.phases.map(phase => (
+                {filterOptions?.phases.map((phase) => (
                   <SelectItem key={phase.code} value={phase.code}>
                     {phase.code}: {phase.title}
                   </SelectItem>
@@ -130,7 +120,7 @@ export default function Works() {
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card max-h-60">
                 <SelectItem value="all">ALL SERIES</SelectItem>
-                {filterOptions?.series.map(series => (
+                {filterOptions?.series.map((series) => (
                   <SelectItem key={series} value={series}>{series}</SelectItem>
                 ))}
               </SelectContent>
@@ -141,7 +131,7 @@ export default function Works() {
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card">
                 <SelectItem value="all">ALL YEARS</SelectItem>
-                {filterOptions?.years.map(year => (
+                {filterOptions?.years.map((year) => (
                   <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
                 ))}
               </SelectContent>
@@ -152,14 +142,14 @@ export default function Works() {
               </SelectTrigger>
               <SelectContent className="rounded-none border-border bg-card max-h-60">
                 <SelectItem value="all">ALL MEDIUMS</SelectItem>
-                {filterOptions?.mediums.map(medium => (
+                {filterOptions?.mediums.map((medium) => (
                   <SelectItem key={medium} value={medium}>{medium}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
             {hasActiveFilters && (
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9"
                 onClick={clearFilters}
               >
@@ -169,7 +159,6 @@ export default function Works() {
           </div>
         </div>
 
-        {/* Mobile Filters */}
         <div className="sm:hidden mt-3 pt-3 border-t border-border/50 space-y-2">
           <Select value={phaseFilter} onValueChange={(v) => { setPhaseFilter(v); setPage(0); }}>
             <SelectTrigger className="w-full rounded-none border-muted-foreground/30 font-mono text-xs h-9">
@@ -177,7 +166,7 @@ export default function Works() {
             </SelectTrigger>
             <SelectContent className="rounded-none border-border bg-card">
               <SelectItem value="all">ALL PHASES</SelectItem>
-              {filterOptions?.phases.map(phase => (
+              {filterOptions?.phases.map((phase) => (
                 <SelectItem key={phase.code} value={phase.code}>
                   {phase.code}: {phase.title}
                 </SelectItem>
@@ -190,7 +179,7 @@ export default function Works() {
             </SelectTrigger>
             <SelectContent className="rounded-none border-border bg-card max-h-60">
               <SelectItem value="all">ALL SERIES</SelectItem>
-              {filterOptions?.series.map(series => (
+              {filterOptions?.series.map((series) => (
                 <SelectItem key={series} value={series}>{series}</SelectItem>
               ))}
             </SelectContent>
@@ -201,7 +190,7 @@ export default function Works() {
             </SelectTrigger>
             <SelectContent className="rounded-none border-border bg-card">
               <SelectItem value="all">ALL YEARS</SelectItem>
-              {filterOptions?.years.map(year => (
+              {filterOptions?.years.map((year) => (
                 <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
               ))}
             </SelectContent>
@@ -212,14 +201,14 @@ export default function Works() {
             </SelectTrigger>
             <SelectContent className="rounded-none border-border bg-card max-h-60">
               <SelectItem value="all">ALL MEDIUMS</SelectItem>
-              {filterOptions?.mediums.map(medium => (
+              {filterOptions?.mediums.map((medium) => (
                 <SelectItem key={medium} value={medium}>{medium}</SelectItem>
               ))}
             </SelectContent>
           </Select>
           {hasActiveFilters && (
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="w-full rounded-none border-muted-foreground/30 font-mono text-xs gap-1 h-9"
               onClick={clearFilters}
             >
@@ -229,7 +218,6 @@ export default function Works() {
         </div>
       </div>
 
-      {/* Gallery Grid */}
       {isLoading ? (
         <div className="flex items-center justify-center py-24">
           <Loader2 className="w-8 h-8 animate-spin text-primary" />
@@ -240,12 +228,11 @@ export default function Works() {
         </div>
       ) : (
         <>
-          {/* 3-Column Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {works.map((work) => (
               <button
                 key={work.id}
-                onClick={() => handleWorkClick(work.slug || '')}
+                onClick={() => handleWorkClick(work.slug || "")}
                 className="group relative aspect-square overflow-hidden bg-muted border border-border hover:border-primary transition-all duration-300 cursor-pointer rounded-none"
               >
                 <img
@@ -254,16 +241,11 @@ export default function Works() {
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex flex-col items-end justify-end p-4">
                   <div className="text-right opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="font-serif text-sm sm:text-base text-white leading-tight">
-                      {work.title}
-                    </p>
+                    <p className="font-serif text-sm sm:text-base text-white leading-tight">{work.title}</p>
                     {(work.dateCreated || work.year) && (
-                      <p className="font-mono text-xs text-white/70">
-                        {work.dateCreated || work.year}
-                      </p>
+                      <p className="font-mono text-xs text-white/70">{work.dateCreated || work.year}</p>
                     )}
                   </div>
                 </div>
@@ -271,13 +253,12 @@ export default function Works() {
             ))}
           </div>
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <div className="flex items-center justify-between gap-4 pt-8 border-t border-border">
               <Button
                 variant="outline"
                 disabled={page === 0}
-                onClick={() => setPage(p => Math.max(0, p - 1))}
+                onClick={() => setPage((p) => Math.max(0, p - 1))}
                 className="rounded-none border-muted-foreground/30 font-mono text-xs h-9"
               >
                 ← PREVIOUS
@@ -288,7 +269,7 @@ export default function Works() {
               <Button
                 variant="outline"
                 disabled={page >= totalPages - 1}
-                onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
+                onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
                 className="rounded-none border-muted-foreground/30 font-mono text-xs h-9"
               >
                 NEXT →
