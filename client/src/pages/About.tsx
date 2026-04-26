@@ -1,109 +1,137 @@
 export default function About() {
   return (
-    <div className="about-page">
-      <div className="max-w-3xl mx-auto py-16 px-4">
-        
-        {/* SECTION 1: Summary */}
-        <section className="summary mb-12">
-          <p className="text-lg leading-relaxed">
-            Peter Yuill is a painter working at the intersection of sacred geometry, 
-            ink abstraction, and threshold cosmology. Based in Bangkok since 2018, 
-            his practice is an archive of seven years—163 paintings catalogued, 
-            spanning seven distinct phases from geometric rigor to somatic intuition.
-          </p>
-        </section>
+    <div className="max-w-3xl mx-auto py-16 px-4">
 
-        {/* SECTION 2: Practice */}
-        <section className="practice mb-12">
-          <h2 className="font-serif text-xl md:text-2xl mb-4">Practice</h2>
-          <p className="leading-relaxed mb-4">
-            The work maps threshold states—moments where structure dissolves into 
-            intuition, where geometry becomes gesture. Each painting is a single-shot 
-            irreversible act: ink on paper, no revision, no going back. The practice 
-            is both rigorous and surrendered, operating in the space between control 
-            and release.
-          </p>
-          <p className="leading-relaxed mb-4">
-            The archive spans seven phases (PH1-PH7), each representing a distinct 
-            approach to the same underlying question: What happens in the space 
-            between order and chaos? From early geometric grids (2018–2020) to later 
-            somatic abstractions and color explosions (2021–2024), the evolution is 
-            visible, documented, catalogued.
-          </p>
-          <p className="leading-relaxed">
-            In December 2024, Yuill began studying traditional East Asian ink painting 
-            under master teacher Man Luen Choon in Hong Kong, integrating 20+ years of 
-            lived experience in Asia with rigorous classical training. The New Era 
-            practice (2025–present) combines sacred geometry's mathematical precision 
-            with Zen spontaneity.
-          </p>
-        </section>
+      {/* Summary */}
+      <section className="mb-16">
+        <p className="font-serif text-xl sm:text-2xl leading-relaxed text-foreground/90">
+          Peter Yuill is a painter working at the intersection of sacred geometry,
+          ink abstraction, and somatic mark-making. Based in Bangkok, his practice
+          spans fifteen years across Hong Kong, Vietnam, and Southeast Asia — 259+
+          works catalogued across eight distinct periods from geometric rigor to
+          gestural surrender.
+        </p>
+      </section>
 
-        {/* SECTION 3: Materials & Process */}
-        <section className="materials mb-12">
-          <h2 className="font-serif text-xl md:text-2xl mb-4">Materials & Process</h2>
-          <p className="leading-relaxed mb-4">
-            <strong>Ink:</strong> Sumi ink and high-flow acrylic ink on cotton paper. 
-            The ink is irreversible—once it touches paper, the mark is permanent. This 
-            constraint shapes the entire practice: total presence, no revision, no undo.
+      {/* Practice */}
+      <section className="mb-12">
+        <h2 className="font-serif text-xl md:text-2xl mb-6 text-foreground">Practice</h2>
+        <div className="space-y-4 text-foreground/80 leading-relaxed">
+          <p>
+            The work maps threshold states — moments where structure dissolves into
+            intuition, where geometry becomes gesture. Each painting is a single-shot
+            irreversible act: sumi ink on East Asian rice paper, no revision, no going back.
+            The practice is both rigorous and surrendered, operating in the space between
+            control and release.
           </p>
-          <p className="leading-relaxed mb-4">
-            <strong>Gold Leaf:</strong> 24k gold leaf applied as geometric accent 
-            or threshold marker. The gold functions as both material presence and 
-            alchemical symbol—transformation captured in metal. Introduced in the 
-            <em>Alignment</em> series (2020) to encode metaphysical binaries: spirit 
-            and matter, eternal and temporal.
+          <p>
+            The practice evolved through eight periods (PH0A through NE), each representing
+            a distinct approach to the same underlying question: what happens in the space
+            between order and chaos? From early geometric grids and sacred geometry
+            (2011–2023) to the somatic ink abstractions of the New Era (2025–present),
+            the evolution is visible, documented, and witnessed.
           </p>
-          <p className="leading-relaxed">
-            <strong>Sacred Geometry:</strong> Underlying grid systems drawn from 
-            Pythagorean, Islamic, and Vedic traditions. Each work begins with 30 
-            compositional variations; each line is hand-drawn using custom geometric 
-            formulas, never mechanical aids. The geometry provides structure, but the 
-            work lives in how that structure breaks down.
+          <p>
+            The current work — the Crucible Year — is an open-ended discipline in
+            large-format sumi ink on raw Xuan paper. The methodology is precise: one shot,
+            no revision, no going back. The results are tracked in real time across a
+            private studio system called Neon.
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* SECTION 4: Exhibitions & Clients */}
-        <section className="exhibitions mb-12">
-          <h2 className="font-serif text-xl md:text-2xl mb-4">Exhibitions & Clients</h2>
-          <ul className="space-y-2">
-            <li className="text-sm">
-              <span className="font-mono text-muted">2024</span> — <em>Celestial Secrets</em>, West Eden Gallery, Bangkok
-            </li>
-            <li className="text-sm">
-              <span className="font-mono text-muted">2020</span> — <em>Equinox of the Gods</em>, Jonathan LeVine Projects, NYC
-            </li>
-            <li className="text-sm">
-              <span className="font-mono text-muted">2020</span> — <em>Alignment</em>, Gallery HZ, Pearl Lam Galleries, Hong Kong
-            </li>
-            <li className="text-sm">
-              <span className="font-mono text-muted">2018</span> — <em>The Absurdity of Meaning</em>, Kong Art Space, Hong Kong
-            </li>
-            <li className="text-sm">
-              <span className="font-mono text-muted">—</span> — Institutional Commissions: Peninsula Hotels, Jones Lang LaSalle, Soho House, NUVA Luxury
-            </li>
-          </ul>
-        </section>
+      {/* Materials & Process */}
+      <section className="mb-12">
+        <h2 className="font-serif text-xl md:text-2xl mb-6 text-foreground">Materials & Process</h2>
+        <div className="space-y-4 text-foreground/80 leading-relaxed">
+          <p>
+            <strong className="text-foreground">Ink:</strong> Premium sumi inks (Yi De Ge,
+            Xuan Zong) on East Asian rice paper. The ink is irreversible — once it
+            touches paper, the mark is permanent. This constraint shapes the entire
+            practice: total presence, no revision, no undo.
+          </p>
+          <p>
+            <strong className="text-foreground">Paper:</strong> Raw and semi-cooked Xuan
+            paper from Anhui province, sourced in collaboration with specialist suppliers.
+            Each substrate responds differently to pressure, dilution, and velocity.
+            The paper is a collaborator, not a surface.
+          </p>
+          <p>
+            <strong className="text-foreground">Sacred Geometry (prior periods):</strong> Grid
+            systems drawn from Pythagorean, Islamic, and Vedic traditions. Each work began
+            with compositional variations hand-drawn using custom geometric formulas. The
+            geometry provided structure, but the work lived in how that structure broke down.
+          </p>
+        </div>
+      </section>
 
-        {/* SECTION 5: Contact */}
-        <section className="contact">
-          <h2 className="font-serif text-xl md:text-2xl mb-4">Contact</h2>
-          <p className="text-sm">
-            For commissions, exhibitions, or inquiries:<br />
-            <a 
-              href="mailto:peteryuill@gmail.com" 
-              className="text-primary hover:text-secondary transition-colors"
+      {/* Exhibitions */}
+      <section className="mb-12">
+        <h2 className="font-serif text-xl md:text-2xl mb-6 text-foreground">Exhibitions</h2>
+        <ul className="space-y-3">
+          {[
+            { year: "2024", title: "Celestial Secrets", venue: "West Eden Gallery, Bangkok" },
+            { year: "2023", title: "Rhapsody", venue: "Art Central, Hong Kong (VAIN Projects)" },
+            { year: "2022", title: "Echoes", venue: "Kong Art Space, Hong Kong" },
+            { year: "2020–21", title: "Equinox of the Gods", venue: "Jonathan LeVine Projects, Jersey City" },
+            { year: "2020", title: "Alignment", venue: "Gallery HZ / Pearl Lam Galleries, Hong Kong" },
+            { year: "2018", title: "The Absurdity of Meaning", venue: "Kong Art Space, Hong Kong" },
+          ].map((ex) => (
+            <li key={ex.year + ex.title} className="flex gap-6 text-sm border-b border-border/30 pb-3">
+              <span className="font-mono text-muted-foreground shrink-0 w-16">{ex.year}</span>
+              <span>
+                <em className="text-foreground/90">{ex.title}</em>
+                <span className="text-muted-foreground"> — {ex.venue}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Collections & Commissions */}
+      <section className="mb-12">
+        <h2 className="font-serif text-xl md:text-2xl mb-6 text-foreground">Collections & Commissions</h2>
+        <div className="text-sm text-foreground/80 leading-relaxed space-y-2">
+          <p>
+            Works held in private collections in Hong Kong, New York, London, and Bangkok.
+          </p>
+          <p className="text-muted-foreground">
+            Institutional commissions: The Wharf (Holdings), Peninsula Hotels, Jones Lang
+            LaSalle, Swire Properties, Soho House, NUVA Luxury, North Face (K11).
+          </p>
+        </div>
+      </section>
+
+      {/* Press */}
+      <section className="mb-12">
+        <h2 className="font-serif text-xl md:text-2xl mb-6 text-foreground">Press</h2>
+        <div className="text-sm text-muted-foreground space-y-1">
+          <p>Tatler Asia, Whitewall, GQ Thailand, Lifestyle Asia, Prestige Online,
+            Thairath, CBC Canada</p>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="border-t border-border pt-12">
+        <h2 className="font-serif text-xl md:text-2xl mb-6 text-foreground">Contact</h2>
+        <div className="space-y-2 text-sm">
+          <p>
+            For commissions, exhibitions, or inquiries:{" "}
+            <a
+              href="mailto:peteryuill@gmail.com"
+              className="text-primary hover:text-primary/80 transition-colors"
             >
               peteryuill@gmail.com
             </a>
           </p>
-          <p className="text-sm text-muted-foreground mt-2">
-            WhatsApp: +852 5932 6869<br />
+          <p className="text-muted-foreground">
+            WhatsApp: +852 5932 6869
+            <br />
             Bangkok, Thailand
           </p>
-        </section>
+        </div>
+      </section>
 
-      </div>
     </div>
   );
 }

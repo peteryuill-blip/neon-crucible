@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch, Redirect } from "wouter";
+import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
@@ -18,6 +18,8 @@ import Commissions from "./pages/Commissions";
 import Contact from "./pages/Contact";
 import Descent from "./pages/Descent";
 import WorkDetail from "./pages/WorkDetail";
+import Practice from "./pages/Practice";
+import Crucible from "./pages/Crucible";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminWorks from "./pages/admin/AdminWorks";
 import AdminPhases from "./pages/admin/AdminPhases";
@@ -29,7 +31,6 @@ import { trpc } from "./lib/trpc";
 import { Loader2 } from "lucide-react";
 import { useCanonicalUrl } from "./hooks/useCanonicalUrl";
 
-// Protected route wrapper for admin pages
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery();
 
@@ -42,7 +43,6 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
   }
 
   if (!user) {
-    // Redirect to local login page
     window.location.href = "/login";
     return null;
   }
@@ -52,12 +52,8 @@ function AdminRoute({ component: Component }: { component: React.ComponentType }
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-4">
           <h1 className="text-2xl font-bold text-destructive">ACCESS DENIED</h1>
-          <p className="text-muted-foreground font-mono text-sm">
-            ADMIN PRIVILEGES REQUIRED
-          </p>
-          <a href="/" className="text-primary underline font-mono text-sm">
-            RETURN TO SITE →
-          </a>
+          <p className="text-muted-foreground font-mono text-sm">ADMIN PRIVILEGES REQUIRED</p>
+          <a href="/" className="text-primary underline font-mono text-sm">RETURN TO SITE →</a>
         </div>
       </div>
     );
@@ -71,19 +67,22 @@ function PublicRouter() {
     <Layout>
       <Switch>
         <Route path="/" component={Home} />
+        {/* Primary navigation */}
+        <Route path="/works" component={Works} />
+        <Route path="/works/:slug" component={WorkDetail} />
+        <Route path="/practice" component={Practice} />
+        <Route path="/crucible" component={Crucible} />
         <Route path="/neon" component={Neon} />
         <Route path="/neon/identity" component={NeonIdentity} />
-        <Route path="/works" component={Works} />
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/about" component={About} />
+        {/* Secondary / legacy pages — still accessible but not in primary nav */}
         <Route path="/archive" component={Archive} />
         <Route path="/statistics" component={Statistics} />
         <Route path="/commissions" component={Commissions} />
-        <Route path="/about" component={About} />
-        <Route path="/voices" component={Voices} />
         <Route path="/contact" component={Contact} />
+        <Route path="/voices" component={Voices} />
         <Route path="/descent" component={Descent} />
-        <Route path="/works/:slug" component={WorkDetail} />
-        <Route path="/works" component={Works} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
@@ -112,11 +111,9 @@ function Router() {
       <Route path="/manage/archive">
         <AdminRoute component={AdminArchive} />
       </Route>
-      
-      {/* Login page */}
+      {/* Login */}
       <Route path="/login" component={Login} />
-
-      {/* Public routes */}
+      {/* Public */}
       <Route>
         <PublicRouter />
       </Route>
@@ -125,14 +122,11 @@ function Router() {
 }
 
 function App() {
-  // Set canonical URL dynamically based on route
   useCanonicalUrl();
-  
+
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="dark"
-      >
+      <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
           <Router />
