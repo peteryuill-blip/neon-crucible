@@ -288,12 +288,12 @@ export default function Crucible() {
             {crucibleWorks.items.slice(0, 6).map((work) => (
               <Link key={work.id} href={`/works/${work.slug || work.id}`}>
                 <div className="group cursor-pointer space-y-3">
-                  <div className="aspect-[4/3] bg-muted overflow-hidden border border-border group-hover:border-primary/50 transition-colors duration-300">
+                  <div className="w-full overflow-hidden border border-border group-hover:border-primary/50 transition-colors duration-300">
                     {work.thumbnailUrl && (
                       <img
                         src={work.thumbnailUrl}
                         alt={work.title}
-                        className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
+                        className="w-full h-auto group-hover:scale-102 transition-transform duration-500"
                       />
                     )}
                   </div>
