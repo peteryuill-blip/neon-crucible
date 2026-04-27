@@ -9,13 +9,13 @@ const NEON_SIGNS_API = "https://neonsigns-production.up.railway.app";
 // Live metrics fetched from NEON SIGNS API
 // Falls back to static snapshot if API unavailable
 const STATIC_SNAPSHOT = {
-  currentTCode: "T_259",
-  totalWorks: 259,
-  studioHours: 505,
-  surfaceArea: "322.22",
-  killRate: 29,
+  currentTCode: "T_272",
+  totalWorks: 272,
+  studioHours: 575,
+  surfaceArea: "362.56",
+  killRate: 28,
   weeksActive: 12,
-  weekNumber: 17,
+  weekNumber: 18,
   avgRating: "3.46",
   ratingFiveWorks: 6,
 };
