@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { trpc } from "@/lib/trpc";
 import { useEffect, useState } from "react";
 
+const NEON_SIGNS_API = "https://neonsigns-production.up.railway.app";
+
 // Live metrics fetched from NEON SIGNS API
 // Falls back to static snapshot if API unavailable
 const STATIC_SNAPSHOT = {
@@ -142,7 +144,25 @@ function ArcChart() {
 }
 
 export default function Crucible() {
-  const metrics = STATIC_SNAPSHOT;
+  const [liveMetrics, setLiveMetrics] = useState<typeof STATIC_SNAPSHOT | null>(null);
+  const [metricsLoading, setMetricsLoading] = useState(true);
+
+  // Fetch live stats from NEON SIGNS public API
+  useEffect(() => {
+    fetch(`${NEON_SIGNS_API}/api/trpc/public.crucibleStats?input={}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data?.result?.data) {
+          setLiveMetrics(data.result.data);
+        }
+      })
+      .catch(() => {
+        // Silently fall back to static snapshot
+      })
+      .finally(() => setMetricsLoading(false));
+  }, []);
+
+  const metrics = liveMetrics ?? STATIC_SNAPSHOT;
 
   // Fetch Crucible Year works, filtered by NE phase
   const { data: crucibleWorks, isLoading: worksLoading } = trpc.gallery.getAll.useQuery({
