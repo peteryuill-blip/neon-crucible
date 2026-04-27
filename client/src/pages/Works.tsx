@@ -64,7 +64,7 @@ export default function Works() {
         <div className="space-y-1 sm:space-y-2">
           <h1 className="text-2xl sm:text-4xl md:text-6xl font-light tracking-tighter">WORK ARCHIVE</h1>
           <p className="font-mono text-xs sm:text-sm text-muted-foreground">
-            INDEXING {totalWorks} WORKS [2018—PRESENT]
+            INDEXING {totalWorks} WORKS [2018-PRESENT]
           </p>
         </div>
       </header>

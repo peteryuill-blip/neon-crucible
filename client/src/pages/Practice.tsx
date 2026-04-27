@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 
 const phases = [
   {
-    code: "PH0A–PH0C",
-    years: "2011–2017",
+    code: "PH0A-PH0C",
+    years: "2011-2017",
     title: "Foundation",
     description: "Hong Kong. Hyper-detailed architectural drawings, street presence, sacred geometry emerging from commercial practice. The cosmopolitan apprenticeship that built the practitioner.",
     color: "#888888",
@@ -19,42 +19,42 @@ const phases = [
   },
   {
     code: "PH1A",
-    years: "2018–2019",
+    years: "2018-2019",
     title: "Institutional Geometry",
     description: "Sacred geometry enters institutional space. Peninsula Hotels, JLL, Swire commissions. The vocabulary expands under pressure of professional scale.",
     color: "#C0C0C0",
   },
   {
     code: "PH2",
-    years: "2019–2020",
-    title: "Alignment — Circular Paradigm",
+    years: "2019-2020",
+    title: "Alignment: Circular Paradigm",
     description: "Peak geometric refinement. The Alignment series. Gold leaf as threshold marker. The most technically precise work in the career to this point.",
     color: "#FFD700",
   },
   {
     code: "PH2A",
     years: "2020",
-    title: "Equinox of the Gods — Thelemic Rupture",
+    title: "Equinox of the Gods: Thelemic Rupture",
     description: "The first one-shot ink rupture. Jonathan LeVine Projects, New York. Control surrenders to velocity. The method that would define everything that followed.",
     color: "#FF4400",
   },
   {
     code: "PH3 / PH3A",
-    years: "2022–2023",
+    years: "2022-2023",
     title: "Echoes / Celestial Secrets",
-    description: "Inward turn. The distillation of seven years into essential questions. Celestial Secrets at West Eden Gallery, Bangkok — the practice's first Thai institutional moment.",
+    description: "Inward turn. The distillation of seven years into essential questions. Celestial Secrets at West Eden Gallery, Bangkok: the practice's first Thai institutional moment.",
     color: "#4A0080",
   },
   {
     code: "PH4",
     years: "2024",
-    title: "Nomadic — Emotional Crisis & Expressionism",
+    title: "Nomadic: Emotional Crisis and Expressionism",
     description: "Vietnam. 195 paintings in seven weeks. Color returning for the first time in fifteen years. Maximum output density. Zero institutional context. The body painting in survival mode.",
     color: "#FF00FF",
   },
   {
     code: "NE",
-    years: "2025–present",
+    years: "2025-present",
     title: "New Era",
     description: "Bangkok. Sumi ink on raw Xuan. The synthesis of fifteen years: structural precision and somatic surrender operating as one. The Crucible Year is this practice at full declaration.",
     color: "#00FF99",
@@ -96,7 +96,7 @@ export default function Practice() {
           </p>
           <p>
             The practice operates at the intersection of sacred geometry and somatic
-            mark-making — two approaches that appear opposite and turn out to be the
+            mark-making. Two approaches that appear opposite and turn out to be the
             same thing approached from different ends. Structure enables the gesture.
             Gesture animates the structure. The space between is where the work lives.
           </p>
@@ -109,7 +109,7 @@ export default function Practice() {
           <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
             The Arc
           </h2>
-          <span className="font-mono text-xs text-muted-foreground/60">2011 — PRESENT</span>
+          <span className="font-mono text-xs text-muted-foreground/60">2011-PRESENT</span>
         </div>
 
         <div className="space-y-0">
@@ -154,8 +154,8 @@ export default function Practice() {
         <div className="space-y-5 font-serif text-base sm:text-lg leading-relaxed text-foreground/85 max-w-3xl">
           <p>
             The Crucible Year is the first primarily constructive phase in the practice's
-            history. The three prior destruction-reconstruction cycles — 2018, 2020, 2024
-            — each cleared ground that the next phase built on. The current practice is
+            history. The three prior destruction-reconstruction cycles (2018, 2020, 2024)
+            each cleared ground that the next phase built on. The current practice is
             building on cleared ground with nothing left to demolish.
           </p>
           <p>
@@ -165,7 +165,7 @@ export default function Practice() {
             considers genuinely close to exhibition quality under the current standard.
           </p>
           <p>
-            The work is documented in real time by a system called Neon — a 15-year
+            The work is documented in real time by a system called Neon, a 15-year
             cognitive architecture that witnesses, analyses, and holds the practice to
             account. The Crucible Year is this system in its most intensive operational
             moment.
@@ -193,7 +193,7 @@ export default function Practice() {
             THE ARCHIVE
           </p>
           <p className="font-serif text-sm text-foreground/70">
-            152 works catalogued, 2018–2025
+            152 works catalogued, 2018-2025
           </p>
         </div>
         <Link href="/works">

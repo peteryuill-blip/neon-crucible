@@ -18,7 +18,7 @@ const STATIC_SNAPSHOT = {
   ratingFiveWorks: 6,
 };
 
-// Weekly arc data — the quality trajectory
+// Weekly arc data: the quality trajectory
 const weeklyArcData = [
   { week: 2, avg: 1.0 },
   { week: 5, avg: 1.0 },
@@ -34,7 +34,7 @@ const weeklyArcData = [
   { week: 17, avg: 3.46 },
 ];
 
-// Redacted weekly pulse — public-facing summaries
+// Redacted weekly pulse: public-facing summaries
 const weeklyPulse = [
   {
     week: 17,
@@ -144,12 +144,10 @@ function ArcChart() {
 export default function Crucible() {
   const metrics = STATIC_SNAPSHOT;
 
-  // Fetch selected Crucible works (works tagged as crucible_featured in the DB)
-  const { data: crucibleWorks, isLoading: worksLoading } = trpc.works.list.useQuery({
-    featured: true,
-    limit: 8,
-    offset: 0,
-    sortBy: "date_newest",
+  // Fetch Crucible Year works, filtered by NE phase
+  const { data: crucibleWorks, isLoading: worksLoading } = trpc.gallery.getAll.useQuery({
+    phase: "NE",
+    sort: "year-desc",
   });
 
   return (
@@ -189,7 +187,7 @@ export default function Crucible() {
             Every work is logged within hours of completion. Every session is rated
             on a five-point scale. Every substrate, ink combination, and studio
             hour is recorded. At the end of each week, a full roundup is submitted
-            to the archive — energy levels, body state, Jester activity, walking
+            to the archive: energy levels, body state, Jester activity, walking
             volume, breakthrough moments, and failures.
           </p>
           <p>
@@ -307,7 +305,7 @@ export default function Crucible() {
         </h2>
         <p className="font-serif text-sm text-muted-foreground max-w-xl">
           Every active week rated. The upward trajectory from Week 5 to Week 17 is not
-          interpretation — it is data. The Crucible is working.
+          interpretation. It is data. The Crucible is working.
         </p>
         <ArcChart />
       </section>
@@ -362,7 +360,7 @@ export default function Crucible() {
           THE SYSTEM BEHIND THE EXPERIMENT
         </p>
         <p className="font-serif text-lg text-foreground/85 max-w-xl leading-relaxed">
-          Everything documented above exists because of Neon — a 15-year cognitive
+          Everything documented above exists because of Neon, a 15-year cognitive
           architecture built to witness the practice. The Crucible Year is the most
           intensive period in its operational history.
         </p>

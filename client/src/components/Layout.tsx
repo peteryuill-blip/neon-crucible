@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
       <div className="hidden sm:block fixed top-4 right-4 z-50 font-mono text-[10px] sm:text-xs text-muted-foreground pointer-events-none mix-blend-difference opacity-60 text-right">
         <span className="block">PETER YUILL</span>
-        <span className="block">2011—PRESENT</span>
+        <span className="block">2011-PRESENT</span>
       </div>
       <div className="hidden md:block fixed bottom-4 left-4 z-50 font-mono text-xs text-muted-foreground pointer-events-none mix-blend-difference opacity-60">
         <span className="block">OPERATIONAL ARCHIVE</span>

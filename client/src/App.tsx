@@ -75,7 +75,7 @@ function PublicRouter() {
         <Route path="/neon" component={Neon} />
         <Route path="/neon/identity" component={NeonIdentity} />
         <Route path="/about" component={About} />
-        {/* Secondary / legacy pages — still accessible but not in primary nav */}
+        {/* Secondary or legacy pages, still accessible but not in primary nav */}
         <Route path="/archive" component={Archive} />
         <Route path="/statistics" component={Statistics} />
         <Route path="/commissions" component={Commissions} />

@@ -7,7 +7,7 @@ export default function About() {
         <p className="font-serif text-xl sm:text-2xl leading-relaxed text-foreground/90">
           Peter Yuill is a painter working at the intersection of sacred geometry,
           ink abstraction, and somatic mark-making. Based in Bangkok, his practice
-          spans fifteen years across Hong Kong, Vietnam, and Southeast Asia — 259+
+          spans fifteen years across Hong Kong, Vietnam, and Southeast Asia. 259+
           works catalogued across eight distinct periods from geometric rigor to
           gestural surrender.
         </p>
@@ -18,7 +18,7 @@ export default function About() {
         <h2 className="font-serif text-xl md:text-2xl mb-6 text-foreground">Practice</h2>
         <div className="space-y-4 text-foreground/80 leading-relaxed">
           <p>
-            The work maps threshold states — moments where structure dissolves into
+            The work maps threshold states: moments where structure dissolves into
             intuition, where geometry becomes gesture. Each painting is a single-shot
             irreversible act: sumi ink on East Asian rice paper, no revision, no going back.
             The practice is both rigorous and surrendered, operating in the space between
@@ -28,11 +28,11 @@ export default function About() {
             The practice evolved through eight periods (PH0A through NE), each representing
             a distinct approach to the same underlying question: what happens in the space
             between order and chaos? From early geometric grids and sacred geometry
-            (2011–2023) to the somatic ink abstractions of the New Era (2025–present),
+            (2011-2023) to the somatic ink abstractions of the New Era (2025-present),
             the evolution is visible, documented, and witnessed.
           </p>
           <p>
-            The current work — the Crucible Year — is an open-ended discipline in
+            The current work, the Crucible Year, is an open-ended discipline in
             large-format sumi ink on raw Xuan paper. The methodology is precise: one shot,
             no revision, no going back. The results are tracked in real time across a
             private studio system called Neon.
@@ -46,7 +46,7 @@ export default function About() {
         <div className="space-y-4 text-foreground/80 leading-relaxed">
           <p>
             <strong className="text-foreground">Ink:</strong> Premium sumi inks (Yi De Ge,
-            Xuan Zong) on East Asian rice paper. The ink is irreversible — once it
+            Xuan Zong) on East Asian rice paper. The ink is irreversible. Once it
             touches paper, the mark is permanent. This constraint shapes the entire
             practice: total presence, no revision, no undo.
           </p>
@@ -73,7 +73,7 @@ export default function About() {
             { year: "2024", title: "Celestial Secrets", venue: "West Eden Gallery, Bangkok" },
             { year: "2023", title: "Rhapsody", venue: "Art Central, Hong Kong (VAIN Projects)" },
             { year: "2022", title: "Echoes", venue: "Kong Art Space, Hong Kong" },
-            { year: "2020–21", title: "Equinox of the Gods", venue: "Jonathan LeVine Projects, Jersey City" },
+            { year: "2020-21", title: "Equinox of the Gods", venue: "Jonathan LeVine Projects, Jersey City" },
             { year: "2020", title: "Alignment", venue: "Gallery HZ / Pearl Lam Galleries, Hong Kong" },
             { year: "2018", title: "The Absurdity of Meaning", venue: "Kong Art Space, Hong Kong" },
           ].map((ex) => (
@@ -81,7 +81,7 @@ export default function About() {
               <span className="font-mono text-muted-foreground shrink-0 w-16">{ex.year}</span>
               <span>
                 <em className="text-foreground/90">{ex.title}</em>
-                <span className="text-muted-foreground"> — {ex.venue}</span>
+                <span className="text-muted-foreground">, {ex.venue}</span>
               </span>
             </li>
           ))}
