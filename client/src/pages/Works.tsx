@@ -7,7 +7,7 @@ import { useState, useMemo } from "react";
 import { useLocation } from "wouter";
 
 const ITEMS_PER_PAGE = 12;
-const CRUCIBLE_PHASE_ID = 120005;
+const CRUCIBLE_PHASE_ID = 666;
 
 export default function Works() {
   const [, setLocation] = useLocation();
