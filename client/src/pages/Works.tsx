@@ -7,6 +7,7 @@ import { useState, useMemo } from "react";
 import { useLocation } from "wouter";
 
 const ITEMS_PER_PAGE = 12;
+const CRUCIBLE_PHASE_ID = 120005;
 
 export default function Works() {
   const [, setLocation] = useLocation();
@@ -23,7 +24,8 @@ export default function Works() {
   const filter = useMemo(() => ({
     search: search || undefined,
     phase: phaseFilter !== "all" ? phaseFilter : undefined,
-    excludePhase: phaseFilter === "all" ? "Crucible" : undefined,
+    // Precision Fix: Use the numeric ID verified in the database
+    excludePhaseId: phaseFilter === "all" ? CRUCIBLE_PHASE_ID : undefined,
     series: seriesFilter !== "all" ? seriesFilter : undefined,
     year: yearFilter !== "all" ? yearFilter : undefined,
     medium: mediumFilter !== "all" ? mediumFilter : undefined,
@@ -32,7 +34,12 @@ export default function Works() {
 
   const { data: galleryData, isLoading } = trpc.gallery.getAll.useQuery(filter);
 
-  const works = galleryData?.items ?? [];
+  // Safety Net: Client-side filtering to guarantee exclusion regardless of backend parameter matching
+  const works = useMemo(() => {
+    const rawItems = galleryData?.items ?? [];
+    return rawItems.filter(work => Number(work.phaseId) !== CRUCIBLE_PHASE_ID);
+  }, [galleryData]);
+
   const totalWorks = galleryData?.total ?? 0;
   const totalPages = Math.ceil(totalWorks / ITEMS_PER_PAGE);
 
