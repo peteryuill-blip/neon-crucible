@@ -38,32 +38,25 @@ export default function CruciblePaintings() {
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-zinc-900 pb-12">
           <div className="space-y-2">
             <h1 className="text-6xl font-light tracking-tighter text-zinc-100">The <span className="text-cyan-400">Paintings</span></h1>
-            <p className="font-mono text-[10px] text-zinc-600 tracking-[0.2em] uppercase">Irreversible Gestures // Chronological Priority Sorting</p>
+            <p className="font-mono text-[10px] text-zinc-600 tracking-[0.2em] uppercase">Phase_60606 // Priority Rating Grid</p>
           </div>
           <input
             type="text"
-            placeholder="SEARCH ARCHIVE..."
+            placeholder="SEARCH BY ID..."
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="font-mono text-[10px] bg-transparent border-b border-zinc-800 px-0 py-2 w-full max-w-xs tracking-[0.2em] focus:outline-none focus:border-cyan-500/50 transition-all"
           />
         </div>
-
         {isLoading ? (
           <div className="flex justify-center py-40"><Loader2 className="w-5 h-5 animate-spin text-cyan-500/50" /></div>
         ) : (
-          <div className="grid grid-cols-12 auto-rows-[140px] gap-4 grid-flow-dense">
+          <div className="grid grid-cols-12 auto-rows-[140px] gap-4 grid-flow-dense pb-24">
             {sortedWorks.map((work) => (
               <Link key={work.id} href={`/works/${work.slug || work.id}`}>
                 <div className={`group relative overflow-hidden bg-zinc-950 border transition-all duration-1000 cursor-pointer ${getGridStyles(work.rating || 0, work.tCode || "")}`}>
-                  <img
-                    src={work.rating >= 4 ? work.imageUrl : work.thumbnailUrl}
-                    className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-1000"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-3 left-3 font-mono text-[8px] text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {work.tCode} // {work.sovereignId}
-                  </div>
+                  <img src={work.rating >= 4 ? work.imageUrl : work.thumbnailUrl} className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-1000" loading="lazy" />
+                  <div className="absolute bottom-3 left-3 font-mono text-[8px] text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">ID_{work.tCode} // {work.sovereignId}</div>
                 </div>
               </Link>
             ))}

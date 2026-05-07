@@ -12,6 +12,21 @@ export default function Home() {
   });
 
   return (
+    <div>
+      <section className="w-full py-20 border-b border-zinc-900 bg-zinc-950/20">
+        <div className="max-w-7xl mx-auto px-6">
+          <Link href="/crucible">
+            <div className="group cursor-pointer space-y-4 border border-cyan-500/30 p-12 transition-all duration-700 hover:bg-cyan-500/5 shadow-[0_0_50px_-20px_rgba(0,255,204,0.1)]">
+              <div className="flex justify-between items-start">
+                <h2 className="text-6xl md:text-8xl font-light tracking-tighter text-zinc-100 group-hover:text-cyan-400 transition-colors">THE CRUCIBLE</h2>
+                <span className="font-mono text-xs text-cyan-500 tracking-[0.5em] pt-4">2026_ARCHIVE</span>
+              </div>
+              <p className="font-serif text-xl italic text-zinc-500 max-w-xl">Every gesture irreversible. Every work catalogued. 227 entries currently synchronized.</p>
+            </div>
+          </Link>
+        </div>
+      </section>
+    
     <div className="space-y-0 relative">
       {/* Hero Section */}
       <section className="space-y-8 relative px-4 py-16 sm:py-24">
