@@ -119,3 +119,6 @@ scripts/CY_HYPER_UNIFIED_FEATURE_MATRIX.json
 scripts/crucible_companion.csv
 scripts/crucible_manifest*.csv
 package-lock.json
+scripts/CY_HYPER_UNIFIED_FEATURE_MATRIX.json
+scripts/CY_HYPER_UNIFIED_WEB_REPORT.md
+package-lock.json
