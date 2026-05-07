@@ -200,5 +200,6 @@ export default function Home() {
         <div className="w-16 h-px bg-border mx-auto" />
       </section>
     </div>
+    </div>
   );
 }
