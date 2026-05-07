@@ -3,11 +3,14 @@ import { Link } from "wouter";
 import { Loader2 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
+const CRUCIBLE_PHASE_ID = 120005;
+
 export default function CrucibleWorks() {
   const [search, setSearch] = useState("");
 
   const filter = useMemo(() => ({
-    phase: "Crucible",
+    // Match the verified database phaseId
+    phaseId: CRUCIBLE_PHASE_ID,
     search: search || undefined,
     sort: "year-desc" as const,
   }), [search]);
@@ -25,9 +28,9 @@ export default function CrucibleWorks() {
           </Link>
         </div>
         <h1 className="text-4xl sm:text-5xl font-light tracking-tighter">
-          The <span className="text-primary">Archive</span>
+          The <span className="text-primary text-cyan-400">Archive</span>
         </h1>
-        <p className="font-serif text-lg text-muted-foreground max-w-2xl">
+        <p className="font-serif text-lg text-muted-foreground max-w-2xl italic">
           Every saved work from the Crucible Year. Ordered newest first.
           Each one irreversible. Each one catalogued.
         </p>
@@ -36,8 +39,8 @@ export default function CrucibleWorks() {
             {galleryData?.total ?? "—"} WORKS IN ARCHIVE
           </span>
           <div className="flex items-center gap-1.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            <span className="font-mono text-[10px] text-primary/70 tracking-widest">LIVE</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+            <span className="font-mono text-[10px] text-cyan-500/70 tracking-widest uppercase">Witness Active</span>
           </div>
         </div>
       </header>
@@ -48,13 +51,13 @@ export default function CrucibleWorks() {
           placeholder="SEARCH ARCHIVE..."
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="font-mono text-xs bg-background border border-border px-4 py-2 w-full max-w-sm tracking-widest placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50"
+          className="font-mono text-xs bg-background border border-border px-4 py-2 w-full max-w-sm tracking-widest placeholder:text-muted-foreground/40 focus:outline-none focus:border-cyan-500/50"
         />
       </div>
 
       {isLoading ? (
         <div className="flex justify-center py-24">
-          <Loader2 className="w-6 h-6 animate-spin text-primary" />
+          <Loader2 className="w-6 h-6 animate-spin text-cyan-500" />
         </div>
       ) : galleryData?.items && galleryData.items.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
@@ -62,9 +65,9 @@ export default function CrucibleWorks() {
             <Link key={work.id} href={`/works/${work.slug || work.id}`}>
               <div className="group cursor-pointer bg-background">
                 <div className="w-full overflow-hidden aspect-video bg-card/30">
-                  {work.thumbnailUrl ? (
+                  {work.thumbnailUrl || work.imageUrl ? (
                     <img
-                      src={work.thumbnailUrl}
+                      src={work.thumbnailUrl || work.imageUrl}
                       alt={work.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -75,17 +78,12 @@ export default function CrucibleWorks() {
                   )}
                 </div>
                 <div className="p-4 space-y-1 border-t border-border/50">
-                  <p className="font-mono text-sm text-foreground group-hover:text-primary transition-colors">
+                  <p className="font-mono text-sm text-foreground group-hover:text-cyan-400 transition-colors">
                     {work.title}
                   </p>
                   <p className="font-mono text-[10px] text-muted-foreground/60">
-                    {work.dateCreated} · {work.dimensions}
+                    {work.dateCreated || work.year} · {work.dimensions || "N/A"}
                   </p>
-                  {work.medium && (
-                    <p className="font-mono text-[10px] text-muted-foreground/40 truncate">
-                      {work.medium}
-                    </p>
-                  )}
                 </div>
               </div>
             </Link>
@@ -93,8 +91,8 @@ export default function CrucibleWorks() {
         </div>
       ) : (
         <div className="border border-dashed border-border/50 p-16 text-center">
-          <p className="font-mono text-xs text-muted-foreground/50">
-            {search ? "NO WORKS MATCH YOUR SEARCH" : "NO WORKS IN ARCHIVE YET"}
+          <p className="font-mono text-xs text-muted-foreground/50 uppercase">
+            {search ? "Zero Matches in Archive" : "Archive Empty / Pending Sync"}
           </p>
         </div>
       )}
