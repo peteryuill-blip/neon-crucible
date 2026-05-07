@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { Loader2 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
-const CRUCIBLE_PHASE_ID = 666;
+const CRUCIBLE_PHASE_ID = 60606;
 
 export default function CrucibleWorks() {
   const [search, setSearch] = useState("");
