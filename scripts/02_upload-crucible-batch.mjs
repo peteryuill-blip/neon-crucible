@@ -237,7 +237,7 @@ async function main() {
 
   // Get Crucible phase ID
   const [phaseRows] = await conn.execute(
-    "SELECT id FROM phases WHERE code = 'Crucible' LIMIT 1"
+    "SELECT id FROM phases WHERE code = '60606' LIMIT 1"
   );
   if (!phaseRows.length) {
     console.error("Crucible phase not found. Run 01_migration.sql first.");
