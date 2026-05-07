@@ -72,8 +72,11 @@ function PublicRouter() {
         <Route path="/works" component={Works} />
         <Route path="/works/:slug" component={WorkDetail} />
         <Route path="/practice" component={Practice} />
-        <Route path="/crucible" component={Crucible} />
-        <Route path="/crucible/works" component={CrucibleWorks} />
+        <Route path="/crucible" component={CrucibleIntro} />
+        <Route path="/crucible/paintings" component={CruciblePaintings} />
+<Route path="/crucible/materials" component={CrucibleMaterials} />
+<Route path="/crucible/time" component={CrucibleTime} />
+<Route path="/crucible/anatomy" component={CrucibleAnatomy} />
         <Route path="/neon" component={Neon} />
         <Route path="/neon/identity" component={NeonIdentity} />
         <Route path="/about" component={About} />
