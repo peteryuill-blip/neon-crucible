@@ -20,6 +20,7 @@ import Descent from "./pages/Descent";
 import WorkDetail from "./pages/WorkDetail";
 import Practice from "./pages/Practice";
 import Crucible from "./pages/Crucible";
+import CrucibleWorks from "./pages/CrucibleWorks";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminWorks from "./pages/admin/AdminWorks";
 import AdminPhases from "./pages/admin/AdminPhases";
