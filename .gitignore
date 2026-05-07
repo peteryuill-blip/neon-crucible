@@ -111,3 +111,7 @@ image_export/full/
 image_export/thumbs/
 image_export_*.tar.gz
 package-lock.json
+scripts/CY_HYPER_UNIFIED_FEATURE_MATRIX.json
+scripts/crucible_companion.csv
+scripts/crucible_manifest*.csv
+package-lock.json
