@@ -742,6 +742,7 @@ export async function getCollectionStatistics(): Promise<CollectionStatistics> {
 
 export interface GalleryFilter {
   phase?: string;      // Phase code e.g. "PH1", "NE"
+  excludePhase?: string; // Exclude a phase code e.g. "Crucible"
   series?: string;     // Series name
   year?: string;       // Year string e.g. "2025"
   medium?: string;     // Medium string
@@ -765,6 +766,17 @@ export async function getGalleryWorks(filter: GalleryFilter = {}): Promise<Work[
       conditions.push(eq(works.phaseId, phaseResult[0].id));
     } else {
       return []; // Invalid phase code
+    }
+  }
+
+  // Exclude phase filter
+  if (filter.excludePhase) {
+    const excludeResult = await db.select({ id: phases.id })
+      .from(phases)
+      .where(eq(phases.code, filter.excludePhase))
+      .limit(1);
+    if (excludeResult.length > 0) {
+      conditions.push(sql`${works.phaseId} != ${excludeResult[0].id} OR ${works.phaseId} IS NULL`);
     }
   }
 
@@ -833,6 +845,16 @@ export async function getGalleryWorksCount(filter: GalleryFilter = {}): Promise<
       conditions.push(eq(works.phaseId, phaseResult[0].id));
     } else {
       return 0;
+    }
+  }
+
+  if (filter.excludePhase) {
+    const excludeResult = await db.select({ id: phases.id })
+      .from(phases)
+      .where(eq(phases.code, filter.excludePhase))
+      .limit(1);
+    if (excludeResult.length > 0) {
+      conditions.push(sql`${works.phaseId} != ${excludeResult[0].id} OR ${works.phaseId} IS NULL`);
     }
   }
 

@@ -460,6 +460,7 @@ export const appRouter = router({
     getAll: publicProcedure
       .input(z.object({
         phase: z.string().optional(),
+        excludePhase: z.string().optional(),
         series: z.string().optional(),
         year: z.string().optional(),
         medium: z.string().optional(),

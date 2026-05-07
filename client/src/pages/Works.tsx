@@ -23,6 +23,7 @@ export default function Works() {
   const filter = useMemo(() => ({
     search: search || undefined,
     phase: phaseFilter !== "all" ? phaseFilter : undefined,
+    excludePhase: phaseFilter === "all" ? "Crucible" : undefined,
     series: seriesFilter !== "all" ? seriesFilter : undefined,
     year: yearFilter !== "all" ? yearFilter : undefined,
     medium: mediumFilter !== "all" ? mediumFilter : undefined,
