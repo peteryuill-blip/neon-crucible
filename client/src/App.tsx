@@ -20,6 +20,10 @@ import Descent from "./pages/Descent";
 import WorkDetail from "./pages/WorkDetail";
 import Practice from "./pages/Practice";
 import Crucible from "./pages/Crucible";
+import CrucibleWorks from "./pages/CrucibleWorks";
+import CrucibleMaterials from "./pages/CrucibleMaterials";
+import CrucibleTime from "./pages/CrucibleTime";
+import CrucibleAnatomy from "./pages/CrucibleAnatomy";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminWorks from "./pages/admin/AdminWorks";
 import AdminPhases from "./pages/admin/AdminPhases";
@@ -67,15 +71,20 @@ function PublicRouter() {
     <Layout>
       <Switch>
         <Route path="/" component={Home} />
+        {/* Crucible sub-pages — must come before /crucible to match correctly */}
+        <Route path="/crucible/works" component={CrucibleWorks} />
+        <Route path="/crucible/materials" component={CrucibleMaterials} />
+        <Route path="/crucible/time" component={CrucibleTime} />
+        <Route path="/crucible/anatomy" component={CrucibleAnatomy} />
+        <Route path="/crucible" component={Crucible} />
         {/* Primary navigation */}
         <Route path="/works" component={Works} />
         <Route path="/works/:slug" component={WorkDetail} />
         <Route path="/practice" component={Practice} />
-        <Route path="/crucible" component={Crucible} />
         <Route path="/neon" component={Neon} />
         <Route path="/neon/identity" component={NeonIdentity} />
         <Route path="/about" component={About} />
-        {/* Secondary or legacy pages, still accessible but not in primary nav */}
+        {/* Secondary / legacy */}
         <Route path="/archive" component={Archive} />
         <Route path="/statistics" component={Statistics} />
         <Route path="/commissions" component={Commissions} />

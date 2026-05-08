@@ -5,16 +5,26 @@ import { useState } from "react";
 import { SearchDialog } from "./SearchDialog";
 import { useAuth } from "@/_core/hooks/useAuth";
 
+const CRUCIBLE_SUB_PAGES = [
+  { href: "/crucible",          label: "Overview"  },
+  { href: "/crucible/works",    label: "The Archive" },
+  { href: "/crucible/materials",label: "Materials"  },
+  { href: "/crucible/time",     label: "Time"       },
+  { href: "/crucible/anatomy",  label: "Anatomy"    },
+];
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const { user } = useAuth();
 
+  const inCrucible = location === "/crucible" || location.startsWith("/crucible/");
+
   const navItems = [
+    { href: "/crucible", label: "The Crucible", icon: Flame },
     { href: "/works", label: "Works", icon: Grid },
     { href: "/practice", label: "The Practice", icon: BookOpen },
-    { href: "/crucible", label: "The Crucible", icon: Flame },
     { href: "/neon", label: "Neon", icon: Eye },
     { href: "/about", label: "About", icon: User },
     ...(user?.role === "admin" ? [{ href: "/manage", label: "Manage", icon: Settings }] : []),
@@ -69,24 +79,45 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {navItems.map((item) => {
               const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
               return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <div
-                    className={cn(
-                      "flex items-center gap-4 py-3 border-b border-border/30",
-                      isActive ? "text-primary font-medium" : "text-foreground hover:text-primary"
-                    )}
-                  >
-                    <item.icon className="w-4 h-4" />
-                    <span className="text-sm">{item.label}</span>
-                    {item.href === "/crucible" && (
-                      <span className="ml-auto font-mono text-[10px] text-primary/60 animate-pulse">LIVE</span>
-                    )}
-                  </div>
-                </Link>
+                <div key={item.href}>
+                  <Link href={item.href} onClick={() => setMobileMenuOpen(false)}>
+                    <div
+                      className={cn(
+                        "flex items-center gap-4 py-3 border-b border-border/30",
+                        isActive ? "text-primary font-medium" : "text-foreground hover:text-primary"
+                      )}
+                    >
+                      <item.icon className="w-4 h-4" />
+                      <span className="text-sm">{item.label}</span>
+                      {item.href === "/crucible" && (
+                        <span className="ml-auto font-mono text-[10px] text-primary/60 animate-pulse">LIVE</span>
+                      )}
+                    </div>
+                  </Link>
+
+                  {/* Mobile Crucible sub-nav */}
+                  {item.href === "/crucible" && inCrucible && (
+                    <div className="pl-8 mt-1 mb-2 space-y-1">
+                      {CRUCIBLE_SUB_PAGES.map((sub) => {
+                        const subActive = location === sub.href;
+                        return (
+                          <Link key={sub.href} href={sub.href} onClick={() => setMobileMenuOpen(false)}>
+                            <div
+                              className={cn(
+                                "py-2 text-xs font-mono tracking-wider border-l border-border/40 pl-3",
+                                subActive
+                                  ? "text-primary border-primary/50"
+                                  : "text-muted-foreground hover:text-foreground"
+                              )}
+                            >
+                              {sub.label.toUpperCase()}
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </nav>
@@ -113,23 +144,48 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {navItems.map((item) => {
               const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
               return (
-                <Link key={item.href} href={item.href}>
-                  <div
-                    className={cn(
-                      "group flex items-center gap-3 lg:gap-4 cursor-pointer transition-all duration-300 px-2 py-2.5 rounded-none",
-                      isActive
-                        ? "text-primary translate-x-2"
-                        : "text-muted-foreground hover:text-foreground hover:translate-x-1"
-                    )}
-                  >
-                    <item.icon className={cn("w-4 h-4 shrink-0", isActive && "animate-pulse")} />
-                    <span className="text-sm truncate">{item.label}</span>
-                    {item.href === "/crucible" && (
-                      <span className="ml-auto font-mono text-[9px] text-primary/60 animate-pulse hidden lg:inline">LIVE</span>
-                    )}
-                    {isActive && <span className="ml-auto text-xs animate-blink hidden lg:inline">_</span>}
-                  </div>
-                </Link>
+                <div key={item.href}>
+                  <Link href={item.href}>
+                    <div
+                      className={cn(
+                        "group flex items-center gap-3 lg:gap-4 cursor-pointer transition-all duration-300 px-2 py-2.5 rounded-none",
+                        isActive
+                          ? "text-primary translate-x-2"
+                          : "text-muted-foreground hover:text-foreground hover:translate-x-1"
+                      )}
+                    >
+                      <item.icon className={cn("w-4 h-4 shrink-0", isActive && "animate-pulse")} />
+                      <span className="text-sm truncate">{item.label}</span>
+                      {item.href === "/crucible" && (
+                        <span className="ml-auto font-mono text-[9px] text-primary/60 animate-pulse hidden lg:inline">LIVE</span>
+                      )}
+                      {isActive && <span className="ml-auto text-xs animate-blink hidden lg:inline">_</span>}
+                    </div>
+                  </Link>
+
+                  {/* Desktop Crucible sub-nav — expands when inside /crucible */}
+                  {item.href === "/crucible" && inCrucible && (
+                    <div className="ml-7 mt-1 mb-2 space-y-0.5 border-l border-border/40 pl-3">
+                      {CRUCIBLE_SUB_PAGES.map((sub) => {
+                        const subActive = location === sub.href;
+                        return (
+                          <Link key={sub.href} href={sub.href}>
+                            <div
+                              className={cn(
+                                "py-1.5 text-[11px] font-mono tracking-wider transition-all duration-200",
+                                subActive
+                                  ? "text-primary translate-x-1"
+                                  : "text-muted-foreground hover:text-foreground hover:translate-x-0.5"
+                              )}
+                            >
+                              {sub.label.toUpperCase()}
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </div>
