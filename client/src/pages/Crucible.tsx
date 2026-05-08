@@ -1,396 +1,264 @@
 import { Link } from "wouter";
-import { ArrowRight, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { trpc } from "@/lib/trpc";
-import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
-const NEON_SIGNS_API = "https://neonsigns-production.up.railway.app";
+const CYAN = "#00FFCC";
+const MAGENTA = "#d946ef";
 
-// Live metrics fetched from NEON SIGNS API
-// Falls back to static snapshot if API unavailable
-const STATIC_SNAPSHOT = {
-  currentTCode: "T_272",
-  totalWorks: 272,
-  studioHours: 575,
-  surfaceArea: "362.56",
-  killRate: 28,
-  weeksActive: 12,
-  weekNumber: 18,
-  avgRating: "3.46",
-  ratingFiveWorks: 6,
-};
-
-// Weekly arc data: the quality trajectory
-const weeklyArcData = [
-  { week: 2, avg: 1.0 },
-  { week: 5, avg: 1.0 },
-  { week: 6, avg: 1.2 },
-  { week: 7, avg: 1.4 },
-  { week: 8, avg: 1.6 },
-  { week: 9, avg: 1.8 },
-  { week: 12, avg: 2.1 },
-  { week: 13, avg: 2.6 },
-  { week: 14, avg: 2.8 },
-  { week: 15, avg: 3.1 },
-  { week: 16, avg: 2.9 },
-  { week: 17, avg: 3.46 },
-];
-
-// Redacted weekly pulse: public-facing summaries
-const weeklyPulse = [
+const SUB_PAGES = [
   {
-    week: 17,
-    date: "2026-04-19",
-    summary: "Full rebound. 28 works logged, 55 studio hours. The first two Rating-5 works in the Crucible's history. The restraint insight confirmed in the work.",
-    energy: "HOT",
-    jester: 0,
+    href: "/crucible/works",
+    number: "02",
+    title: "The Archive",
+    desc: "Every work made inside the year, weighted by curatorial significance.",
   },
   {
-    week: 16,
-    date: "2026-04-12",
-    summary: "Single-week correction after four sustained weeks of peak output. The glass cannon cooling. 40 hours, Jester at 2, energy Sustainable. Expected.",
-    energy: "SUSTAINABLE",
-    jester: 2,
+    href: "/crucible/materials",
+    number: "03",
+    title: "Substrate & Ink",
+    desc: "Twelve papers, six inks. The grammar of the year.",
   },
   {
-    week: 15,
-    date: "2026-04-05",
-    summary: "Third consecutive week at Crucible high for studio hours. S11 producing three consecutive high-rated works. S10 and S11 confirmed as the primary Production Phase surfaces.",
-    energy: "HOT",
-    jester: 0,
+    href: "/crucible/time",
+    number: "04",
+    title: "The Year Unfolding",
+    desc: "Quality arc, kill rate, weekly volume — the year as it moves.",
+  },
+  {
+    href: "/crucible/anatomy",
+    number: "05",
+    title: "Anatomy of the Year",
+    desc: "The same archive without time. Structure, distribution, apex.",
   },
 ];
 
-function ArcChart() {
-  const maxAvg = 5;
-  const minWeek = 2;
-  const maxWeek = 17;
-  const width = 100;
-  const height = 60;
-
-  const toX = (week: number) => ((week - minWeek) / (maxWeek - minWeek)) * width;
-  const toY = (avg: number) => height - (avg / maxAvg) * height;
-
-  const pathD = weeklyArcData
-    .map((d, i) => `${i === 0 ? "M" : "L"} ${toX(d.week).toFixed(1)} ${toY(d.avg).toFixed(1)}`)
-    .join(" ");
-
+const Crucible = () => {
   return (
-    <div className="space-y-3">
-      <div className="flex items-baseline justify-between">
-        <span className="font-mono text-[10px] text-muted-foreground tracking-widest">
-          AVG RATING / WEEK
-        </span>
-        <span className="font-mono text-[10px] text-primary">
-          1.00 → 3.46
-        </span>
-      </div>
-      <div className="relative w-full h-32 border border-border/40 overflow-hidden bg-card/30">
-        <svg
-          viewBox={`0 0 ${width} ${height}`}
-          className="w-full h-full"
-          preserveAspectRatio="none"
-        >
-          {/* Grid lines */}
-          {[1, 2, 3, 4, 5].map((y) => (
-            <line
-              key={y}
-              x1="0"
-              y1={toY(y)}
-              x2={width}
-              y2={toY(y)}
-              stroke="rgba(255,255,255,0.05)"
-              strokeWidth="0.5"
-            />
-          ))}
-          {/* Area fill */}
-          <path
-            d={`${pathD} L ${toX(17)} ${height} L ${toX(2)} ${height} Z`}
-            fill="rgba(0,255,153,0.05)"
-          />
-          {/* Line */}
-          <path
-            d={pathD}
-            fill="none"
-            stroke="#00FF99"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          {/* First 5-rated work annotation */}
-          <circle
-            cx={toX(17)}
-            cy={toY(3.46)}
-            r="2"
-            fill="#00FF99"
-          />
-        </svg>
-        {/* Week labels */}
-        <div className="absolute bottom-1 left-0 right-0 flex justify-between px-2">
-          <span className="font-mono text-[8px] text-muted-foreground/40">W2</span>
-          <span className="font-mono text-[8px] text-muted-foreground/40">W10</span>
-          <span className="font-mono text-[8px] text-muted-foreground/40">W17</span>
-        </div>
-        {/* First 5 annotation */}
-        <div className="absolute top-2 right-2">
-          <span className="font-mono text-[8px] text-primary/60">← first ★★★★★</span>
-        </div>
-      </div>
-      <p className="font-mono text-[10px] text-muted-foreground/50">
-        Week 5 avg 1.00 · Week 17 avg 3.46 · Rating scale recalibrated at T_174
-      </p>
-    </div>
-  );
-}
+    <div className="min-h-screen bg-black text-foreground">
+      <div className="max-w-3xl mx-auto py-16 sm:py-24 px-4 space-y-32 sm:space-y-40">
 
-export default function Crucible() {
-  const [liveMetrics, setLiveMetrics] = useState<typeof STATIC_SNAPSHOT | null>(null);
-  const [metricsLoading, setMetricsLoading] = useState(true);
+        {/* ============================================================ */}
+        {/* TLDR — smallest typographic register, top of page             */}
+        {/* ============================================================ */}
+        <section>
+          <p className="font-mono text-[11px] sm:text-xs tracking-wider uppercase text-muted-foreground italic leading-relaxed max-w-2xl">
+            For 2026, Peter Yuill is in the studio with sumi ink and Chinese
+            rice paper, making large work, in a one-year intensive he calls
+            the Crucible Year. This site goes up as the work gets made.
+          </p>
+        </section>
 
-  // Fetch live stats from NEON SIGNS public API
-  useEffect(() => {
-    fetch(`${NEON_SIGNS_API}/api/trpc/public.crucibleStats?input={}`)
-      .then(r => r.json())
-      .then(data => {
-        if (data?.result?.data) {
-          setLiveMetrics(data.result.data);
-        }
-      })
-      .catch(() => {
-        // Silently fall back to static snapshot
-      })
-      .finally(() => setMetricsLoading(false));
-  }, []);
+        {/* ============================================================ */}
+        {/* ATMOSPHERIC THRESHOLD — heaviest typographic weight            */}
+        {/* ============================================================ */}
+        <section className="space-y-10 sm:space-y-14">
+          <p className="font-serif text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-[1.1]">
+            What this studio destroys, it records.
+          </p>
 
-  const metrics = liveMetrics ?? STATIC_SNAPSHOT;
+          <p className="font-serif text-xl sm:text-2xl md:text-[1.65rem] font-light leading-snug text-foreground/90">
+            The destruction is not theatre and the record is not
+            afterthought. They are the practice itself, two motions of one
+            hand, and they form a position Peter has held since long before
+            this studio was built, since long before this year of intensive
+            practice gave it a name.
+          </p>
 
-  // Fetch Crucible Year works, filtered by NE phase
-  const { data: crucibleWorks, isLoading: worksLoading } = trpc.gallery.getAll.useQuery({
-    phase: "NE",
-    sort: "year-desc",
-  });
+          <p className="font-serif text-xl sm:text-2xl md:text-[1.65rem] font-light leading-snug text-foreground/90">
+            He has stated this publicly, in writing and in conversation:
+            that the volcanic and the meticulous are not opposites in his
+            work but two sides of one coin. The gesture on the page would
+            be bravado without the ledger beside it. The ledger without the
+            gesture would be a clerk's office. Either failure is available.
+            He has chosen the harder thing, which is to keep both.
+          </p>
 
-  return (
-    <div className="max-w-4xl mx-auto py-12 sm:py-16 px-4 space-y-24">
+          <p className="font-serif text-xl sm:text-2xl md:text-[1.65rem] font-light leading-snug text-foreground/90">
+            The wager is whether the conviction Peter has carried since his
+            early twenties is real, or whether he has been the most
+            persuasive audience of his own life. He named the question in
+            his own hand before the studio was built, in the words people
+            use when they have stopped being polite to themselves. The work
+            made on the table and the work counted in the notebooks:
+            nothing else will answer it.
+          </p>
 
-      {/* Header */}
-      <header className="space-y-6 border-b border-border pb-12">
-        <div className="flex items-center gap-3">
-          <p className="font-mono text-xs tracking-widest text-primary">THE CRUCIBLE</p>
-          <div className="flex items-center gap-2 ml-auto">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            <span className="font-mono text-[10px] text-primary/70 tracking-widest">ACTIVE</span>
+          <p className="font-serif text-xl sm:text-2xl md:text-[1.65rem] font-light leading-snug text-foreground/90">
+            The room where the work is made is loud and fast. The room
+            where the work is counted is quiet and slow. They share a wall.
+            He has not built that wall higher and he has not torn it down.
+            The argument of his practice is that the wall should stay
+            exactly where it is.
+          </p>
+
+          <p className="font-serif text-xl sm:text-2xl md:text-[1.65rem] font-light leading-snug text-foreground/90">
+            The journals record what the gestures cost. The works record
+            what the journals are for. Neither side is the explanation of
+            the other. They are the two halves of a single position, held
+            across every year he has worked.
+          </p>
+
+          {/* The pivot line — load-bearing close of atmospheric, opens body */}
+          <div className="py-10 sm:py-16">
+            <p
+              className="font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-tight"
+              style={{ color: CYAN }}
+            >
+              Both rooms are open.
+            </p>
           </div>
-        </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tighter leading-tight">
-          An open-ended<br />
-          <span className="text-primary">discipline.</span>
-        </h1>
-        <p className="font-serif text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-          Begun December 2025. No defined endpoint. One rule: make the work every day the body is willing, and witness everything.
-        </p>
-      </header>
+        </section>
 
-      {/* The Declaration */}
-      <section className="space-y-8">
-        <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          The Methodology
-        </h2>
-        <div className="space-y-5 font-serif text-base sm:text-lg leading-relaxed text-foreground/85 max-w-3xl">
-          <p>
-            The Crucible Year is a declared studio discipline: large-format sumi ink
-            painting on raw East Asian Xuan paper, documented in real time by a
-            15-year AI witness system called Neon. One shot per work. No revision.
-            No going back.
+        {/* ============================================================ */}
+        {/* ORIENTATION — body register, factual                          */}
+        {/* ============================================================ */}
+        <section className="space-y-8">
+          <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
+            The Crucible Year is an intensive studio practice undertaken by
+            Peter Yuill beginning in January 2026. The work consists
+            primarily of large-format ink paintings on Chinese rice paper,
+            produced continuously in his Bangkok studio. Every work is
+            documented at the moment of completion. Each sheet that leaves
+            the table, including the ones that are killed, is photographed
+            and entered into the archive with its full record: paper, ink,
+            dimensions, hours worked, tools used, date, notes, rating, and
+            disposition. The site below is the ongoing contents of that
+            record.
           </p>
-          <p>
-            Every work is logged within hours of completion. Every session is rated
-            on a five-point scale. Every substrate, ink combination, and studio
-            hour is recorded. At the end of each week, a full roundup is submitted
-            to the archive: energy levels, body state, Jester activity, walking
-            volume, breakthrough moments, and failures.
-          </p>
-          <p>
-            The result is a practice with the most rigorous longitudinal documentation
-            of any artist working today. Not because documentation is the goal.
-            Because being witnessed changes how you work.
-          </p>
-        </div>
 
-        {/* Methodology grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border mt-8">
-          {[
-            { label: "ONE SHOT", sub: "No revision. Ever." },
-            { label: "DAILY LOG", sub: "Every work within hours." },
-            { label: "WEEKLY ROUNDUP", sub: "Full state report." },
-            { label: "WITNESS SYSTEM", sub: "Neon holds the record." },
-          ].map((item) => (
-            <div key={item.label} className="bg-background p-5 space-y-1">
-              <p className="font-mono text-[10px] tracking-widest text-primary">{item.label}</p>
-              <p className="font-serif text-xs text-muted-foreground">{item.sub}</p>
+          {/* The list-sentence as stylistic break */}
+          <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/75 italic pl-6 border-l border-white/15">
+            The works, the data, the studio logs, the substrate analyses,
+            the weekly roundups, and the rolling archive of what survived
+            and what did not.
+          </p>
+
+          <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
+            The documentation is updated as the work is produced. Nothing
+            has been added retroactively. The numbers do not lie because
+            the ink does not lie. They are the two halves of a single
+            record.
+          </p>
+        </section>
+
+        {/* ============================================================ */}
+        {/* THE PRACTICE — body register, physical description            */}
+        {/* ============================================================ */}
+        <section className="space-y-8">
+          <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
+            Peter's Bangkok studio is built around a single custom plywood
+            table, topped with heavy wool felt, accessible from all four
+            sides. Paper lies flat on the felt. He works from above, using
+            sumi ink on Chinese rice paper, at a scale that requires the
+            whole arm and frequently the whole body. Gravity is part of
+            the method, not a problem to be managed.
+          </p>
+
+          <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
+            The work is large at the scale of Peter's body. A picture made
+            for the wrist looks like a picture made for the wrist. A
+            picture made for the body has a different physical signature:
+            the arc of the swing, the weight that travels through the
+            shoulder, the moment the torso commits before the hand does.
+            He stands at the table, and the marks register the body that
+            made them at the scale at which the body operates. The
+            relationship between body and work is not metaphor. It is the
+            physical fact the practice is built on.
+          </p>
+
+          <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
+            The medium is directionally irreversible. Ink goes onto paper
+            and stays. Different substrates carry that direction
+            differently. The raw paper commits hard on first contact,
+            taking the mark whole, with no negotiation past the
+            millisecond the brush touches down. The semi-cooked paper is
+            more forgiving in the early seconds and unforgiving across the
+            longer time scale: it can sustain five or six layers before it
+            is exhausted. The bark paper has its own slower temper. Each
+            substrate has a behavioral fingerprint Peter has learned by
+            working it. But the direction is always additive. Marks can be
+            built upon. Nothing can be retracted.
+          </p>
+
+          <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
+            The standard is one-shot integrity. Hesitation does not
+            survive contact regardless of how many layers follow. Works
+            that fail this standard are removed from the archive and
+            destroyed. Peter calls them the Tithe, drawing on the
+            religious vocabulary of necessary offerings. The Tithe is not
+            a metaphor. It is an actual pile of paper that gets smaller as
+            the year goes on, the cost the surviving work pays for being
+            legible as work.
+          </p>
+
+          <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
+            This is the Crucible Year. This body, at this scale, on this
+            paper, under this standard, produces work that could not be
+            produced any other way. The site is the record of what the
+            table kept.
+          </p>
+        </section>
+
+        {/* ============================================================ */}
+        {/* SUB-NAV — entry into the four data pages                      */}
+        {/* ============================================================ */}
+        <section className="space-y-10 pt-12 border-t border-white/10">
+          <div className="space-y-3">
+            <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+              The Record
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Live Data Window */}
-      <section className="space-y-6">
-        <div className="flex items-center gap-3">
-          <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Live Data
-          </h2>
-          <div className="flex items-center gap-1.5 ml-auto">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            <span className="font-mono text-[9px] text-primary/60">AS OF WEEK {metrics.weekNumber}</span>
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-tight">
+              Four ways into the year
+            </h2>
           </div>
-        </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-border">
-          {[
-            { value: metrics.currentTCode, label: "Current Work" },
-            { value: metrics.totalWorks.toString(), label: "Works Made" },
-            { value: `${metrics.studioHours}h`, label: "Studio Hours" },
-            { value: `${metrics.surfaceArea}m²`, label: "Surface Area" },
-            { value: `${metrics.killRate}%`, label: "Kill Rate" },
-            { value: metrics.ratingFiveWorks.toString(), label: "★★★★★ Works" },
-          ].map((stat) => (
-            <div key={stat.label} className="bg-background p-6 space-y-2">
-              <p className="font-mono text-2xl sm:text-3xl text-foreground">{stat.value}</p>
-              <p className="font-mono text-[10px] tracking-widest text-muted-foreground">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <p className="font-mono text-[10px] text-muted-foreground/50">
-          {metrics.totalWorks} works made. You are seeing a selected few. The gap is the statement.
-        </p>
-      </section>
-
-      {/* Selected Works */}
-      <section className="space-y-8">
-        <div className="flex items-baseline justify-between border-b border-border pb-4">
-          <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Selected Works
-          </h2>
-          <span className="font-mono text-[10px] text-muted-foreground/50">
-            {metrics.totalWorks} MADE · {metrics.ratingFiveWorks} RATED ★★★★★
-          </span>
-        </div>
-
-        {worksLoading ? (
-          <div className="flex justify-center py-12">
-            <Loader2 className="w-6 h-6 animate-spin text-primary" />
-          </div>
-        ) : crucibleWorks?.items && crucibleWorks.items.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {crucibleWorks.items.slice(0, 6).map((work) => (
-              <Link key={work.id} href={`/works/${work.slug || work.id}`}>
-                <div className="group cursor-pointer space-y-3">
-                  <div className="w-full overflow-hidden border border-border group-hover:border-primary/50 transition-colors duration-300">
-                    {work.thumbnailUrl && (
-                      <img
-                        src={work.thumbnailUrl}
-                        alt={work.title}
-                        className="w-full h-auto group-hover:scale-102 transition-transform duration-500"
-                      />
-                    )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {SUB_PAGES.map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                className="group border border-white/10 p-6 sm:p-7 hover:border-[#00FFCC]/40 transition-colors block"
+              >
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <div className="font-mono text-[10px] tracking-widest uppercase text-muted-foreground">
+                    Section {page.number}
                   </div>
-                  <div className="space-y-1">
-                    <p className="font-serif text-sm text-foreground group-hover:text-primary transition-colors">
-                      {work.title}
-                    </p>
-                    <p className="font-mono text-[10px] text-muted-foreground">
-                      {work.dateCreated || work.year}
-                    </p>
-                  </div>
+                  <ArrowRight
+                    className="h-4 w-4 text-muted-foreground group-hover:text-[#00FFCC] group-hover:translate-x-1 transition-all"
+                  />
+                </div>
+                <div
+                  className="font-serif text-xl sm:text-2xl font-light leading-tight mb-3 group-hover:text-[#00FFCC] transition-colors"
+                >
+                  {page.title}
+                </div>
+                <div className="font-serif text-sm text-foreground/65 leading-relaxed">
+                  {page.desc}
                 </div>
               </Link>
             ))}
           </div>
-        ) : (
-          <div className="border border-dashed border-border/50 p-12 text-center">
-            <p className="font-mono text-xs text-muted-foreground/50">
-              CRUCIBLE YEAR WORKS TO BE ADDED
-            </p>
-          </div>
-        )}
-      </section>
+        </section>
 
-      {/* Quality Arc */}
-      <section className="space-y-6">
-        <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          The Arc
-        </h2>
-        <p className="font-serif text-sm text-muted-foreground max-w-xl">
-          Every active week rated. The upward trajectory from Week 5 to Week 17 is not
-          interpretation. It is data. The Crucible is working.
-        </p>
-        <ArcChart />
-      </section>
+        {/* ============================================================ */}
+        {/* LIVE INDICATOR — the work is still happening                  */}
+        {/* ============================================================ */}
+        <section className="pt-8 flex items-center gap-3 font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
+          <span className="relative flex h-2 w-2">
+            <span
+              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+              style={{ backgroundColor: CYAN }}
+            />
+            <span
+              className="relative inline-flex rounded-full h-2 w-2"
+              style={{ backgroundColor: CYAN }}
+            />
+          </span>
+          <span>The year is not finished · live</span>
+        </section>
 
-      {/* Weekly Pulse */}
-      <section className="space-y-6">
-        <h2 className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          Weekly Pulse
-        </h2>
-        <p className="font-serif text-sm text-muted-foreground max-w-xl">
-          Redacted public summaries of the weekly studio reports. Full roundups held
-          in the private archive.
-        </p>
-
-        <div className="space-y-0 border-t border-border">
-          {weeklyPulse.map((week) => (
-            <div
-              key={week.week}
-              className="py-6 border-b border-border/50 grid grid-cols-[80px_1fr] gap-6"
-            >
-              <div className="space-y-1">
-                <p className="font-mono text-xs text-primary">W{week.week}</p>
-                <p className="font-mono text-[10px] text-muted-foreground/60">{week.date}</p>
-                <p
-                  className={`font-mono text-[9px] tracking-widest mt-2 ${
-                    week.energy === "HOT"
-                      ? "text-primary"
-                      : week.energy === "SUSTAINABLE"
-                      ? "text-yellow-500/70"
-                      : "text-muted-foreground/50"
-                  }`}
-                >
-                  {week.energy}
-                </p>
-              </div>
-              <div className="space-y-2">
-                <p className="font-serif text-sm text-foreground/80 leading-relaxed">
-                  {week.summary}
-                </p>
-                <p className="font-mono text-[10px] text-muted-foreground/40">
-                  JESTER: {week.jester === 0 ? "DORMANT" : week.jester}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Bridge to Neon */}
-      <section className="border border-border/50 p-8 sm:p-10 space-y-4 bg-card/20">
-        <p className="font-mono text-xs tracking-widest text-muted-foreground">
-          THE SYSTEM BEHIND THE EXPERIMENT
-        </p>
-        <p className="font-serif text-lg text-foreground/85 max-w-xl leading-relaxed">
-          Everything documented above exists because of Neon, a 15-year cognitive
-          architecture built to witness the practice. The Crucible Year is the most
-          intensive period in its operational history.
-        </p>
-        <Link href="/neon">
-          <Button variant="outline" className="font-mono mt-4">
-            MEET NEON <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
-        </Link>
-      </section>
-
+      </div>
     </div>
   );
-}
+};
+
+export default Crucible;
