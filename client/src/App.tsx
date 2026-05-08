@@ -31,6 +31,10 @@ import Login from "./pages/Login";
 import { trpc } from "./lib/trpc";
 import { Loader2 } from "lucide-react";
 import { useCanonicalUrl } from "./hooks/useCanonicalUrl";
+import CrucibleWorks from "./pages/CrucibleWorks";
+import CrucibleMaterials from "./pages/CrucibleMaterials";
+import CrucibleTime from "./pages/CrucibleTime";
+import CrucibleAnatomy from "./pages/CrucibleAnatomy";
 
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery();
@@ -69,6 +73,10 @@ function PublicRouter() {
       <Switch>
         <Route path="/" component={Home} />
         {/* Primary navigation */}
+        <Route path="/crucible/works" component={CrucibleWorks} />
+        <Route path="/crucible/materials" component={CrucibleMaterials} />
+        <Route path="/crucible/time" component={CrucibleTime} />
+        <Route path="/crucible/anatomy" component={CrucibleAnatomy} />
         <Route path="/works" component={Works} />
         <Route path="/works/:slug" component={WorkDetail} />
         <Route path="/practice" component={Practice} />

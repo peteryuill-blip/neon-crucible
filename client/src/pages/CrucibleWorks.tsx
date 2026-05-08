@@ -1,101 +1,102 @@
-import { useState, useMemo } from "react";
+import React from "react";
 import { Link } from "wouter";
-import { Loader2 } from "lucide-react";
-import { trpc } from "@/lib/trpc";
+import { trpc } from "../lib/trpc";
+
+interface CrucibleWork {
+  id: number;
+  tCode: string;
+  title: string;
+  slug: string;
+  phaseId: number;
+  rating: number;
+  imageUrl: string;
+  thumbnailUrl: string;
+  dimensions: string;
+  dateCreated: string;
+  medium: string;
+}
+
+function getTCodeIndex(tCode: string): number {
+  return parseInt(tCode.replace("T_", ""), 10);
+}
+
+function getGlowClasses(tCode: string): { resting: string; hover: string } {
+  const idx = getTCodeIndex(tCode);
+  if (idx >= 170) {
+    return { resting: "border-fuchsia-500/20", hover: "hover:shadow-fuchsia-500/30" };
+  }
+  return { resting: "border-cyan-500/20", hover: "hover:shadow-cyan-500/30" };
+}
+
+function getGridSpan(rating: number): string {
+  if (rating === 5) return "col-span-1 sm:col-span-2 row-span-2";
+  if (rating === 4) return "col-span-1 sm:col-span-2 row-span-1";
+  return "col-span-1 row-span-1";
+}
+
+function getImageSource(work: CrucibleWork): string {
+  if (work.rating >= 3) return work.imageUrl;
+  return work.thumbnailUrl;
+}
 
 export default function CrucibleWorks() {
-  const [search, setSearch] = useState("");
-
-  const filter = useMemo(() => ({
+  const { data, isLoading } = trpc.gallery.getAll.useQuery({
     phase: "Crucible",
-    search: search || undefined,
-    sort: "year-desc" as const,
-  }), [search]);
+    sort: "year-desc",
+  });
 
-  const { data: galleryData, isLoading } = trpc.gallery.getAll.useQuery(filter);
+  const works: CrucibleWork[] = React.useMemo(() => {
+    if (!data) return [];
+    const all = Array.isArray(data) ? data : [];
+    const filtered = all.filter((w: any) => w.phaseId === 60606);
+    return filtered.sort((a: CrucibleWork, b: CrucibleWork) => {
+      if (b.rating !== a.rating) return b.rating - a.rating;
+      return getTCodeIndex(a.tCode) - getTCodeIndex(b.tCode);
+    });
+  }, [data]);
 
   return (
-    <div className="max-w-7xl mx-auto py-12 px-4 space-y-10">
-      <header className="space-y-4 border-b border-border pb-8">
-        <div className="flex items-center gap-3">
-          <Link href="/crucible">
-            <span className="font-mono text-xs text-muted-foreground hover:text-primary transition-colors cursor-pointer">
-              ← THE CRUCIBLE
-            </span>
-          </Link>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-light tracking-tighter">
-          The <span className="text-primary">Archive</span>
-        </h1>
-        <p className="font-serif text-lg text-muted-foreground max-w-2xl">
-          Every saved work from the Crucible Year. Ordered newest first.
-          Each one irreversible. Each one catalogued.
-        </p>
-        <div className="flex items-center gap-4">
-          <span className="font-mono text-xs text-muted-foreground">
-            {galleryData?.total ?? "—"} WORKS IN ARCHIVE
-          </span>
-          <div className="flex items-center gap-1.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            <span className="font-mono text-[10px] text-primary/70 tracking-widest">LIVE</span>
-          </div>
-        </div>
-      </header>
-
-      <div className="flex gap-4 items-center">
-        <input
-          type="text"
-          placeholder="SEARCH ARCHIVE..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="font-mono text-xs bg-background border border-border px-4 py-2 w-full max-w-sm tracking-widest placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50"
-        />
+    <div className="max-w-7xl mx-auto py-12 px-4">
+      <div className="mb-8">
+        <Link href="/crucible" className="font-mono text-xs tracking-widest text-muted-foreground uppercase transition-colors duration-300 hover:text-[#00FFCC]">
+          &larr; THE CRUCIBLE
+        </Link>
       </div>
-
+      <div className="space-y-6 mb-12">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tighter leading-tight">The Archive</h1>
+        <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85 max-w-3xl">
+          A complete index of the Crucible phase, ordered by critical weight. Higher-rated works occupy larger grid positions.
+        </p>
+        <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-muted-foreground uppercase">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FFCC] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00FFCC]"></span>
+          </span>
+          <span>LIVE</span>
+          <span className="text-muted-foreground/50">|</span>
+          <span>{works.length} works displayed</span>
+        </div>
+      </div>
       {isLoading ? (
-        <div className="flex justify-center py-24">
-          <Loader2 className="w-6 h-6 animate-spin text-primary" />
-        </div>
-      ) : galleryData?.items && galleryData.items.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-          {galleryData.items.map((work) => (
-            <Link key={work.id} href={`/works/${work.slug || work.id}`}>
-              <div className="group cursor-pointer bg-background">
-                <div className="w-full overflow-hidden aspect-video bg-card/30">
-                  {work.thumbnailUrl ? (
-                    <img
-                      src={work.thumbnailUrl}
-                      alt={work.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="font-mono text-[10px] text-muted-foreground/30">{work.slug}</span>
-                    </div>
-                  )}
-                </div>
-                <div className="p-4 space-y-1 border-t border-border/50">
-                  <p className="font-mono text-sm text-foreground group-hover:text-primary transition-colors">
-                    {work.title}
-                  </p>
-                  <p className="font-mono text-[10px] text-muted-foreground/60">
-                    {work.dateCreated} · {work.dimensions}
-                  </p>
-                  {work.medium && (
-                    <p className="font-mono text-[10px] text-muted-foreground/40 truncate">
-                      {work.medium}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">Loading archive...</div>
+      ) : works.length === 0 ? (
+        <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">No works found in this phase.</div>
       ) : (
-        <div className="border border-dashed border-border/50 p-16 text-center">
-          <p className="font-mono text-xs text-muted-foreground/50">
-            {search ? "NO WORKS MATCH YOUR SEARCH" : "NO WORKS IN ARCHIVE YET"}
-          </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {works.map((work) => {
+            const glow = getGlowClasses(work.tCode);
+            const span = getGridSpan(work.rating);
+            const src = getImageSource(work);
+            return (
+              <Link key={work.id} href={`/works/${work.slug}`} className={`group relative overflow-hidden rounded-sm border ${glow.resting} ${glow.hover} shadow-none transition-all duration-300 hover:shadow-lg ${span}`}>
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-4">
+                  <span className="font-mono text-xs tracking-widest text-[#00FFCC] uppercase">{work.title}</span>
+                  <span className="font-mono text-xs text-muted-foreground mt-1">{work.dimensions}</span>
+                </div>
+                <img src={src} alt={work.title} loading="lazy" className="w-full h-full object-cover" />
+              </Link>
+            );
+          })}
         </div>
       )}
     </div>
