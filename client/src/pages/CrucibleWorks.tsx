@@ -7,6 +7,7 @@ interface CrucibleWork {
   title: string;
   slug: string;
   phaseId: number;
+  rating?: number;
   imageUrl: string;
   thumbnailUrl: string;
   dimensions: string;
@@ -26,11 +27,15 @@ function getGlowClasses(slug: string): { resting: string; hover: string } {
   return { resting: "border-cyan-500/20", hover: "hover:shadow-cyan-500/30" };
 }
 
-function getGridSpan(index: number): string {
-  // No rating data — use position-based sizing for visual variety
-  if (index % 7 === 0) return "col-span-1 sm:col-span-2 row-span-2";
-  if (index % 5 === 0) return "col-span-1 sm:col-span-2 row-span-1";
+function getGridSpan(rating: number): string {
+  if (rating >= 5) return "col-span-1 sm:col-span-2 row-span-2";
+  if (rating >= 4) return "col-span-1 sm:col-span-2 row-span-1";
   return "col-span-1 row-span-1";
+}
+
+function getImageSource(work: CrucibleWork): string {
+  if ((work.rating || 1) >= 3) return work.imageUrl;
+  return work.thumbnailUrl;
 }
 
 export default function CrucibleWorks() {
@@ -38,12 +43,15 @@ export default function CrucibleWorks() {
 
   const works: CrucibleWork[] = React.useMemo(() => {
     if (!data) return [];
-    // API returns { items: [...] }
     const items = (data as any).items || [];
     const filtered = items.filter((w: any) => w.phaseId === 60606);
-    // Sort by tCode ascending
     return filtered.sort((a: CrucibleWork, b: CrucibleWork) => {
-      return getTCodeIndex(a.slug) - getTCodeIndex(b.slug);
+      // Higher rating first
+      const ratingA = a.rating || 1;
+      const ratingB = b.rating || 1;
+      if (ratingB !== ratingA) return ratingB - ratingA;
+      // Higher t-code first (T_294 before T_001)
+      return getTCodeIndex(b.slug) - getTCodeIndex(a.slug);
     });
   }, [data]);
 
@@ -59,7 +67,7 @@ export default function CrucibleWorks() {
       <div className="space-y-6 mb-12">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tighter leading-tight">The Archive</h1>
         <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85 max-w-3xl">
-          A complete index of the Crucible phase. Works are ordered by T-code, with visual weight distributed across the grid.
+          Ordered by rating, then by T-code descending. The strongest work commands the largest position.
         </p>
         <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-muted-foreground uppercase">
           <span className="relative flex h-2 w-2">
@@ -77,29 +85,25 @@ export default function CrucibleWorks() {
       )}
 
       {errorMsg && (
-        <div className="font-mono text-xs tracking-widest text-red-400 uppercase">
-          Error: {errorMsg}
-        </div>
+        <div className="font-mono text-xs tracking-widest text-red-400 uppercase">Error: {errorMsg}</div>
       )}
 
       {!isLoading && !error && works.length === 0 && (
-        <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-          No works found in this phase.
-        </div>
+        <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">No works found in this phase.</div>
       )}
 
       {!isLoading && !error && works.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {works.map((work, index) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+          {works.map((work) => {
             const glow = getGlowClasses(work.slug);
-            const span = getGridSpan(index);
-            const src = work.imageUrl || work.thumbnailUrl;
+            const span = getGridSpan(work.rating || 1);
+            const src = getImageSource(work);
             return (
               <Link key={work.id} href={`/works/${work.slug}`} className={`group relative overflow-hidden rounded-sm border ${glow.resting} ${glow.hover} shadow-none transition-all duration-300 hover:shadow-lg ${span}`}>
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-4">
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-3">
                   <span className="font-mono text-xs tracking-widest text-[#00FFCC] uppercase">{work.title}</span>
-                  <span className="font-mono text-xs text-muted-foreground mt-1">{work.dimensions}</span>
                   <span className="font-mono text-xs text-muted-foreground mt-1">{work.slug}</span>
+                  <span className="font-mono text-xs text-muted-foreground mt-1">{work.dimensions}</span>
                 </div>
                 <img src={src} alt={work.title} loading="lazy" className="w-full h-full object-cover" />
               </Link>
