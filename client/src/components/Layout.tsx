@@ -12,9 +12,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
 
   const navItems = [
-    { href: "/crucible", label: "The Crucible", icon: Flame },
     { href: "/works", label: "Works", icon: Grid },
     { href: "/practice", label: "The Practice", icon: BookOpen },
+    { href: "/crucible", label: "The Crucible", icon: Flame },
     { href: "/neon", label: "Neon", icon: Eye },
     { href: "/about", label: "About", icon: User },
     ...(user?.role === "admin" ? [{ href: "/manage", label: "Manage", icon: Settings }] : []),
