@@ -7,25 +7,25 @@ const MAGENTA = "#d946ef";
 const SUB_PAGES = [
   {
     href: "/crucible/works",
-    number: "02",
+    number: "01",
     title: "The Archive",
     desc: "Every work made inside the year, weighted by curatorial significance.",
   },
   {
     href: "/crucible/materials",
-    number: "03",
+    number: "02",
     title: "Substrate & Ink",
     desc: "Twelve papers, six inks. The grammar of the year.",
   },
   {
     href: "/crucible/time",
-    number: "04",
+    number: "03",
     title: "The Year Unfolding",
     desc: "Quality arc, kill rate, weekly volume — the year as it moves.",
   },
   {
     href: "/crucible/anatomy",
-    number: "05",
+    number: "04",
     title: "Anatomy of the Year",
     desc: "The same archive without time. Structure, distribution, apex.",
   },
@@ -45,6 +45,43 @@ const Crucible = () => {
             rice paper, making large work, in a one-year intensive he calls
             the Crucible Year. This site goes up as the work gets made.
           </p>
+        </section>
+
+        {/* ============================================================ */}
+        {/* LARGE CRUCIBLE NAVIGATION — top of page, prominent            */}
+        {/* ============================================================ */}
+        <section className="space-y-8">
+          <div className="space-y-3">
+            <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+              Enter the Crucible
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light tracking-tight leading-tight">
+              Four ways into the year
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {SUB_PAGES.map((page) => (
+              <Link
+                key={page.href}
+                href={page.href}
+                className="group border border-white/10 p-8 sm:p-10 hover:border-[#00FFCC]/40 transition-all duration-300 block"
+              >
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <div className="font-mono text-xs tracking-widest uppercase text-muted-foreground">
+                    Section {page.number}
+                  </div>
+                  <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-[#00FFCC] group-hover:translate-x-1 transition-all" />
+                </div>
+                <div className="font-serif text-2xl sm:text-3xl font-light leading-tight mb-4 group-hover:text-[#00FFCC] transition-colors">
+                  {page.title}
+                </div>
+                <div className="font-serif text-base text-foreground/65 leading-relaxed">
+                  {page.desc}
+                </div>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* ============================================================ */}
@@ -97,12 +134,8 @@ const Crucible = () => {
             across every year he has worked.
           </p>
 
-          {/* The pivot line — load-bearing close of atmospheric, opens body */}
           <div className="py-10 sm:py-16">
-            <p
-              className="font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-tight"
-              style={{ color: CYAN }}
-            >
+            <p className="font-serif text-2xl sm:text-3xl md:text-4xl font-light tracking-tight" style={{ color: CYAN }}>
               Both rooms are open.
             </p>
           </div>
@@ -125,7 +158,6 @@ const Crucible = () => {
             record.
           </p>
 
-          {/* The list-sentence as stylistic break */}
           <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/75 italic pl-6 border-l border-white/15">
             The works, the data, the studio logs, the substrate analyses,
             the weekly roundups, and the rolling archive of what survived
@@ -199,7 +231,7 @@ const Crucible = () => {
         </section>
 
         {/* ============================================================ */}
-        {/* SUB-NAV — entry into the four data pages                      */}
+        {/* SECONDARY NAV — bottom of page, smaller                       */}
         {/* ============================================================ */}
         <section className="space-y-10 pt-12 border-t border-white/10">
           <div className="space-y-3">
@@ -222,13 +254,9 @@ const Crucible = () => {
                   <div className="font-mono text-[10px] tracking-widest uppercase text-muted-foreground">
                     Section {page.number}
                   </div>
-                  <ArrowRight
-                    className="h-4 w-4 text-muted-foreground group-hover:text-[#00FFCC] group-hover:translate-x-1 transition-all"
-                  />
+                  <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-[#00FFCC] group-hover:translate-x-1 transition-all" />
                 </div>
-                <div
-                  className="font-serif text-xl sm:text-2xl font-light leading-tight mb-3 group-hover:text-[#00FFCC] transition-colors"
-                >
+                <div className="font-serif text-xl sm:text-2xl font-light leading-tight mb-3 group-hover:text-[#00FFCC] transition-colors">
                   {page.title}
                 </div>
                 <div className="font-serif text-sm text-foreground/65 leading-relaxed">
@@ -244,14 +272,8 @@ const Crucible = () => {
         {/* ============================================================ */}
         <section className="pt-8 flex items-center gap-3 font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
           <span className="relative flex h-2 w-2">
-            <span
-              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-              style={{ backgroundColor: CYAN }}
-            />
-            <span
-              className="relative inline-flex rounded-full h-2 w-2"
-              style={{ backgroundColor: CYAN }}
-            />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: CYAN }} />
+            <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: CYAN }} />
           </span>
           <span>The year is not finished · live</span>
         </section>
