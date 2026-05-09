@@ -4,7 +4,6 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import CrucibleWorkDetail from "@/pages/CrucibleWorkDetail";
-import CrucibleWorkDetail from "@/pages/CrucibleWorkDetail";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";

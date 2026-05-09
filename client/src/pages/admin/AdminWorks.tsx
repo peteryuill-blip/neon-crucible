@@ -28,6 +28,16 @@ interface WorkForm {
   neonReading: string;
   seriesName: string;
   isPublished: boolean;
+  isKilled: boolean;
+  rating: number;
+  isKilled: boolean;
+  rating: number;
+  isKilled: boolean;
+  rating: number;
+  isKilled: boolean;
+  rating: number;
+  isKilled: boolean;
+  rating: number;
   sortOrder: number;
 }
 
@@ -46,6 +56,16 @@ const emptyForm: WorkForm = {
   neonReading: "",
   seriesName: "",
   isPublished: true,
+  isKilled: false,
+  rating: 1,
+  isKilled: false,
+  rating: 1,
+  isKilled: false,
+  rating: 1,
+  isKilled: false,
+  rating: 1,
+  isKilled: false,
+  rating: 1,
   sortOrder: 0,
 };
 
@@ -142,6 +162,16 @@ export default function AdminWorks() {
       neonReading: work.neonReading || "",
       seriesName: work.seriesName || "",
       isPublished: work.isPublished ?? true,
+      isKilled: work.isKilled ?? false,
+      rating: work.rating || 1,
+      isKilled: work.isKilled ?? false,
+      rating: work.rating || 1,
+      isKilled: work.isKilled ?? false,
+      rating: work.rating || 1,
+      isKilled: work.isKilled ?? false,
+      rating: work.rating || 1,
+      isKilled: work.isKilled ?? false,
+      rating: work.rating || 1,
       sortOrder: work.sortOrder || 0,
     });
     setIsEditing(true);
@@ -169,6 +199,16 @@ export default function AdminWorks() {
       neonReading: form.neonReading || undefined,
       seriesName: form.seriesName || undefined,
       isPublished: form.isPublished,
+      isKilled: form.isKilled,
+      rating: form.rating,
+      isKilled: form.isKilled,
+      rating: form.rating,
+      isKilled: form.isKilled,
+      rating: form.rating,
+      isKilled: form.isKilled,
+      rating: form.rating,
+      isKilled: form.isKilled,
+      rating: form.rating,
       sortOrder: form.sortOrder,
     };
 
@@ -421,6 +461,54 @@ export default function AdminWorks() {
                 />
               </div>
 
+              
+              <div className="space-y-2">
+                <Label className="font-mono text-xs">WORK RATING (1-5)</Label>
+                <Select
+                  value={form.rating?.toString() || "1"}
+                  onValueChange={(v) => setForm(prev => ({ ...prev, rating: parseInt(v) }))}
+                >
+                  <SelectTrigger className="rounded-none">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-none">
+                    {[1, 2, 3, 4, 5].map(r => (
+                      <SelectItem key={r} value={r.toString()}>{r} — {r === 5 ? "MASTER" : "LEVEL " + r}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="space-y-2">
+                <Label className="font-mono text-xs">WORK RATING (1-5)</Label>
+                <Select
+                  value={form.rating?.toString() || "1"}
+                  onValueChange={(v) => setForm(prev => ({ ...prev, rating: parseInt(v) }))}
+                >
+                  <SelectTrigger className="rounded-none">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-none">
+                    {[1, 2, 3, 4, 5].map(r => (
+                      <SelectItem key={r} value={r.toString()}>{r} — {r === 5 ? "MASTER" : "LEVEL " + r}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <Label className="font-mono text-xs uppercase">Killed Status</Label>
+                <Switch checked={form.isKilled} onCheckedChange={(c) => setForm(prev => ({ ...prev, isKilled: c }))} />
+              </div>
+              <div className="space-y-2">
+                <Label className="font-mono text-xs uppercase">Rating (1-5)</Label>
+                <Select value={form.rating.toString()} onValueChange={(v) => setForm(prev => ({ ...prev, rating: parseInt(v) }))}>
+                  <SelectTrigger className="rounded-none"><SelectValue /></SelectTrigger>
+                  <SelectContent className="rounded-none">
+                    {[1,2,3,4,5].map(r => <SelectItem key={r} value={r.toString()}>{r}</SelectItem>)}
+                  </SelectContent>
+                </Select>
+              </div>
               {/* Published Toggle */}
               <div className="flex items-center justify-between">
                 <Label className="font-mono text-xs">PUBLISHED</Label>
