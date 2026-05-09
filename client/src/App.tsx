@@ -4,6 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import CrucibleWorkDetail from "@/pages/CrucibleWorkDetail";
+import CrucibleWorkDetail from "@/pages/CrucibleWorkDetail";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -82,6 +83,7 @@ function PublicRouter() {
         {/* Primary navigation */}
         <Route path="/works" component={Works} />
         <Route path="/works/:slug" component={WorkDetail} />
+        <Route path="/works/:slug" component={CrucibleWorkDetail} />
         <Route path="/practice" component={Practice} />
         <Route path="/neon" component={Neon} />
         <Route path="/neon/identity" component={NeonIdentity} />

@@ -6,47 +6,70 @@ interface CrucibleWork {
   id: number;
   title: string;
   slug: string;
+  tCode?: string;
   phaseId: number;
   rating?: number;
+  kineticHours?: number;
+  substrateId?: string;
   imageUrl: string;
   thumbnailUrl: string;
+  isKilled?: boolean;
+  createdAt: string;
+  dateCreated: string;
   dimensions: string;
   medium: string;
-  dateCreated: string;
+}
+
+function getTCode(slug: string): string {
+  return slug.startsWith("T_") ? slug : `T_${slug}`;
 }
 
 function getTCodeIndex(slug: string): number {
-  return parseInt(slug.replace("T_", ""), 10);
+  const code = getTCode(slug);
+  return parseInt(code.replace("T_", ""), 10);
 }
 
 function getGlowClasses(slug: string): string {
   const idx = getTCodeIndex(slug);
   if (idx >= 170) {
-    return "border-fuchsia-500/20 hover:border-fuchsia-500/40 hover:shadow-fuchsia-500/20";
+    return "border-fuchsia-500/20 hover:border-fuchsia-500/50 hover:shadow-fuchsia-500/20";
   }
-  return "border-cyan-500/20 hover:border-cyan-500/40 hover:shadow-cyan-500/20";
+  return "border-cyan-500/20 hover:border-cyan-500/50 hover:shadow-cyan-500/20";
 }
 
-function getGridSpan(rating: number): string {
-  if (rating >= 5) return "col-span-2 row-span-2";
-  if (rating >= 4) return "col-span-2 row-span-1";
-  return "col-span-1 row-span-1";
+function parseAspectRatio(dimensions: string): number {
+  if (!dimensions) return 1;
+  const match = dimensions.match(/(\d+)\s*x\s*(\d+)/i);
+  if (!match) return 1;
+  const w = parseInt(match[1], 10);
+  const h = parseInt(match[2], 10);
+  return w / h;
 }
 
-function getImageSizes(work: CrucibleWork) {
-  const full = work.imageUrl;
-  const thumb = work.thumbnailUrl;
-  const large = full.replace("_full.jpg", "_large.jpg");
-  const medium = full.replace("_full.jpg", "_medium.jpg");
-  return { full, large, medium, thumb };
+function getGridSpan(rating: number, aspectRatio: number): { col: number; row: number } {
+  if (rating >= 5) {
+    if (aspectRatio < 0.7) return { col: 2, row: 3 };
+    if (aspectRatio > 1.4) return { col: 3, row: 2 };
+    return { col: 2, row: 2 };
+  }
+  if (rating >= 4) {
+    if (aspectRatio < 0.8) return { col: 1, row: 2 };
+    if (aspectRatio > 1.3) return { col: 2, row: 1 };
+    return { col: 2, row: 2 };
+  }
+  if (rating >= 3) {
+    if (aspectRatio < 0.75) return { col: 1, row: 2 };
+    if (aspectRatio > 1.35) return { col: 2, row: 1 };
+    return { col: 1, row: 1 };
+  }
+  return { col: 1, row: 1 };
 }
 
-function getGridImageUrl(work: CrucibleWork): string {
-  const sizes = getImageSizes(work);
+function getImageUrl(work: CrucibleWork): string {
   const r = work.rating || 1;
-  if (r >= 5) return sizes.large;
-  if (r >= 4) return sizes.medium;
-  return sizes.thumb;
+  if (r >= 4) return work.imageUrl;
+  if (r >= 3) return work.imageUrl;
+  return work.thumbnailUrl;
 }
 
 export default function CrucibleWorks() {
@@ -102,22 +125,40 @@ export default function CrucibleWorks() {
       )}
 
       {!isLoading && !error && works.length > 0 && (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1" style={{ gridAutoFlow: "dense", gridAutoRows: "minmax(180px, auto)" }}>
+        <div 
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1"
+          style={{ gridAutoFlow: "dense", gridAutoRows: "minmax(160px, auto)" }}
+        >
           {works.map((work) => {
             const glow = getGlowClasses(work.slug);
-            const span = getGridSpan(work.rating || 1);
-            const src = getGridImageUrl(work);
+            const aspect = parseAspectRatio(work.dimensions);
+            const span = getGridSpan(work.rating || 1, aspect);
+            const src = getImageUrl(work);
+            const isKilled = work.isKilled;
+            
             return (
               <Link
                 key={work.id}
                 href={`/works/${work.slug}`}
-                className={`group relative overflow-hidden rounded-sm border ${glow} ${span} shadow-none transition-all duration-300 hover:shadow-lg`}
+                className={`group relative overflow-hidden rounded-sm border ${glow} shadow-none transition-all duration-300 hover:shadow-lg ${isKilled ? 'opacity-40 grayscale' : ''}`}
+                style={{
+                  gridColumn: `span ${span.col}`,
+                  gridRow: `span ${span.row}`,
+                }}
               >
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-3">
                   <span className="font-mono text-xs tracking-widest text-[#00FFCC] uppercase">{work.title}</span>
-                  <span className="font-mono text-[10px] text-muted-foreground mt-1">{work.slug}</span>
+                  <span className="font-mono text-[10px] text-muted-foreground mt-1">{getTCode(work.slug)}</span>
+                  {isKilled && (
+                    <span className="font-mono text-[10px] text-red-400 mt-1 uppercase">Killed</span>
+                  )}
                 </div>
-                <img src={src} alt={work.title} loading="lazy" className="w-full h-full object-cover" />
+                <img 
+                  src={src} 
+                  alt={work.title} 
+                  loading="lazy" 
+                  className="w-full h-full object-cover"
+                />
               </Link>
             );
           })}

@@ -7,13 +7,18 @@ interface WorkData {
   id: number;
   title: string;
   slug: string;
+  tCode?: string;
   phaseId: number;
   rating?: number;
+  kineticHours?: number;
+  substrateId?: string;
   imageUrl: string;
   thumbnailUrl: string;
+  isKilled?: boolean;
+  createdAt: string;
+  dateCreated: string;
   dimensions: string;
   medium: string;
-  dateCreated: string;
   year: string;
   colorPalette?: string | null;
   emotionalRegister?: string | null;
@@ -32,6 +37,15 @@ function parseMedium(medium: string): { ink: string; paper: string } {
     return { ink: parts[0].trim(), paper: parts.slice(1).join(" on ").trim() };
   }
   return { ink: medium, paper: "" };
+}
+
+function getTCode(slug: string): string {
+  return slug.startsWith("T_") ? slug : `T_${slug}`;
+}
+
+function getPhaseLabel(phaseId: number): string {
+  if (phaseId === 60606) return "Crucible";
+  return "Archive";
 }
 
 export default function CrucibleWorkDetail() {
@@ -64,6 +78,8 @@ export default function CrucibleWorkDetail() {
   }
 
   const { ink, paper } = parseMedium(work.medium);
+  const tCode = getTCode(work.slug);
+  const phaseLabel = getPhaseLabel(work.phaseId);
 
   return (
     <div className="max-w-4xl mx-auto py-12 sm:py-16 px-4 space-y-16">
@@ -80,7 +96,7 @@ export default function CrucibleWorkDetail() {
 
       {/* 2. Phase Tag */}
       <div className="font-mono text-xs tracking-widest uppercase text-[#00FFCC]">
-        Crucible
+        {phaseLabel}
       </div>
 
       {/* 3. Publication Title + 4. Studio Subtitle */}
@@ -89,7 +105,7 @@ export default function CrucibleWorkDetail() {
           {work.title}
         </h1>
         <p className="font-mono text-sm tracking-widest text-muted-foreground uppercase">
-          {work.slug}
+          {tCode}
         </p>
       </div>
 
@@ -192,8 +208,18 @@ export default function CrucibleWorkDetail() {
         </section>
       )}
 
+      {/* Bottom metadata line */}
+      <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs text-muted-foreground border-t border-white/10 pt-6">
+        {work.emotionalRegister && (
+          <span>REGISTER: {work.emotionalRegister}</span>
+        )}
+        {work.colorPalette && (
+          <span>PALETTE: {work.colorPalette}</span>
+        )}
+      </div>
+
       {/* 16. Back to Works */}
-      <div className="pt-8 border-t border-white/10">
+      <div className="pt-4">
         <Link
           href="/crucible/works"
           className="inline-flex items-center gap-2 font-mono text-xs tracking-widest uppercase text-muted-foreground transition-colors duration-300 hover:text-[#00FFCC]"
