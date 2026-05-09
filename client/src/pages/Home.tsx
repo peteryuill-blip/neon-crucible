@@ -68,12 +68,12 @@ export default function Home() {
                 {featuredWorksData.items.map((work) => (
                   <Link key={work.id} href={`/works/${work.slug || work.id}`}>
                     <div className="group cursor-pointer">
-                      <div className="overflow-hidden border border-border hover:border-primary transition-colors duration-150">
+                      <div className="aspect-square bg-muted overflow-hidden border border-border hover:border-primary transition-colors duration-150">
                         {work.thumbnailUrl && (
                           <img
                             src={work.thumbnailUrl}
                             alt={work.title}
-                            className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                         )}
                       </div>
