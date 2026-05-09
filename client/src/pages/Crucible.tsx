@@ -36,9 +36,7 @@ const Crucible = () => {
     <div className="min-h-screen bg-black text-foreground">
       <div className="max-w-3xl mx-auto py-16 sm:py-24 px-4 space-y-32 sm:space-y-40">
 
-        {/* ============================================================ */}
-        {/* TLDR — smallest typographic register, top of page             */}
-        {/* ============================================================ */}
+        {/* TLDR */}
         <section>
           <p className="font-mono text-[11px] sm:text-xs tracking-wider uppercase text-muted-foreground italic leading-relaxed max-w-2xl">
             For 2026, Peter Yuill is in the studio with sumi ink and Chinese
@@ -47,46 +45,7 @@ const Crucible = () => {
           </p>
         </section>
 
-        {/* ============================================================ */}
-        {/* LARGE CRUCIBLE NAVIGATION — top of page, prominent            */}
-        {/* ============================================================ */}
-        <section className="space-y-8">
-          <div className="space-y-3">
-            <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-              Enter the Crucible
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light tracking-tight leading-tight">
-              Four ways into the year
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {SUB_PAGES.map((page) => (
-              <Link
-                key={page.href}
-                href={page.href}
-                className="group border border-white/10 p-8 sm:p-10 hover:border-[#00FFCC]/40 transition-all duration-300 block"
-              >
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <div className="font-mono text-xs tracking-widest uppercase text-muted-foreground">
-                    Section {page.number}
-                  </div>
-                  <ArrowRight className="h-5 w-5 text-muted-foreground group-hover:text-[#00FFCC] group-hover:translate-x-1 transition-all" />
-                </div>
-                <div className="font-serif text-2xl sm:text-3xl font-light leading-tight mb-4 group-hover:text-[#00FFCC] transition-colors">
-                  {page.title}
-                </div>
-                <div className="font-serif text-base text-foreground/65 leading-relaxed">
-                  {page.desc}
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* ============================================================ */}
-        {/* ATMOSPHERIC THRESHOLD — heaviest typographic weight            */}
-        {/* ============================================================ */}
+        {/* ATMOSPHERIC THRESHOLD */}
         <section className="space-y-10 sm:space-y-14">
           <p className="font-serif text-4xl sm:text-5xl md:text-6xl font-light tracking-tight leading-[1.1]">
             What this studio destroys, it records.
@@ -141,9 +100,7 @@ const Crucible = () => {
           </div>
         </section>
 
-        {/* ============================================================ */}
-        {/* ORIENTATION — body register, factual                          */}
-        {/* ============================================================ */}
+        {/* ORIENTATION */}
         <section className="space-y-8">
           <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
             The Crucible Year is an intensive studio practice undertaken by
@@ -172,9 +129,7 @@ const Crucible = () => {
           </p>
         </section>
 
-        {/* ============================================================ */}
-        {/* THE PRACTICE — body register, physical description            */}
-        {/* ============================================================ */}
+        {/* THE PRACTICE */}
         <section className="space-y-8">
           <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85">
             Peter's Bangkok studio is built around a single custom plywood
@@ -230,9 +185,7 @@ const Crucible = () => {
           </p>
         </section>
 
-        {/* ============================================================ */}
-        {/* SECONDARY NAV — bottom of page, smaller                       */}
-        {/* ============================================================ */}
+        {/* SUB-NAV — bottom only */}
         <section className="space-y-10 pt-12 border-t border-white/10">
           <div className="space-y-3">
             <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
@@ -267,9 +220,7 @@ const Crucible = () => {
           </div>
         </section>
 
-        {/* ============================================================ */}
-        {/* LIVE INDICATOR — the work is still happening                  */}
-        {/* ============================================================ */}
+        {/* LIVE INDICATOR */}
         <section className="pt-8 flex items-center gap-3 font-mono text-[11px] tracking-widest uppercase text-muted-foreground">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: CYAN }} />
