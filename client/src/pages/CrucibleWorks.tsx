@@ -19,23 +19,34 @@ function getTCodeIndex(slug: string): number {
   return parseInt(slug.replace("T_", ""), 10);
 }
 
-function getGlowClasses(slug: string): { resting: string; hover: string } {
+function getGlowClasses(slug: string): string {
   const idx = getTCodeIndex(slug);
   if (idx >= 170) {
-    return { resting: "border-fuchsia-500/20", hover: "hover:shadow-fuchsia-500/30" };
+    return "border-fuchsia-500/20 hover:border-fuchsia-500/40 hover:shadow-fuchsia-500/20";
   }
-  return { resting: "border-cyan-500/20", hover: "hover:shadow-cyan-500/30" };
+  return "border-cyan-500/20 hover:border-cyan-500/40 hover:shadow-cyan-500/20";
 }
 
 function getGridSpan(rating: number): string {
-  if (rating >= 5) return "col-span-1 sm:col-span-2 row-span-2";
-  if (rating >= 4) return "col-span-1 sm:col-span-2 row-span-1";
+  if (rating >= 5) return "col-span-2 row-span-2";
+  if (rating >= 4) return "col-span-2 row-span-1";
   return "col-span-1 row-span-1";
 }
 
-function getImageSource(work: CrucibleWork): string {
-  if ((work.rating || 1) >= 3) return work.imageUrl;
-  return work.thumbnailUrl;
+function getImageSizes(work: CrucibleWork) {
+  const full = work.imageUrl;
+  const thumb = work.thumbnailUrl;
+  const large = full.replace("_full.jpg", "_large.jpg");
+  const medium = full.replace("_full.jpg", "_medium.jpg");
+  return { full, large, medium, thumb };
+}
+
+function getGridImageUrl(work: CrucibleWork): string {
+  const sizes = getImageSizes(work);
+  const r = work.rating || 1;
+  if (r >= 5) return sizes.large;
+  if (r >= 4) return sizes.medium;
+  return sizes.thumb;
 }
 
 export default function CrucibleWorks() {
@@ -46,11 +57,9 @@ export default function CrucibleWorks() {
     const items = (data as any).items || [];
     const filtered = items.filter((w: any) => w.phaseId === 60606);
     return filtered.sort((a: CrucibleWork, b: CrucibleWork) => {
-      // Higher rating first
       const ratingA = a.rating || 1;
       const ratingB = b.rating || 1;
       if (ratingB !== ratingA) return ratingB - ratingA;
-      // Higher t-code first (T_294 before T_001)
       return getTCodeIndex(b.slug) - getTCodeIndex(a.slug);
     });
   }, [data]);
@@ -64,10 +73,10 @@ export default function CrucibleWorks() {
           &larr; THE CRUCIBLE
         </Link>
       </div>
-      <div className="space-y-6 mb-12">
+      <div className="space-y-6 mb-10">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-light tracking-tighter leading-tight">The Archive</h1>
         <p className="font-serif text-base sm:text-lg leading-relaxed text-foreground/85 max-w-3xl">
-          Ordered by rating, then by T-code descending. The strongest work commands the largest position.
+          Ordered by rating, then by T-code descending. Higher-rated works command larger positions.
         </p>
         <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-muted-foreground uppercase">
           <span className="relative flex h-2 w-2">
@@ -76,7 +85,7 @@ export default function CrucibleWorks() {
           </span>
           <span>LIVE</span>
           <span className="text-muted-foreground/50">|</span>
-          <span>{works.length} works displayed</span>
+          <span>{works.length} works</span>
         </div>
       </div>
 
@@ -89,21 +98,24 @@ export default function CrucibleWorks() {
       )}
 
       {!isLoading && !error && works.length === 0 && (
-        <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">No works found in this phase.</div>
+        <div className="font-mono text-xs tracking-widest text-muted-foreground uppercase">No works found.</div>
       )}
 
       {!isLoading && !error && works.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1" style={{ gridAutoFlow: "dense", gridAutoRows: "minmax(180px, auto)" }}>
           {works.map((work) => {
             const glow = getGlowClasses(work.slug);
             const span = getGridSpan(work.rating || 1);
-            const src = getImageSource(work);
+            const src = getGridImageUrl(work);
             return (
-              <Link key={work.id} href={`/works/${work.slug}`} className={`group relative overflow-hidden rounded-sm border ${glow.resting} ${glow.hover} shadow-none transition-all duration-300 hover:shadow-lg ${span}`}>
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-3">
+              <Link
+                key={work.id}
+                href={`/works/${work.slug}`}
+                className={`group relative overflow-hidden rounded-sm border ${glow} ${span} shadow-none transition-all duration-300 hover:shadow-lg`}
+              >
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-3">
                   <span className="font-mono text-xs tracking-widest text-[#00FFCC] uppercase">{work.title}</span>
-                  <span className="font-mono text-xs text-muted-foreground mt-1">{work.slug}</span>
-                  <span className="font-mono text-xs text-muted-foreground mt-1">{work.dimensions}</span>
+                  <span className="font-mono text-[10px] text-muted-foreground mt-1">{work.slug}</span>
                 </div>
                 <img src={src} alt={work.title} loading="lazy" className="w-full h-full object-cover" />
               </Link>

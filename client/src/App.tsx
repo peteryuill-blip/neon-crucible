@@ -3,6 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import CrucibleWorkDetail from "@/pages/CrucibleWorkDetail";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -77,6 +78,7 @@ function PublicRouter() {
         <Route path="/crucible/time" component={CrucibleTime} />
         <Route path="/crucible/anatomy" component={CrucibleAnatomy} />
         <Route path="/crucible" component={Crucible} />
+        <Route path="/works/:slug" component={CrucibleWorkDetail} />
         {/* Primary navigation */}
         <Route path="/works" component={Works} />
         <Route path="/works/:slug" component={WorkDetail} />
