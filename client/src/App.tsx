@@ -1,10 +1,10 @@
 import { Switch, Route } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@/lib/queryClient";
-import { Toaster } from "@/components/ui/toaster";
+import { queryClient } from "./";
+import { Toaster } from "./";
 import Crucible from "./pages/Crucible";
 import WorkDetail from "./pages/WorkDetail";
-import NotFound from "@/pages/NotFound";
+import NotFound from "./pages/NotFound";
 
 function Router() {
   return (
