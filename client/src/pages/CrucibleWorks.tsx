@@ -17,13 +17,19 @@ interface CrucibleWork {
   medium: string | null;
 }
 
-type SizeTier = { col: number; row: number };
-
-function getSizeTier(rating: number): SizeTier {
-  if (rating >= 5) return { col: 2, row: 2 };
-  if (rating >= 4) return { col: 2, row: 1 };
-  if (rating >= 3) return { col: 1, row: 2 };
-  return { col: 1, row: 1 };
+// Tier classes are fully-written strings so Tailwind JIT can detect them.
+// Grid: 2 cols mobile / 3 cols tablet / 4 cols desktop.
+// Row height: 140px (set on container via gridAutoRows).
+//
+// 5★ → full-width panoramic, 2 rows tall
+// 4★ → half-width block, 2 rows tall  (landscape on desktop, portrait-half on mobile)
+// 3★ → half-width strip, 1 row tall
+// 1-2★ → quarter-width thumbnail
+function getTierClasses(rating: number): string {
+  if (rating >= 5) return "col-span-2 sm:col-span-3 md:col-span-4 row-span-2";
+  if (rating >= 4) return "col-span-1 sm:col-span-2 md:col-span-2 row-span-2";
+  if (rating >= 3) return "col-span-1 sm:col-span-2 md:col-span-2 row-span-1";
+  return "col-span-1 row-span-1";
 }
 
 function getTNum(work: CrucibleWork): number {
@@ -38,19 +44,18 @@ function getGlowClasses(work: CrucibleWork): string {
   return "border-cyan-500/20 hover:border-cyan-500/50 hover:shadow-cyan-500/20";
 }
 
-function GalleryImage({ work, tier }: { work: CrucibleWork; tier: SizeTier }) {
+function GalleryImage({ work, isLarge }: { work: CrucibleWork; isLarge: boolean }) {
   const base = (work.imageUrl || "").replace(/_full\.jpg$/, "");
-  const isLarge = tier.col >= 2 || tier.row >= 2;
+  const thumb = work.thumbnailUrl || work.imageUrl || "";
+  const full = work.imageUrl || "";
 
   const sources: string[] = React.useMemo(() => {
-    const thumb = work.thumbnailUrl || work.imageUrl || "";
-    const full = work.imageUrl || "";
     if (!base) return [full];
     if (isLarge) {
       return [`${base}_large.jpg`, `${base}_medium.jpg`, thumb, full].filter(Boolean);
     }
     return [thumb, `${base}_medium.jpg`, full].filter(Boolean);
-  }, [base, isLarge, work.thumbnailUrl, work.imageUrl]);
+  }, [base, isLarge, thumb, full]);
 
   const [srcIndex, setSrcIndex] = React.useState(0);
 
@@ -120,11 +125,12 @@ export default function CrucibleWorks() {
       {!isLoading && !error && works.length > 0 && (
         <div
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1"
-          style={{ gridAutoFlow: "dense", gridAutoRows: "150px" }}
+          style={{ gridAutoFlow: "dense", gridAutoRows: "140px" }}
         >
           {works.map((work) => {
             const rating = work.rating ?? 1;
-            const tier = getSizeTier(rating);
+            const tierClasses = getTierClasses(rating);
+            const isLarge = rating >= 4;
             const glow = getGlowClasses(work);
             const isKilled = work.disposition === "TR";
             const displayCode = work.tCode || work.slug;
@@ -133,14 +139,10 @@ export default function CrucibleWorks() {
               <Link
                 key={work.id}
                 href={`/works/${work.slug}`}
-                className={`group relative overflow-hidden rounded-sm border ${glow} shadow-none transition-all duration-300 hover:shadow-lg${isKilled ? " opacity-40 grayscale" : ""}`}
-                style={{
-                  gridColumn: `span ${tier.col}`,
-                  gridRow: `span ${tier.row}`,
-                  minHeight: "150px",
-                }}
+                className={`${tierClasses} group relative overflow-hidden rounded-sm border ${glow} shadow-none transition-all duration-300 hover:shadow-lg${isKilled ? " opacity-40 grayscale" : ""}`}
+                style={{ minHeight: "140px" }}
               >
-                <GalleryImage work={work} tier={tier} />
+                <GalleryImage work={work} isLarge={isLarge} />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-3">
                   <span className="font-mono text-xs tracking-widest text-[#00FFCC] uppercase">{work.title}</span>
                   <span className="font-mono text-[10px] text-muted-foreground mt-1">{displayCode}</span>
