@@ -65,6 +65,18 @@ export const works = mysqlTable("works", {
   sortOrder: int("sortOrder").notNull().default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  // Crucible Year columns — added to live DB via scripts/01_migration.sql
+  tCode: varchar("tCode", { length: 16 }),
+  sovereignId: varchar("sovereignId", { length: 16 }),
+  surface: varchar("surface", { length: 16 }),
+  surfaceName: varchar("surfaceName", { length: 128 }),
+  ink: varchar("ink", { length: 128 }),
+  disposition: varchar("disposition", { length: 8 }),
+  rating: int("rating"),
+  weekNumber: int("weekNumber"),
+  orientation: varchar("orientation", { length: 16 }),
+  technicalObservation: text("technicalObservation"),
+  discoveryNote: text("discoveryNote"),
 });
 
 export type Work = typeof works.$inferSelect;
