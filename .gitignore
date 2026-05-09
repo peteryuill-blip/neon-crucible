@@ -111,4 +111,3 @@ image_export/full/
 image_export/thumbs/
 image_export_*.tar.gz
 package-lock.json
-*.bak

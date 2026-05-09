@@ -30,17 +30,6 @@ export const phases = mysqlTable("phases", {
   emotionalTemperature: text("emotionalTemperature"), // e.g., "intense", "meditative"
   color: varchar("color", { length: 32 }), // Canonical phase color
   sortOrder: int("sortOrder").notNull().default(0),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -74,17 +63,6 @@ export const works = mysqlTable("works", {
   featured: boolean("featured").default(false).notNull(), // Manually curated featured/selected works
   isPublished: boolean("isPublished").default(true).notNull(),
   sortOrder: int("sortOrder").notNull().default(0),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   // Crucible Year columns — added to live DB via scripts/01_migration.sql
@@ -117,17 +95,6 @@ export const essays = mysqlTable("essays", {
   phaseId: int("phaseId").references(() => phases.id), // For phase-specific essays
   isPublished: boolean("isPublished").default(true).notNull(),
   sortOrder: int("sortOrder").notNull().default(0),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -145,17 +112,6 @@ export const metaquestions = mysqlTable("metaquestions", {
   isAnswered: boolean("isAnswered").default(false).notNull(),
   isAnswerPrivate: boolean("isAnswerPrivate").default(true).notNull(), // Answers are private by default
   sortOrder: int("sortOrder").notNull().default(0),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
@@ -177,23 +133,13 @@ export const archiveFiles = mysqlTable("archive_files", {
   category: varchar("category", { length: 64 }), // e.g., "protocol", "source", "technical"
   isPublished: boolean("isPublished").default(true).notNull(),
   sortOrder: int("sortOrder").notNull().default(0),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
 export type ArchiveFile = typeof archiveFiles.$inferSelect;
 export type InsertArchiveFile = typeof archiveFiles.$inferInsert;
+
 
 /**
  * Press clippings and external voices - collected writings about the work
@@ -213,17 +159,6 @@ export const pressClippings = mysqlTable("press_clippings", {
   category: varchar("category", { length: 64 }), // e.g., "review", "interview", "feature", "mention"
   isPublished: boolean("isPublished").default(true).notNull(),
   sortOrder: int("sortOrder").notNull().default(0),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
-  isKilled: boolean("is_killed").default(false).notNull(),
-  rating: int("rating").notNull().default(1),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
