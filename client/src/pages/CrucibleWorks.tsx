@@ -6,14 +6,15 @@ interface CrucibleWork {
   id: number;
   title: string;
   slug: string;
+  tCode: string | null;
   phaseId: number;
-  rating?: number;
-  imageUrl: string;
-  thumbnailUrl: string;
-  isKilled?: boolean;
-  dateCreated: string;
-  dimensions: string;
-  medium: string;
+  rating: number | null;
+  disposition: string | null;
+  imageUrl: string | null;
+  thumbnailUrl: string | null;
+  dateCreated: string | null;
+  dimensions: string | null;
+  medium: string | null;
 }
 
 type SizeTier = { col: number; row: number };
@@ -25,27 +26,30 @@ function getSizeTier(rating: number): SizeTier {
   return { col: 1, row: 1 };
 }
 
-function getGlowClasses(slug: string): string {
-  const idx = parseInt(slug.replace("T_", ""), 10);
-  if (idx >= 170) {
+function getTNum(work: CrucibleWork): number {
+  const code = work.tCode || work.slug;
+  return parseInt(code.replace("T_", ""), 10) || 0;
+}
+
+function getGlowClasses(work: CrucibleWork): string {
+  if (getTNum(work) >= 170) {
     return "border-fuchsia-500/20 hover:border-fuchsia-500/50 hover:shadow-fuchsia-500/20";
   }
   return "border-cyan-500/20 hover:border-cyan-500/50 hover:shadow-cyan-500/20";
 }
 
-function getTCode(slug: string): string {
-  return slug.startsWith("T_") ? slug : `T_${slug}`;
-}
-
 function GalleryImage({ work, tier }: { work: CrucibleWork; tier: SizeTier }) {
-  const base = work.imageUrl.replace(/_full\.jpg$/, "");
+  const base = (work.imageUrl || "").replace(/_full\.jpg$/, "");
   const isLarge = tier.col >= 2 || tier.row >= 2;
 
-  const sources = React.useMemo((): string[] => {
+  const sources: string[] = React.useMemo(() => {
+    const thumb = work.thumbnailUrl || work.imageUrl || "";
+    const full = work.imageUrl || "";
+    if (!base) return [full];
     if (isLarge) {
-      return [`${base}_large.jpg`, `${base}_medium.jpg`, work.thumbnailUrl, work.imageUrl];
+      return [`${base}_large.jpg`, `${base}_medium.jpg`, thumb, full].filter(Boolean);
     }
-    return [work.thumbnailUrl, `${base}_medium.jpg`, `${base}_large.jpg`, work.imageUrl];
+    return [thumb, `${base}_medium.jpg`, full].filter(Boolean);
   }, [base, isLarge, work.thumbnailUrl, work.imageUrl]);
 
   const [srcIndex, setSrcIndex] = React.useState(0);
@@ -72,7 +76,7 @@ export default function CrucibleWorks() {
       const ratingA = a.rating ?? 1;
       const ratingB = b.rating ?? 1;
       if (ratingB !== ratingA) return ratingB - ratingA;
-      return parseInt(b.slug.replace("T_", ""), 10) - parseInt(a.slug.replace("T_", ""), 10);
+      return getTNum(b) - getTNum(a);
     });
   }, [data]);
 
@@ -121,8 +125,9 @@ export default function CrucibleWorks() {
           {works.map((work) => {
             const rating = work.rating ?? 1;
             const tier = getSizeTier(rating);
-            const glow = getGlowClasses(work.slug);
-            const isKilled = work.isKilled;
+            const glow = getGlowClasses(work);
+            const isKilled = work.disposition === "TR";
+            const displayCode = work.tCode || work.slug;
 
             return (
               <Link
@@ -138,7 +143,7 @@ export default function CrucibleWorks() {
                 <GalleryImage work={work} tier={tier} />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-3">
                   <span className="font-mono text-xs tracking-widest text-[#00FFCC] uppercase">{work.title}</span>
-                  <span className="font-mono text-[10px] text-muted-foreground mt-1">{getTCode(work.slug)}</span>
+                  <span className="font-mono text-[10px] text-muted-foreground mt-1">{displayCode}</span>
                   {isKilled && (
                     <span className="font-mono text-[10px] text-red-400 mt-1 uppercase">Killed</span>
                   )}
