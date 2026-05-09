@@ -16,8 +16,13 @@ interface CrucibleWork {
   medium: string;
 }
 
-function getTCode(slug: string): string {
-  return slug.startsWith("T_") ? slug : `T_${slug}`;
+type SizeTier = { col: number; row: number };
+
+function getSizeTier(rating: number): SizeTier {
+  if (rating >= 5) return { col: 2, row: 2 };
+  if (rating >= 4) return { col: 2, row: 1 };
+  if (rating >= 3) return { col: 1, row: 2 };
+  return { col: 1, row: 1 };
 }
 
 function getGlowClasses(slug: string): string {
@@ -28,36 +33,32 @@ function getGlowClasses(slug: string): string {
   return "border-cyan-500/20 hover:border-cyan-500/50 hover:shadow-cyan-500/20";
 }
 
-// 3-tier size system: Small (1x1), Medium (2x1), Large (2x2)
-type SizeTier = { col: number; row: number };
-const SIZE_PATTERN: SizeTier[] = [
-  { col: 1, row: 1 }, // small
-  { col: 1, row: 1 }, // small
-  { col: 2, row: 1 }, // medium-wide
-  { col: 1, row: 1 }, // small
-  { col: 1, row: 2 }, // medium-tall
-  { col: 1, row: 1 }, // small
-  { col: 1, row: 1 }, // small
-  { col: 2, row: 2 }, // large
-  { col: 1, row: 1 }, // small
-  { col: 2, row: 1 }, // medium-wide
-  { col: 1, row: 1 }, // small
-  { col: 1, row: 1 }, // small
-];
-
-function getSizeTier(index: number, rating: number): SizeTier {
-  // If rating exists and varies, use it to boost size
-  if (rating >= 5) return { col: 2, row: 2 };
-  if (rating >= 4) return { col: 2, row: 1 };
-  // Otherwise cycle through pattern for visual variety
-  return SIZE_PATTERN[index % SIZE_PATTERN.length];
+function getTCode(slug: string): string {
+  return slug.startsWith("T_") ? slug : `T_${slug}`;
 }
 
-function getImageUrl(work: CrucibleWork, tier: SizeTier): string {
-  const base = work.imageUrl.replace("_full.jpg", "");
-  if (tier.col >= 2 && tier.row >= 2) return work.imageUrl; // full for large
-  if (tier.col >= 2 || tier.row >= 2) return base + "_large.jpg";
-  return work.thumbnailUrl; // thumb for small
+function GalleryImage({ work, tier }: { work: CrucibleWork; tier: SizeTier }) {
+  const base = work.imageUrl.replace(/_full\.jpg$/, "");
+  const isLarge = tier.col >= 2 || tier.row >= 2;
+
+  const sources = React.useMemo((): string[] => {
+    if (isLarge) {
+      return [`${base}_large.jpg`, `${base}_medium.jpg`, work.thumbnailUrl, work.imageUrl];
+    }
+    return [work.thumbnailUrl, `${base}_medium.jpg`, `${base}_large.jpg`, work.imageUrl];
+  }, [base, isLarge, work.thumbnailUrl, work.imageUrl]);
+
+  const [srcIndex, setSrcIndex] = React.useState(0);
+
+  return (
+    <img
+      src={sources[srcIndex]}
+      alt={work.title}
+      loading="lazy"
+      className="w-full h-full object-cover"
+      onError={() => setSrcIndex((i) => Math.min(i + 1, sources.length - 1))}
+    />
+  );
 }
 
 export default function CrucibleWorks() {
@@ -68,8 +69,8 @@ export default function CrucibleWorks() {
     const items = (data as any).items || [];
     const filtered = items.filter((w: any) => w.phaseId === 60606);
     return filtered.sort((a: CrucibleWork, b: CrucibleWork) => {
-      const ratingA = a.rating || 1;
-      const ratingB = b.rating || 1;
+      const ratingA = a.rating ?? 1;
+      const ratingB = b.rating ?? 1;
       if (ratingB !== ratingA) return ratingB - ratingA;
       return parseInt(b.slug.replace("T_", ""), 10) - parseInt(a.slug.replace("T_", ""), 10);
     });
@@ -113,26 +114,28 @@ export default function CrucibleWorks() {
       )}
 
       {!isLoading && !error && works.length > 0 && (
-        <div 
+        <div
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1"
-          style={{ gridAutoFlow: "dense", gridAutoRows: "200px" }}
+          style={{ gridAutoFlow: "dense", gridAutoRows: "150px" }}
         >
-          {works.map((work, index) => {
+          {works.map((work) => {
+            const rating = work.rating ?? 1;
+            const tier = getSizeTier(rating);
             const glow = getGlowClasses(work.slug);
-            const tier = getSizeTier(index, work.rating || 1);
-            const src = getImageUrl(work, tier);
             const isKilled = work.isKilled;
-            
+
             return (
               <Link
                 key={work.id}
                 href={`/works/${work.slug}`}
-                className={`group relative overflow-hidden rounded-sm border ${glow} shadow-none transition-all duration-300 hover:shadow-lg ${isKilled ? 'opacity-40 grayscale' : ''}`}
+                className={`group relative overflow-hidden rounded-sm border ${glow} shadow-none transition-all duration-300 hover:shadow-lg${isKilled ? " opacity-40 grayscale" : ""}`}
                 style={{
                   gridColumn: `span ${tier.col}`,
                   gridRow: `span ${tier.row}`,
+                  minHeight: "150px",
                 }}
               >
+                <GalleryImage work={work} tier={tier} />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-3">
                   <span className="font-mono text-xs tracking-widest text-[#00FFCC] uppercase">{work.title}</span>
                   <span className="font-mono text-[10px] text-muted-foreground mt-1">{getTCode(work.slug)}</span>
@@ -140,12 +143,6 @@ export default function CrucibleWorks() {
                     <span className="font-mono text-[10px] text-red-400 mt-1 uppercase">Killed</span>
                   )}
                 </div>
-                <img 
-                  src={src} 
-                  alt={work.title} 
-                  loading="lazy" 
-                  className="w-full h-full object-cover"
-                />
               </Link>
             );
           })}
