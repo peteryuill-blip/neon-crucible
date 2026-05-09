@@ -31,6 +31,40 @@ const SUB_PAGES = [
   },
 ];
 
+const validWorks = useMemo(() => {
+  if (!allWorks) return [];
+
+  return allWorks.filter((work) => {
+    // PASS 1: The Hard "TR" Wall
+    if (work.disposition === "TR") return false;
+
+    // PASS 2: Probabilistic Extraction
+    // We dig into the somatic metadata we synced earlier
+    try {
+      const oracleData = work.technicalObservation ? JSON.parse(work.technicalObservation) : null;
+      
+      // If the Oracle has already flagged it as a 'kill' or it's 'Probably Trash', 
+      // we don't display it, even if the disposition column is empty.
+      const isProbablyTrash = oracleData?.matrix_flags?.is_kill === true;
+      const isConfirmedSave = work.disposition === "SA" || oracleData?.matrix_flags?.is_save === true;
+      
+      // LOGIC: Discard if 'is_kill' is true AND it's not a confirmed 'SA'
+      if (isProbablyTrash && !isConfirmedSave) return false;
+
+      // PASS 3: Minimum Quality Threshold (Optional)
+      // Only show works that have 'Potential' (Rating > 2 or confirmed Save)
+      if ((work.rating || 0) < 2 && !isConfirmedSave) return false;
+
+    } catch (e) {
+      // Fallback: If JSON is corrupt, default to showing only if not TR
+      return work.disposition !== "TR";
+    }
+
+    return true;
+  });
+}, [allWorks]);
+
+
 const Crucible = () => {
   return (
     <div className="min-h-screen bg-black text-foreground">

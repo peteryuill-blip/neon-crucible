@@ -1,4 +1,4 @@
-import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
+import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, decimal } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -70,7 +70,8 @@ export const works = mysqlTable("works", {
   sovereignId: varchar("sovereignId", { length: 16 }),
   surface: varchar("surface", { length: 16 }),
   surfaceName: varchar("surfaceName", { length: 128 }),
-  ink: varchar("ink", { length: 128 }),
+  ink: varchar("ink", { length: 255 }),
+  hours: decimal("hours", { precision: 4, scale: 1 }),
   disposition: varchar("disposition", { length: 8 }),
   rating: int("rating"),
   weekNumber: int("weekNumber"),

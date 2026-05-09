@@ -1,0 +1,78 @@
+* Host peter-yuill.com:443 was resolved.
+* IPv6: (none)
+* IPv4: 66.33.22.251
+*   Trying 66.33.22.251:443...
+* ALPN: curl offers h2,http/1.1
+} [5 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Client hello (1):
+} [1566 bytes data]
+* SSL Trust Anchors:
+*   CAfile: /data/data/com.termux/files/usr/etc/tls/cert.pem
+*   CApath: /data/data/com.termux/files/usr/etc/tls/certs
+{ [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Server hello (2):
+{ [1210 bytes data]
+* TLSv1.3 (IN), TLS change cipher, Change cipher spec (1):
+{ [1 bytes data]
+* TLSv1.3 (IN), TLS handshake, Encrypted Extensions (8):
+{ [19 bytes data]
+* TLSv1.3 (IN), TLS handshake, Certificate (11):
+{ [2043 bytes data]
+* TLSv1.3 (IN), TLS handshake, CERT verify (15):
+{ [79 bytes data]
+* TLSv1.3 (IN), TLS handshake, Finished (20):
+{ [36 bytes data]
+* TLSv1.3 (OUT), TLS change cipher, Change cipher spec (1):
+} [1 bytes data]
+* TLSv1.3 (OUT), TLS handshake, Finished (20):
+} [36 bytes data]
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256 / X25519MLKEM768 / id-ecPublicKey
+* ALPN: server accepted h2
+* Server certificate:
+*   subject: CN=peter-yuill.com
+*   start date: Mar 27 05:32:43 2026 GMT
+*   expire date: Jun 25 05:32:42 2026 GMT
+*   issuer: C=US; O=Let's Encrypt; CN=E8
+*   Certificate level 0: Public key type EC/prime256v1 (256/128 Bits/secBits), signed using ecdsa-with-SHA384
+*   Certificate level 1: Public key type EC/secp384r1 (384/192 Bits/secBits), signed using sha256WithRSAEncryption
+*   Certificate level 2: Public key type RSA (4096/152 Bits/secBits), signed using sha256WithRSAEncryption
+*   subjectAltName: "peter-yuill.com" matches cert's "peter-yuill.com"
+* OpenSSL verify result: 0
+* SSL certificate verified via OpenSSL.
+* Established connection to peter-yuill.com (66.33.22.251 port 443) from 192.168.1.135 port 57446 
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0* using HTTP/2
+* [HTTP/2] [1] OPENED stream for https://peter-yuill.com/works
+* [HTTP/2] [1] [:method: GET]
+* [HTTP/2] [1] [:scheme: https]
+* [HTTP/2] [1] [:authority: peter-yuill.com]
+* [HTTP/2] [1] [:path: /works]
+* [HTTP/2] [1] [user-agent: curl/8.20.0]
+* [HTTP/2] [1] [accept: */*]
+} [5 bytes data]
+> GET /works HTTP/2
+> Host: peter-yuill.com
+> User-Agent: curl/8.20.0
+> Accept: */*
+> 
+* Request completely sent off
+{ [5 bytes data]
+* TLSv1.3 (IN), TLS handshake, Newsession Ticket (4):
+{ [122 bytes data]
+< HTTP/2 200 
+< accept-ranges: bytes
+< cache-control: public, max-age=0
+< content-type: text/html; charset=UTF-8
+< date: Sat, 09 May 2026 12:45:19 GMT
+< etag: W/"5d502-19e0a9c6838"
+< last-modified: Sat, 09 May 2026 02:41:23 GMT
+< server: railway-edge
+< x-powered-by: Express
+< x-railway-edge: railway/asia-southeast1-eqsg3a
+< x-railway-request-id: QrJEU0-XR9aUFOy6AXC71g
+< content-length: 382210
+< 
+{ [5 bytes data]
+ 19 373.2k  19  75519   0      0  51111      0   00:07   00:01   00:06  74574100 373.2k 100 373.2k   0      0 198.1k      0   00:01   00:01          74574100 373.2k 100 373.2k   0      0 198.0k      0   00:01   00:01          74574100 373.2k 100 373.2k   0      0 197.9k      0   00:01   00:01          74574
+* Connection #0 to host peter-yuill.com:443 left intact

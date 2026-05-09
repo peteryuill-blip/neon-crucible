@@ -4,7 +4,6 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import CrucibleWorkDetail from "@/pages/CrucibleWorkDetail";
-import CrucibleWorkDetail from "@/pages/CrucibleWorkDetail";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
@@ -36,6 +35,34 @@ import Login from "./pages/Login";
 import { trpc } from "./lib/trpc";
 import { Loader2 } from "lucide-react";
 import { useCanonicalUrl } from "./hooks/useCanonicalUrl";
+import { Switch, Route } from "wouter";
+import Crucible from "./pages/Crucible"; // Your gallery page
+import WorkDetail from "./pages/WorkDetail"; // The new detail page
+import NotFound from "./pages/admin/NotFound"; // Standard 404
+
+function Router() {
+  return (
+    <Switch>
+      {/* Existing Routes */}
+      <Route path="/crucible" component={Crucible} />
+
+      {/* NEW: The Detail Page Route */}
+      {/* The :slug is a dynamic parameter that pulls the work's ID from the URL */}
+      <Route path="/works/:slug" component={WorkDetail} />
+
+      {/* Default 404 handler */}
+      <Route component={NotFound} />
+    </Switch>
+  );
+}
+
+export default function App() {
+  return (
+    // ... rest of your provider wrappers (QueryClient, etc.)
+    <Router />
+  );
+}
+
 
 function AdminRoute({ component: Component }: { component: React.ComponentType }) {
   const { data: user, isLoading } = trpc.auth.me.useQuery();
