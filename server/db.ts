@@ -4,3 +4,11 @@ import * as schema from "./schema";
 
 const connection = mysql.createPool(process.env.DATABASE_URL!);
 export const db = drizzle(connection, { schema, mode: "default" });
+
+export const getDb = () => db;
+
+export async function getWorksByPhase(phaseId: number) {
+  const { works } = await import("./schema");
+  const { eq } = await import("drizzle-orm");
+  return db.select().from(works).where(eq(works.phaseId, phaseId));
+}
