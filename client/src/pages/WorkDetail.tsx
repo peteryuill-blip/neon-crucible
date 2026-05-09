@@ -56,3 +56,4 @@ export default function WorkDetail() {
     </main>
   );
 }
+// BUILD_SIGNAL: 1778347991
