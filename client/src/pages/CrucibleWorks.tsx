@@ -6,15 +6,11 @@ interface CrucibleWork {
   id: number;
   title: string;
   slug: string;
-  tCode?: string;
   phaseId: number;
   rating?: number;
-  kineticHours?: number;
-  substrateId?: string;
   imageUrl: string;
   thumbnailUrl: string;
   isKilled?: boolean;
-  createdAt: string;
   dateCreated: string;
   dimensions: string;
   medium: string;
@@ -24,52 +20,44 @@ function getTCode(slug: string): string {
   return slug.startsWith("T_") ? slug : `T_${slug}`;
 }
 
-function getTCodeIndex(slug: string): number {
-  const code = getTCode(slug);
-  return parseInt(code.replace("T_", ""), 10);
-}
-
 function getGlowClasses(slug: string): string {
-  const idx = getTCodeIndex(slug);
+  const idx = parseInt(slug.replace("T_", ""), 10);
   if (idx >= 170) {
     return "border-fuchsia-500/20 hover:border-fuchsia-500/50 hover:shadow-fuchsia-500/20";
   }
   return "border-cyan-500/20 hover:border-cyan-500/50 hover:shadow-cyan-500/20";
 }
 
-function parseAspectRatio(dimensions: string): number {
-  if (!dimensions) return 1;
-  const match = dimensions.match(/(\d+)\s*x\s*(\d+)/i);
-  if (!match) return 1;
-  const w = parseInt(match[1], 10);
-  const h = parseInt(match[2], 10);
-  return w / h;
+// 3-tier size system: Small (1x1), Medium (2x1), Large (2x2)
+type SizeTier = { col: number; row: number };
+const SIZE_PATTERN: SizeTier[] = [
+  { col: 1, row: 1 }, // small
+  { col: 1, row: 1 }, // small
+  { col: 2, row: 1 }, // medium-wide
+  { col: 1, row: 1 }, // small
+  { col: 1, row: 2 }, // medium-tall
+  { col: 1, row: 1 }, // small
+  { col: 1, row: 1 }, // small
+  { col: 2, row: 2 }, // large
+  { col: 1, row: 1 }, // small
+  { col: 2, row: 1 }, // medium-wide
+  { col: 1, row: 1 }, // small
+  { col: 1, row: 1 }, // small
+];
+
+function getSizeTier(index: number, rating: number): SizeTier {
+  // If rating exists and varies, use it to boost size
+  if (rating >= 5) return { col: 2, row: 2 };
+  if (rating >= 4) return { col: 2, row: 1 };
+  // Otherwise cycle through pattern for visual variety
+  return SIZE_PATTERN[index % SIZE_PATTERN.length];
 }
 
-function getGridSpan(rating: number, aspectRatio: number): { col: number; row: number } {
-  if (rating >= 5) {
-    if (aspectRatio < 0.7) return { col: 2, row: 3 };
-    if (aspectRatio > 1.4) return { col: 3, row: 2 };
-    return { col: 2, row: 2 };
-  }
-  if (rating >= 4) {
-    if (aspectRatio < 0.8) return { col: 1, row: 2 };
-    if (aspectRatio > 1.3) return { col: 2, row: 1 };
-    return { col: 2, row: 2 };
-  }
-  if (rating >= 3) {
-    if (aspectRatio < 0.75) return { col: 1, row: 2 };
-    if (aspectRatio > 1.35) return { col: 2, row: 1 };
-    return { col: 1, row: 1 };
-  }
-  return { col: 1, row: 1 };
-}
-
-function getImageUrl(work: CrucibleWork): string {
-  const r = work.rating || 1;
-  if (r >= 4) return work.imageUrl;
-  if (r >= 3) return work.imageUrl;
-  return work.thumbnailUrl;
+function getImageUrl(work: CrucibleWork, tier: SizeTier): string {
+  const base = work.imageUrl.replace("_full.jpg", "");
+  if (tier.col >= 2 && tier.row >= 2) return work.imageUrl; // full for large
+  if (tier.col >= 2 || tier.row >= 2) return base + "_large.jpg";
+  return work.thumbnailUrl; // thumb for small
 }
 
 export default function CrucibleWorks() {
@@ -83,7 +71,7 @@ export default function CrucibleWorks() {
       const ratingA = a.rating || 1;
       const ratingB = b.rating || 1;
       if (ratingB !== ratingA) return ratingB - ratingA;
-      return getTCodeIndex(b.slug) - getTCodeIndex(a.slug);
+      return parseInt(b.slug.replace("T_", ""), 10) - parseInt(a.slug.replace("T_", ""), 10);
     });
   }, [data]);
 
@@ -126,14 +114,13 @@ export default function CrucibleWorks() {
 
       {!isLoading && !error && works.length > 0 && (
         <div 
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-1"
-          style={{ gridAutoFlow: "dense", gridAutoRows: "minmax(160px, auto)" }}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-1"
+          style={{ gridAutoFlow: "dense", gridAutoRows: "200px" }}
         >
-          {works.map((work) => {
+          {works.map((work, index) => {
             const glow = getGlowClasses(work.slug);
-            const aspect = parseAspectRatio(work.dimensions);
-            const span = getGridSpan(work.rating || 1, aspect);
-            const src = getImageUrl(work);
+            const tier = getSizeTier(index, work.rating || 1);
+            const src = getImageUrl(work, tier);
             const isKilled = work.isKilled;
             
             return (
@@ -142,8 +129,8 @@ export default function CrucibleWorks() {
                 href={`/works/${work.slug}`}
                 className={`group relative overflow-hidden rounded-sm border ${glow} shadow-none transition-all duration-300 hover:shadow-lg ${isKilled ? 'opacity-40 grayscale' : ''}`}
                 style={{
-                  gridColumn: `span ${span.col}`,
-                  gridRow: `span ${span.row}`,
+                  gridColumn: `span ${tier.col}`,
+                  gridRow: `span ${tier.row}`,
                 }}
               >
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col justify-end p-3">
