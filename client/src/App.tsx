@@ -9,8 +9,14 @@ import NotFound from "./pages/NotFound";
 function Router() {
   return (
     <Switch>
+      {/* MAP THE HOME PAGE TO THE GALLERY */}
+      <Route path="/" component={Crucible} />
       <Route path="/crucible" component={Crucible} />
+      
+      {/* THE DETAIL PAGE */}
       <Route path="/works/:slug" component={WorkDetail} />
+      
+      {/* CATCH-ALL 404 */}
       <Route component={NotFound} />
     </Switch>
   );
@@ -24,4 +30,3 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-// BUILD_SIGNAL: 1778347991
