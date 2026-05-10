@@ -1,53 +1,46 @@
-import { setupCustomRoutes } from "../custom-bridge";
-import "dotenv/config";
 import express from "express";
-import { createServer } from "http";
-import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { registerLocalAuthRoutes } from "./localAuth";
-import { appRouter } from "../routers";
-import { createContext } from "./context";
-import { serveStatic, setupVite } from "./vite";
-import { sitemapHandler } from "../sitemap";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import routes from "../routes";
+import { healthCheck, ingestTelemetry } from "../custom-bridge";
 
-async function startServer() {
-  const app = express();
-  setupCustomRoutes(app);
-  const server = createServer(app);
-  // Configure body parser with larger size limit for file uploads
-  app.use(express.json({ limit: "50mb" }));
-  app.use(express.urlencoded({ limit: "50mb", extended: true }));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-  // Simple health check endpoint for Railway/Docker (no auth, no tRPC overhead)
-  app.get("/api/health", (_req, res) => {
-    res.status(200).json({ ok: true, timestamp: Date.now() });
+const app = express();
+const NODE_ENV = process.env.NODE_ENV || "development";
+const BASE_PORT = parseInt(process.env.PORT || "3000", 10);
+
+app.use(cors());
+app.use(express.json({ limit: "10mb" }));
+
+app.get("/health", healthCheck);
+app.post("/api/ingest", ingestTelemetry);
+app.use(routes);
+
+const distPath = path.resolve(__dirname, "../../dist/public");
+app.use(express.static(distPath));
+
+app.get("*", (_req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
+});
+
+function startServer(port: number) {
+  const server = app.listen(port, () => {
+    console.log(`🔥 Neon-Crucible server live on port ${port} [${NODE_ENV}]`);
+    console.log(`   Health:  http://localhost:${port}/health`);
+    console.log(`   API:     http://localhost:${port}/api/works`);
   });
-
-  // Local auth routes: POST /api/auth/login, POST /api/auth/logout
-  registerLocalAuthRoutes(app);
-  // Sitemap
-  app.get("/sitemap.xml", sitemapHandler);
-
-  // tRPC API
-  app.use(
-    "/api/trpc",
-    createExpressMiddleware({
-      router: appRouter,
-      createContext,
-    })
-  );
-  // development mode uses Vite, production mode uses static files
-  if (process.env.NODE_ENV === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
-
-  // Railway injects PORT; listen on 0.0.0.0 so the container is reachable
-  const port = parseInt(process.env.PORT || "3000");
-
-  server.listen(port, "0.0.0.0", () => {
-    console.log(`Server running on http://0.0.0.0:${port}/`);
+  server.on("error", (err: any) => {
+    if (err.code === "EADDRINUSE") {
+      console.log(`   Port ${port} in use, trying ${port + 1}...`);
+      startServer(port + 1);
+    } else {
+      console.error("❌ Server error:", err.message);
+      process.exit(1);
+    }
   });
 }
 
-startServer().catch(console.error);
+startServer(BASE_PORT);

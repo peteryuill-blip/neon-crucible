@@ -1,59 +1,112 @@
+import { useParams } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { useParams, Link } from "wouter";
-import { Skeleton } from "../components/ui/skeleton";
+import { Link } from "wouter";
+import type { Work } from "@/types";
+
+const R2_BUCKET = import.meta.env.VITE_R2_BUCKET_URL || "https://pub-d8e49212a92f42b9b23e248fb91591da.r2.dev/Crucible";
+
+async function fetchWork(slug: string): Promise<Work> {
+  const res = await fetch(`/api/works/${slug}`);
+  if (!res.ok) throw new Error("FETCH_FAILURE");
+  return res.json();
+}
 
 export default function WorkDetail() {
-  const { slug } = useParams();
-  const { data: work, isLoading, error } = useQuery<any>({ 
-    queryKey: [`/api/works/${slug}`] 
+  const { slug } = useParams<{ slug: string }>();
+  const { data: work, isLoading, error } = useQuery({
+    queryKey: ["work", slug],
+    queryFn: () => fetchWork(slug),
+    enabled: !!slug,
   });
 
-  if (isLoading) return <div className="p-24 bg-background min-h-screen"><Skeleton className="h-[60vh] w-full opacity-5" /></div>;
-  if (error || !work) return <div className="p-24 font-mono text-red-500 bg-background min-h-screen">ERROR_NOT_FOUND</div>;
+  let oracle: Record<string, any> = {};
+  try {
+    oracle = JSON.parse(work?.technicalObservation ?? "{}");
+  } catch { oracle = {}; }
 
-  const oracle = work.technicalObservation ? JSON.parse(work.technicalObservation) : null;
+  const steps = oracle?.ambient_context?.steps ?? "—";
+  const heartRate = oracle?.ambient_context?.heart_rate ?? "—";
+  const energy = oracle?.ambient_context?.energy ?? "—";
+  const week = work?.weekNumber ?? oracle?.week_number ?? "—";
+  const imgUrl = work ? `${R2_BUCKET}/${work.sovereignId}_${work.tCode}_lg.webp` : "";
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-neutral-950 text-neutral-100 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-500" />
+      </div>
+    );
+  }
+
+  if (error || !work) {
+    return (
+      <div className="min-h-screen bg-neutral-950 text-neutral-100 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-red-500 mb-2">WORK_NOT_FOUND</h2>
+          <Link href="/" className="text-cyan-400 hover:underline text-sm">← Return to Archive</Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <main className="min-h-screen bg-background text-white">
-      <nav className="p-8 flex justify-between items-center border-b border-white/5">
-        <Link href="/crucible" className="font-mono text-[10px] tracking-widest uppercase opacity-40 hover:opacity-100 transition-opacity">
-          ← Return_To_Archive
-        </Link>
-        <div className="font-mono text-[10px] tracking-widest text-[#00FFCC]">
-          {work.tCode} // {work.sovereignId}
+    <div className="min-h-screen bg-neutral-950 text-neutral-100">
+      <header className="border-b border-neutral-800 px-6 py-4 flex items-center justify-between">
+        <Link href="/" className="text-sm text-neutral-400 hover:text-white transition-colors">← Back to Archive</Link>
+        <span className="text-xs font-mono text-neutral-600">{work.sovereignId}</span>
+      </header>
+      <main className="max-w-7xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="relative rounded-lg overflow-hidden bg-neutral-900">
+          <img src={imgUrl} alt={work.title} className="w-full h-auto object-contain"
+            onError={(e) => { (e.target as HTMLImageElement).src = `${R2_BUCKET}/placeholder.webp`; }} />
         </div>
-      </nav>
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 p-8 lg:p-16 max-w-[1600px] mx-auto">
-        <div className="lg:col-span-8 flex items-center justify-center bg-[#050505] border border-white/5 p-4">
-          <img 
-            src={`https://pub-d8e49212a92f42b9b23e248fb91591da.r2.dev/Crucible/${work.sovereignId}_${work.tCode}_lg.webp`}
-            alt={work.title}
-            className="max-w-full max-h-[85vh] w-auto h-auto object-contain shadow-2xl"
-          />
-        </div>
-        <div className="lg:col-span-4 flex flex-col gap-10">
-          <header className="space-y-4 text-left">
-            <h1 className="font-serif text-5xl tracking-tight text-white/95">{work.title}</h1>
-            <div className="h-[1px] w-12 bg-[#00FFCC]/40" />
-            <p className="font-mono text-[11px] text-white/40 uppercase tracking-[0.2em] leading-relaxed">
-              {work.medium} <br />
-              {work.dimensions} <br />
-              {work.surfaceName}
-            </p>
-          </header>
-          <div className="p-8 border border-white/5 bg-white/[0.01] font-mono text-[10px] tracking-wider leading-relaxed text-left">
-            <h3 className="text-[#00FFCC] mb-6 tracking-[0.4em] uppercase opacity-80">Telemetry_Data</h3>
-            <div className="space-y-5 opacity-70">
-              <div className="flex justify-between border-b border-white/5 pb-2"><span>TOTAL_STEPS</span><span className="text-white">{oracle?.ambient_context?.steps?.toLocaleString() || "NULL"}</span></div>
-              <div className="flex justify-between border-b border-white/5 pb-2"><span>AMBIENT_ENERGY</span><span className="text-white">{oracle?.ambient_context?.energy}/10</span></div>
-              <div className="flex justify-between border-b border-white/5 pb-2"><span>WK_PROD_COUNT</span><span className="text-white">{oracle?.weekly_stats?.count} UNITS</span></div>
-              <div className="flex justify-between border-b border-white/5 pb-2"><span>WEEK_REF</span><span className="text-white">WEEK_{work.weekNumber}</span></div>
+        <div className="space-y-6">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight">{work.title}</h1>
+            <p className="text-neutral-500 mt-2 font-mono text-sm">{work.tCode}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="bg-neutral-900 rounded-lg p-4 border border-neutral-800">
+              <span className="text-neutral-500 block text-xs uppercase tracking-wider">Medium</span>
+              <span className="text-neutral-200">{work.medium || "—"}</span>
+            </div>
+            <div className="bg-neutral-900 rounded-lg p-4 border border-neutral-800">
+              <span className="text-neutral-500 block text-xs uppercase tracking-wider">Dimensions</span>
+              <span className="text-neutral-200">{work.dimensions || "—"}</span>
+            </div>
+            <div className="bg-neutral-900 rounded-lg p-4 border border-neutral-800">
+              <span className="text-neutral-500 block text-xs uppercase tracking-wider">Phase</span>
+              <span className="text-neutral-200">{work.phaseId}</span>
+            </div>
+            <div className="bg-neutral-900 rounded-lg p-4 border border-neutral-800">
+              <span className="text-neutral-500 block text-xs uppercase tracking-wider">Week</span>
+              <span className="text-neutral-200">{week}</span>
             </div>
           </div>
-          <div className="mt-auto opacity-10 font-mono text-[8px] tracking-[0.5em] uppercase text-left">// Access_Restricted: [Rating_Lock] [Labor_Lock] [Disposition_Lock]</div>
+          <div className="bg-neutral-900/50 rounded-lg p-6 border border-cyan-900/30">
+            <h2 className="text-cyan-400 text-xs uppercase tracking-widest mb-4 font-semibold">Oracle Telemetry</h2>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="text-center"><div className="text-2xl font-bold text-white">{steps}</div><div className="text-xs text-neutral-500 mt-1 uppercase">Steps</div></div>
+              <div className="text-center"><div className="text-2xl font-bold text-white">{heartRate}</div><div className="text-xs text-neutral-500 mt-1 uppercase">Heart Rate</div></div>
+              <div className="text-center"><div className="text-2xl font-bold text-white">{energy}</div><div className="text-xs text-neutral-500 mt-1 uppercase">Energy</div></div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
+              work.disposition === "SA" ? "bg-green-900/30 text-green-400 border border-green-800" :
+              work.disposition === "TR" ? "bg-red-900/30 text-red-400 border border-red-800" :
+              "bg-neutral-800 text-neutral-400 border border-neutral-700"
+            }`}>{work.disposition === "SA" ? "SAVED" : work.disposition === "TR" ? "TRASH" : "UNKNOWN"}</span>
+            {work.rating ? (
+              <div className="flex gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i} className={`text-sm ${i < work.rating! ? "text-cyan-400" : "text-neutral-700"}`}>★</span>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </div>
-      </section>
-    </main>
+      </main>
+    </div>
   );
 }
-// BUILD_SIGNAL: 1778347991

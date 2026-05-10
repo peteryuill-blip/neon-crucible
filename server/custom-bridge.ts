@@ -1,15 +1,21 @@
-import { db } from "../db";
-import { works } from "../schema";
-import { eq } from "drizzle-orm";
-import type { Express } from "express";
+import type { Request, Response } from "express";
 
-export function setupCustomRoutes(app: Express) {
-  app.get("/api/works/phase/:id", async (req, res) => {
-    try {
-      const data = await db.select().from(works).where(eq(works.phaseId, parseInt(req.params.id)));
-      res.json(data);
-    } catch (e) {
-      res.status(500).json({ error: "CORE_FETCH_FAILED" });
-    }
+export async function healthCheck(_req: Request, res: Response) {
+  res.json({
+    status: "operational",
+    service: "neon-crucible-bridge",
+    timestamp: new Date().toISOString(),
   });
+}
+
+export async function ingestTelemetry(req: Request, res: Response) {
+  try {
+    const payload = req.body;
+    if (!payload?.sovereignId || !payload?.tCode) {
+      return res.status(400).json({ error: "MISSING_IDENTIFIERS" });
+    }
+    res.json({ received: true, sovereignId: payload.sovereignId });
+  } catch (err) {
+    res.status(500).json({ error: "INGEST_FAILURE", message: String(err) });
+  }
 }
