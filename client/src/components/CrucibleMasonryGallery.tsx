@@ -22,8 +22,10 @@ interface Props {
   bucketUrl: string;
 }
 
-export function CrucibleMasonryGallery({ works, bucketUrl }: Props) {
+export function CrucibleMasonryGallery({ works = [], bucketUrl }: Props) {
   const processedWorks = useMemo(() => {
+    if (!works || !Array.isArray(works)) return [];
+    
     return [...works]
       .map((work) => {
         // --- PASS 1: WEIGHTING SYSTEM ---
