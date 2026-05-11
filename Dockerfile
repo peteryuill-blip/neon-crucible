@@ -5,10 +5,9 @@ RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
-COPY patches/ ./patches/
-COPY . .
+RUN pnpm install --frozen-lockfile
 
-RUN pnpm install --frozen-lockfile --prod
+COPY . .
 
 EXPOSE 8080
 
