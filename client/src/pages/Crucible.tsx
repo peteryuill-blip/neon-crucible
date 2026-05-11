@@ -1,16 +1,24 @@
 import { useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { trpc } from "@/lib/trpc";
 import { CrucibleMasonryGallery } from "../components/CrucibleMasonryGallery";
 import { Skeleton } from "../components/ui/skeleton";
 
 export default function Crucible() {
-  const { data: allWorks, isLoading, error } = useQuery<any[]>({
-    queryKey: ["/api/works"],
-  });
+  const { data, isLoading, error } = trpc.gallery.getAll.useQuery();
 
   const validWorks = useMemo(() => {
-    if (!allWorks || !Array.isArray(allWorks)) return [];
-    return allWorks.filter((work) => {
+    // Highly defensive extraction pattern to guarantee it never throws an error on undefined
+    let rawWorks: any[] = [];
+    if (data && typeof data === 'object' && 'items' in data && Array.isArray((data as any).items)) {
+      rawWorks = (data as any).items;
+    } else if (Array.isArray(data)) {
+      rawWorks = data;
+    }
+
+    if (rawWorks.length === 0) return [];
+
+    return rawWorks.filter((work: any) => {
+      if (!work || typeof work !== 'object') return false;
       if (work.disposition === "TR") return false;
       try {
         const oracle = work.technicalObservation ? JSON.parse(work.technicalObservation) : null;
@@ -23,7 +31,7 @@ export default function Crucible() {
       }
       return true;
     });
-  }, [allWorks]);
+  }, [data]);
 
   if (isLoading) return <div className="p-8 grid grid-cols-4 gap-4 bg-background min-h-screen">
     {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-64 w-full opacity-5" />)}
@@ -38,7 +46,7 @@ export default function Crucible() {
         <div className="flex items-center gap-4">
           <span className="flex h-2 w-2 rounded-full bg-[#00FFCC] animate-pulse" />
           <p className="font-mono text-[10px] tracking-widest text-white/40 uppercase">
-            {validWorks.length} SURVIVORS // PHASE_60606 // LIVE_FEED
+            {validWorks.length} SURVIVORS // LIVE_FEED
           </p>
         </div>
       </header>
@@ -52,4 +60,4 @@ export default function Crucible() {
     </main>
   );
 }
-// BUILD_SIGNAL: 1778347995
+// BUILD_SIGNAL: 1778347996
