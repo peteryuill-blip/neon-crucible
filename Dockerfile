@@ -5,7 +5,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Cache-bust arg: increment to force Railway to rebuild from scratch
-ARG CACHE_BUST=4
+ARG CACHE_BUST=6
 
 # ── Stage 1: Install dependencies ────────────────────────────────────────────
 FROM node:22-alpine AS deps
@@ -26,7 +26,7 @@ RUN pnpm install --frozen-lockfile
 # ── Stage 2: Build ───────────────────────────────────────────────────────────
 FROM node:22-alpine AS builder
 
-ARG CACHE_BUST=4
+ARG CACHE_BUST=6
 
 RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
 
@@ -57,13 +57,17 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 COPY patches/ ./patches/
 
+# Ensure /app is writable before installing
+RUN chmod -R 755 /app
+
 # Install production dependencies only
 RUN pnpm install --frozen-lockfile --prod
 
 # Copy built artefacts from builder stage
-# dist/index.js   → server bundle (esbuild output)
-# dist/public/    → Vite client build (static files served by Express)
 COPY --from=builder /app/dist ./dist
+
+# Copy server source (needed for tsx to run)
+COPY server/ ./server/
 
 # Copy drizzle config (needed for schema reference at runtime)
 COPY drizzle/ ./drizzle/
@@ -73,8 +77,5 @@ COPY drizzle.config.ts ./
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
-# NOTE: No EXPOSE instruction — Railway detects the port from the PORT env var
-# it injects automatically (default 8080). The server reads process.env.PORT.
-
-# Start production server
+# Start production server using pnpm start
 CMD ["pnpm", "start"]
