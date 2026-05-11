@@ -1,3 +1,4 @@
+import fs from "fs";
 import express from "express";
 import cors from "cors";
 import path from "path";
@@ -37,7 +38,7 @@ const possiblePaths = [
 
 let distPath = null;
 for (const p of possiblePaths) {
-  if (require("fs").existsSync(path.join(p, "index.html"))) {
+  if (fs.existsSync(path.join(p, "index.html"))) {
     distPath = p;
     break;
   }
