@@ -1,15 +1,10 @@
-# ─────────────────────────────────────────────────────────────────────────────
-# Neon Crucible — Railway deployment configuration
-# https://docs.railway.app/reference/config-as-code
-# ─────────────────────────────────────────────────────────────────────────────
-
 [build]
 builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "node /app/dist/index.js"
-healthcheckPath = "/api/health"
+startCommand = "pnpm start"
+healthcheckPath = "/health"
 healthcheckTimeout = 120
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
