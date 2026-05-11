@@ -1,80 +1,107 @@
-import { useState, useEffect } from "react";
+import React, { useMemo } from "react";
 import { Link } from "wouter";
-import type { Work } from "@/types";
+
+interface Work {
+  id: number;
+  slug: string;
+  title: string;
+  tCode: string;
+  sovereignId: string;
+  phaseId: number;
+  medium: string | null;
+  dimensions: string | null;
+  rating: number | null;
+  disposition: "SA" | "TR" | "PT" | "SHP" | "UN" | string;
+  technicalObservation: string | null;
+  weekNumber: number | null;
+  createdAt: string | null;
+}
 
 interface Props {
   works: Work[];
   bucketUrl: string;
 }
 
-function selectSize(rating: number): string {
-  if (rating >= 5) return "lg";
-  if (rating >= 3) return "md";
-  return "sm";
-}
-
 export function CrucibleMasonryGallery({ works, bucketUrl }: Props) {
-  const [columns, setColumns] = useState(1);
+  const processedWorks = useMemo(() => {
+    return [...works]
+      .map((work) => {
+        // --- PASS 1: WEIGHTING SYSTEM ---
+        const ratingWeight = (work.rating || 1) * 10000;
+        
+        const dateObj = work.createdAt ? new Date(work.createdAt) : new Date("2026-01-01");
+        const recencyWeight = dateObj.getTime() / 1000000;
 
-  useEffect(() => {
-    const updateColumns = () => {
-      const w = window.innerWidth;
-      if (w < 768) setColumns(1);
-      else if (w < 1024) setColumns(2);
-      else if (w < 1440) setColumns(3);
-      else setColumns(4);
-    };
-    updateColumns();
-    window.addEventListener("resize", updateColumns);
-    return () => window.removeEventListener("resize", updateColumns);
-  }, []);
+        // Use tCode to create a stable "random" offset
+        const tNum = parseInt((work.tCode || "").replace("T_", ""), 10) || 0;
+        const jitter = (tNum % 10) * 500; 
 
-  const columnArrays: Work[][] = Array.from({ length: columns }, () => []);
-  works.forEach((work, i) => {
-    columnArrays[i % columns].push(work);
-  });
+        return {
+          ...work,
+          presenceScore: ratingWeight + recencyWeight + jitter,
+        };
+      })
+      .sort((a, b) => b.presenceScore - a.presenceScore);
+  }, [works]);
 
   return (
-    <div
-      className="grid gap-4"
-      style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
-    >
-      {columnArrays.map((col, colIdx) => (
-        <div key={colIdx} className="flex flex-col gap-4">
-          {col.map((work) => {
-            const size = selectSize(work.rating || 0);
-            const imgUrl = `${bucketUrl}/${work.sovereignId}_${work.tCode}_${size}.webp`;
-            return (
-              <Link key={work.id} href={`/work/${work.slug}`}>
-                <article className="group relative overflow-hidden rounded-lg bg-neutral-900 cursor-pointer">
+    <div className="w-full bg-[#0a0a0a] min-h-screen text-[#f5f5f5] py-12 px-4 sm:px-8">
+      {/* CSS Columns layout logic tailored to requirements */}
+      <div className="columns-1 md:columns-2 lg:columns-3 2xl:columns-4 gap-8 space-y-8">
+        {processedWorks.map((work) => {
+          const isKilled = work.disposition === "TR";
+          const rating = work.rating || 1;
+
+          // Ghost Hole empty rendering check
+          if (rating <= 2) {
+            return <div key={work.id} aria-hidden="true" className="opacity-0 pointer-events-none" />;
+          }
+
+          // Dynamic Sizing Map based on Rating
+          let size = "sm";
+          if (rating >= 5) size = "lg";
+          else if (rating >= 3) size = "md";
+
+          const imgSrc = `${bucketUrl}/${work.sovereignId}_${work.tCode}_${size}.webp`;
+
+          return (
+            <div 
+              key={work.id} 
+              className="break-inside-avoid relative group cursor-crosshair overflow-hidden rounded bg-[#171717]"
+            >
+              <Link href={`/work/${work.slug}`}>
+                <div className="w-full h-auto transition-all duration-700">
                   <img
-                    src={imgUrl}
+                    src={imgSrc}
                     alt={work.title}
                     loading="lazy"
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = `${bucketUrl}/placeholder.webp`;
-                    }}
+                    className={`
+                      w-full h-auto object-contain transition-all duration-500
+                      ${isKilled ? "grayscale sepia brightness-[0.3]" : ""}
+                      hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(34,211,238,0.15)]
+                    `}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-white font-semibold text-sm truncate">{work.title}</h3>
-                      <p className="text-neutral-400 text-xs mt-1">{work.sovereignId} • {work.tCode}</p>
-                      {work.rating ? (
-                        <div className="flex gap-1 mt-2">
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <span key={i} className={`text-xs ${i < work.rating ? "text-cyan-400" : "text-neutral-700"}`}>★</span>
-                          ))}
-                        </div>
-                      ) : null}
+
+                  {/* Overlay Info */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/60 flex flex-col justify-end p-6">
+                    <div className="font-mono text-[10px] tracking-[0.2em] text-[#22d3ee] mb-2 flex items-center justify-between">
+                      <span>{work.tCode} // {work.disposition}</span>
+                      {rating >= 5 && <span className="text-[#4ade80]">SOVEREIGN</span>}
+                      {isKilled && <span className="text-[#ef4444]">TERMINATED</span>}
+                    </div>
+                    <div className="font-serif text-lg text-white/90 leading-none mb-1">
+                      {work.title}
+                    </div>
+                    <div className="font-mono text-[9px] text-[#06b6d4] uppercase tracking-widest mt-1">
+                      {work.dimensions} | {work.medium}
                     </div>
                   </div>
-                </article>
+                </div>
               </Link>
-            );
-          })}
-        </div>
-      ))}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
