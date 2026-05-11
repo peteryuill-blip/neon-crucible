@@ -77,4 +77,4 @@ USER appuser
 # it injects automatically (default 8080). The server reads process.env.PORT.
 
 # Start production server
-CMD ["node", "/app/dist/index.js"]
+CMD ["pnpm", "start"]
