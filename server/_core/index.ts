@@ -58,7 +58,7 @@ if (distPath) {
   app.get("/", (_req, res) => res.json({ status: "API_ONLY", message: "Frontend not built" }));
 }
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🔥 Neon-Crucible server live on port ${PORT} [${NODE_ENV}]`);
   console.log(`   Health:  http://localhost:${PORT}/health`);
   console.log(`   API:     http://localhost:${PORT}/api/works`);
