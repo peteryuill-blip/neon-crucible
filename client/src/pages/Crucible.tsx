@@ -1,16 +1,16 @@
 import { useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { trpc } from "@/lib/trpc";
 import { CrucibleMasonryGallery } from "../components/CrucibleMasonryGallery";
 import { Skeleton } from "../components/ui/skeleton";
 
 export default function Crucible() {
-  const { data: allWorks, isLoading, error } = useQuery<any[]>({
-    queryKey: ["/api/works/phase/60606"],
-  });
+  // Switched from broken REST endpoint to type-safe tRPC query
+  const { data, isLoading, error } = trpc.gallery.getAll.useQuery();
+  const allWorks = (data as any)?.items || [];
 
   const validWorks = useMemo(() => {
-    if (!allWorks) return [];
-    return allWorks.filter((work) => {
+    if (!allWorks || allWorks.length === 0) return [];
+    return allWorks.filter((work: any) => {
       if (work.disposition === "TR") return false;
       try {
         const oracle = work.technicalObservation ? JSON.parse(work.technicalObservation) : null;
@@ -29,7 +29,7 @@ export default function Crucible() {
     {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-64 w-full opacity-5" />)}
   </div>;
 
-  if (error) return <div className="p-24 font-mono text-red-500 bg-background min-h-screen">ERROR_FETCH_FAILURE</div>;
+  if (error) return <div className="p-24 font-mono text-red-500 bg-background min-h-screen">ERROR_FETCH_FAILURE: {error.message}</div>;
 
   return (
     <main className="min-h-screen bg-background">
@@ -52,4 +52,4 @@ export default function Crucible() {
     </main>
   );
 }
-// BUILD_SIGNAL: 1778347991
+// BUILD_SIGNAL: 1778347992
