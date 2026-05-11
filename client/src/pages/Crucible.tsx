@@ -1,23 +1,31 @@
 import { useMemo } from "react";
-import { trpc } from "@/lib/trpc";
+import { useQuery } from "@tanstack/react-query";
 import { CrucibleMasonryGallery } from "../components/CrucibleMasonryGallery";
 import { Skeleton } from "../components/ui/skeleton";
 
 export default function Crucible() {
-  const { data, isLoading, error } = trpc.gallery.getAll.useQuery();
+  const { data: allWorks, isLoading, error } = useQuery<any[]>({
+    queryKey: ["/api/works"],
+    queryFn: async () => {
+      const res = await fetch("/api/works");
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json();
+    }
+  });
 
   const validWorks = useMemo(() => {
-    // Highly defensive extraction pattern to guarantee it never throws an error on undefined
     let rawWorks: any[] = [];
-    if (data && typeof data === 'object' && 'items' in data && Array.isArray((data as any).items)) {
-      rawWorks = (data as any).items;
-    } else if (Array.isArray(data)) {
-      rawWorks = data;
+    if (allWorks && typeof allWorks === 'object' && 'items' in allWorks && Array.isArray((allWorks as any).items)) {
+      rawWorks = (allWorks as any).items;
+    } else if (Array.isArray(allWorks)) {
+      rawWorks = allWorks;
     }
 
     if (rawWorks.length === 0) return [];
 
-    return rawWorks.filter((work: any) => {
+    return rawWorks.filter((work) => {
       if (!work || typeof work !== 'object') return false;
       if (work.disposition === "TR") return false;
       try {
@@ -31,13 +39,20 @@ export default function Crucible() {
       }
       return true;
     });
-  }, [data]);
+  }, [allWorks]);
 
   if (isLoading) return <div className="p-8 grid grid-cols-4 gap-4 bg-background min-h-screen">
     {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-64 w-full opacity-5" />)}
   </div>;
 
-  if (error) return <div className="p-24 font-mono text-red-500 bg-background min-h-screen">ERROR_FETCH_FAILURE</div>;
+  if (error) {
+    return (
+      <div className="p-24 font-mono text-red-500 bg-background min-h-screen">
+        <div>ERROR_FETCH_FAILURE</div>
+        <div className="text-xs mt-4 opacity-50">{error instanceof Error ? error.message : String(error)}</div>
+      </div>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-background">
@@ -60,4 +75,4 @@ export default function Crucible() {
     </main>
   );
 }
-// BUILD_SIGNAL: 1778347996
+// BUILD_SIGNAL: 1778347998
