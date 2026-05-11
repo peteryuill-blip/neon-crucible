@@ -1,23 +1,16 @@
 import { useMemo } from "react";
-import { trpc } from "@/lib/trpc";
+import { useQuery } from "@tanstack/react-query";
 import { CrucibleMasonryGallery } from "../components/CrucibleMasonryGallery";
 import { Skeleton } from "../components/ui/skeleton";
 
 export default function Crucible() {
-  const { data, isLoading, error } = trpc.gallery.getAll.useQuery();
-  
-  // Use useMemo to safely parse the trpc response into an array
-  const allWorks = useMemo(() => {
-    // If data exists, check if it's an array directly, or if it has an items property
-    if (!data) return [];
-    if (Array.isArray(data)) return data;
-    if (data && typeof data === 'object' && 'items' in data && Array.isArray((data as any).items)) return (data as any).items;
-    return [];
-  }, [data]);
+  const { data: allWorks, isLoading, error } = useQuery<any[]>({
+    queryKey: ["/api/works"],
+  });
 
   const validWorks = useMemo(() => {
-    if (!allWorks || allWorks.length === 0) return [];
-    return allWorks.filter((work: any) => {
+    if (!allWorks || !Array.isArray(allWorks)) return [];
+    return allWorks.filter((work) => {
       if (work.disposition === "TR") return false;
       try {
         const oracle = work.technicalObservation ? JSON.parse(work.technicalObservation) : null;
@@ -36,7 +29,7 @@ export default function Crucible() {
     {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-64 w-full opacity-5" />)}
   </div>;
 
-  if (error) return <div className="p-24 font-mono text-red-500 bg-background min-h-screen">ERROR_FETCH_FAILURE: {error.message}</div>;
+  if (error) return <div className="p-24 font-mono text-red-500 bg-background min-h-screen">ERROR_FETCH_FAILURE</div>;
 
   return (
     <main className="min-h-screen bg-background">
@@ -59,4 +52,4 @@ export default function Crucible() {
     </main>
   );
 }
-// BUILD_SIGNAL: 1778347993
+// BUILD_SIGNAL: 1778347995
