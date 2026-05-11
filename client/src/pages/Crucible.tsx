@@ -4,9 +4,16 @@ import { CrucibleMasonryGallery } from "../components/CrucibleMasonryGallery";
 import { Skeleton } from "../components/ui/skeleton";
 
 export default function Crucible() {
-  // Switched from broken REST endpoint to type-safe tRPC query
   const { data, isLoading, error } = trpc.gallery.getAll.useQuery();
-  const allWorks = (data as any)?.items || [];
+  
+  // Use useMemo to safely parse the trpc response into an array
+  const allWorks = useMemo(() => {
+    // If data exists, check if it's an array directly, or if it has an items property
+    if (!data) return [];
+    if (Array.isArray(data)) return data;
+    if (data && typeof data === 'object' && 'items' in data && Array.isArray((data as any).items)) return (data as any).items;
+    return [];
+  }, [data]);
 
   const validWorks = useMemo(() => {
     if (!allWorks || allWorks.length === 0) return [];
@@ -52,4 +59,4 @@ export default function Crucible() {
     </main>
   );
 }
-// BUILD_SIGNAL: 1778347992
+// BUILD_SIGNAL: 1778347993
