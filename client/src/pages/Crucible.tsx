@@ -4,7 +4,7 @@ import { CrucibleMasonryGallery } from "../components/CrucibleMasonryGallery";
 import { Skeleton } from "../components/ui/skeleton";
 
 export default function Crucible() {
-  const { data: allWorks, isLoading, error } = useQuery<any[]>({
+  const { data: fetchResult, isLoading, error } = useQuery<any>({
     queryKey: ["/api/works"],
     queryFn: async () => {
       const res = await fetch("/api/works");
@@ -17,10 +17,12 @@ export default function Crucible() {
 
   const validWorks = useMemo(() => {
     let rawWorks: any[] = [];
-    if (allWorks && typeof allWorks === 'object' && 'items' in allWorks && Array.isArray((allWorks as any).items)) {
-      rawWorks = (allWorks as any).items;
-    } else if (Array.isArray(allWorks)) {
-      rawWorks = allWorks;
+    
+    // The server router.get("/api/works") returns { data: allWorks, pagination: {...} }
+    if (fetchResult && fetchResult.data && Array.isArray(fetchResult.data)) {
+      rawWorks = fetchResult.data;
+    } else if (Array.isArray(fetchResult)) {
+      rawWorks = fetchResult;
     }
 
     if (rawWorks.length === 0) return [];
@@ -39,7 +41,7 @@ export default function Crucible() {
       }
       return true;
     });
-  }, [allWorks]);
+  }, [fetchResult]);
 
   if (isLoading) return <div className="p-8 grid grid-cols-4 gap-4 bg-background min-h-screen">
     {[...Array(8)].map((_, i) => <Skeleton key={i} className="h-64 w-full opacity-5" />)}
@@ -55,7 +57,7 @@ export default function Crucible() {
   }
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-[#0a0a0a]">
       <header className="px-8 pt-24 pb-12 border-b border-white/5">
         <h1 className="font-serif text-5xl text-white mb-2">The Archive</h1>
         <div className="flex items-center gap-4">
@@ -75,4 +77,4 @@ export default function Crucible() {
     </main>
   );
 }
-// BUILD_SIGNAL: 1778347998
+// BUILD_SIGNAL: 1778347999
